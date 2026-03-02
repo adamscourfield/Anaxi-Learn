@@ -7,17 +7,18 @@ import { LearnSession } from '@/features/learn/LearnSession';
 const QUESTIONS_PER_SESSION = 3;
 
 interface Props {
-  params: { subjectSlug: string };
+  params: Promise<{ subjectSlug: string }>;
 }
 
 export default async function LearnPage({ params }: Props) {
+  const { subjectSlug } = await params;
   const session = await getServerSession(authOptions);
   if (!session?.user) redirect('/login');
 
   const userId = (session.user as { id: string }).id;
 
   const subject = await prisma.subject.findUnique({
-    where: { slug: params.subjectSlug },
+    where: { slug: subjectSlug },
     include: { skills: true },
   });
 
