@@ -68,11 +68,11 @@ export default async function DiagnosticRunPage({ params }: Props) {
   const fullSkill = subject.skills.find((s) => s.id === nextSkill.id);
   if (!fullSkill) redirect(`/diagnostic/${subjectSlug}/complete?sessionId=${diagSession.id}`);
 
-  const availableItems = fullSkill!.items
+  const availableItems = fullSkill.items
     .map((is) => is.item)
     .filter((item) => !seenItemIds.has(item.id));
 
-  const nextItem = availableItems[0] ?? fullSkill!.items[0]?.item;
+  const nextItem = availableItems[0] ?? fullSkill.items[0]?.item;
 
   if (!nextItem) {
     redirect(`/diagnostic/${subjectSlug}/complete?sessionId=${diagSession.id}`);
@@ -81,7 +81,7 @@ export default async function DiagnosticRunPage({ params }: Props) {
   return (
     <DiagnosticRunClient
       subject={{ id: subject.id, title: subject.title, slug: subject.slug }}
-      skill={{ id: nextSkill.id, code: nextSkill.code, name: fullSkill!.name, strand: nextSkill.strand }}
+      skill={{ id: nextSkill.id, code: nextSkill.code, name: fullSkill.name, strand: nextSkill.strand }}
       item={{ id: nextItem.id, question: nextItem.question, options: nextItem.options as string[] }}
       sessionId={diagSession.id}
       itemsSeen={diagSession.itemsSeen}

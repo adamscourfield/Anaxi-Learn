@@ -33,10 +33,8 @@ export async function updateSkillMastery(
       newConfirmedCount = Math.min(prevConfirmedCount + 1, 2);
     }
   } else {
+    // Failed review: confirmedCount stays unchanged; streak resets
     newStreak = 0;
-    if (isDueReview) {
-      // Failed review: don't increment confirmed count
-    }
   }
 
   const nextReviewAt = scheduleNextReview(mastery, newConfirmedCount, now);
