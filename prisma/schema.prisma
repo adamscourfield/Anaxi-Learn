@@ -26,18 +26,23 @@ model User {
 
 model Subject {
   id          String    @id @default(cuid())
-  name        String
+  title       String
   slug        String    @unique
   description String?
   createdAt   DateTime  @default(now())
   skills      Skill[]
+  items       Item[]
   events      Event[]
 }
 
 model Skill {
   id            String         @id @default(cuid())
+  code          String
   name          String
   slug          String
+  strand        String         @default("")
+  isStretch     Boolean        @default(false)
+  sortOrder     Int            @default(0)
   description   String?
   intro         String?
   subjectId     String
@@ -50,11 +55,13 @@ model Skill {
   events        Event[]
 
   @@unique([subjectId, slug])
+  @@unique([subjectId, code])
 }
 
 model SkillPrereq {
   skillId    String
   prereqId   String
+  weight     Int    @default(1)
   skill      Skill  @relation("SkillToPrereq", fields: [skillId], references: [id])
   prereq     Skill  @relation("PrereqToSkill", fields: [prereqId], references: [id])
 
@@ -67,7 +74,9 @@ model Item {
   type      String      @default("MCQ")
   options   Json
   answer    String
+  subjectId String?
   createdAt DateTime    @default(now())
+  subject   Subject?    @relation(fields: [subjectId], references: [id])
   skills    ItemSkill[]
   attempts  Attempt[]
   events    Event[]
@@ -99,6 +108,8 @@ model SkillMastery {
   userId           String
   skillId          String
   mastery          Float     @default(0)
+  streak           Int       @default(0)
+  confirmedCount   Int       @default(0)
   lastPracticedAt  DateTime?
   nextReviewAt     DateTime?
   createdAt        DateTime  @default(now())

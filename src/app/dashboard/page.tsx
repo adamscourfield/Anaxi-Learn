@@ -53,7 +53,7 @@ export default async function DashboardPage() {
           return (
             <section key={subject.id} className="mb-8">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-semibold text-gray-800">{subject.name}</h2>
+                <h2 className="text-xl font-semibold text-gray-800">{subject.title}</h2>
                 <Link
                   href={`/learn/${subject.slug}`}
                   className="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition-colors"

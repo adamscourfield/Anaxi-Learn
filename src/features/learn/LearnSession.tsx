@@ -12,14 +12,16 @@ interface Item {
 
 interface Skill {
   id: string;
+  code: string;
   name: string;
+  strand: string;
   intro: string | null;
   description: string | null;
 }
 
 interface Subject {
   id: string;
-  name: string;
+  title: string;
   slug: string;
 }
 
@@ -31,6 +33,8 @@ interface Props {
 }
 
 type Phase = 'intro' | 'session' | 'results';
+
+const SHOW_DEBUG = process.env.NEXT_PUBLIC_SHOW_DEBUG === 'true';
 
 export function LearnSession({ subject, skill, items, userId }: Props) {
   const [phase, setPhase] = useState<Phase>('intro');
@@ -79,8 +83,13 @@ export function LearnSession({ subject, skill, items, userId }: Props) {
       <main className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
         <div className="max-w-lg w-full bg-white rounded-xl border border-gray-200 p-8 space-y-6">
           <div>
-            <p className="text-sm text-blue-600 font-medium mb-1">{subject.name}</p>
+            <p className="text-sm text-blue-600 font-medium mb-1">{subject.title}</p>
             <h1 className="text-2xl font-bold text-gray-900">{skill.name}</h1>
+            {SHOW_DEBUG && (
+              <p className="text-xs text-gray-400 mt-1">
+                {skill.code} · {skill.strand}
+              </p>
+            )}
           </div>
           {skill.intro && (
             <div className="prose prose-sm text-gray-600">
@@ -114,7 +123,12 @@ export function LearnSession({ subject, skill, items, userId }: Props) {
       <main className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
         <div className="max-w-lg w-full bg-white rounded-xl border border-gray-200 p-8 space-y-6">
           <div className="flex items-center justify-between">
-            <p className="text-sm text-gray-500">{skill.name}</p>
+            <p className="text-sm text-gray-500">
+              {skill.name}
+              {SHOW_DEBUG && (
+                <span className="ml-2 text-xs text-gray-400">[{skill.code}]</span>
+              )}
+            </p>
             <span className="text-sm text-gray-400">
               {currentIndex + 1} / {items.length}
             </span>
