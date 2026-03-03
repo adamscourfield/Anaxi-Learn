@@ -1,0 +1,180 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anaxi.learn/schemas/unit-question-mapping.json",
+  "title": "Anaxi-Learn Unit Question Mapping",
+  "type": "object",
+  "required": [
+    "source",
+    "question",
+    "skills",
+    "misconceptions",
+    "variation",
+    "cognitive_load",
+    "marking"
+  ],
+  "properties": {
+    "source": {
+      "type": "object",
+      "required": ["year_group", "unit", "part", "tier", "question_ref"],
+      "properties": {
+        "year_group": { "type": "string", "enum": ["Y7", "Y8", "Y9", "Y10", "Y11"] },
+        "unit": { "type": "string" },
+        "part": { "type": "string", "enum": ["A", "B", "C", "OTHER"] },
+        "tier": { "type": "string", "enum": ["FOUNDATION", "CORE", "HIGHER", "MIXED"] },
+        "question_ref": { "type": "string", "description": "E.g. Slide12-Q3" },
+        "source_file": { "type": "string" }
+      }
+    },
+    "question": {
+      "type": "object",
+      "required": ["stem", "format"],
+      "properties": {
+        "stem": { "type": "string" },
+        "format": { "type": "string", "enum": ["MCQ", "SHORT", "NUMERIC", "MULTI_STEP", "MATCH", "OTHER"] },
+        "options": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "answer": { "type": "string" },
+        "worked_answer_ref": { "type": "string" }
+      }
+    },
+    "skills": {
+      "type": "object",
+      "required": ["primary_skill_code", "secondary_skill_codes", "micro_skills", "prereq_skill_codes"],
+      "properties": {
+        "primary_skill_code": {
+          "type": "string",
+          "pattern": "^N[1-4]\\.[0-9]+$"
+        },
+        "secondary_skill_codes": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^N[1-4]\\.[0-9]+$" },
+          "uniqueItems": true
+        },
+        "micro_skills": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "PLACE_VALUE_ALIGNMENT",
+              "NUMBER_LINE_POSITIONING",
+              "ROUNDING_RULE_SELECTION",
+              "ROUNDING_EXECUTION",
+              "DECIMAL_COMPARISON",
+              "NEGATIVE_NUMBER_ORDERING",
+              "OPERATION_SELECTION",
+              "FORMAL_METHOD_EXECUTION",
+              "ESTIMATION_CHECK",
+              "MULTI_STEP_PLANNING",
+              "UNIT_INTERPRETATION",
+              "REPRESENTATION_TRANSLATION",
+              "REASONABLENESS_JUDGEMENT"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "prereq_skill_codes": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^N[1-4]\\.[0-9]+$" },
+          "uniqueItems": true
+        }
+      }
+    },
+    "misconceptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "diagnostic_signal"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "PLACE_VALUE_SHIFT_ERROR",
+              "DECIMAL_POINT_MISALIGNMENT",
+              "NEGATIVE_ORDER_REVERSAL",
+              "ROUNDING_THRESHOLD_ERROR",
+              "OPERATION_CONFUSION",
+              "PROCEDURAL_SLIP",
+              "FACT_RETRIEVAL_GAP",
+              "MULTI_STEP_DROPOUT",
+              "UNIT_CONFUSION",
+              "OVERGENERALISATION",
+              "TRANSCRIPTION_ERROR"
+            ]
+          },
+          "diagnostic_signal": { "type": "string" },
+          "likely_cause": { "type": "string" }
+        }
+      }
+    },
+    "variation": {
+      "type": "object",
+      "required": ["pattern_type", "position_in_sequence", "sequence_size"],
+      "properties": {
+        "pattern_type": {
+          "type": "string",
+          "enum": [
+            "NUMERIC_RANGE_EXPANSION",
+            "REPRESENTATION_SWITCH",
+            "DISTRACTOR_TIGHTENING",
+            "STEP_COUNT_INCREASE",
+            "CONTEXTUALISATION",
+            "MIXED_OPERATION_INTERLEAVE",
+            "REVERSAL_PROBLEM",
+            "BOUNDARY_CASE"
+          ]
+        },
+        "position_in_sequence": { "type": "integer", "minimum": 1 },
+        "sequence_size": { "type": "integer", "minimum": 1 },
+        "notes": { "type": "string" }
+      }
+    },
+    "cognitive_load": {
+      "type": "object",
+      "required": ["level", "justification"],
+      "properties": {
+        "level": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "justification": { "type": "string" },
+        "working_memory_drivers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "MULTIPLE_REPRESENTATIONS",
+              "LARGE_NUMBERS",
+              "DECIMAL_PRECISION",
+              "MULTI_STEP_CHAIN",
+              "DISTRACTOR_SIMILARITY",
+              "LANGUAGE_DENSITY",
+              "EXTRANEOUS_CONTEXT"
+            ]
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "marking": {
+      "type": "object",
+      "required": ["mark_scheme_type", "max_marks"],
+      "properties": {
+        "mark_scheme_type": { "type": "string", "enum": ["AUTO_EXACT", "AUTO_TOLERANCE", "RUBRIC_REQUIRED"] },
+        "max_marks": { "type": "integer", "minimum": 1 },
+        "accepted_answers": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "tolerance": { "type": "number" }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "mapper": { "type": "string" },
+        "mapped_at": { "type": "string", "format": "date-time" },
+        "quality_status": { "type": "string", "enum": ["DRAFT", "REVIEWED", "APPROVED"] }
+      }
+    }
+  }
+}
