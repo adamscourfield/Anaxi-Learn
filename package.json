@@ -12,7 +12,8 @@
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:seed": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/seed.ts",
-    "db:import:unit1-first25": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/import-unit1-first25.ts"
+    "db:import:unit1-first25": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/import-unit1-first25.ts",
+    "db:import:unit1-next25": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/import-unit1-next25.ts"
   },
   "prisma": {
     "seed": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/seed.ts"

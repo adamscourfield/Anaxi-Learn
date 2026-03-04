@@ -3,7 +3,7 @@ import { authOptions } from '@/features/auth/authOptions';
 import { redirect } from 'next/navigation';
 import { prisma } from '@/db/prisma';
 
-const TARGET_SKILLS = ['N1.3', 'N1.10', 'N1.12'];
+const TARGET_SKILLS = ['N1.3', 'N1.5', 'N1.10', 'N1.12'];
 
 export default async function AdminContentKSMathsPage() {
   const session = await getServerSession(authOptions);
@@ -45,8 +45,8 @@ export default async function AdminContentKSMathsPage() {
         </div>
 
         <section className="bg-white rounded-xl border border-gray-200 p-4">
-          <h2 className="text-lg font-semibold text-gray-800 mb-4">Unit 1 Part A Foundation — First 25 Import</h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
+          <h2 className="text-lg font-semibold text-gray-800 mb-4">Unit 1 Part A Foundation — Imported Questions</h2>
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-3">
             <div className="rounded-lg border border-gray-200 p-3">
               <div className="text-xs text-gray-500">Imported Items</div>
               <div className="text-2xl font-bold text-gray-900">{importedItems.length}</div>
@@ -88,7 +88,7 @@ export default async function AdminContentKSMathsPage() {
               {importedItems.length === 0 && (
                 <tr>
                   <td colSpan={3} className="px-4 py-8 text-center text-gray-400">
-                    No imported Slide-tagged items found yet. Run db:import:unit1-first25 first.
+                    No imported Slide-tagged items found yet. Run db:import:unit1-first25 or db:import:unit1-next25 first.
                   </td>
                 </tr>
               )}
