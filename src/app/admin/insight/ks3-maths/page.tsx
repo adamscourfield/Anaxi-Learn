@@ -86,9 +86,14 @@ export default async function InsightDashboardPage() {
       <div className="max-w-5xl mx-auto px-4 space-y-10">
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-bold text-gray-900">Insight Dashboard — KS3 Maths</h1>
-          <a href="/admin/interventions" className="text-sm text-blue-600 hover:underline">
-            → Interventions
-          </a>
+          <div className="flex items-center gap-4 text-sm">
+            <a href="/admin/content/ks3-maths" className="text-blue-600 hover:underline">
+              → Content Verification
+            </a>
+            <a href="/admin/interventions" className="text-blue-600 hover:underline">
+              → Interventions
+            </a>
+          </div>
         </div>
 
         {/* A) Coverage by strand */}
