@@ -1,20 +1,22 @@
 'use client';
 
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
-    setError('');
+    setError(null);
+
+    const form = new FormData(e.currentTarget);
+    const email = String(form.get('email') || '');
+    const password = String(form.get('password') || '');
 
     const result = await signIn('credentials', {
       email,
@@ -23,58 +25,72 @@ export default function LoginPage() {
     });
 
     if (result?.error) {
-      setError('Invalid email or password');
+      setError('Invalid email or password. Please try again.');
       setLoading(false);
-    } else {
-      router.push('/dashboard');
+      return;
     }
+
+    router.push('/dashboard');
+    router.refresh();
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="w-full max-w-sm p-8 bg-white rounded-xl shadow-sm border border-gray-200">
-        <h1 className="text-2xl font-bold text-gray-900 mb-6">Sign in to Anaxi Learn</h1>
+    <main className="mx-auto flex min-h-[78vh] w-full max-w-md flex-col items-center justify-center gap-6 px-4">
+      <div className="text-center">
+        <p className="text-4xl leading-none text-slate-700">⌁</p>
+        <p className="mt-2 text-[42px] font-semibold tracking-[-0.03em] text-slate-900">Anaxi Learn</p>
+        <p className="mt-1 text-sm text-slate-500">Future Education</p>
+      </div>
+
+      <div className="w-full rounded-2xl border border-slate-200 bg-white p-7 shadow-sm">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-              Email
+            <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-slate-800">
+              Email address
             </label>
             <input
               id="email"
+              name="email"
               type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="student@example.com"
+              className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-slate-900 placeholder:text-slate-400 focus:border-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-200"
+              required
             />
           </div>
+
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="password" className="mb-1.5 block text-sm font-medium text-slate-800">
               Password
             </label>
             <input
               id="password"
+              name="password"
               type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter your password"
+              className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-slate-900 placeholder:text-slate-400 focus:border-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-200"
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="••••••••"
             />
           </div>
-          {error && (
-            <p className="text-sm text-red-600">{error}</p>
-          )}
+
+          <div className="flex justify-end">
+            <a className="text-sm text-slate-500 hover:text-slate-800" href="#">
+              Forgot password?
+            </a>
+          </div>
+
+          {error ? <p className="text-sm text-rose-600">{error}</p> : null}
+
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-colors"
+            className="w-full rounded-lg bg-slate-900 px-4 py-2.5 text-white transition-colors hover:bg-black disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {loading ? 'Signing in…' : 'Sign in'}
+            {loading ? 'Signing in…' : 'Log in →'}
           </button>
         </form>
       </div>
+
+      <p className="text-xs text-slate-400">© 2026 Anaxi. All rights reserved.</p>
     </main>
   );
 }
