@@ -204,21 +204,11 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
       <main className="flex min-h-screen items-center justify-center bg-gray-50 p-4 sm:p-6">
         <div className="w-full max-w-xl space-y-6 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
           <div className="flex items-center justify-between gap-2">
-            <p className="text-sm font-medium text-gray-600">
-              {skill.name}
-              {SHOW_DEBUG && <span className="ml-2 text-xs text-gray-400">[{skill.code}]</span>}
-            </p>
+            <p className="text-sm font-medium text-gray-500">Question</p>
             <span className="text-sm tabular-nums text-gray-400">
               {currentIndex + 1} / {items.length}
             </span>
           </div>
-
-          {(parsedOptions.meta.route || parsedOptions.meta.questionRole !== 'practice') && (
-            <p className="text-xs text-blue-700">
-              {parsedOptions.meta.route ? `Route ${parsedOptions.meta.route}` : 'Guided practice'} ·{' '}
-              {parsedOptions.meta.questionRole.replace('_', ' ')}
-            </p>
-          )}
 
           <div className="h-2 w-full rounded-full bg-gray-100">
             <div
@@ -227,13 +217,8 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
             />
           </div>
 
-          <h2 className="text-xl font-semibold leading-snug text-gray-900">{currentItem.question}</h2>
-
-          <div className="rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700">
-            <p>
-              Correct so far: <span className="font-semibold">{results.filter((r) => r.correct).length}</span> / {results.length}
-            </p>
-            <p className="text-xs text-slate-500 mt-1">Skill trajectory: Not Yet → Developing → Secure</p>
+          <div className="rounded-2xl border-2 border-blue-100 bg-white px-5 py-6 sm:px-6 sm:py-7">
+            <h2 className="text-2xl font-bold leading-tight text-gray-900 sm:text-3xl">{currentItem.question}</h2>
           </div>
 
           <div className="space-y-3">
@@ -250,7 +235,7 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
                       setSelectedAnswer(option);
                       setError(null);
                     }}
-                    className={`w-full rounded-xl border-2 px-4 py-3 text-left text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1 ${
+                    className={`w-full rounded-xl border-2 px-4 py-4 text-left text-base font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1 ${
                       selectedAnswer === option
                         ? 'border-blue-500 bg-blue-50 text-blue-800'
                         : 'border-gray-200 text-gray-700 hover:border-gray-300 hover:bg-gray-50'

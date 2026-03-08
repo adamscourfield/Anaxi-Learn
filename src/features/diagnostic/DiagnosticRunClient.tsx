@@ -57,11 +57,9 @@ export function DiagnosticRunClient({ subject, skill, item, sessionId, itemsSeen
     <main className="anx-shell flex items-center justify-center">
       <div className="anx-panel w-full max-w-2xl space-y-6 p-7 sm:p-8">
         <div className="flex items-center justify-between">
-          <p className="text-sm text-slate-500">
-            Diagnostic · <span className="font-medium text-slate-700">{skill.strand}</span>
-          </p>
+          <p className="text-sm text-slate-500">Diagnostic question</p>
           <span className="text-sm text-slate-500">
-            {itemsSeen + 1} / {maxItems} max
+            {itemsSeen + 1} / {maxItems}
           </span>
         </div>
 
@@ -69,16 +67,9 @@ export function DiagnosticRunClient({ subject, skill, item, sessionId, itemsSeen
           <div className="anx-progress-bar" style={{ width: `${((itemsSeen + 1) / maxItems) * 100}%` }} />
         </div>
 
-        <h2 className="text-xl font-semibold leading-snug text-slate-900">{item.question}</h2>
-        <p className="text-xs text-slate-500">
-          {subject.title} · {skill.code} {skill.name ? `· ${skill.name}` : ''}
-        </p>
-        {(parsedOptions.meta.route || parsedOptions.meta.questionRole !== 'practice') && (
-          <p className="text-xs text-blue-700">
-            {parsedOptions.meta.route ? `Route ${parsedOptions.meta.route}` : 'Diagnostic'} ·{' '}
-            {parsedOptions.meta.questionRole.replace('_', ' ')}
-          </p>
-        )}
+        <div className="rounded-2xl border-2 border-blue-100 bg-white px-5 py-6 sm:px-6 sm:py-7">
+          <h2 className="text-2xl font-bold leading-tight text-slate-900 sm:text-3xl">{item.question}</h2>
+        </div>
 
         <div className="space-y-3">
           {answerType === 'MCQ' ? (
@@ -94,7 +85,7 @@ export function DiagnosticRunClient({ subject, skill, item, sessionId, itemsSeen
                     setSelectedAnswer(option);
                     setError(null);
                   }}
-                  className={`anx-option ${selectedAnswer === option ? 'anx-option-selected' : ''}`}
+                  className={`anx-option py-4 text-base font-semibold ${selectedAnswer === option ? 'anx-option-selected' : ''}`}
                 >
                   {option}
                 </button>
