@@ -162,7 +162,7 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
               disabled={!hasItems}
               className="inline-flex flex-1 items-center justify-center rounded-lg bg-blue-600 px-4 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
             >
-              Start Reteach ({items.length} key questions follow)
+              Start guided reteach ({items.length} key questions follow)
             </button>
             <button
               onClick={() => router.push('/dashboard')}
@@ -179,7 +179,7 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
   if (phase === 'reteach') {
     return (
       <main className="anx-shell flex items-center justify-center">
-        <div className="anx-panel w-full max-w-2xl p-7 sm:p-8">
+        <div className="anx-panel w-full max-w-2xl p-7 sm:p-9">
           <ReteachSession
             subjectId={subject.id}
             skillId={skill.id}

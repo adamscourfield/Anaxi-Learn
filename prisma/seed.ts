@@ -303,9 +303,9 @@ async function main() {
         guidedPrompt: 'In 6,204, what value does the 2 represent?',
         guidedAnswer: '200',
         steps: [
-          ['Identify columns', 'Read thousands, hundreds, tens, ones left to right.', 'In 4,381, what is the hundreds digit?', ['3', '8', '4', '1'], '3'],
-          ['Compare highest column first', 'Compare thousands first; move right only if equal.', 'Which is greater?', ['5,203', '5,123', 'Same', 'Cannot tell'], '5,203'],
-          ['Check tricky middle columns', 'Tens and hundreds are often swapped; name each before deciding.', 'In 7,460, the 6 is worth…', ['6', '60', '600', '6000'], '60'],
+          ['Identify columns', 'Read thousands, hundreds, tens, ones left to right.', 'In 4,381, what is the hundreds digit?', ['3', '8', '4', '1'], '3', 'Use a place-value grid and point to the hundreds column before selecting.'],
+          ['Compare highest column first', 'Compare thousands first; move right only if equal.', 'Which is greater?', ['5,203', '5,123', 'Same', 'Cannot tell'], '5,203', 'Thousands are tied at 5; compare hundreds next: 2 is greater than 1.'],
+          ['Check tricky middle columns', 'Tens and hundreds are often swapped; name each before deciding.', 'In 7,460, the 6 is worth…', ['6', '60', '600', '6000'], '60', 'Say it aloud: 7 thousand, 4 hundred, 6 tens, 0 ones.'],
         ],
       },
       {
@@ -315,9 +315,9 @@ async function main() {
         guidedPrompt: 'Which is greater: 8,307 or 8,370?',
         guidedAnswer: '8,370',
         steps: [
-          ['Use a compare frame', 'Align numbers by column in a place-value table.', 'Which column is checked first?', ['Ones', 'Tens', 'Hundreds', 'Thousands'], 'Thousands'],
-          ['Find first difference', 'Move left to right and stop at first non-match.', 'First different column in 4,125 and 4,175?', ['Thousands', 'Hundreds', 'Tens', 'Ones'], 'Tens'],
-          ['Decide and justify', 'Bigger digit at first difference means bigger number.', 'Which is greater?', ['9,041', '9,401', 'Same', 'Cannot tell'], '9,401'],
+          ['Use a compare frame', 'Align numbers by column in a place-value table.', 'Which column is checked first?', ['Ones', 'Tens', 'Hundreds', 'Thousands'], 'Thousands', 'Start at the biggest place value first to avoid noisy lower-digit distractions.'],
+          ['Find first difference', 'Move left to right and stop at first non-match.', 'First different column in 4,125 and 4,175?', ['Thousands', 'Hundreds', 'Tens', 'Ones'], 'Tens', 'Columns match at thousands and hundreds; the first change appears in tens (2 vs 7).'],
+          ['Decide and justify', 'Bigger digit at first difference means bigger number.', 'Which is greater?', ['9,041', '9,401', 'Same', 'Cannot tell'], '9,401', 'At hundreds, 4 beats 0; you can decide before checking tens/ones.'],
         ],
       },
       {
@@ -327,9 +327,9 @@ async function main() {
         guidedPrompt: 'In 5,072, is the 7 worth 7 or 70?',
         guidedAnswer: '70',
         steps: [
-          ['Bigger column bigger impact', 'A change in tens beats a change in ones.', 'Which change is bigger?', ['+1 one', '+1 ten', 'Same', 'Depends'], '+1 ten'],
-          ['Value by position', 'The same digit has different value in different columns.', 'In 3,604 the 6 is worth…', ['6', '60', '600', '6000'], '600'],
-          ['Near-miss practice', 'Use similar-looking pairs to lock in place value logic.', 'Which is greater?', ['6,090', '6,009', 'Same', 'Cannot tell'], '6,090'],
+          ['Bigger column bigger impact', 'A change in tens beats a change in ones.', 'Which change is bigger?', ['+1 one', '+1 ten', 'Same', 'Depends'], '+1 ten', 'One ten equals ten ones, so +1 ten always has greater effect.'],
+          ['Value by position', 'The same digit has different value in different columns.', 'In 3,604 the 6 is worth…', ['6', '60', '600', '6000'], '600', 'Read the column name first: the 6 is in hundreds, so value is 600.'],
+          ['Near-miss practice', 'Use similar-looking pairs to lock in place value logic.', 'Which is greater?', ['6,090', '6,009', 'Same', 'Cannot tell'], '6,090', 'Compare tens: 9 tens is bigger than 0 tens, so 6,090 is larger.'],
         ],
       },
     ] as const;
@@ -356,8 +356,10 @@ async function main() {
       });
 
       for (let i = 0; i < routeDef.steps.length; i++) {
-        const [title, explanation, checkpointQuestion, checkpointOptions, checkpointAnswer] = routeDef.steps[i];
-        const alternativeHint = `Try this: ${explanation}`;
+        const stepTuple = routeDef.steps[i] as readonly [string, string, string, readonly string[], string, string?];
+        const [title, explanation, checkpointQuestion, checkpointOptionsRaw, checkpointAnswer, customAlternativeHint] = stepTuple;
+        const checkpointOptions = [...checkpointOptionsRaw];
+        const alternativeHint = customAlternativeHint ?? `Try this: ${explanation}`;
         await prisma.explanationStep.upsert({
           where: { explanationRouteId_stepOrder: { explanationRouteId: route.id, stepOrder: i + 1 } },
           update: { title, explanation, checkpointQuestion, checkpointOptions, checkpointAnswer, alternativeHint },

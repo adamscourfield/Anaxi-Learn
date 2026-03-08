@@ -30,6 +30,7 @@ const plans: Record<RouteType, ReteachPlan> = {
         checkpointQuestion: 'In 4,381, what is the hundreds digit?',
         checkpointOptions: ['3', '8', '4', '1'],
         checkpointAnswer: '3',
+        alternativeHint: 'Line up 4,381 in a place-value grid and point to the hundreds column before answering.',
       },
       {
         title: 'Step 2: Compare highest-value digits first',
@@ -37,6 +38,7 @@ const plans: Record<RouteType, ReteachPlan> = {
         checkpointQuestion: 'Which is greater?',
         checkpointOptions: ['5,203', '5,123', 'Same', 'Cannot tell'],
         checkpointAnswer: '5,203',
+        alternativeHint: 'Compare left to right: thousands first. Both are 5, so move to hundreds (2 beats 1).',
       },
       {
         title: 'Step 3: Check the tricky middle columns',
@@ -44,6 +46,7 @@ const plans: Record<RouteType, ReteachPlan> = {
         checkpointQuestion: 'In 7,460, the 6 is worth…',
         checkpointOptions: ['6', '60', '600', '6000'],
         checkpointAnswer: '60',
+        alternativeHint: 'In 7,460 the 6 sits in the tens column, so it means 6 tens = 60.',
       },
     ],
   },
@@ -59,6 +62,7 @@ const plans: Record<RouteType, ReteachPlan> = {
         checkpointQuestion: 'Which column should be checked first?',
         checkpointOptions: ['Ones', 'Tens', 'Hundreds', 'Thousands'],
         checkpointAnswer: 'Thousands',
+        alternativeHint: 'Always start with the biggest place value; that prevents being tricked by ones.',
       },
       {
         title: 'Step 2: Find first difference',
@@ -66,6 +70,7 @@ const plans: Record<RouteType, ReteachPlan> = {
         checkpointQuestion: 'First different column in 4,125 and 4,175?',
         checkpointOptions: ['Thousands', 'Hundreds', 'Tens', 'Ones'],
         checkpointAnswer: 'Tens',
+        alternativeHint: '4,1 are equal in thousands/hundreds; tens are 2 vs 7, so that is first difference.',
       },
       {
         title: 'Step 3: Decide and justify',
@@ -73,6 +78,7 @@ const plans: Record<RouteType, ReteachPlan> = {
         checkpointQuestion: 'Which is greater?',
         checkpointOptions: ['9,041', '9,401', 'Same', 'Cannot tell'],
         checkpointAnswer: '9,401',
+        alternativeHint: 'At hundreds, 4 is greater than 0, so 9,401 must be larger regardless of later digits.',
       },
     ],
   },
@@ -88,6 +94,7 @@ const plans: Record<RouteType, ReteachPlan> = {
         checkpointQuestion: 'Which change is bigger?',
         checkpointOptions: ['+1 one', '+1 ten', 'Same', 'Depends'],
         checkpointAnswer: '+1 ten',
+        alternativeHint: 'One ten equals 10 ones, so it always has bigger impact than +1 one.',
       },
       {
         title: 'Step 2: Build numbers by value, not by digit appearance',
@@ -95,6 +102,7 @@ const plans: Record<RouteType, ReteachPlan> = {
         checkpointQuestion: 'In 3,604 the 6 is worth…',
         checkpointOptions: ['6', '60', '600', '6000'],
         checkpointAnswer: '600',
+        alternativeHint: 'The 6 is in the hundreds place. Think 6 × 100, not just the symbol 6.',
       },
       {
         title: 'Step 3: Test with near-miss pairs',
@@ -102,6 +110,7 @@ const plans: Record<RouteType, ReteachPlan> = {
         checkpointQuestion: 'Which is greater?',
         checkpointOptions: ['6,090', '6,009', 'Same', 'Cannot tell'],
         checkpointAnswer: '6,090',
+        alternativeHint: 'Compare tens: 9 tens is bigger than 0 tens, so 6,090 is greater than 6,009.',
       },
     ],
   },

@@ -130,6 +130,11 @@ export default async function InsightDashboardPage() {
     .sort((a, b) => (b.fails - a.fails) || (b.retries2Plus - a.retries2Plus))
     .slice(0, 6);
 
+  const lowConfidenceSignals = stepAttemptEvents.filter((e) => {
+    const payload = e.payload as { confidence?: 'low' | 'medium' | 'high' };
+    return payload?.confidence === 'low';
+  }).length;
+
   const assignmentStats = routeAssignments.reduce(
     (acc, e) => {
       const payload = e.payload as { routeType?: 'A' | 'B' | 'C'; source?: 'diagnostic_signals' | 'fallback_chain' | 'history_default' };
@@ -302,6 +307,7 @@ export default async function InsightDashboardPage() {
 
         <section>
           <h2 className="text-lg font-semibold text-gray-800 mb-3">Reteach Step Hotspots</h2>
+          <p className="mb-2 text-xs text-gray-500">Low-confidence checkpoint signals: {lowConfidenceSignals}</p>
           <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
             <table className="w-full text-sm">
               <thead className="bg-gray-50 border-b border-gray-200">

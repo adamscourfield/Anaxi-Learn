@@ -124,6 +124,7 @@ export const StepCheckpointAttemptedPayloadSchema = z.object({
   stepTitle: z.string(),
   correct: z.boolean(),
   retryCount: z.number().int().nonnegative(),
+  confidence: z.enum(['low', 'medium', 'high']).optional(),
 });
 
 export const StepCheckpointMasteredPayloadSchema = z.object({
@@ -131,6 +132,7 @@ export const StepCheckpointMasteredPayloadSchema = z.object({
   stepIndex: z.number().int().nonnegative(),
   stepTitle: z.string(),
   retryCount: z.number().int().nonnegative(),
+  confidence: z.enum(['low', 'medium', 'high']).optional(),
 });
 
 export const StepAlternativeShownPayloadSchema = z.object({
@@ -138,6 +140,7 @@ export const StepAlternativeShownPayloadSchema = z.object({
   stepIndex: z.number().int().nonnegative(),
   stepTitle: z.string(),
   retryCount: z.number().int().nonnegative(),
+  confidence: z.enum(['low', 'medium', 'high']).optional(),
 });
 
 export const EventPayloadSchemas: Record<string, z.ZodSchema> = {
