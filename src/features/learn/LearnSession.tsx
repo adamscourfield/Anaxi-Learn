@@ -189,10 +189,10 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
 
     return (
       <main className="anx-shell flex items-center justify-center">
-        <div className="anx-panel w-full max-w-2xl space-y-6 p-7 text-center sm:p-8">
+        <div className="anx-panel anx-route-complete w-full max-w-2xl space-y-6 p-7 text-center sm:p-8">
           <h1 className="text-2xl font-semibold tracking-tight text-slate-900">Session Complete</h1>
 
-          <div className="rounded-xl border border-slate-200 bg-slate-50/80 py-5">
+          <div className="anx-status-glow rounded-xl border border-slate-200 bg-slate-50/80 py-5">
             <span className={`text-5xl font-semibold ${masteryPct >= 80 ? 'text-emerald-600' : masteryPct >= 50 ? 'text-amber-600' : 'text-rose-500'}`}>
               {masteryPct}%
             </span>

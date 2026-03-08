@@ -7,6 +7,7 @@ import { gradeAttempt } from '@/features/learn/gradeAttempt';
 import { emitEvent } from '@/features/telemetry/eventService';
 import { updatePayloadAfterAttempt } from '@/features/diagnostic/diagnosticService';
 import { grantReward } from '@/features/gamification/gamificationService';
+import { inferN11MisconceptionTag } from '@/features/diagnostic/misconceptions';
 
 const submitSchema = z.object({
   sessionId: z.string(),
@@ -38,6 +39,12 @@ export async function POST(req: NextRequest) {
   if (!item) return NextResponse.json({ error: 'Item not found' }, { status: 404 });
 
   const correct = gradeAttempt(item.answer, answer);
+  const misconceptionTag = inferN11MisconceptionTag(
+    skillCode,
+    answer,
+    (item.options as string[]) ?? [],
+    correct
+  );
 
   const attempt = await prisma.attempt.create({
     data: { userId, itemId, answer, correct, sessionId, mode: 'DIAGNOSTIC' },
@@ -63,7 +70,7 @@ export async function POST(req: NextRequest) {
     subjectId,
     skillId,
     itemId,
-    payload: { itemId, answer, skillId, skillCode, strand, subjectId, mode: 'DIAGNOSTIC', diagnosticSessionId: sessionId },
+    payload: { itemId, answer, skillId, skillCode, strand, subjectId, mode: 'DIAGNOSTIC', diagnosticSessionId: sessionId, misconceptionTag },
   });
 
   await emitEvent({
@@ -74,7 +81,7 @@ export async function POST(req: NextRequest) {
     skillId,
     itemId,
     attemptId: attempt.id,
-    payload: { itemId, attemptId: attempt.id, correct, skillId, skillCode, strand, subjectId, mode: 'DIAGNOSTIC', diagnosticSessionId: sessionId },
+    payload: { itemId, attemptId: attempt.id, correct, skillId, skillCode, strand, subjectId, mode: 'DIAGNOSTIC', diagnosticSessionId: sessionId, misconceptionTag },
   });
 
   await emitEvent({

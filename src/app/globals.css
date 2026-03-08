@@ -93,4 +93,59 @@
     background: var(--anx-primary-soft);
     color: #1f3ea8;
   }
+
+  .anx-pulse-correct {
+    animation: anxPulseCorrect 220ms ease-out;
+  }
+
+  .anx-shake-incorrect {
+    animation: anxShakeIncorrect 260ms ease-out;
+  }
+
+  .anx-route-complete {
+    animation: anxRouteComplete 380ms ease-out;
+  }
+
+  .anx-status-glow {
+    animation: anxStatusGlow 420ms ease-out;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .anx-pulse-correct,
+    .anx-shake-incorrect,
+    .anx-route-complete,
+    .anx-status-glow {
+      animation: none;
+      transition: opacity 150ms ease-out;
+    }
+
+    .anx-progress-bar,
+    .anx-btn-primary,
+    .anx-option {
+      transition: opacity 120ms linear;
+    }
+  }
+}
+
+@keyframes anxPulseCorrect {
+  0% { transform: scale(1); }
+  60% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+@keyframes anxShakeIncorrect {
+  0% { transform: translateX(0); }
+  30% { transform: translateX(-3px); }
+  60% { transform: translateX(3px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes anxRouteComplete {
+  0% { opacity: 0.92; transform: translateY(3px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes anxStatusGlow {
+  0% { box-shadow: 0 0 0 rgba(79,111,255,0); }
+  100% { box-shadow: 0 0 0 6px rgba(79,111,255,0.08); }
 }

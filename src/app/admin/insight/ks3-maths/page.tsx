@@ -126,6 +126,22 @@ export default async function InsightDashboardPage() {
     }
   );
 
+  const recentDrilldownEvents = await prisma.event.findMany({
+    where: {
+      subjectId: subject.id,
+      name: { in: ['reward_granted', 'explanation_route_assigned', 'intervention_flagged'] },
+    },
+    orderBy: { createdAt: 'desc' },
+    take: 20,
+    select: { name: true, createdAt: true, studentUserId: true, payload: true },
+  });
+
+  const recentStudentIds = [...new Set(recentDrilldownEvents.map((e) => e.studentUserId).filter(Boolean))] as string[];
+  const recentUsers = recentStudentIds.length
+    ? await prisma.user.findMany({ where: { id: { in: recentStudentIds } }, select: { id: true, email: true, name: true } })
+    : [];
+  const userMap = new Map(recentUsers.map((u) => [u.id, u]));
+
   // C) Time to stable mastery (median days from first attempt to confirmedCount=2)
   const stableSkillMasteries = await prisma.skillMastery.findMany({
     where: { confirmedCount: { gte: 2 }, skill: { subjectId: subject.id } },
@@ -223,6 +239,45 @@ export default async function InsightDashboardPage() {
                 Assigned route count — A:{assignmentStats.byRoute.A} · B:{assignmentStats.byRoute.B} · C:{assignmentStats.byRoute.C}
               </p>
             </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-lg font-semibold text-gray-800 mb-3">Teacher Drilldown — Recent Routing & Rewards</h2>
+          <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+            <table className="w-full text-sm">
+              <thead className="bg-gray-50 border-b border-gray-200">
+                <tr>
+                  <th className="text-left px-4 py-3 font-medium text-gray-600">Time</th>
+                  <th className="text-left px-4 py-3 font-medium text-gray-600">Student</th>
+                  <th className="text-left px-4 py-3 font-medium text-gray-600">Event</th>
+                  <th className="text-left px-4 py-3 font-medium text-gray-600">Detail</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-100">
+                {recentDrilldownEvents.map((e, idx) => {
+                  const user = e.studentUserId ? userMap.get(e.studentUserId) : undefined;
+                  const payload = e.payload as { routeType?: string; reason?: string; rewardEvent?: string; xp?: number; tokens?: number };
+                  return (
+                    <tr key={`${e.name}-${idx}`} className="hover:bg-gray-50">
+                      <td className="px-4 py-3 text-xs text-gray-500">{e.createdAt.toISOString().replace('T', ' ').slice(0, 16)}</td>
+                      <td className="px-4 py-3 text-xs text-gray-700">{user?.name ?? user?.email ?? e.studentUserId ?? '—'}</td>
+                      <td className="px-4 py-3 font-mono text-xs">{e.name}</td>
+                      <td className="px-4 py-3 text-xs text-gray-700">
+                        {e.name === 'explanation_route_assigned' && `Route ${payload.routeType} · ${payload.reason ?? ''}`}
+                        {e.name === 'reward_granted' && `${payload.rewardEvent ?? 'reward'} (+${payload.xp ?? 0} XP, +${payload.tokens ?? 0} tokens)`}
+                        {e.name === 'intervention_flagged' && (payload.reason ?? 'Intervention flagged')}
+                      </td>
+                    </tr>
+                  );
+                })}
+                {recentDrilldownEvents.length === 0 && (
+                  <tr>
+                    <td colSpan={4} className="px-4 py-8 text-center text-gray-400">No routing/reward events yet.</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
           </div>
         </section>
 

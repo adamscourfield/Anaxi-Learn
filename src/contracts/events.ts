@@ -7,6 +7,7 @@ export const AttemptSubmittedPayloadSchema = z.object({
   skillCode: z.string().optional(),
   strand: z.string().optional(),
   subjectId: z.string(),
+  misconceptionTag: z.string().optional(),
 });
 
 export const AttemptGradedPayloadSchema = z.object({
@@ -17,6 +18,7 @@ export const AttemptGradedPayloadSchema = z.object({
   skillCode: z.string().optional(),
   strand: z.string().optional(),
   subjectId: z.string(),
+  misconceptionTag: z.string().optional(),
 });
 
 export const SkillStateUpdatedPayloadSchema = z.object({
