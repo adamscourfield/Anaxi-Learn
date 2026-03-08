@@ -11,6 +11,38 @@ interface Props {
   onComplete: () => void;
 }
 
+function renderVisual(step: ReteachPlan['steps'][number]) {
+  if (step.visualType === 'place_value_grid') {
+    return (
+      <div className="rounded-lg border border-slate-200 bg-slate-50 p-3 text-xs text-slate-700">
+        <p className="mb-2 font-semibold">Place value grid</p>
+        <div className="grid grid-cols-4 gap-2">
+          {['Thousands', 'Hundreds', 'Tens', 'Ones'].map((h) => (
+            <div key={h} className="rounded border border-slate-200 bg-white px-2 py-1 text-center">{h}</div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+  if (step.visualType === 'decompose_number') {
+    return (
+      <div className="rounded-lg border border-slate-200 bg-slate-50 p-3 text-xs text-slate-700">
+        <p className="font-semibold">Decompose the number</p>
+        <p className="mt-1">Split into place-value parts, then add with + signs.</p>
+      </div>
+    );
+  }
+  if (step.visualType === 'compare_columns') {
+    return (
+      <div className="rounded-lg border border-slate-200 bg-slate-50 p-3 text-xs text-slate-700">
+        <p className="font-semibold">Compare columns left to right</p>
+        <p className="mt-1">Find the first different column, then decide.</p>
+      </div>
+    );
+  }
+  return null;
+}
+
 export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete }: Props) {
   const [stepIndex, setStepIndex] = useState(0);
   const [selected, setSelected] = useState('');
@@ -80,7 +112,10 @@ export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete
       <div className={`rounded-2xl border border-slate-200 bg-white p-5 ${feedback === 'correct' ? 'anx-pulse-correct' : ''} ${feedback === 'incorrect' ? 'anx-shake-incorrect' : ''}`}>
         <p className="text-xs uppercase tracking-wide text-slate-500">Step {stepIndex + 1} of {plan.steps.length}</p>
         <h3 className="mt-1 text-base font-semibold text-slate-900">{step.title}</h3>
+        {step.stepType && <p className="mt-1 text-[11px] font-medium uppercase tracking-wide text-blue-700">{step.stepType.replace('_', ' ')}</p>}
         <p className="mt-2 text-sm leading-relaxed text-slate-700">{step.explanation}</p>
+
+        <div className="mt-4">{renderVisual(step)}</div>
 
         <div className="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-4">
           <p className="text-sm font-semibold text-slate-900">Checkpoint</p>

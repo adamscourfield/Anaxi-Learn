@@ -1,5 +1,8 @@
 export type RouteType = 'A' | 'B' | 'C';
 
+export type StepType = 'goal' | 'visual_demo' | 'guided_action' | 'checkpoint' | 'transfer_check';
+export type VisualType = 'none' | 'place_value_grid' | 'compare_columns' | 'decompose_number' | 'number_line';
+
 export interface ReteachStep {
   title: string;
   explanation: string;
@@ -7,6 +10,9 @@ export interface ReteachStep {
   checkpointOptions: string[];
   checkpointAnswer: string;
   alternativeHint?: string;
+  stepType?: StepType;
+  visualType?: VisualType;
+  visualPayload?: Record<string, unknown>;
 }
 
 export interface ReteachPlan {

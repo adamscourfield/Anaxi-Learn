@@ -479,16 +479,26 @@ async function main() {
         const [title, explanation, checkpointQuestion, checkpointOptionsRaw, checkpointAnswer, customAlternativeHint] = stepTuple;
         const checkpointOptions = [...checkpointOptionsRaw];
         const alternativeHint = customAlternativeHint ?? `Try this: ${explanation}`;
+
+        const stepType = i === 0 ? 'visual_demo' : i === routeDef.steps.length - 1 ? 'transfer_check' : 'guided_action';
+        const visualType = routeDef.routeType === 'A' ? 'place_value_grid' : routeDef.routeType === 'B' ? 'compare_columns' : 'decompose_number';
+        const checkpointOptionsPayload = {
+          options: checkpointOptions,
+          stepType,
+          visualType,
+          visualPayload: { routeType: routeDef.routeType, stepNumber: i + 1 },
+        };
+
         await prisma.explanationStep.upsert({
           where: { explanationRouteId_stepOrder: { explanationRouteId: route.id, stepOrder: i + 1 } },
-          update: { title, explanation, checkpointQuestion, checkpointOptions, checkpointAnswer, alternativeHint },
+          update: { title, explanation, checkpointQuestion, checkpointOptions: checkpointOptionsPayload, checkpointAnswer, alternativeHint },
           create: {
             explanationRouteId: route.id,
             stepOrder: i + 1,
             title,
             explanation,
             checkpointQuestion,
-            checkpointOptions,
+            checkpointOptions: checkpointOptionsPayload,
             checkpointAnswer,
             alternativeHint,
           },
