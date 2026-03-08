@@ -82,7 +82,12 @@ export default async function DiagnosticRunPage({ params }: Props) {
     <DiagnosticRunClient
       subject={{ id: subject.id, title: subject.title, slug: subject.slug }}
       skill={{ id: nextSkill.id, code: nextSkill.code, name: fullSkill.name, strand: nextSkill.strand }}
-      item={{ id: nextItem.id, question: nextItem.question, options: nextItem.options as string[] }}
+      item={{
+        id: nextItem.id,
+        question: nextItem.question,
+        options: nextItem.options,
+        type: nextItem.type,
+      }}
       sessionId={diagSession.id}
       itemsSeen={diagSession.itemsSeen}
       maxItems={diagSession.maxItems}

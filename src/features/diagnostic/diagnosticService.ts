@@ -20,17 +20,26 @@ export interface SkillEstimate {
 export interface DiagnosticPayload {
   estimates: Record<string, SkillEstimate>;
   strandCounts: Record<string, number>; // how many items shown per strand
+  skillSignals?: Record<
+    string,
+    {
+      transferCorrect: boolean;
+      misconceptionCounts: Record<string, number>;
+    }
+  >;
+  routeRecommendations?: Record<string, { status: 'secure' | 'route'; route?: 'A' | 'B' | 'C'; reason: string }>;
 }
 
 export function initPayload(): DiagnosticPayload {
-  return { estimates: {}, strandCounts: {} };
+  return { estimates: {}, strandCounts: {}, skillSignals: {}, routeRecommendations: {} };
 }
 
 export function updatePayloadAfterAttempt(
   payload: DiagnosticPayload,
   skillCode: string,
   strand: string,
-  correct: boolean
+  correct: boolean,
+  signal?: { misconceptionTag?: string | null; isTransfer?: boolean }
 ): DiagnosticPayload {
   const est = payload.estimates[skillCode] ?? {
     skillCode,
@@ -49,9 +58,24 @@ export function updatePayloadAfterAttempt(
   };
   const strandCounts = { ...payload.strandCounts };
   strandCounts[strand] = (strandCounts[strand] ?? 0) + 1;
+  const skillSignals = { ...(payload.skillSignals ?? {}) };
+  const existingSignal = skillSignals[skillCode] ?? { transferCorrect: false, misconceptionCounts: {} };
+
+  const misconceptionCounts = { ...existingSignal.misconceptionCounts };
+  if (!correct && signal?.misconceptionTag) {
+    misconceptionCounts[signal.misconceptionTag] = (misconceptionCounts[signal.misconceptionTag] ?? 0) + 1;
+  }
+
+  skillSignals[skillCode] = {
+    transferCorrect: existingSignal.transferCorrect || Boolean(signal?.isTransfer && correct),
+    misconceptionCounts,
+  };
+
   return {
     estimates: { ...payload.estimates, [skillCode]: updated },
     strandCounts,
+    skillSignals,
+    routeRecommendations: { ...(payload.routeRecommendations ?? {}) },
   };
 }
 

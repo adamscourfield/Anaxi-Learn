@@ -6,6 +6,8 @@ import { z } from 'zod';
 import { gradeAttempt } from '@/features/learn/gradeAttempt';
 import { emitEvent } from '@/features/telemetry/eventService';
 import { updatePayloadAfterAttempt } from '@/features/diagnostic/diagnosticService';
+import { parseItemOptions } from '@/features/items/itemMeta';
+import { decideN1Route } from '@/features/diagnostic/n1Routing';
 
 const submitSchema = z.object({
   sessionId: z.string(),
@@ -43,12 +45,35 @@ export async function POST(req: NextRequest) {
   });
 
   const currentPayload = diagSession.payload as unknown as Parameters<typeof updatePayloadAfterAttempt>[0];
-  const updatedPayload = updatePayloadAfterAttempt(
-    currentPayload,
-    skillCode,
-    strand,
-    correct
-  );
+  const parsedOptions = parseItemOptions(item.options);
+
+  const updatedPayload = updatePayloadAfterAttempt(currentPayload, skillCode, strand, correct, {
+    misconceptionTag: parsedOptions.meta.misconceptionTag,
+    isTransfer: parsedOptions.meta.questionRole === 'transfer' || parsedOptions.meta.transferLevel !== 'none',
+  });
+
+  if (skillCode === 'N1.1') {
+    const est = updatedPayload.estimates[skillCode];
+    const signals = updatedPayload.skillSignals?.[skillCode];
+    if (est) {
+      const routeDecision = decideN1Route({
+        total: est.total,
+        correct: est.correct,
+        transferCorrect: signals?.transferCorrect ?? false,
+        misconceptionCounts: (signals?.misconceptionCounts ?? {}) as {
+          pv_m1_place_vs_value?: number;
+          pv_m2_zero_shift?: number;
+          pv_m3_reading_direction?: number;
+          pv_m4_separator_noise?: number;
+        },
+      });
+
+      updatedPayload.routeRecommendations = {
+        ...(updatedPayload.routeRecommendations ?? {}),
+        [skillCode]: routeDecision,
+      };
+    }
+  }
 
   await prisma.diagnosticSession.update({
     where: { id: sessionId },

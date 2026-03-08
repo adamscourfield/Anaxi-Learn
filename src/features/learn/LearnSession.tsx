@@ -2,11 +2,13 @@
 
 import { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { parseAnswerType, parseItemOptions } from '@/features/items/itemMeta';
 
 interface Item {
   id: string;
   question: string;
   options: unknown;
+  type?: string;
   answer: string;
 }
 
@@ -42,10 +44,6 @@ function getMasteryTextColor(masteryPct: number) {
   return 'text-rose-500';
 }
 
-function parseOptions(options: unknown): string[] {
-  if (!Array.isArray(options)) return [];
-  return options.filter((o): o is string => typeof o === 'string' && o.trim().length > 0);
-}
 
 export function LearnSession({ subject, skill, items, userId }: Props) {
   const [phase, setPhase] = useState<Phase>('intro');
@@ -57,7 +55,9 @@ export function LearnSession({ subject, skill, items, userId }: Props) {
   const router = useRouter();
 
   const currentItem = items[currentIndex];
-  const options = useMemo(() => (currentItem ? parseOptions(currentItem.options) : []), [currentItem]);
+  const answerType = useMemo(() => parseAnswerType(currentItem?.type), [currentItem?.type]);
+  const parsedOptions = useMemo(() => parseItemOptions(currentItem?.options), [currentItem?.options]);
+  const options = parsedOptions.choices;
 
   async function submitAnswer() {
     if (!selectedAnswer || !currentItem || submitting) return;
@@ -161,6 +161,14 @@ export function LearnSession({ subject, skill, items, userId }: Props) {
             </span>
           </div>
 
+          {(parsedOptions.meta.route || parsedOptions.meta.questionRole !== 'practice') && (
+            <p className="text-xs text-blue-700">
+              {parsedOptions.meta.route ? `Route ${parsedOptions.meta.route}` : 'Guided practice'}
+              {' · '}
+              {parsedOptions.meta.questionRole.replace('_', ' ')}
+            </p>
+          )}
+
           <div className="h-2 w-full rounded-full bg-gray-100">
             <div
               className="h-full rounded-full bg-blue-500 transition-all"
@@ -171,27 +179,40 @@ export function LearnSession({ subject, skill, items, userId }: Props) {
           <h2 className="text-xl font-semibold leading-snug text-gray-900">{currentItem.question}</h2>
 
           <div className="space-y-3">
-            {options.length === 0 ? (
-              <p className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800">
-                This question has no valid options. Please go back and try again.
-              </p>
+            {answerType === 'MCQ' ? (
+              options.length === 0 ? (
+                <p className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800">
+                  This question has no valid options. Please go back and try again.
+                </p>
+              ) : (
+                options.map((option, i) => (
+                  <button
+                    key={i}
+                    onClick={() => {
+                      setSelectedAnswer(option);
+                      setError(null);
+                    }}
+                    className={`w-full rounded-xl border-2 px-4 py-3 text-left text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1 ${
+                      selectedAnswer === option
+                        ? 'border-blue-500 bg-blue-50 text-blue-800'
+                        : 'border-gray-200 text-gray-700 hover:border-gray-300 hover:bg-gray-50'
+                    }`}
+                  >
+                    {option}
+                  </button>
+                ))
+              )
             ) : (
-              options.map((option, i) => (
-                <button
-                  key={i}
-                  onClick={() => {
-                    setSelectedAnswer(option);
-                    setError(null);
-                  }}
-                  className={`w-full rounded-xl border-2 px-4 py-3 text-left text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1 ${
-                    selectedAnswer === option
-                      ? 'border-blue-500 bg-blue-50 text-blue-800'
-                      : 'border-gray-200 text-gray-700 hover:border-gray-300 hover:bg-gray-50'
-                  }`}
-                >
-                  {option}
-                </button>
-              ))
+              <input
+                type={answerType === 'SHORT_NUMERIC' ? 'text' : 'text'}
+                value={selectedAnswer}
+                onChange={(e) => {
+                  setSelectedAnswer(e.target.value);
+                  setError(null);
+                }}
+                placeholder={answerType === 'SHORT_NUMERIC' ? 'Enter a number' : 'Type your answer'}
+                className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 text-sm text-gray-800 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+              />
             )}
           </div>
 
@@ -199,7 +220,7 @@ export function LearnSession({ subject, skill, items, userId }: Props) {
 
           <button
             onClick={submitAnswer}
-            disabled={!selectedAnswer || submitting || options.length === 0}
+            disabled={!selectedAnswer.trim() || submitting || (answerType === 'MCQ' && options.length === 0)}
             className="w-full rounded-lg bg-blue-600 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
           >
             {submitting ? 'Submitting…' : currentIndex < items.length - 1 ? 'Next' : 'Finish'}
