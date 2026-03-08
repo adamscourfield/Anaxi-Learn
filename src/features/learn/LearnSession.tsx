@@ -141,7 +141,7 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
   if (phase === 'reteach') {
     return (
       <main className="anx-shell flex items-center justify-center">
-        <div className="anx-panel w-full max-w-2xl p-7 sm:p-8">
+        <div className="anx-panel w-full max-w-2xl p-7 sm:p-9">
           <ReteachSession
             subjectId={subject.id}
             skillId={skill.id}

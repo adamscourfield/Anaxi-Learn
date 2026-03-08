@@ -67,18 +67,20 @@ export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete
 
   return (
     <div className="space-y-5">
-      <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+      <div className="rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-900">
         <p className="font-semibold">Let’s fix one idea at a time</p>
         <p className="mt-1">{plan.misconceptionSummary}</p>
         <p className="mt-1 text-xs text-amber-800">No rush — each step has a quick check before we move on.</p>
       </div>
 
-      <div className={`rounded-xl border border-slate-200 bg-white p-4 ${feedback === 'correct' ? 'anx-pulse-correct' : ''} ${feedback === 'incorrect' ? 'anx-shake-incorrect' : ''}`}>
-        <p className="text-xs uppercase tracking-wide text-slate-500">Step {stepIndex + 1} of {plan.steps.length} · {step.title}</p>
-        <p className="mt-2 text-sm text-slate-700">{step.explanation}</p>
+      <div className={`rounded-2xl border border-slate-200 bg-white p-5 ${feedback === 'correct' ? 'anx-pulse-correct' : ''} ${feedback === 'incorrect' ? 'anx-shake-incorrect' : ''}`}>
+        <p className="text-xs uppercase tracking-wide text-slate-500">Step {stepIndex + 1} of {plan.steps.length}</p>
+        <h3 className="mt-1 text-base font-semibold text-slate-900">{step.title}</h3>
+        <p className="mt-2 text-sm leading-relaxed text-slate-700">{step.explanation}</p>
 
-        <div className="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-3">
-          <p className="text-sm font-medium text-slate-800">Checkpoint: {step.checkpointQuestion}</p>
+        <div className="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-4">
+          <p className="text-sm font-semibold text-slate-900">Checkpoint</p>
+          <p className="mt-1 text-sm text-slate-700">{step.checkpointQuestion}</p>
           <div className="mt-2 flex gap-2 text-xs">
             {(['low', 'medium', 'high'] as const).map((level) => (
               <button
@@ -100,8 +102,8 @@ export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete
               </button>
             ))}
           </div>
-          <button onClick={checkStep} className="anx-btn-primary mt-3 w-full" disabled={!selected}>
-            Check step
+          <button onClick={checkStep} className="anx-btn-primary mt-4 w-full py-3 text-sm" disabled={!selected}>
+            Check this step
           </button>
           {feedback === 'incorrect' && <p className="mt-2 text-xs text-rose-600">Nearly there — use the hint and try that same checkpoint again.</p>}
           {feedback === 'correct' && <p className="mt-2 text-xs text-emerald-600">Nice work — that step is secure.</p>}
@@ -115,7 +117,7 @@ export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete
       </div>
 
       {stepIndex === plan.steps.length - 1 && (
-        <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-700">
+        <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm text-slate-700">
           <p className="font-semibold text-slate-900">Worked example</p>
           <p className="mt-1">{plan.workedExample}</p>
         </div>
