@@ -45,6 +45,7 @@ async function main() {
 
   // 3️⃣ Skill definitions
   const skillDefs = [
+    { code: 'N1.1',  name: 'Recognise the place value of each digit in whole numbers up to millions',             strand: 'PV',  isStretch: false, sortOrder: 5   },
     { code: 'N1.3',  name: 'Compare two numbers using =, ≠, <, >, ≤, ≥',                                            strand: 'PV',  isStretch: false, sortOrder: 10  },
     { code: 'N1.5',  name: 'Find the median from a set of numbers (incl midpoint using a calculator)',               strand: 'STA', isStretch: false, sortOrder: 20  },
     { code: 'N1.6',  name: 'Decimal place value',                                                                    strand: 'PV',  isStretch: false, sortOrder: 30  },
