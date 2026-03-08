@@ -58,7 +58,7 @@ export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete
         if (stepIndex < plan.steps.length - 1) {
           setStepIndex((i) => i + 1);
         }
-      }, 300);
+      }, 420);
     }
   }
 
@@ -68,12 +68,13 @@ export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete
   return (
     <div className="space-y-5">
       <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
-        <p className="font-semibold">Misconception detected</p>
+        <p className="font-semibold">Let’s fix one idea at a time</p>
         <p className="mt-1">{plan.misconceptionSummary}</p>
+        <p className="mt-1 text-xs text-amber-800">No rush — each step has a quick check before we move on.</p>
       </div>
 
       <div className={`rounded-xl border border-slate-200 bg-white p-4 ${feedback === 'correct' ? 'anx-pulse-correct' : ''} ${feedback === 'incorrect' ? 'anx-shake-incorrect' : ''}`}>
-        <p className="text-xs uppercase tracking-wide text-slate-500">{step.title}</p>
+        <p className="text-xs uppercase tracking-wide text-slate-500">Step {stepIndex + 1} of {plan.steps.length} · {step.title}</p>
         <p className="mt-2 text-sm text-slate-700">{step.explanation}</p>
 
         <div className="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-3">
@@ -102,8 +103,8 @@ export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete
           <button onClick={checkStep} className="anx-btn-primary mt-3 w-full" disabled={!selected}>
             Check step
           </button>
-          {feedback === 'incorrect' && <p className="mt-2 text-xs text-rose-600">Not quite — reread the step and try again.</p>}
-          {feedback === 'correct' && <p className="mt-2 text-xs text-emerald-600">Good. You understood this step.</p>}
+          {feedback === 'incorrect' && <p className="mt-2 text-xs text-rose-600">Nearly there — use the hint and try that same checkpoint again.</p>}
+          {feedback === 'correct' && <p className="mt-2 text-xs text-emerald-600">Nice work — that step is secure.</p>}
           {altShown[stepIndex] && (
             <div className="mt-2 rounded-md border border-blue-200 bg-blue-50 p-2 text-xs text-blue-800">
               <p className="font-semibold">Alternative explanation</p>

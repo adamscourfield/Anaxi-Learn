@@ -127,7 +127,7 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
 
           <div className="flex flex-col gap-3 sm:flex-row">
             <button onClick={() => setPhase('reteach')} className="anx-btn-primary flex-1">
-              Start Reteach ({items.length} key questions follow)
+              Start guided reteach ({items.length} key questions follow)
             </button>
             <button onClick={() => router.push('/dashboard')} className="anx-btn-secondary">
               Back
