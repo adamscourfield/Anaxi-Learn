@@ -18,7 +18,7 @@ export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete
   const [guided, setGuided] = useState('');
   const [retryCounts, setRetryCounts] = useState<Record<number, number>>({});
   const [altShown, setAltShown] = useState<Record<number, boolean>>({});
-  const [confidenceByStep, setConfidenceByStep] = useState<Record<number, 'low' | 'medium' | 'high'>>({});
+  const [stepStartMs, setStepStartMs] = useState<number>(Date.now());
 
   const step = plan.steps[stepIndex];
 
@@ -35,6 +35,8 @@ export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete
 
     setFeedback(correct ? 'correct' : 'incorrect');
 
+    const durationMs = Math.max(0, Date.now() - stepStartMs);
+
     await fetch('/api/learn/reteach-step', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -46,7 +48,7 @@ export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete
         stepTitle: step.title,
         correct,
         retryCount: newRetry,
-        confidence: confidenceByStep[stepIndex] ?? 'medium',
+        durationMs,
         alternativeShown: shouldShowAlt,
       }),
     });
@@ -57,13 +59,15 @@ export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete
         setSelected('');
         if (stepIndex < plan.steps.length - 1) {
           setStepIndex((i) => i + 1);
+          setStepStartMs(Date.now());
         }
       }, 420);
     }
   }
 
   const doneSteps = stepIndex >= plan.steps.length - 1 && feedback === 'correct';
-  const guidedOk = guided.trim() === plan.guidedAnswer;
+  const normalize = (s: string) => s.toLowerCase().replace(/[,\s]+/g, ' ').trim();
+  const guidedOk = normalize(guided) === normalize(plan.guidedAnswer);
 
   return (
     <div className="space-y-5">
@@ -81,20 +85,6 @@ export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete
         <div className="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-4">
           <p className="text-sm font-semibold text-slate-900">Checkpoint</p>
           <p className="mt-1 text-sm text-slate-700">{step.checkpointQuestion}</p>
-          <div className="mt-2 flex gap-2 text-xs">
-            {(['low', 'medium', 'high'] as const).map((level) => (
-              <button
-                key={level}
-                type="button"
-                onClick={() => setConfidenceByStep((s) => ({ ...s, [stepIndex]: level }))}
-                className={`rounded-md border px-2 py-1 ${
-                  (confidenceByStep[stepIndex] ?? 'medium') === level ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-slate-300 bg-white text-slate-600'
-                }`}
-              >
-                confidence: {level}
-              </button>
-            ))}
-          </div>
           <div className="mt-3 space-y-2">
             {step.checkpointOptions.map((option) => (
               <button key={option} onClick={() => setSelected(option)} className={`anx-option ${selected === option ? 'anx-option-selected' : ''}`}>

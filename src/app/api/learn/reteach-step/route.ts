@@ -13,7 +13,7 @@ const schema = z.object({
   stepTitle: z.string(),
   correct: z.boolean(),
   retryCount: z.number().int().nonnegative(),
-  confidence: z.enum(['low', 'medium', 'high']).optional(),
+  durationMs: z.number().int().nonnegative().optional(),
   alternativeShown: z.boolean().optional(),
 });
 
@@ -25,7 +25,8 @@ export async function POST(req: NextRequest) {
   const parsed = schema.safeParse(await req.json());
   if (!parsed.success) return NextResponse.json({ error: 'Invalid input' }, { status: 400 });
 
-  const { subjectId, skillId, routeType, stepIndex, stepTitle, correct, retryCount, confidence, alternativeShown } = parsed.data;
+  const { subjectId, skillId, routeType, stepIndex, stepTitle, correct, retryCount, durationMs, alternativeShown } = parsed.data;
+  const inferredConfidence = durationMs == null ? 'medium' : durationMs > 15000 ? 'low' : durationMs > 7000 ? 'medium' : 'high';
 
   await emitEvent({
     name: 'step_checkpoint_attempted',
@@ -33,7 +34,7 @@ export async function POST(req: NextRequest) {
     studentUserId: userId,
     subjectId,
     skillId,
-    payload: { routeType, stepIndex, stepTitle, correct, retryCount, confidence: confidence ?? 'medium' },
+    payload: { routeType, stepIndex, stepTitle, correct, retryCount, durationMs: durationMs ?? null, inferredConfidence },
   });
 
   if (correct) {
@@ -43,7 +44,7 @@ export async function POST(req: NextRequest) {
       studentUserId: userId,
       subjectId,
       skillId,
-      payload: { routeType, stepIndex, stepTitle, retryCount, confidence: confidence ?? 'medium' },
+      payload: { routeType, stepIndex, stepTitle, retryCount, durationMs: durationMs ?? null, inferredConfidence },
     });
   }
 
@@ -54,7 +55,7 @@ export async function POST(req: NextRequest) {
       studentUserId: userId,
       subjectId,
       skillId,
-      payload: { routeType, stepIndex, stepTitle, retryCount, confidence: confidence ?? 'medium' },
+      payload: { routeType, stepIndex, stepTitle, retryCount, durationMs: durationMs ?? null, inferredConfidence },
     });
   }
 
