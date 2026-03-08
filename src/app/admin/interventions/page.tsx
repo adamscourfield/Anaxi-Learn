@@ -20,9 +20,10 @@ export default async function AdminInterventionsPage() {
   });
 
   // Get mastery and recent attempt counts for each flag
+  const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+
   const flagsWithStats = await Promise.all(
     flags.map(async (flag) => {
-      const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
       const [mastery, recentAttempts] = await Promise.all([
         prisma.skillMastery.findUnique({
           where: { userId_skillId: { userId: flag.userId, skillId: flag.skillId } },
@@ -40,6 +41,43 @@ export default async function AdminInterventionsPage() {
     })
   );
 
+  const recentRouteEvents = await prisma.event.findMany({
+    where: {
+      createdAt: { gte: sevenDaysAgo },
+      name: { in: ['diagnostic_route_recommended', 'shadow_pair_passed', 'shadow_pair_failed', 'intervention_flagged'] },
+    },
+    orderBy: { createdAt: 'desc' },
+    take: 500,
+  });
+
+  const routeSummary = recentRouteEvents.reduce(
+    (acc, event) => {
+      const payload = (event.payload ?? {}) as { route?: 'A' | 'B' | 'C' | null; status?: 'secure' | 'route'; skillCode?: string };
+      // focus this panel on N1.1 if present
+      if (payload.skillCode && payload.skillCode !== 'N1.1') return acc;
+
+      if (event.name === 'diagnostic_route_recommended') {
+        if (payload.status === 'secure') acc.secureFastPass += 1;
+        if (payload.route === 'A') acc.routeA += 1;
+        if (payload.route === 'B') acc.routeB += 1;
+        if (payload.route === 'C') acc.routeC += 1;
+      }
+      if (event.name === 'shadow_pair_passed') acc.shadowPairPassed += 1;
+      if (event.name === 'shadow_pair_failed') acc.shadowPairFailed += 1;
+      if (event.name === 'intervention_flagged') acc.interventionFlagged += 1;
+      return acc;
+    },
+    {
+      routeA: 0,
+      routeB: 0,
+      routeC: 0,
+      secureFastPass: 0,
+      shadowPairPassed: 0,
+      shadowPairFailed: 0,
+      interventionFlagged: 0,
+    }
+  );
+
   return (
     <main className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-5xl mx-auto px-4">
@@ -48,6 +86,25 @@ export default async function AdminInterventionsPage() {
           <a href="/admin/insight/ks3-maths" className="text-sm text-blue-600 hover:underline">
             → Insight Dashboard
           </a>
+        </div>
+
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 mb-6">
+          <div className="rounded-xl border border-gray-200 bg-white p-4">
+            <div className="text-xs text-gray-500">Route recommendations (7d)</div>
+            <div className="mt-2 text-sm text-gray-700">A: {routeSummary.routeA} · B: {routeSummary.routeB} · C: {routeSummary.routeC}</div>
+          </div>
+          <div className="rounded-xl border border-gray-200 bg-white p-4">
+            <div className="text-xs text-gray-500">Secure fast-pass (7d)</div>
+            <div className="mt-2 text-2xl font-semibold text-emerald-600">{routeSummary.secureFastPass}</div>
+          </div>
+          <div className="rounded-xl border border-gray-200 bg-white p-4">
+            <div className="text-xs text-gray-500">Shadow pairs (7d)</div>
+            <div className="mt-2 text-sm text-gray-700">Passed: {routeSummary.shadowPairPassed} · Failed: {routeSummary.shadowPairFailed}</div>
+          </div>
+          <div className="rounded-xl border border-gray-200 bg-white p-4">
+            <div className="text-xs text-gray-500">Interventions flagged (7d)</div>
+            <div className="mt-2 text-2xl font-semibold text-rose-600">{routeSummary.interventionFlagged}</div>
+          </div>
         </div>
 
         {flagsWithStats.length === 0 ? (
