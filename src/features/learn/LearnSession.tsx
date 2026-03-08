@@ -68,7 +68,9 @@ export function LearnSession({ subject, skill, items, userId, gamification }: Pr
         subjectId: subject.id,
         answer: selectedAnswer,
         isLast: currentIndex === items.length - 1,
+        questionIndex: currentIndex,
         totalItems: items.length,
+        routeType: 'A',
         previousResults: results,
       }),
     });

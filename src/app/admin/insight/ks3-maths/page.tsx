@@ -80,15 +80,31 @@ export default async function InsightDashboardPage() {
 
   const routeStats = routeEvents.reduce(
     (acc, e) => {
-      const payload = e.payload as { accuracy?: number };
+      const payload = e.payload as { accuracy?: number; routeType?: 'A' | 'B' | 'C' };
       const accuracy = payload?.accuracy ?? 0;
+      const routeType = payload?.routeType ?? 'A';
       acc.count += 1;
       acc.sumAccuracy += accuracy;
       if (accuracy >= 0.8) acc.strongRoutes += 1;
+      acc.byRoute[routeType].count += 1;
+      acc.byRoute[routeType].sumAccuracy += accuracy;
       return acc;
     },
-    { count: 0, sumAccuracy: 0, strongRoutes: 0 }
+    {
+      count: 0,
+      sumAccuracy: 0,
+      strongRoutes: 0,
+      byRoute: {
+        A: { count: 0, sumAccuracy: 0 },
+        B: { count: 0, sumAccuracy: 0 },
+        C: { count: 0, sumAccuracy: 0 },
+      },
+    }
   );
+
+  const shadowPassed = await prisma.event.count({ where: { name: 'shadow_pair_passed', subjectId: subject.id } });
+  const shadowFailed = await prisma.event.count({ where: { name: 'shadow_pair_failed', subjectId: subject.id } });
+  const shadowTotal = shadowPassed + shadowFailed;
 
   // C) Time to stable mastery (median days from first attempt to confirmedCount=2)
   const stableSkillMasteries = await prisma.skillMastery.findMany({
@@ -147,6 +163,36 @@ export default async function InsightDashboardPage() {
             Active days observed: {activeDays} · Avg route accuracy:{' '}
             {routeStats.count > 0 ? `${Math.round((routeStats.sumAccuracy / routeStats.count) * 100)}%` : '—'}
           </p>
+        </section>
+
+        <section>
+          <h2 className="text-lg font-semibold text-gray-800 mb-3">Route Effectiveness (A/B/C) + Shadow Validation</h2>
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+            <div className="rounded-xl border border-gray-200 bg-white p-4">
+              <p className="mb-3 text-sm font-medium text-gray-700">Average Accuracy by Route</p>
+              <div className="space-y-2 text-sm">
+                {(['A', 'B', 'C'] as const).map((route) => {
+                  const row = routeStats.byRoute[route];
+                  const avg = row.count > 0 ? Math.round((row.sumAccuracy / row.count) * 100) : null;
+                  return (
+                    <div key={route} className="flex items-center justify-between rounded-md border border-gray-100 px-3 py-2">
+                      <span className="font-mono text-xs">Route {route}</span>
+                      <span className="text-gray-700">{row.count > 0 ? `${avg}% (${row.count})` : '—'}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            <div className="rounded-xl border border-gray-200 bg-white p-4">
+              <p className="mb-3 text-sm font-medium text-gray-700">Shadow Pair Pass Rate</p>
+              <p className="text-2xl font-semibold text-gray-900">
+                {shadowTotal > 0 ? `${Math.round((shadowPassed / shadowTotal) * 100)}%` : '—'}
+              </p>
+              <p className="mt-1 text-xs text-gray-500">
+                Passed: {shadowPassed} · Failed: {shadowFailed}
+              </p>
+            </div>
+          </div>
         </section>
 
         {/* A) Coverage by strand */}

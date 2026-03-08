@@ -67,6 +67,7 @@ export const QuestionAnsweredPayloadSchema = z.object({
 export const RouteCompletedPayloadSchema = z.object({
   skillId: z.string(),
   subjectId: z.string(),
+  routeType: z.enum(['A', 'B', 'C']).optional(),
   totalItems: z.number().int().positive(),
   correctCount: z.number().int().nonnegative(),
   accuracy: z.number().min(0).max(1),
@@ -92,6 +93,14 @@ export const StreakExtendedPayloadSchema = z.object({
   date: z.string(),
 });
 
+export const ShadowPairResultPayloadSchema = z.object({
+  skillId: z.string(),
+  subjectId: z.string(),
+  routeType: z.enum(['A', 'B', 'C']).optional(),
+  pairSize: z.number().int().positive(),
+  correctCount: z.number().int().nonnegative(),
+});
+
 export const EventPayloadSchemas: Record<string, z.ZodSchema> = {
   attempt_submitted: AttemptSubmittedPayloadSchema,
   attempt_graded: AttemptGradedPayloadSchema,
@@ -103,6 +112,8 @@ export const EventPayloadSchemas: Record<string, z.ZodSchema> = {
   review_completed: ReviewCompletedPayloadSchema,
   reward_granted: RewardGrantedPayloadSchema,
   streak_extended: StreakExtendedPayloadSchema,
+  shadow_pair_passed: ShadowPairResultPayloadSchema,
+  shadow_pair_failed: ShadowPairResultPayloadSchema,
   diagnostic_completed: DiagnosticCompletedPayloadSchema,
   intervention_recommended: InterventionRecommendedPayloadSchema,
 };

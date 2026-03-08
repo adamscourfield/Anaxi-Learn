@@ -14,6 +14,8 @@ const attemptSchema = z.object({
   subjectId: z.string(),
   answer: z.string(),
   isLast: z.boolean(),
+  questionIndex: z.number().int().nonnegative().optional(),
+  routeType: z.enum(['A', 'B', 'C']).optional(),
   totalItems: z.number(),
   previousResults: z.array(z.object({ itemId: z.string(), correct: z.boolean() })),
 });
@@ -32,7 +34,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Invalid input' }, { status: 400 });
   }
 
-  const { itemId, skillId, subjectId, answer, isLast, totalItems, previousResults } = parsed.data;
+  const { itemId, skillId, subjectId, answer, isLast, questionIndex, routeType, totalItems, previousResults } = parsed.data;
 
   const item = await prisma.item.findUnique({ where: { id: itemId } });
   if (!item) {
@@ -48,6 +50,8 @@ export async function POST(req: NextRequest) {
   const now = new Date();
   const isDueReview = skillMastery?.nextReviewAt != null && skillMastery.nextReviewAt <= now;
   const mode = isDueReview ? 'REVIEW' : 'PRACTICE';
+
+  const isShadowQuestion = typeof questionIndex === 'number' && totalItems >= 2 && questionIndex >= totalItems - 2;
 
   const attempt = await prisma.attempt.create({
     data: { userId, itemId, answer, correct, mode },
@@ -85,11 +89,18 @@ export async function POST(req: NextRequest) {
     payload: { itemId, skillId, subjectId, correct, mode },
   });
 
-  await grantReward(userId, subjectId, correct ? 'diagnostic_item_correct' : 'diagnostic_item_incorrect', {
-    itemId,
-    skillId,
-    mode,
-  });
+  await grantReward(
+    userId,
+    subjectId,
+    isShadowQuestion && correct ? 'shadow_item_correct' : correct ? 'diagnostic_item_correct' : 'diagnostic_item_incorrect',
+    {
+      itemId,
+      skillId,
+      mode,
+      isShadowQuestion,
+      routeType,
+    }
+  );
 
   const hadRecentIncorrect = await prisma.attempt.findFirst({
     where: {
@@ -118,10 +129,29 @@ export async function POST(req: NextRequest) {
       studentUserId: userId,
       subjectId,
       skillId,
-      payload: { skillId, subjectId, totalItems, correctCount, accuracy },
+      payload: { skillId, subjectId, totalItems, correctCount, accuracy, routeType: routeType ?? 'A' },
     });
 
-    await grantReward(userId, subjectId, 'route_completed', { skillId, accuracy });
+    await grantReward(userId, subjectId, 'route_completed', { skillId, accuracy, routeType: routeType ?? 'A' });
+
+    const shadowPair = allResults.slice(-2);
+    if (shadowPair.length === 2) {
+      const shadowPassed = shadowPair.every((r) => r.correct);
+      await emitEvent({
+        name: shadowPassed ? 'shadow_pair_passed' : 'shadow_pair_failed',
+        actorUserId: userId,
+        studentUserId: userId,
+        subjectId,
+        skillId,
+        payload: {
+          skillId,
+          subjectId,
+          routeType: routeType ?? 'A',
+          pairSize: 2,
+          correctCount: shadowPair.filter((r) => r.correct).length,
+        },
+      });
+    }
 
     await updateSkillMastery(userId, skillId, subjectId, correctCount, totalItems, mode);
   }
