@@ -6,6 +6,7 @@ import { z } from 'zod';
 import { gradeAttempt } from '@/features/learn/gradeAttempt';
 import { emitEvent } from '@/features/telemetry/eventService';
 import { updateSkillMastery } from '@/features/mastery/updateMastery';
+import { parseItemOptions } from '@/features/items/itemMeta';
 
 const attemptSchema = z.object({
   itemId: z.string(),
@@ -64,6 +65,64 @@ export async function POST(req: NextRequest) {
     attemptId: attempt.id,
     payload: { itemId, attemptId: attempt.id, correct, skillId, subjectId },
   });
+
+  // N1.1 shadow gate events (route-level pass/fail) for richer routing telemetry
+  const parsedItemOptions = parseItemOptions(item.options);
+  if (parsedItemOptions.meta.questionRole === 'shadow' && parsedItemOptions.meta.route) {
+    const recentSkillAttempts = await prisma.attempt.findMany({
+      where: {
+        userId,
+        item: { skills: { some: { skillId } } },
+      },
+      include: { item: true },
+      orderBy: { createdAt: 'desc' },
+      take: 10,
+    });
+
+    const recentRouteShadows = recentSkillAttempts
+      .filter((a) => {
+        const m = parseItemOptions(a.item.options).meta;
+        return m.questionRole === 'shadow' && m.route === parsedItemOptions.meta.route;
+      })
+      .slice(0, 2);
+
+    if (recentRouteShadows.length === 2) {
+      const passed = recentRouteShadows.every((a) => a.correct);
+      await emitEvent({
+        name: passed ? 'shadow_pair_passed' : 'shadow_pair_failed',
+        actorUserId: userId,
+        studentUserId: userId,
+        subjectId,
+        skillId,
+        itemId,
+        attemptId: attempt.id,
+        payload: {
+          route: parsedItemOptions.meta.route,
+          attemptIds: recentRouteShadows.map((a) => a.id),
+          passed,
+        },
+      });
+
+      if (!passed && parsedItemOptions.meta.route === 'C') {
+        await prisma.interventionFlag.upsert({
+          where: { userId_skillId: { userId, skillId } },
+          update: { isResolved: false, lastSeenAt: new Date(), reason: 'N1.1 route C shadow pair failed' },
+          create: { userId, subjectId, skillId, reason: 'N1.1 route C shadow pair failed' },
+        });
+
+        await emitEvent({
+          name: 'intervention_flagged',
+          actorUserId: userId,
+          studentUserId: userId,
+          subjectId,
+          skillId,
+          itemId,
+          attemptId: attempt.id,
+          payload: { reason: 'N1.1 route C shadow pair failed', route: 'C' },
+        });
+      }
+    }
+  }
 
   if (isLast) {
     const allResults = [...previousResults, { itemId, correct }];

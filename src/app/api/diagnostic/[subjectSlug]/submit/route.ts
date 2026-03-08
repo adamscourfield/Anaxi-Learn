@@ -52,11 +52,15 @@ export async function POST(req: NextRequest) {
     isTransfer: parsedOptions.meta.questionRole === 'transfer' || parsedOptions.meta.transferLevel !== 'none',
   });
 
+  let routeDecision:
+    | { status: 'secure' | 'route'; route?: 'A' | 'B' | 'C'; reason: string }
+    | undefined;
+
   if (skillCode === 'N1.1') {
     const est = updatedPayload.estimates[skillCode];
     const signals = updatedPayload.skillSignals?.[skillCode];
     if (est) {
-      const routeDecision = decideN1Route({
+      routeDecision = decideN1Route({
         total: est.total,
         correct: est.correct,
         transferCorrect: signals?.transferCorrect ?? false,
@@ -101,5 +105,24 @@ export async function POST(req: NextRequest) {
     payload: { itemId, attemptId: attempt.id, correct, skillId, skillCode, strand, subjectId, mode: 'DIAGNOSTIC', diagnosticSessionId: sessionId },
   });
 
-  return NextResponse.json({ correct });
+  if (routeDecision) {
+    await emitEvent({
+      name: 'diagnostic_route_recommended',
+      actorUserId: userId,
+      studentUserId: userId,
+      subjectId,
+      skillId,
+      itemId,
+      attemptId: attempt.id,
+      payload: {
+        skillCode,
+        status: routeDecision.status,
+        route: routeDecision.route ?? null,
+        reason: routeDecision.reason,
+        diagnosticSessionId: sessionId,
+      },
+    });
+  }
+
+  return NextResponse.json({ correct, routeRecommendation: routeDecision ?? null });
 }
