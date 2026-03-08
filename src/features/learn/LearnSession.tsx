@@ -38,13 +38,14 @@ interface Props {
   items: Item[];
   userId: string;
   gamification: GamificationSummary;
+  routeType: 'A' | 'B' | 'C';
 }
 
 type Phase = 'intro' | 'session' | 'results';
 
 const SHOW_DEBUG = process.env.NEXT_PUBLIC_SHOW_DEBUG === 'true';
 
-export function LearnSession({ subject, skill, items, userId, gamification }: Props) {
+export function LearnSession({ subject, skill, items, userId, gamification, routeType }: Props) {
   const [phase, setPhase] = useState<Phase>('intro');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState('');
@@ -70,7 +71,7 @@ export function LearnSession({ subject, skill, items, userId, gamification }: Pr
         isLast: currentIndex === items.length - 1,
         questionIndex: currentIndex,
         totalItems: items.length,
-        routeType: 'A',
+        routeType,
         previousResults: results,
       }),
     });
@@ -117,6 +118,7 @@ export function LearnSession({ subject, skill, items, userId, gamification }: Pr
             </div>
           </div>
 
+          <p className="text-xs uppercase tracking-wide text-slate-500">Explanation route: {routeType}</p>
           {skill.intro && <p className="text-sm leading-relaxed text-slate-600">{skill.intro}</p>}
           {skill.description && !skill.intro && <p className="text-sm leading-relaxed text-slate-600">{skill.description}</p>}
 

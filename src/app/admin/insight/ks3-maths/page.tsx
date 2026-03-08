@@ -106,6 +106,26 @@ export default async function InsightDashboardPage() {
   const shadowFailed = await prisma.event.count({ where: { name: 'shadow_pair_failed', subjectId: subject.id } });
   const shadowTotal = shadowPassed + shadowFailed;
 
+  const routeAssignments = await prisma.event.findMany({
+    where: { name: 'explanation_route_assigned', subjectId: subject.id },
+    select: { payload: true },
+  });
+
+  const assignmentStats = routeAssignments.reduce(
+    (acc, e) => {
+      const payload = e.payload as { routeType?: 'A' | 'B' | 'C'; source?: 'diagnostic_signals' | 'fallback_chain' | 'history_default' };
+      const route = payload?.routeType;
+      const source = payload?.source;
+      if (route) acc.byRoute[route] += 1;
+      if (source) acc.bySource[source] += 1;
+      return acc;
+    },
+    {
+      byRoute: { A: 0, B: 0, C: 0 },
+      bySource: { diagnostic_signals: 0, fallback_chain: 0, history_default: 0 },
+    }
+  );
+
   // C) Time to stable mastery (median days from first attempt to confirmedCount=2)
   const stableSkillMasteries = await prisma.skillMastery.findMany({
     where: { confirmedCount: { gte: 2 }, skill: { subjectId: subject.id } },
@@ -167,7 +187,7 @@ export default async function InsightDashboardPage() {
 
         <section>
           <h2 className="text-lg font-semibold text-gray-800 mb-3">Route Effectiveness (A/B/C) + Shadow Validation</h2>
-          <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
             <div className="rounded-xl border border-gray-200 bg-white p-4">
               <p className="mb-3 text-sm font-medium text-gray-700">Average Accuracy by Route</p>
               <div className="space-y-2 text-sm">
@@ -190,6 +210,17 @@ export default async function InsightDashboardPage() {
               </p>
               <p className="mt-1 text-xs text-gray-500">
                 Passed: {shadowPassed} · Failed: {shadowFailed}
+              </p>
+            </div>
+            <div className="rounded-xl border border-gray-200 bg-white p-4">
+              <p className="mb-3 text-sm font-medium text-gray-700">Route Assignment Sources</p>
+              <div className="space-y-2 text-xs text-gray-600">
+                <div>Diagnostic signals: {assignmentStats.bySource.diagnostic_signals}</div>
+                <div>Fallback chain: {assignmentStats.bySource.fallback_chain}</div>
+                <div>History default: {assignmentStats.bySource.history_default}</div>
+              </div>
+              <p className="mt-3 text-xs text-gray-500">
+                Assigned route count — A:{assignmentStats.byRoute.A} · B:{assignmentStats.byRoute.B} · C:{assignmentStats.byRoute.C}
               </p>
             </div>
           </div>

@@ -56,6 +56,12 @@ export const InterventionRecommendedPayloadSchema = z.object({
   mastery: z.number(),
 });
 
+export const InterventionFlaggedPayloadSchema = z.object({
+  skillId: z.string(),
+  skillCode: z.string().optional(),
+  reason: z.string(),
+});
+
 export const QuestionAnsweredPayloadSchema = z.object({
   itemId: z.string(),
   skillId: z.string(),
@@ -101,6 +107,15 @@ export const ShadowPairResultPayloadSchema = z.object({
   correctCount: z.number().int().nonnegative(),
 });
 
+export const ExplanationRouteAssignedPayloadSchema = z.object({
+  skillId: z.string(),
+  skillCode: z.string().optional(),
+  routeType: z.enum(['A', 'B', 'C']),
+  reason: z.string(),
+  source: z.enum(['diagnostic_signals', 'fallback_chain', 'history_default']),
+  interventionRecommended: z.boolean().optional(),
+});
+
 export const EventPayloadSchemas: Record<string, z.ZodSchema> = {
   attempt_submitted: AttemptSubmittedPayloadSchema,
   attempt_graded: AttemptGradedPayloadSchema,
@@ -114,8 +129,10 @@ export const EventPayloadSchemas: Record<string, z.ZodSchema> = {
   streak_extended: StreakExtendedPayloadSchema,
   shadow_pair_passed: ShadowPairResultPayloadSchema,
   shadow_pair_failed: ShadowPairResultPayloadSchema,
+  explanation_route_assigned: ExplanationRouteAssignedPayloadSchema,
   diagnostic_completed: DiagnosticCompletedPayloadSchema,
   intervention_recommended: InterventionRecommendedPayloadSchema,
+  intervention_flagged: InterventionFlaggedPayloadSchema,
 };
 
 export type EventName = keyof typeof EventPayloadSchemas;
