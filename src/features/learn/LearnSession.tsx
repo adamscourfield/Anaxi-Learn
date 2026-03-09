@@ -259,16 +259,21 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
                 ))
               )
             ) : (
-              <input
-                type="text"
-                value={selectedAnswer}
-                onChange={(e) => {
-                  setSelectedAnswer(e.target.value);
-                  setError(null);
-                }}
-                placeholder={answerType === 'SHORT_NUMERIC' ? 'Enter a number' : 'Type your answer'}
-                className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 text-sm text-gray-800 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
-              />
+              <div className="space-y-2">
+                <input
+                  type="text"
+                  value={selectedAnswer}
+                  onChange={(e) => {
+                    setSelectedAnswer(e.target.value);
+                    setError(null);
+                  }}
+                  placeholder={answerType === 'SHORT_NUMERIC' ? 'Enter a number' : 'Type your answer'}
+                  className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 text-sm text-gray-800 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                />
+                {answerType === 'SHORT_TEXT' && (
+                  <p className="text-xs text-slate-600">Use clear words. Commas and “and” are both okay.</p>
+                )}
+              </div>
             )}
           </div>
 

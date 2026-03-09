@@ -150,10 +150,10 @@ const compareRenderer: InteractionRenderer = {
         </div>
         <p className="mt-2 text-[11px] text-slate-600">
           {picked == null
-            ? 'Tap a column to lock your first-difference choice.'
+            ? 'Tap a column to choose where the numbers first change.'
             : picked === firstDiff
-              ? `Great pick: ${labels[picked] ?? 'that'} is the first difference.`
-              : `Check again: first difference is in ${labels[firstDiff] ?? 'another'} column.`}
+              ? `Great pick: ${labels[picked] ?? 'that'} is right.`
+              : 'Not quite yet. Check from left to right and try again.'}
         </p>
       </div>
     );

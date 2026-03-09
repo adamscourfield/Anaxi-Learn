@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import type { ReteachPlan, RouteType } from './reteachContent';
 import { getInteractionRenderer, type StepInteractionState } from './interactionRegistry';
 
@@ -12,9 +12,11 @@ interface Props {
   onComplete: () => void;
 }
 
+type ReteachStage = 'learn' | 'checkpoint' | 'worked' | 'guided';
 
 export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete }: Props) {
   const [stepIndex, setStepIndex] = useState(0);
+  const [stage, setStage] = useState<ReteachStage>('learn');
   const [selected, setSelected] = useState('');
   const [feedback, setFeedback] = useState<'correct' | 'incorrect' | null>(null);
   const [guided, setGuided] = useState('');
@@ -22,12 +24,14 @@ export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete
   const [altShown, setAltShown] = useState<Record<number, boolean>>({});
   const [stepStartMs, setStepStartMs] = useState<number>(Date.now());
   const [interactionByStep, setInteractionByStep] = useState<Record<number, StepInteractionState>>({});
-  const [showGuidedModel, setShowGuidedModel] = useState(false);
 
   const step = plan.steps[stepIndex];
-  const interaction = interactionByStep[stepIndex] ?? { decompositionParts: [] };
+  const interaction = useMemo(
+    () => interactionByStep[stepIndex] ?? { decompositionParts: [] },
+    [interactionByStep, stepIndex]
+  );
 
-  const markInteraction = (patch: Partial<StepInteractionState>) => {
+  const markInteraction = useCallback((patch: Partial<StepInteractionState>) => {
     setInteractionByStep((prev) => {
       const curr = prev[stepIndex] ?? { decompositionParts: [] };
       const startedAt = curr.startedAt ?? Date.now();
@@ -40,12 +44,12 @@ export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete
         },
       };
     });
-  };
+  }, [stepIndex]);
 
   const renderer = useMemo(() => getInteractionRenderer(step), [step]);
   const interactionStatus = useMemo(
     () => renderer.status({ step, state: interaction, markInteraction }),
-    [renderer, step, interaction]
+    [renderer, step, interaction, markInteraction]
   );
 
   async function checkStep() {
@@ -87,20 +91,21 @@ export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete
       }),
     });
 
-    if (correct) {
-      setTimeout(() => {
-        if (stepIndex < plan.steps.length - 1) {
-          setFeedback(null);
-          setSelected('');
-          setStepIndex((i) => i + 1);
-          setStepStartMs(Date.now());
-          setShowGuidedModel(false);
-        }
-      }, 420);
-    }
+    if (!correct) return;
+
+    setTimeout(() => {
+      setFeedback(null);
+      setSelected('');
+      if (stepIndex < plan.steps.length - 1) {
+        setStepIndex((i) => i + 1);
+        setStage('learn');
+        setStepStartMs(Date.now());
+      } else {
+        setStage('worked');
+      }
+    }, 420);
   }
 
-  const doneSteps = stepIndex >= plan.steps.length - 1 && feedback === 'correct';
   const normalize = (s: string) =>
     s
       .toLowerCase()
@@ -113,18 +118,48 @@ export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete
   const interactionRequired = (step.interaction?.type ?? step.visualType ?? 'none') !== 'none';
   const canCheck = Boolean(selected) && (!interactionRequired || interactionStatus.completed);
 
-  return (
-    <div className="space-y-5">
-      <div className={`rounded-2xl border border-slate-200 bg-white p-5 ${feedback === 'correct' ? 'anx-pulse-correct' : ''} ${feedback === 'incorrect' ? 'anx-shake-incorrect' : ''}`}>
-        <p className="text-xs uppercase tracking-wide text-slate-500">Step {stepIndex + 1} of {plan.steps.length}</p>
-        <h3 className="mt-1 text-base font-semibold text-slate-900">{step.title}</h3>
-        {step.stepType && <p className="mt-1 text-[11px] font-medium uppercase tracking-wide text-blue-700">{step.stepType.replace('_', ' ')}</p>}
-        <p className="mt-2 text-sm leading-relaxed text-slate-700">{step.explanation}</p>
+  if (stage === 'worked') {
+    return (
+      <div className="space-y-5">
+        <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm text-slate-700">
+          <p className="font-semibold text-slate-900">Worked example</p>
+          <p className="mt-1">{plan.workedExample}</p>
+          <button className="anx-btn-primary mt-4 w-full" onClick={() => setStage('guided')}>
+            Next
+          </button>
+        </div>
+      </div>
+    );
+  }
 
-        <div className="mt-4">{renderer.render({ step, state: interaction, markInteraction })}</div>
+  if (stage === 'guided') {
+    return (
+      <div className="space-y-5">
+        <div className="rounded-xl border border-slate-200 bg-white p-4">
+          <p className="text-sm font-semibold text-slate-900">Try one yourself</p>
+          <p className="mt-1 text-sm text-slate-700">{plan.guidedPrompt}</p>
+          {needsWritingHint && <p className="mt-2 text-xs text-slate-600">Write it clearly. You can use “and” or leave it out.</p>}
+          <input
+            className="mt-3 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
+            value={guided}
+            onChange={(e) => setGuided(e.target.value)}
+            placeholder="Type your answer"
+          />
+          {!guidedOk && guided.length > 0 && <p className="mt-2 text-xs text-rose-600">Not quite — try again.</p>}
+          <button className="anx-btn-primary mt-3 w-full" onClick={onComplete} disabled={!guidedOk}>
+            Continue to key questions
+          </button>
+        </div>
+      </div>
+    );
+  }
 
-        <div className="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-4">
-          <p className="text-sm font-semibold text-slate-900">Checkpoint</p>
+  if (stage === 'checkpoint') {
+    return (
+      <div className="space-y-5">
+        <div className={`rounded-2xl border border-slate-200 bg-white p-5 ${feedback === 'correct' ? 'anx-pulse-correct' : ''} ${feedback === 'incorrect' ? 'anx-shake-incorrect' : ''}`}>
+          <p className="text-xs uppercase tracking-wide text-slate-500">Step {stepIndex + 1} of {plan.steps.length}</p>
+          <p className="mt-3 text-sm font-semibold text-slate-900">Checkpoint</p>
           <p className="mt-1 text-sm text-slate-700">{step.checkpointQuestion}</p>
           <div className="mt-3 space-y-2">
             {step.checkpointOptions.map((option) => (
@@ -134,54 +169,45 @@ export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete
             ))}
           </div>
           <button onClick={checkStep} className="anx-btn-primary mt-4 w-full py-3 text-sm" disabled={!canCheck}>
-            Check this step
+            Check answer
           </button>
-          {!selected && <p className="mt-2 text-xs text-slate-500">Choose a checkpoint answer to continue.</p>}
+          {!selected && <p className="mt-2 text-xs text-slate-500">Choose one answer.</p>}
           {selected && interactionRequired && !interactionStatus.completed && (
-            <p className="mt-2 text-xs text-amber-700">Finish the interactive visual first, then check your step.</p>
+            <p className="mt-2 text-xs text-amber-700">Do the visual task first. Then check your answer.</p>
           )}
-          {feedback === 'incorrect' && <p className="mt-2 text-xs text-rose-600">Nearly there — use the hint and try that same checkpoint again.</p>}
-          {feedback === 'correct' && <p className="mt-2 text-xs text-emerald-600">Nice work — that step is secure.</p>}
+          {feedback === 'incorrect' && <p className="mt-2 text-xs text-rose-600">Not yet. Use the hint and try again.</p>}
+          {feedback === 'correct' && <p className="mt-2 text-xs text-emerald-600">Great — you got it.</p>}
           {altShown[stepIndex] && (
             <div className="mt-2 rounded-md border border-blue-200 bg-blue-50 p-2 text-xs text-blue-800">
-              <p className="font-semibold">Alternative explanation</p>
-              <p>{step.alternativeHint ?? 'Try naming each place-value column aloud before choosing.'}</p>
+              <p className="font-semibold">Hint</p>
+              <p>{step.alternativeHint ?? 'Say each place-value column name out loud, then try again.'}</p>
             </div>
           )}
         </div>
       </div>
+    );
+  }
 
-      {doneSteps && !showGuidedModel && (
-        <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm text-slate-700">
-          <p className="font-semibold text-slate-900">Worked example</p>
-          <p className="mt-1">{plan.workedExample}</p>
-          <button className="anx-btn-primary mt-4 w-full" onClick={() => setShowGuidedModel(true)}>
-            Continue
-          </button>
-        </div>
-      )}
+  return (
+    <div className="space-y-5">
+      <div className="rounded-2xl border border-slate-200 bg-white p-5">
+        <p className="text-xs uppercase tracking-wide text-slate-500">Step {stepIndex + 1} of {plan.steps.length}</p>
+        <h3 className="mt-1 text-base font-semibold text-slate-900">{step.title}</h3>
+        <p className="mt-2 text-sm leading-relaxed text-slate-700">{step.explanation}</p>
 
-      {doneSteps && showGuidedModel && (
-        <div className="rounded-xl border border-slate-200 bg-white p-4">
-          <p className="text-sm font-semibold text-slate-900">Try one yourself</p>
-          <p className="mt-1 text-sm text-slate-700">{plan.guidedPrompt}</p>
-          {needsWritingHint && (
-            <p className="mt-2 text-xs text-slate-600">Write it clearly. Using &quot;and&quot; is optional.</p>
-          )}
-          <input
-            className="mt-3 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
-            value={guided}
-            onChange={(e) => setGuided(e.target.value)}
-            placeholder="Type your answer"
-          />
-          {!guidedOk && guided.length > 0 && (
-            <p className="mt-2 text-xs text-rose-600">Not quite — try again.</p>
-          )}
-          <button className="anx-btn-primary mt-3 w-full" onClick={onComplete} disabled={!guidedOk}>
-            Continue to key questions
-          </button>
-        </div>
-      )}
+        <div className="mt-4">{renderer.render({ step, state: interaction, markInteraction })}</div>
+
+        <button
+          className="anx-btn-primary mt-4 w-full"
+          onClick={() => setStage('checkpoint')}
+          disabled={interactionRequired && !interactionStatus.completed}
+        >
+          Next
+        </button>
+        {interactionRequired && !interactionStatus.completed && (
+          <p className="mt-2 text-xs text-slate-600">Complete the visual task to continue.</p>
+        )}
+      </div>
     </div>
   );
 }

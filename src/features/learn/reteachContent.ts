@@ -32,7 +32,7 @@ export interface ReteachPlan {
 
 const plans: Record<RouteType, ReteachPlan> = {
   A: {
-    misconceptionSummary: 'You might be mixing up place-value columns.',
+    misconceptionSummary: 'You may be mixing up the place-value columns.',
     workedExample: 'Example: 3,540 has 3 thousands, 5 hundreds, 4 tens, and 0 ones. So 3,540 is greater than 3,450.',
     guidedPrompt: 'In 6,204, what is the value of the 2?',
     guidedAnswer: '200',
@@ -40,7 +40,7 @@ const plans: Record<RouteType, ReteachPlan> = {
       {
         title: 'Step 1: Name the columns',
         explanation: 'Read left to right: thousands, hundreds, tens, ones.',
-        checkpointQuestion: 'In 4,381, which digit is in the hundreds column?',
+        checkpointQuestion: 'In 4,381, what digit is in the hundreds place?',
         checkpointOptions: ['3', '8', '4', '1'],
         checkpointAnswer: '3',
         alternativeHint: 'Find the hundreds column first, then read the digit in that column.',
@@ -56,7 +56,7 @@ const plans: Record<RouteType, ReteachPlan> = {
       {
         title: 'Step 3: Watch the middle columns',
         explanation: 'Tens and hundreds can look similar. Say the column name out loud.',
-        checkpointQuestion: 'In 7,460, the 6 is worth:',
+        checkpointQuestion: 'In 7,460, the 6 means:',
         checkpointOptions: ['6', '60', '600', '6000'],
         checkpointAnswer: '60',
         alternativeHint: 'The 6 is in the tens column, so it means 6 tens = 60.',
@@ -72,7 +72,7 @@ const plans: Record<RouteType, ReteachPlan> = {
       {
         title: 'Step 1: Start with biggest column',
         explanation: 'Keep each digit in its place-value column.',
-        checkpointQuestion: 'Which column do you check first?',
+        checkpointQuestion: 'Which place do you check first?',
         checkpointOptions: ['Ones', 'Tens', 'Hundreds', 'Thousands'],
         checkpointAnswer: 'Thousands',
         alternativeHint: 'Always start at the left with the biggest value.',
@@ -80,7 +80,7 @@ const plans: Record<RouteType, ReteachPlan> = {
       {
         title: 'Step 2: Find the first difference',
         explanation: 'Move left to right and stop at the first different column.',
-        checkpointQuestion: 'In 4,125 and 4,175, where is the first difference?',
+        checkpointQuestion: 'In 4,125 and 4,175, where do they first change?',
         checkpointOptions: ['Thousands', 'Hundreds', 'Tens', 'Ones'],
         checkpointAnswer: 'Tens',
         alternativeHint: 'Thousands and hundreds match. Tens are 2 and 7, so that is the first difference.',
@@ -104,7 +104,7 @@ const plans: Record<RouteType, ReteachPlan> = {
       {
         title: 'Step 1: Bigger column matters more',
         explanation: 'A change in tens is bigger than a change in ones.',
-        checkpointQuestion: 'Which change is bigger?',
+        checkpointQuestion: 'Which one is bigger?',
         checkpointOptions: ['+1 one', '+1 ten', 'They are equal', 'Not sure'],
         checkpointAnswer: '+1 ten',
         alternativeHint: '1 ten = 10 ones.',
@@ -112,7 +112,7 @@ const plans: Record<RouteType, ReteachPlan> = {
       {
         title: 'Step 2: Same digit, different value',
         explanation: 'A digit changes value based on its column.',
-        checkpointQuestion: 'In 3,604, the 6 is worth:',
+        checkpointQuestion: 'In 3,604, the 6 means:',
         checkpointOptions: ['6', '60', '600', '6000'],
         checkpointAnswer: '600',
         alternativeHint: 'The 6 is in the hundreds column, so it is 600.',
