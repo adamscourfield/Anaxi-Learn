@@ -15,7 +15,9 @@
     "db:import:unit1-first25": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/import-unit1-first25.ts",
     "db:import:unit1-next25": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/import-unit1-next25.ts",
     "validate:learning": "node scripts/validate-learning-config.mjs",
-    "validate:items": "node scripts/validate-item-answer-types.mjs"
+    "validate:items": "node scripts/validate-item-answer-types.mjs",
+    "validate:n13": "node scripts/validate-n13-content-integrity.mjs",
+    "validate:qa": "npm run validate:items && npm run validate:n13 && npm test"
   },
   "prisma": {
     "seed": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/seed.ts"

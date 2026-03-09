@@ -34,3 +34,8 @@
 - Pass normalization edge-case suite.
 - Pass label-pattern scan (no unexpected student-facing label leaks).
 - Publish a pass/fail QA note with item IDs and remediation notes.
+
+## CI enforcement
+- Run `npm run validate:qa` in CI/pre-merge.
+- `validate:n13` is hard-fail for any **new** N1.3+ label leaks and type-contract violations.
+- Existing historical N1.3+ label prefixes are baseline-tracked in `scripts/baselines/n13-label-violations.json` and must trend down over time.
