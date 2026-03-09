@@ -89,7 +89,7 @@ export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete
       const chosen = interaction.compareColumnIndex;
       return {
         started: Boolean(interaction.startedAt),
-        completed: chosen != null,
+        completed: chosen != null && chosen === firstDiff,
         selected: chosen ?? null,
         firstDiff,
       };
@@ -280,6 +280,8 @@ export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete
   const doneSteps = stepIndex >= plan.steps.length - 1 && feedback === 'correct';
   const normalize = (s: string) => s.toLowerCase().replace(/[,\s]+/g, ' ').trim();
   const guidedOk = normalize(guided) === normalize(plan.guidedAnswer);
+  const interactionRequired = (step.visualType ?? 'none') !== 'none';
+  const canCheck = Boolean(selected) && (!interactionRequired || interactionStatus.completed);
 
   return (
     <div className="space-y-5">
@@ -311,9 +313,13 @@ export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete
               </button>
             ))}
           </div>
-          <button onClick={checkStep} className="anx-btn-primary mt-4 w-full py-3 text-sm" disabled={!selected}>
+          <button onClick={checkStep} className="anx-btn-primary mt-4 w-full py-3 text-sm" disabled={!canCheck}>
             Check this step
           </button>
+          {!selected && <p className="mt-2 text-xs text-slate-500">Choose a checkpoint answer to continue.</p>}
+          {selected && interactionRequired && !interactionStatus.completed && (
+            <p className="mt-2 text-xs text-amber-700">Finish the interactive visual first, then check your step.</p>
+          )}
           {feedback === 'incorrect' && <p className="mt-2 text-xs text-rose-600">Nearly there — use the hint and try that same checkpoint again.</p>}
           {feedback === 'correct' && <p className="mt-2 text-xs text-emerald-600">Nice work — that step is secure.</p>}
           {altShown[stepIndex] && (
