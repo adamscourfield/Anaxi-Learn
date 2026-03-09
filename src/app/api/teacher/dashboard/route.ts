@@ -9,6 +9,21 @@ function parseDays(input: string | null): number {
   return n;
 }
 
+function getRiskModel(params: { checkpointRate: number; interactionPassRate: number; interventions: number; wrongFirstDiff: number }) {
+  const { checkpointRate, interactionPassRate, interventions, wrongFirstDiff } = params;
+  let score = 0;
+  if (interventions > 0) score += 45;
+  if (checkpointRate < 0.5) score += 25;
+  else if (checkpointRate < 0.7) score += 15;
+  if (interactionPassRate < 0.5) score += 20;
+  else if (interactionPassRate < 0.7) score += 10;
+  if (wrongFirstDiff >= 3) score += 15;
+  else if (wrongFirstDiff > 0) score += 8;
+
+  const riskLevel: 'RED' | 'AMBER' | 'GREEN' = score >= 50 ? 'RED' : score >= 25 ? 'AMBER' : 'GREEN';
+  return { riskScore: Math.min(100, score), riskLevel };
+}
+
 export async function GET(req: NextRequest) {
   const session = await getServerSession(authOptions);
   if (!session?.user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -62,6 +77,15 @@ export async function GET(req: NextRequest) {
 
       const checkpointCorrect = stepAttempts.filter((e) => Boolean((e.payload as Record<string, unknown>).correct)).length;
       const interactionPass = interactions.filter((e) => Boolean((e.payload as Record<string, unknown>).rulePassed)).length;
+      const wrongFirstDiff = interactions.filter((e) => (e.payload as Record<string, unknown>).errorType === 'wrong_first_difference').length;
+      const checkpointRateValue = stepAttempts.length ? checkpointCorrect / stepAttempts.length : 1;
+      const interactionPassValue = interactions.length ? interactionPass / interactions.length : 1;
+      const classRisk = getRiskModel({
+        checkpointRate: checkpointRateValue,
+        interactionPassRate: interactionPassValue,
+        interventions: interventions.length,
+        wrongFirstDiff,
+      });
 
       return {
         id: cls.id,
@@ -73,6 +97,9 @@ export async function GET(req: NextRequest) {
         checkpointAccuracy: stepAttempts.length ? checkpointCorrect / stepAttempts.length : null,
         interactionPassRate: interactions.length ? interactionPass / interactions.length : null,
         interventions: interventions.length,
+        wrongFirstDiff,
+        riskLevel: classRisk.riskLevel,
+        riskScore: classRisk.riskScore,
       };
     })
   );

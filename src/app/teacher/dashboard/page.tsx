@@ -17,6 +17,21 @@ function parseDays(input: string | undefined): number {
   return n;
 }
 
+function getRiskModel(params: { checkpointRate: number; interactionPassRate: number; interventions: number; wrongFirstDiff: number }) {
+  const { checkpointRate, interactionPassRate, interventions, wrongFirstDiff } = params;
+  let score = 0;
+  if (interventions > 0) score += 45;
+  if (checkpointRate < 0.5) score += 25;
+  else if (checkpointRate < 0.7) score += 15;
+  if (interactionPassRate < 0.5) score += 20;
+  else if (interactionPassRate < 0.7) score += 10;
+  if (wrongFirstDiff >= 3) score += 15;
+  else if (wrongFirstDiff > 0) score += 8;
+
+  const riskLevel: 'RED' | 'AMBER' | 'GREEN' = score >= 50 ? 'RED' : score >= 25 ? 'AMBER' : 'GREEN';
+  return { riskScore: Math.min(100, score), riskLevel };
+}
+
 interface Props {
   searchParams?: Promise<{ days?: string; subtopic?: string }>;
 }
@@ -172,11 +187,15 @@ export default async function TeacherDashboardPage({ searchParams }: Props) {
               const evalPass = studentEval.filter((e) => Boolean((e.payload as EventPayload).rulePassed)).length;
               const evalWrong = studentEval.filter((e) => (e.payload as EventPayload).errorType === 'wrong_first_difference').length;
 
-              const needsAction = (
-                (studentEval.length > 0 && evalPass / Math.max(1, studentEval.length) < 0.6) ||
-                (studentStep.length > 0 && checkpointHits / Math.max(1, studentStep.length) < 0.6) ||
-                studentInterventions > 0
-              );
+              const checkpointRateValue = studentStep.length > 0 ? checkpointHits / studentStep.length : 1;
+              const interactionPassRateValue = studentEval.length > 0 ? evalPass / studentEval.length : 1;
+              const { riskLevel, riskScore } = getRiskModel({
+                checkpointRate: checkpointRateValue,
+                interactionPassRate: interactionPassRateValue,
+                interventions: studentInterventions,
+                wrongFirstDiff: evalWrong,
+              });
+              const needsAction = riskLevel !== 'GREEN';
 
               return {
                 id: student.id,
@@ -188,6 +207,8 @@ export default async function TeacherDashboardPage({ searchParams }: Props) {
                 interactionPassRate: pct(evalPass, studentEval.length),
                 wrongFirstDiff: evalWrong,
                 interventions: studentInterventions,
+                riskLevel,
+                riskScore,
                 needsAction,
               };
             });
@@ -225,7 +246,7 @@ export default async function TeacherDashboardPage({ searchParams }: Props) {
                   <p className="mt-1 text-sm text-amber-900">
                     {requiringAction.length === 0
                       ? 'No high-priority students in this filter window.'
-                      : requiringAction.map((s) => s.name).join(', ')}
+                      : requiringAction.map((s) => `${s.name} (${s.riskLevel})`).join(', ')}
                   </p>
                 </div>
 
@@ -234,15 +255,15 @@ export default async function TeacherDashboardPage({ searchParams }: Props) {
                   <div className="overflow-x-auto">
                     <table className="w-full text-sm">
                       <thead className="bg-white text-xs text-slate-500">
-                        <tr><th className="px-3 py-2 text-left">Student</th><th className="px-3 py-2 text-left">Observe ID</th><th className="px-3 py-2 text-left">Mastery</th><th className="px-3 py-2 text-left">Questions</th><th className="px-3 py-2 text-left">Checkpoint</th><th className="px-3 py-2 text-left">Interaction pass</th><th className="px-3 py-2 text-left">Wrong first-diff</th><th className="px-3 py-2 text-left">Interventions</th></tr>
+                        <tr><th className="px-3 py-2 text-left">Student</th><th className="px-3 py-2 text-left">Observe ID</th><th className="px-3 py-2 text-left">Risk</th><th className="px-3 py-2 text-left">Mastery</th><th className="px-3 py-2 text-left">Questions</th><th className="px-3 py-2 text-left">Checkpoint</th><th className="px-3 py-2 text-left">Interaction pass</th><th className="px-3 py-2 text-left">Wrong first-diff</th><th className="px-3 py-2 text-left">Interventions</th></tr>
                       </thead>
                       <tbody className="divide-y divide-slate-100">
                         {studentRows.map((row) => (
                           <tr key={row.id} className={row.needsAction ? 'bg-amber-50/60' : ''}>
-                            <td className="px-3 py-2 text-slate-800">{row.name}</td><td className="px-3 py-2 font-mono text-xs text-slate-600">{row.observeStudentId}</td><td className="px-3 py-2">{row.masteryAvg}%</td><td className="px-3 py-2">{row.questionCount}</td><td className="px-3 py-2">{row.checkpointRate}</td><td className="px-3 py-2">{row.interactionPassRate}</td><td className="px-3 py-2 text-rose-700">{row.wrongFirstDiff}</td><td className="px-3 py-2">{row.interventions}</td>
+                            <td className="px-3 py-2 text-slate-800">{row.name}</td><td className="px-3 py-2 font-mono text-xs text-slate-600">{row.observeStudentId}</td><td className="px-3 py-2"><span className={`rounded px-2 py-0.5 text-xs font-semibold ${row.riskLevel === 'RED' ? 'bg-rose-100 text-rose-800' : row.riskLevel === 'AMBER' ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800'}`}>{row.riskLevel} ({row.riskScore})</span></td><td className="px-3 py-2">{row.masteryAvg}%</td><td className="px-3 py-2">{row.questionCount}</td><td className="px-3 py-2">{row.checkpointRate}</td><td className="px-3 py-2">{row.interactionPassRate}</td><td className="px-3 py-2 text-rose-700">{row.wrongFirstDiff}</td><td className="px-3 py-2">{row.interventions}</td>
                           </tr>
                         ))}
-                        {studentRows.length === 0 && <tr><td colSpan={8} className="px-3 py-8 text-center text-slate-400">No students enrolled in this class yet.</td></tr>}
+                        {studentRows.length === 0 && <tr><td colSpan={9} className="px-3 py-8 text-center text-slate-400">No students enrolled in this class yet.</td></tr>}
                       </tbody>
                     </table>
                   </div>
