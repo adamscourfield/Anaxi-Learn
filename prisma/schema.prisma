@@ -25,6 +25,12 @@ enum DiagnosticStatus {
   ABANDONED
 }
 
+enum BaselineStatus {
+  IN_PROGRESS
+  COMPLETED
+  ABANDONED
+}
+
 model User {
   id                 String               @id @default(cuid())
   email              String               @unique
@@ -37,6 +43,7 @@ model User {
   skillMasteries     SkillMastery[]
   events             Event[]
   diagnosticSessions DiagnosticSession[]
+  baselineSessions   BaselineSession[]
   interventionFlags  InterventionFlag[]
   teacherProfile     TeacherProfile?
   studentProfile     StudentProfile?
@@ -53,6 +60,7 @@ model Subject {
   items              Item[]
   events             Event[]
   diagnosticSessions DiagnosticSession[]
+  baselineSessions   BaselineSession[]
   interventionFlags  InterventionFlag[]
 }
 
@@ -74,6 +82,7 @@ model Skill {
   items             ItemSkill[]
   masteries         SkillMastery[]
   events            Event[]
+  baselineAttempts  BaselineAttempt[]
   interventionFlags InterventionFlag[]
   explanationRoutes ExplanationRoute[]
 
@@ -92,17 +101,18 @@ model SkillPrereq {
 }
 
 model Item {
-  id               String      @id @default(cuid())
+  id               String            @id @default(cuid())
   question         String
-  type             String      @default("MCQ")
+  type             String            @default("MCQ")
   options          Json
   answer           String
   misconceptionMap Json?
   subjectId        String?
-  createdAt        DateTime    @default(now())
-  subject          Subject?    @relation(fields: [subjectId], references: [id])
+  createdAt        DateTime          @default(now())
+  subject          Subject?          @relation(fields: [subjectId], references: [id])
   skills           ItemSkill[]
   attempts         Attempt[]
+  baselineAttempts BaselineAttempt[]
   events           Event[]
 }
 
@@ -248,6 +258,41 @@ model DiagnosticSession {
   user             User             @relation(fields: [userId], references: [id])
   subject          Subject          @relation(fields: [subjectId], references: [id])
   attempts         Attempt[]        @relation("DiagnosticAttempts")
+}
+
+model BaselineSession {
+  id               String         @id @default(cuid())
+  userId           String
+  subjectId        String
+  startedAt        DateTime       @default(now())
+  completedAt      DateTime?
+  status           BaselineStatus @default(IN_PROGRESS)
+  itemsSeen        Int            @default(0)
+  maxItems         Int            @default(24)
+  payload          Json           @default("{}")
+  user             User           @relation(fields: [userId], references: [id])
+  subject          Subject        @relation(fields: [subjectId], references: [id])
+  attempts         BaselineAttempt[]
+
+  @@index([userId, subjectId, status])
+}
+
+model BaselineAttempt {
+  id              String          @id @default(cuid())
+  baselineSessionId String
+  userId          String
+  itemId          String
+  skillId         String
+  answer          String
+  correct         Boolean
+  createdAt       DateTime        @default(now())
+  baselineSession BaselineSession @relation(fields: [baselineSessionId], references: [id], onDelete: Cascade)
+  user            User            @relation(fields: [userId], references: [id])
+  item            Item            @relation(fields: [itemId], references: [id])
+  skill           Skill           @relation(fields: [skillId], references: [id])
+
+  @@index([baselineSessionId, skillId])
+  @@unique([baselineSessionId, itemId])
 }
 
 model InterventionFlag {

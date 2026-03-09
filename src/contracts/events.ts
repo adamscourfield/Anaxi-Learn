@@ -51,6 +51,27 @@ export const DiagnosticCompletedPayloadSchema = z.object({
   itemsSeen: z.number(),
 });
 
+export const BaselineStartedPayloadSchema = z.object({
+  sessionId: z.string(),
+  subjectSlug: z.string(),
+  plannedItems: z.number().int().nonnegative(),
+});
+
+export const BaselineItemAnsweredPayloadSchema = z.object({
+  sessionId: z.string(),
+  itemId: z.string(),
+  skillId: z.string(),
+  subjectId: z.string(),
+  correct: z.boolean(),
+});
+
+export const BaselineCompletedPayloadSchema = z.object({
+  sessionId: z.string(),
+  subjectSlug: z.string(),
+  itemsSeen: z.number().int().nonnegative(),
+  seededSkills: z.number().int().nonnegative(),
+});
+
 export const InterventionRecommendedPayloadSchema = z.object({
   skillId: z.string(),
   reason: z.string(),
@@ -191,6 +212,9 @@ export const EventPayloadSchemas: Record<string, z.ZodSchema> = {
   step_interaction_completed: StepInteractionCompletedPayloadSchema,
   step_interaction_evaluated: StepInteractionEvaluatedPayloadSchema,
   diagnostic_completed: DiagnosticCompletedPayloadSchema,
+  baseline_started: BaselineStartedPayloadSchema,
+  baseline_item_answered: BaselineItemAnsweredPayloadSchema,
+  baseline_completed: BaselineCompletedPayloadSchema,
   intervention_recommended: InterventionRecommendedPayloadSchema,
   intervention_flagged: InterventionFlaggedPayloadSchema,
 };
