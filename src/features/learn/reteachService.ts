@@ -1,4 +1,5 @@
 import { prisma } from '@/db/prisma';
+import { stripStudentQuestionLabel } from '@/features/items/itemMeta';
 import { getReteachPlan, type RouteType, type ReteachPlan, type StepType, type VisualType, type StepInteraction } from './reteachContent';
 
 export async function getReteachPlanForSkill(skillId: string, routeType: RouteType): Promise<ReteachPlan> {
@@ -80,12 +81,16 @@ export async function getReteachPlanForSkill(skillId: string, routeType: RouteTy
               ? 'decompose_number'
               : ((legacyVisualType as VisualType | undefined) ?? 'none');
 
+      const clean = (v: unknown) => stripStudentQuestionLabel(v);
+      const cleanedOptions = checkpointOptions.map((o) => clean(o)).filter((o) => o.length > 0);
+      const cleanedAnswer = clean(s.checkpointAnswer);
+
       return {
-        title: s.title,
-        explanation: s.explanation,
-        checkpointQuestion: s.checkpointQuestion,
-        checkpointOptions,
-        checkpointAnswer: s.checkpointAnswer,
+        title: clean(s.title),
+        explanation: clean(s.explanation),
+        checkpointQuestion: clean(s.checkpointQuestion),
+        checkpointOptions: cleanedOptions,
+        checkpointAnswer: cleanedAnswer || s.checkpointAnswer,
         alternativeHint: s.alternativeHint ?? undefined,
         stepType: (s.stepType as StepType | undefined) ?? (legacyStepType as StepType | undefined) ?? 'checkpoint',
         visualType,
