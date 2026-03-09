@@ -54,14 +54,21 @@ export async function POST(req: NextRequest) {
     options: i.item.options,
   })));
 
+  const minItems = Math.min(12, Math.max(6, skills.length));
+  const maxItems = Math.min(Math.max(minItems, planned.length), 36);
+  const confidenceTarget = 0.75;
+
   const baselineSession = await prisma.baselineSession.create({
     data: {
       userId,
       subjectId: subject.id,
-      maxItems: planned.length,
+      maxItems,
       payload: {
         subjectSlug,
         plannedItems: planned,
+        minItems,
+        maxItems,
+        confidenceTarget,
       },
     },
   });
@@ -82,6 +89,8 @@ export async function POST(req: NextRequest) {
     sessionId: baselineSession.id,
     resumed: false,
     plannedItems: planned,
-    maxItems: planned.length,
+    maxItems,
+    minItems,
+    confidenceTarget,
   });
 }
