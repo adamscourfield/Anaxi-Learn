@@ -135,7 +135,6 @@ export function BaselineRunClient({ subjectSlug }: { subjectSlug: string }) {
         </div>
 
         <div className="rounded-2xl border-2 border-blue-100 bg-white px-5 py-6 sm:px-6 sm:py-7">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-blue-700">{item.skillCode}</p>
           <h2 className="text-2xl font-bold leading-tight text-slate-900 sm:text-3xl">{questionText}</h2>
         </div>
 
