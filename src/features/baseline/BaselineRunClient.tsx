@@ -33,7 +33,7 @@ export function BaselineRunClient({ subjectSlug }: { subjectSlug: string }) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ sessionId: currentSessionId }),
     });
-    if (!nextRes.ok) throw new Error(`Failed to load next baseline item (${nextRes.status})`);
+    if (!nextRes.ok) throw new Error('Could not load the next question.');
     const next = (await nextRes.json()) as {
       done: boolean;
       reason?: string;
@@ -70,7 +70,7 @@ export function BaselineRunClient({ subjectSlug }: { subjectSlug: string }) {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ subjectSlug }),
         });
-        if (!startRes.ok) throw new Error(`Failed to start baseline (${startRes.status})`);
+        if (!startRes.ok) throw new Error('Could not start baseline.');
         const start = (await startRes.json()) as { sessionId: string; maxItems?: number };
 
         if (cancelled) return;
@@ -78,7 +78,7 @@ export function BaselineRunClient({ subjectSlug }: { subjectSlug: string }) {
         if (start.maxItems) setMaxItems(start.maxItems);
         await loadNext(start.sessionId);
       } catch (e) {
-        if (!cancelled) setError(e instanceof Error ? e.message : 'Failed to initialize baseline');
+        if (!cancelled) setError(e instanceof Error ? e.message : 'Could not start baseline.');
       } finally {
         if (!cancelled) setLoading(false);
       }
@@ -105,10 +105,10 @@ export function BaselineRunClient({ subjectSlug }: { subjectSlug: string }) {
           answer: selectedAnswer,
         }),
       });
-      if (!res.ok) throw new Error(`Submit failed (${res.status})`);
+      if (!res.ok) throw new Error('Could not save your answer. Tap Next again.');
       await loadNext(sessionId);
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'Failed to submit baseline answer');
+      setError(e instanceof Error ? e.message : 'Could not save your answer. Tap Next again.');
     } finally {
       setSubmitting(false);
     }
@@ -147,13 +147,16 @@ export function BaselineRunClient({ subjectSlug }: { subjectSlug: string }) {
               </button>
             ))
           ) : (
-            <input
-              type="text"
-              value={selectedAnswer}
-              onChange={(e) => setSelectedAnswer(e.target.value)}
-              placeholder={answerType === 'SHORT_NUMERIC' ? 'Enter a number' : 'Type your answer'}
-              className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none ring-0 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500"
-            />
+            <div className="space-y-2">
+              <input
+                type="text"
+                value={selectedAnswer}
+                onChange={(e) => setSelectedAnswer(e.target.value)}
+                placeholder={answerType === 'SHORT_NUMERIC' ? 'Enter a number' : 'Type your answer'}
+                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none ring-0 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500"
+              />
+              {answerType === 'SHORT_TEXT' && <p className="text-xs text-slate-600">Use clear words. Commas and “and” are both okay.</p>}
+            </div>
           )}
         </div>
 

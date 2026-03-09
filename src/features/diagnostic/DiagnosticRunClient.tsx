@@ -43,7 +43,7 @@ export function DiagnosticRunClient({ subject, skill, item, sessionId, itemsSeen
         }),
       });
 
-      if (!res.ok) throw new Error(`Submit failed (${res.status})`);
+      if (!res.ok) throw new Error('Could not save your answer. Tap Next again.');
 
       const data = (await res.json()) as { correct?: boolean };
       const wasCorrect = data.correct === true;
@@ -54,7 +54,7 @@ export function DiagnosticRunClient({ subject, skill, item, sessionId, itemsSeen
       router.refresh();
       router.push(`/diagnostic/${subjectSlug}/run`);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to submit answer. Please try again.');
+      setError(err instanceof Error ? err.message : 'Could not save your answer. Tap Next again.');
     } finally {
       setSubmitting(false);
     }
@@ -85,7 +85,7 @@ export function DiagnosticRunClient({ subject, skill, item, sessionId, itemsSeen
           {answerType === 'MCQ' ? (
             parsedOptions.choices.length === 0 ? (
               <p className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800">
-                This diagnostic item has no valid options.
+                This question has no options yet.
               </p>
             ) : (
               parsedOptions.choices.map((option, i) => (
@@ -102,22 +102,25 @@ export function DiagnosticRunClient({ subject, skill, item, sessionId, itemsSeen
               ))
             )
           ) : (
-            <input
-              type="text"
-              value={selectedAnswer}
-              onChange={(e) => {
-                setSelectedAnswer(e.target.value);
-                setError(null);
-              }}
-              placeholder={answerType === 'SHORT_NUMERIC' ? 'Enter a number' : 'Type your answer'}
-              className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none ring-0 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500"
-            />
+            <div className="space-y-2">
+              <input
+                type="text"
+                value={selectedAnswer}
+                onChange={(e) => {
+                  setSelectedAnswer(e.target.value);
+                  setError(null);
+                }}
+                placeholder={answerType === 'SHORT_NUMERIC' ? 'Enter a number' : 'Type your answer'}
+                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none ring-0 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500"
+              />
+              {answerType === 'SHORT_TEXT' && <p className="text-xs text-slate-600">Use clear words. Commas and “and” are both okay.</p>}
+            </div>
           )}
         </div>
 
         {error && <p className="text-sm text-rose-600">{error}</p>}
         {feedbackFlash === 'correct' && <p className="text-sm font-semibold text-emerald-600">+AX</p>}
-        {feedbackFlash === 'incorrect' && <p className="text-sm text-amber-600">Nice try — next one.</p>}
+        {feedbackFlash === 'incorrect' && <p className="text-sm text-amber-600">Good try — keep going.</p>}
 
         <button
           onClick={submitAnswer}
