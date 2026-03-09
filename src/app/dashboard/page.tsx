@@ -35,6 +35,21 @@ function getUnitSortKey(unitCode: string): number {
   return m ? Number(m[1]) : Number.MAX_SAFE_INTEGER;
 }
 
+function getStrandSortKey(strand: string): number {
+  if (/^PV$/i.test(strand)) return 1;
+  if (/^ADD$/i.test(strand)) return 2;
+  if (/^MUL$/i.test(strand)) return 3;
+  if (/^POW$/i.test(strand)) return 4;
+  if (/^FAC$/i.test(strand)) return 5;
+  if (/^PER$/i.test(strand)) return 6;
+  if (/^ARE$/i.test(strand)) return 7;
+  if (/^REP$/i.test(strand)) return 8;
+  if (/^ORD$/i.test(strand)) return 9;
+  if (/^LAW$/i.test(strand)) return 10;
+  if (/^STA$/i.test(strand)) return 11;
+  return 99;
+}
+
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
   if (!session?.user) redirect('/login');
@@ -168,6 +183,18 @@ export default async function DashboardPage() {
 
                       const unitStyles = getMasteryStyles(unitMastery);
 
+                      const strandGroups = Object.entries(
+                        skillsInUnit.reduce(
+                          (acc, skill) => {
+                            const strand = (skill.strand || 'OTHER').toUpperCase();
+                            acc[strand] = acc[strand] ?? [];
+                            acc[strand].push(skill);
+                            return acc;
+                          },
+                          {} as Record<string, typeof skillsInUnit>
+                        )
+                      ).sort(([a], [b]) => getStrandSortKey(a) - getStrandSortKey(b));
+
                       return (
                         <details key={unitCode} className="group rounded-lg border border-gray-200 bg-white open:border-blue-200" open={unitDue > 0}>
                           <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-3 py-2.5">
@@ -182,30 +209,62 @@ export default async function DashboardPage() {
                             </div>
                           </summary>
 
-                          <div className="border-t border-gray-100 px-3 py-3">
-                            <div className="space-y-2 pl-3 sm:pl-4 border-l-2 border-gray-100">
-                              {skillsInUnit.map((skill) => {
+                          <div className="border-t border-gray-100 px-3 py-3 space-y-3">
+                            {strandGroups.map(([strand, skillsInStrand]) => {
+                              const strandDue = skillsInStrand.filter((skill) => {
                                 const mastery = skill.masteries[0];
-                                const masteryPct = mastery ? Math.round(mastery.mastery * 100) : 0;
-                                const isDue = !mastery?.nextReviewAt || mastery.nextReviewAt <= now;
-                                const masteryStyles = getMasteryStyles(masteryPct);
+                                return !mastery?.nextReviewAt || mastery.nextReviewAt <= now;
+                              }).length;
 
-                                return (
-                                  <article
-                                    key={skill.id}
-                                    className={`rounded-lg border bg-white p-3 transition-colors ${isDue ? 'border-amber-300' : 'border-gray-200'}`}
-                                  >
-                                    <div className="mb-2 flex items-center justify-between gap-3">
-                                      <span className="text-sm font-medium text-gray-900">{skill.code} · {skill.name}</span>
-                                      <span className={`text-xs font-semibold tabular-nums ${masteryStyles.text}`}>{masteryPct}%</span>
+                              const strandMastery =
+                                skillsInStrand.length > 0
+                                  ? Math.round(
+                                      skillsInStrand.reduce((sum, skill) => {
+                                        const mastery = skill.masteries[0];
+                                        return sum + (mastery ? mastery.mastery * 100 : 0);
+                                      }, 0) / skillsInStrand.length
+                                    )
+                                  : 0;
+
+                              const strandStyles = getMasteryStyles(strandMastery);
+
+                              return (
+                                <section key={`${unitCode}-${strand}`} className="rounded-md border border-gray-100 bg-gray-50/40 p-2.5">
+                                  <div className="mb-2 flex items-center justify-between gap-3">
+                                    <div className="flex items-center gap-2">
+                                      <span className="rounded bg-slate-100 px-2 py-0.5 text-[11px] font-semibold text-slate-700">{strand}</span>
+                                      <span className="text-xs text-gray-500">{skillsInStrand.length} subtopics</span>
+                                      {strandDue > 0 && <span className="rounded bg-amber-100 px-2 py-0.5 text-[11px] font-medium text-amber-800">{strandDue} due</span>}
                                     </div>
-                                    <div className="h-1.5 w-full overflow-hidden rounded-full bg-gray-200">
-                                      <div className={`h-full rounded-full transition-all ${masteryStyles.bar}`} style={{ width: `${masteryPct}%` }} />
-                                    </div>
-                                  </article>
-                                );
-                              })}
-                            </div>
+                                    <span className={`text-xs font-semibold tabular-nums ${strandStyles.text}`}>{strandMastery}%</span>
+                                  </div>
+
+                                  <div className="space-y-2 pl-3 sm:pl-4 border-l-2 border-gray-100">
+                                    {skillsInStrand.map((skill) => {
+                                      const mastery = skill.masteries[0];
+                                      const masteryPct = mastery ? Math.round(mastery.mastery * 100) : 0;
+                                      const isDue = !mastery?.nextReviewAt || mastery.nextReviewAt <= now;
+                                      const masteryStyles = getMasteryStyles(masteryPct);
+
+                                      return (
+                                        <article
+                                          key={skill.id}
+                                          className={`rounded-lg border bg-white p-3 transition-colors ${isDue ? 'border-amber-300' : 'border-gray-200'}`}
+                                        >
+                                          <div className="mb-2 flex items-center justify-between gap-3">
+                                            <span className="text-sm font-medium text-gray-900">{skill.code} · {skill.name}</span>
+                                            <span className={`text-xs font-semibold tabular-nums ${masteryStyles.text}`}>{masteryPct}%</span>
+                                          </div>
+                                          <div className="h-1.5 w-full overflow-hidden rounded-full bg-gray-200">
+                                            <div className={`h-full rounded-full transition-all ${masteryStyles.bar}`} style={{ width: `${masteryPct}%` }} />
+                                          </div>
+                                        </article>
+                                      );
+                                    })}
+                                  </div>
+                                </section>
+                              );
+                            })}
                           </div>
                         </details>
                       );
