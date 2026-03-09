@@ -211,7 +211,7 @@ const decomposeRenderer: InteractionRenderer = {
       <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-base text-slate-700">
         <p className="text-lg font-bold text-slate-900">🧩 Build the decomposition</p>
         <p className="mt-1 text-xl font-semibold tabular-nums text-slate-900">{formatted} = ?</p>
-        <div className="mt-3 flex flex-wrap gap-2.5">
+        <div className="mt-3 grid grid-cols-2 gap-2.5 sm:grid-cols-3">
           {options.map((p) => {
             const on = selectedParts.includes(p);
             return (
@@ -221,7 +221,7 @@ const decomposeRenderer: InteractionRenderer = {
                   const next = on ? selectedParts.filter((x) => x !== p) : [...selectedParts, p];
                   markInteraction({ decompositionParts: next, completedAt: Date.now() });
                 }}
-                className={`rounded-lg border px-3 py-2 text-base font-semibold ${on ? 'border-blue-300 bg-blue-100 text-blue-900' : 'border-slate-300 bg-white text-slate-700'}`}
+                className={`w-full rounded-lg border px-3 py-3 text-center text-base font-semibold ${on ? 'border-blue-300 bg-blue-100 text-blue-900' : 'border-slate-300 bg-white text-slate-700'}`}
               >
                 {p}
               </button>
