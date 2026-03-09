@@ -30,6 +30,23 @@ function parseRoute(input: unknown): ItemMeta['route'] {
   return null;
 }
 
+export function stripStudentQuestionLabel(question: unknown): string {
+  if (typeof question !== 'string') return '';
+
+  const patterns = [
+    /^\s*\[[A-Za-z]{1,5}\d*(?:\.\d+){1,4}\]\s*/,
+    /^\s*[A-Za-z]{1,5}\d*(?:\.\d+){1,4}\s*[:\-–]\s*/,
+    /^\s*subtopic\s+[A-Za-z0-9.\-_/]+\s*[:\-–]\s*/i,
+  ];
+
+  let cleaned = question;
+  for (const pattern of patterns) {
+    cleaned = cleaned.replace(pattern, '');
+  }
+
+  return cleaned.trim();
+}
+
 export function parseItemOptions(options: unknown): ParsedItemOptions {
   // Legacy shape: options is just string[]
   if (Array.isArray(options)) {

@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { parseAnswerType, parseItemOptions } from '@/features/items/itemMeta';
+import { parseAnswerType, parseItemOptions, stripStudentQuestionLabel } from '@/features/items/itemMeta';
 
 type BaselineItem = {
   id: string;
@@ -29,6 +29,7 @@ export function BaselineRunClient({ subjectSlug }: { subjectSlug: string }) {
     [item?.type, item?.question, item?.options]
   );
   const parsedOptions = useMemo(() => parseItemOptions(item?.options ?? {}), [item?.options]);
+  const questionText = useMemo(() => stripStudentQuestionLabel(item?.question), [item?.question]);
 
   async function loadNext(currentSessionId: string) {
     const nextRes = await fetch('/api/baseline/next', {
@@ -135,7 +136,7 @@ export function BaselineRunClient({ subjectSlug }: { subjectSlug: string }) {
 
         <div className="rounded-2xl border-2 border-blue-100 bg-white px-5 py-6 sm:px-6 sm:py-7">
           <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-blue-700">{item.skillCode}</p>
-          <h2 className="text-2xl font-bold leading-tight text-slate-900 sm:text-3xl">{item.question}</h2>
+          <h2 className="text-2xl font-bold leading-tight text-slate-900 sm:text-3xl">{questionText}</h2>
         </div>
 
         <div className="space-y-3">

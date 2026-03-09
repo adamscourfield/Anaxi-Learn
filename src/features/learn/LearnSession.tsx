@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ReteachSession } from './ReteachSession';
 import type { ReteachPlan } from './reteachContent';
-import { parseAnswerType, parseItemOptions } from '@/features/items/itemMeta';
+import { parseAnswerType, parseItemOptions, stripStudentQuestionLabel } from '@/features/items/itemMeta';
 
 interface Item {
   id: string;
@@ -73,6 +73,7 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
   );
   const parsedOptions = useMemo(() => parseItemOptions(currentItem?.options), [currentItem?.options]);
   const options = parsedOptions.choices;
+  const questionText = useMemo(() => stripStudentQuestionLabel(currentItem?.question), [currentItem?.question]);
 
   async function submitAnswer() {
     if (!selectedAnswer.trim() || !currentItem || submitting) return;
@@ -235,7 +236,7 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
           </div>
 
           <div className={`rounded-2xl border-2 border-blue-100 bg-white px-5 py-6 sm:px-6 sm:py-7 ${feedbackFlash === 'correct' ? 'anx-pulse-correct' : ''} ${feedbackFlash === 'incorrect' ? 'anx-shake-incorrect' : ''}`}>
-            <h2 className="text-2xl font-bold leading-tight text-gray-900 sm:text-3xl">{currentItem.question}</h2>
+            <h2 className="text-2xl font-bold leading-tight text-gray-900 sm:text-3xl">{questionText}</h2>
           </div>
 
           <div className="space-y-3">
