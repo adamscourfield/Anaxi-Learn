@@ -38,6 +38,9 @@ model User {
   events             Event[]
   diagnosticSessions DiagnosticSession[]
   interventionFlags  InterventionFlag[]
+  teacherProfile     TeacherProfile?
+  studentProfile     StudentProfile?
+  classEnrollments   ClassroomEnrollment[]
 }
 
 model Subject {
@@ -262,4 +265,74 @@ model InterventionFlag {
   skill      Skill     @relation(fields: [skillId], references: [id])
 
   @@unique([userId, skillId])
+}
+
+model TeacherProfile {
+  id                String           @id @default(cuid())
+  userId            String           @unique
+  externalSource    String           @default("anaxi_observe")
+  externalTeacherId String
+  externalSchoolId  String?
+  displayName       String?
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  user              User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  classrooms        TeacherClassroom[]
+
+  @@unique([externalSource, externalTeacherId])
+}
+
+model StudentProfile {
+  id                String                @id @default(cuid())
+  userId            String                @unique
+  externalSource    String                @default("anaxi_observe")
+  externalStudentId String
+  externalSchoolId  String?
+  createdAt         DateTime              @default(now())
+  updatedAt         DateTime              @updatedAt
+  user              User                  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  enrollments       ClassroomEnrollment[]
+
+  @@unique([externalSource, externalStudentId])
+}
+
+model Classroom {
+  id              String                @id @default(cuid())
+  externalSource  String                @default("anaxi_observe")
+  externalClassId String
+  externalSchoolId String?
+  name            String
+  yearGroup       String?
+  subjectSlug     String?
+  createdAt       DateTime              @default(now())
+  updatedAt       DateTime              @updatedAt
+  teachers        TeacherClassroom[]
+  enrollments     ClassroomEnrollment[]
+
+  @@unique([externalSource, externalClassId])
+}
+
+model TeacherClassroom {
+  id               String         @id @default(cuid())
+  teacherProfileId String
+  classroomId      String
+  roleLabel        String?
+  createdAt        DateTime       @default(now())
+  teacherProfile   TeacherProfile @relation(fields: [teacherProfileId], references: [id], onDelete: Cascade)
+  classroom        Classroom      @relation(fields: [classroomId], references: [id], onDelete: Cascade)
+
+  @@unique([teacherProfileId, classroomId])
+}
+
+model ClassroomEnrollment {
+  id               String         @id @default(cuid())
+  classroomId      String
+  studentUserId    String
+  studentProfileId String?
+  createdAt        DateTime       @default(now())
+  classroom        Classroom      @relation(fields: [classroomId], references: [id], onDelete: Cascade)
+  student          User           @relation(fields: [studentUserId], references: [id], onDelete: Cascade)
+  studentProfile   StudentProfile? @relation(fields: [studentProfileId], references: [id], onDelete: SetNull)
+
+  @@unique([classroomId, studentUserId])
 }

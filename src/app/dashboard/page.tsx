@@ -155,6 +155,20 @@ export default async function DashboardPage() {
           </div>
         )}
 
+        {(['TEACHER', 'ADMIN'] as const).includes((session.user as { role?: 'STUDENT' | 'TEACHER' | 'ADMIN' }).role ?? 'STUDENT') && (
+          <section className="mt-8 rounded-2xl border border-indigo-200 bg-indigo-50 p-5 sm:p-6">
+            <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-indigo-800">Teaching Tools</h2>
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/teacher/dashboard"
+                className="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
+              >
+                Teacher Dashboard
+              </Link>
+            </div>
+          </section>
+        )}
+
         {(session.user as { role?: string }).role === 'ADMIN' && (
           <section className="mt-8 rounded-2xl border border-purple-200 bg-purple-50 p-5 sm:p-6">
             <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-purple-800">Admin Tools</h2>

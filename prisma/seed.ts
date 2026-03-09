@@ -32,6 +32,104 @@ async function main() {
     },
   });
 
+  // Demo teacher (Observe-linked)
+  const teacherPassword = await bcrypt.hash('teacher123', 10);
+  const teacher = await prisma.user.upsert({
+    where: { email: 'teacher@anaxi.local' },
+    update: { role: 'TEACHER' },
+    create: {
+      email: 'teacher@anaxi.local',
+      password: teacherPassword,
+      name: 'Demo Teacher',
+      role: 'TEACHER',
+    },
+  });
+
+  const teacherProfile = await prisma.teacherProfile.upsert({
+    where: { userId: teacher.id },
+    update: {
+      externalSource: 'anaxi_observe',
+      externalTeacherId: 'observe-teacher-001',
+      externalSchoolId: 'observe-school-001',
+      displayName: 'Demo Teacher',
+    },
+    create: {
+      userId: teacher.id,
+      externalSource: 'anaxi_observe',
+      externalTeacherId: 'observe-teacher-001',
+      externalSchoolId: 'observe-school-001',
+      displayName: 'Demo Teacher',
+    },
+  });
+
+  const studentProfile = await prisma.studentProfile.upsert({
+    where: { userId: student.id },
+    update: {
+      externalSource: 'anaxi_observe',
+      externalStudentId: 'observe-student-001',
+      externalSchoolId: 'observe-school-001',
+    },
+    create: {
+      userId: student.id,
+      externalSource: 'anaxi_observe',
+      externalStudentId: 'observe-student-001',
+      externalSchoolId: 'observe-school-001',
+    },
+  });
+
+  const classroom = await prisma.classroom.upsert({
+    where: {
+      externalSource_externalClassId: {
+        externalSource: 'anaxi_observe',
+        externalClassId: 'observe-class-7A-maths',
+      },
+    },
+    update: {
+      name: 'Year 7A Maths',
+      yearGroup: 'Year 7',
+      subjectSlug: 'ks3-maths',
+      externalSchoolId: 'observe-school-001',
+    },
+    create: {
+      externalSource: 'anaxi_observe',
+      externalClassId: 'observe-class-7A-maths',
+      externalSchoolId: 'observe-school-001',
+      name: 'Year 7A Maths',
+      yearGroup: 'Year 7',
+      subjectSlug: 'ks3-maths',
+    },
+  });
+
+  await prisma.teacherClassroom.upsert({
+    where: {
+      teacherProfileId_classroomId: {
+        teacherProfileId: teacherProfile.id,
+        classroomId: classroom.id,
+      },
+    },
+    update: { roleLabel: 'Lead' },
+    create: {
+      teacherProfileId: teacherProfile.id,
+      classroomId: classroom.id,
+      roleLabel: 'Lead',
+    },
+  });
+
+  await prisma.classroomEnrollment.upsert({
+    where: {
+      classroomId_studentUserId: {
+        classroomId: classroom.id,
+        studentUserId: student.id,
+      },
+    },
+    update: { studentProfileId: studentProfile.id },
+    create: {
+      classroomId: classroom.id,
+      studentUserId: student.id,
+      studentProfileId: studentProfile.id,
+    },
+  });
+
   // 2️⃣ Subject
   const subject = await prisma.subject.upsert({
     where: { slug: 'ks3-maths' },
