@@ -90,8 +90,8 @@ const placeValueRenderer: InteractionRenderer = {
 
     return (
       <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-base text-slate-700">
-        <p className="mb-2 text-lg font-bold text-slate-900">Tap a place-value column</p>
-        <p className="mb-2 text-sm text-slate-600">Select the column you want to focus on before answering checkpoint.</p>
+        <p className="mb-2 text-lg font-bold text-slate-900">🔢 Tap a place-value column</p>
+        <p className="mb-2 text-sm text-slate-600">Pick the column you want to focus on before answering.</p>
         <div className="grid grid-cols-4 gap-2">
           {labels.map((h, i) => {
             const active = state.placeValueSelection === h;
@@ -150,9 +150,9 @@ const compareRenderer: InteractionRenderer = {
     const picked = state.compareColumnIndex;
 
     return (
-      <div className="rounded-lg border border-slate-200 bg-slate-50 p-3 text-xs text-slate-700">
-        <p className="font-semibold">Tap the first different column</p>
-        <p className="mt-1 text-[11px] text-slate-500">Compare from left to right and stop at first difference.</p>
+      <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-base text-slate-700">
+        <p className="font-bold text-slate-900">🧠 Tap the first different column</p>
+        <p className="mt-1 text-sm text-slate-600">Compare from left to right and stop at the first difference.</p>
         <div className="mt-2 grid grid-cols-2 gap-3">
           {[{ name: 'A', d: l }, { name: 'B', d: r }].map((row) => (
             <div key={row.name} className="rounded border border-slate-200 bg-white p-2">
@@ -174,12 +174,12 @@ const compareRenderer: InteractionRenderer = {
             </div>
           ))}
         </div>
-        <p className="mt-2 text-[11px] text-slate-600">
+        <p className="mt-2 text-sm text-slate-700">
           {picked == null
             ? 'Tap a column to choose where the numbers first change.'
             : picked === firstDiff
-              ? `Great pick: ${labels[picked] ?? 'that'} is right.`
-              : 'Not quite yet. Check from left to right and try again.'}
+              ? `Brilliant! ${labels[picked] ?? 'That'} is the correct column ✅`
+              : 'Good try — scan from left to right and have another go.'}
         </p>
       </div>
     );
@@ -209,7 +209,7 @@ const decomposeRenderer: InteractionRenderer = {
 
     return (
       <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-base text-slate-700">
-        <p className="text-lg font-bold text-slate-900">Build the decomposition</p>
+        <p className="text-lg font-bold text-slate-900">🧩 Build the decomposition</p>
         <p className="mt-1 text-xl font-semibold tabular-nums text-slate-900">{formatted} = ?</p>
         <div className="mt-3 flex flex-wrap gap-2.5">
           {options.map((p) => {
@@ -231,7 +231,7 @@ const decomposeRenderer: InteractionRenderer = {
         <p className="mt-3 rounded-lg bg-white px-3 py-2 text-sm text-slate-700">
           {selectedParts.length > 0 ? selectedParts.join(' + ') : 'Tap parts to build your answer'}
         </p>
-        <p className="mt-2 text-xs text-slate-500">Tip: choose all correct parts only — there are extra options on purpose.</p>
+        <p className="mt-2 text-sm text-slate-600">Tip: choose all correct parts only — the extra options are there to test your thinking.</p>
       </div>
     );
   },
