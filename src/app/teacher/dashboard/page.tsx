@@ -1,6 +1,7 @@
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/features/auth/authOptions';
 import { redirect } from 'next/navigation';
+import Link from 'next/link';
 import { prisma } from '@/db/prisma';
 
 type EventPayload = Record<string, unknown>;
@@ -10,7 +11,21 @@ function pct(numerator: number, denominator: number): string {
   return `${Math.round((numerator / denominator) * 100)}%`;
 }
 
-export default async function TeacherDashboardPage() {
+function parseDays(input: string | undefined): number {
+  const n = Number(input ?? '30');
+  if (![7, 30, 90].includes(n)) return 30;
+  return n;
+}
+
+interface Props {
+  searchParams?: Promise<{ days?: string; subtopic?: string }>;
+}
+
+export default async function TeacherDashboardPage({ searchParams }: Props) {
+  const params = (await searchParams) ?? {};
+  const days = parseDays(params.days);
+  const subtopicFilter = params.subtopic?.trim() || '';
+
   const session = await getServerSession(authOptions);
   if (!session?.user) redirect('/login');
 
@@ -56,15 +71,14 @@ export default async function TeacherDashboardPage() {
     );
   }
 
-  const classIds = teacherProfile.classrooms.map((tc) => tc.classroom.id);
-  const allStudentIds = [...new Set(
-    teacherProfile.classrooms.flatMap((tc) => tc.classroom.enrollments.map((e) => e.studentUserId))
-  )];
+  const allStudentIds = [...new Set(teacherProfile.classrooms.flatMap((tc) => tc.classroom.enrollments.map((e) => e.studentUserId)))];
+  const since = new Date(Date.now() - days * 24 * 60 * 60 * 1000);
 
   const events = allStudentIds.length
     ? await prisma.event.findMany({
         where: {
           studentUserId: { in: allStudentIds },
+          createdAt: { gte: since },
           name: {
             in: [
               'question_answered',
@@ -87,7 +101,6 @@ export default async function TeacherDashboardPage() {
     : [];
 
   const subjectMap = new Map((await prisma.subject.findMany({ select: { id: true, slug: true } })).map((s) => [s.slug, s.id]));
-
   const now = new Date();
 
   return (
@@ -99,7 +112,20 @@ export default async function TeacherDashboardPage() {
         <div className="mt-4 rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-700">
           <p><span className="font-semibold">Observe Teacher ID:</span> {teacherProfile.externalTeacherId}</p>
           <p><span className="font-semibold">Observe School ID:</span> {teacherProfile.externalSchoolId ?? '—'}</p>
-          <p><span className="font-semibold">Linked Classes:</span> {classIds.length}</p>
+          <p><span className="font-semibold">Time window:</span> last {days} days</p>
+          <p><span className="font-semibold">Subtopic filter:</span> {subtopicFilter || 'All'}</p>
+        </div>
+
+        <div className="mt-4 flex flex-wrap gap-2 text-xs">
+          {[7, 30, 90].map((d) => (
+            <Link
+              key={d}
+              href={`/teacher/dashboard?days=${d}${subtopicFilter ? `&subtopic=${encodeURIComponent(subtopicFilter)}` : ''}`}
+              className={`rounded-md border px-3 py-1 ${days === d ? 'border-indigo-300 bg-indigo-100 text-indigo-800' : 'border-slate-300 bg-white text-slate-700'}`}
+            >
+              {d}d
+            </Link>
+          ))}
         </div>
 
         <div className="mt-6 space-y-6">
@@ -111,8 +137,9 @@ export default async function TeacherDashboardPage() {
 
             const classEvents = events.filter((e) => {
               if (!e.studentUserId || !classStudentIds.has(e.studentUserId)) return false;
-              if (!classSubjectId) return true;
-              return e.subjectId === classSubjectId || e.subjectId == null;
+              if (classSubjectId && !(e.subjectId === classSubjectId || e.subjectId == null)) return false;
+              if (subtopicFilter && (e.payload as EventPayload).subtopicCode !== subtopicFilter) return false;
+              return true;
             });
 
             const questionEvents = classEvents.filter((e) => e.name === 'question_answered');
@@ -129,9 +156,7 @@ export default async function TeacherDashboardPage() {
             const checkpointCorrect = stepAttemptEvents.filter((e) => Boolean((e.payload as EventPayload).correct)).length;
             const routeStrong = routeEvents.filter((e) => ((e.payload as EventPayload).accuracy as number | undefined ?? 0) >= 0.8).length;
             const rulePassed = interactionEvalEvents.filter((e) => Boolean((e.payload as EventPayload).rulePassed)).length;
-            const wrongFirstDiff = interactionEvalEvents.filter(
-              (e) => (e.payload as EventPayload).errorType === 'wrong_first_difference'
-            ).length;
+            const wrongFirstDiff = interactionEvalEvents.filter((e) => (e.payload as EventPayload).errorType === 'wrong_first_difference').length;
 
             const studentRows = cls.enrollments.map((enrollment) => {
               const student = enrollment.student;
@@ -147,6 +172,12 @@ export default async function TeacherDashboardPage() {
               const evalPass = studentEval.filter((e) => Boolean((e.payload as EventPayload).rulePassed)).length;
               const evalWrong = studentEval.filter((e) => (e.payload as EventPayload).errorType === 'wrong_first_difference').length;
 
+              const needsAction = (
+                (studentEval.length > 0 && evalPass / Math.max(1, studentEval.length) < 0.6) ||
+                (studentStep.length > 0 && checkpointHits / Math.max(1, studentStep.length) < 0.6) ||
+                studentInterventions > 0
+              );
+
               return {
                 id: student.id,
                 name: student.name ?? student.email ?? student.id,
@@ -157,8 +188,11 @@ export default async function TeacherDashboardPage() {
                 interactionPassRate: pct(evalPass, studentEval.length),
                 wrongFirstDiff: evalWrong,
                 interventions: studentInterventions,
+                needsAction,
               };
             });
+
+            const requiringAction = studentRows.filter((s) => s.needsAction);
 
             return (
               <section key={cls.id} className="rounded-2xl border border-slate-200 bg-white p-5">
@@ -172,104 +206,51 @@ export default async function TeacherDashboardPage() {
                 </div>
 
                 <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                  <div className="rounded-lg border border-slate-200 bg-slate-50 p-3">
-                    <p className="text-xs text-slate-500">Students</p>
-                    <p className="text-xl font-bold text-slate-900">{classStudents.length}</p>
-                  </div>
-                  <div className="rounded-lg border border-slate-200 bg-slate-50 p-3">
-                    <p className="text-xs text-slate-500">Average mastery</p>
-                    <p className="text-xl font-bold text-slate-900">{avgMastery}%</p>
-                  </div>
-                  <div className="rounded-lg border border-slate-200 bg-slate-50 p-3">
-                    <p className="text-xs text-slate-500">Stable learners</p>
-                    <p className="text-xl font-bold text-slate-900">{stableCount}</p>
-                  </div>
-                  <div className="rounded-lg border border-slate-200 bg-slate-50 p-3">
-                    <p className="text-xs text-slate-500">Review due</p>
-                    <p className="text-xl font-bold text-slate-900">{reviewDueCount}</p>
-                  </div>
+                  <div className="rounded-lg border border-slate-200 bg-slate-50 p-3"><p className="text-xs text-slate-500">Students</p><p className="text-xl font-bold text-slate-900">{classStudents.length}</p></div>
+                  <div className="rounded-lg border border-slate-200 bg-slate-50 p-3"><p className="text-xs text-slate-500">Average mastery</p><p className="text-xl font-bold text-slate-900">{avgMastery}%</p></div>
+                  <div className="rounded-lg border border-slate-200 bg-slate-50 p-3"><p className="text-xs text-slate-500">Stable learners</p><p className="text-xl font-bold text-slate-900">{stableCount}</p></div>
+                  <div className="rounded-lg border border-slate-200 bg-slate-50 p-3"><p className="text-xs text-slate-500">Review due</p><p className="text-xl font-bold text-slate-900">{reviewDueCount}</p></div>
                 </div>
 
                 <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-                  <div className="rounded-lg border border-indigo-200 bg-indigo-50 p-3">
-                    <p className="text-xs text-indigo-700">Question events</p>
-                    <p className="text-lg font-semibold text-indigo-900">{questionEvents.length}</p>
-                  </div>
-                  <div className="rounded-lg border border-indigo-200 bg-indigo-50 p-3">
-                    <p className="text-xs text-indigo-700">Checkpoint accuracy</p>
-                    <p className="text-lg font-semibold text-indigo-900">{pct(checkpointCorrect, stepAttemptEvents.length)}</p>
-                  </div>
-                  <div className="rounded-lg border border-indigo-200 bg-indigo-50 p-3">
-                    <p className="text-xs text-indigo-700">Interaction rule pass</p>
-                    <p className="text-lg font-semibold text-indigo-900">{pct(rulePassed, interactionEvalEvents.length)}</p>
-                  </div>
-                  <div className="rounded-lg border border-indigo-200 bg-indigo-50 p-3">
-                    <p className="text-xs text-indigo-700">Strong routes (≥80%)</p>
-                    <p className="text-lg font-semibold text-indigo-900">{pct(routeStrong, routeEvents.length)}</p>
-                  </div>
-                  <div className="rounded-lg border border-rose-200 bg-rose-50 p-3">
-                    <p className="text-xs text-rose-700">Wrong first-difference</p>
-                    <p className="text-lg font-semibold text-rose-900">{wrongFirstDiff}</p>
-                  </div>
+                  <div className="rounded-lg border border-indigo-200 bg-indigo-50 p-3"><p className="text-xs text-indigo-700">Question events</p><p className="text-lg font-semibold text-indigo-900">{questionEvents.length}</p></div>
+                  <div className="rounded-lg border border-indigo-200 bg-indigo-50 p-3"><p className="text-xs text-indigo-700">Checkpoint accuracy</p><p className="text-lg font-semibold text-indigo-900">{pct(checkpointCorrect, stepAttemptEvents.length)}</p></div>
+                  <div className="rounded-lg border border-indigo-200 bg-indigo-50 p-3"><p className="text-xs text-indigo-700">Interaction rule pass</p><p className="text-lg font-semibold text-indigo-900">{pct(rulePassed, interactionEvalEvents.length)}</p></div>
+                  <div className="rounded-lg border border-indigo-200 bg-indigo-50 p-3"><p className="text-xs text-indigo-700">Strong routes (≥80%)</p><p className="text-lg font-semibold text-indigo-900">{pct(routeStrong, routeEvents.length)}</p></div>
+                  <div className="rounded-lg border border-rose-200 bg-rose-50 p-3"><p className="text-xs text-rose-700">Wrong first-difference</p><p className="text-lg font-semibold text-rose-900">{wrongFirstDiff}</p></div>
+                </div>
+
+                <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-3">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-amber-800">Students requiring action</p>
+                  <p className="mt-1 text-sm text-amber-900">
+                    {requiringAction.length === 0
+                      ? 'No high-priority students in this filter window.'
+                      : requiringAction.map((s) => s.name).join(', ')}
+                  </p>
                 </div>
 
                 <div className="mt-4 rounded-lg border border-slate-200">
-                  <div className="border-b border-slate-200 bg-slate-50 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-slate-600">
-                    Student drilldown (actionable)
-                  </div>
+                  <div className="border-b border-slate-200 bg-slate-50 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-slate-600">Student drilldown (actionable)</div>
                   <div className="overflow-x-auto">
                     <table className="w-full text-sm">
                       <thead className="bg-white text-xs text-slate-500">
-                        <tr>
-                          <th className="px-3 py-2 text-left">Student</th>
-                          <th className="px-3 py-2 text-left">Observe ID</th>
-                          <th className="px-3 py-2 text-left">Mastery</th>
-                          <th className="px-3 py-2 text-left">Questions</th>
-                          <th className="px-3 py-2 text-left">Checkpoint</th>
-                          <th className="px-3 py-2 text-left">Interaction pass</th>
-                          <th className="px-3 py-2 text-left">Wrong first-diff</th>
-                          <th className="px-3 py-2 text-left">Interventions</th>
-                        </tr>
+                        <tr><th className="px-3 py-2 text-left">Student</th><th className="px-3 py-2 text-left">Observe ID</th><th className="px-3 py-2 text-left">Mastery</th><th className="px-3 py-2 text-left">Questions</th><th className="px-3 py-2 text-left">Checkpoint</th><th className="px-3 py-2 text-left">Interaction pass</th><th className="px-3 py-2 text-left">Wrong first-diff</th><th className="px-3 py-2 text-left">Interventions</th></tr>
                       </thead>
                       <tbody className="divide-y divide-slate-100">
                         {studentRows.map((row) => (
-                          <tr key={row.id}>
-                            <td className="px-3 py-2 text-slate-800">{row.name}</td>
-                            <td className="px-3 py-2 font-mono text-xs text-slate-600">{row.observeStudentId}</td>
-                            <td className="px-3 py-2">{row.masteryAvg}%</td>
-                            <td className="px-3 py-2">{row.questionCount}</td>
-                            <td className="px-3 py-2">{row.checkpointRate}</td>
-                            <td className="px-3 py-2">{row.interactionPassRate}</td>
-                            <td className="px-3 py-2 text-rose-700">{row.wrongFirstDiff}</td>
-                            <td className="px-3 py-2">{row.interventions}</td>
+                          <tr key={row.id} className={row.needsAction ? 'bg-amber-50/60' : ''}>
+                            <td className="px-3 py-2 text-slate-800">{row.name}</td><td className="px-3 py-2 font-mono text-xs text-slate-600">{row.observeStudentId}</td><td className="px-3 py-2">{row.masteryAvg}%</td><td className="px-3 py-2">{row.questionCount}</td><td className="px-3 py-2">{row.checkpointRate}</td><td className="px-3 py-2">{row.interactionPassRate}</td><td className="px-3 py-2 text-rose-700">{row.wrongFirstDiff}</td><td className="px-3 py-2">{row.interventions}</td>
                           </tr>
                         ))}
-                        {studentRows.length === 0 && (
-                          <tr>
-                            <td colSpan={8} className="px-3 py-8 text-center text-slate-400">
-                              No students enrolled in this class yet.
-                            </td>
-                          </tr>
-                        )}
+                        {studentRows.length === 0 && <tr><td colSpan={8} className="px-3 py-8 text-center text-slate-400">No students enrolled in this class yet.</td></tr>}
                       </tbody>
                     </table>
                   </div>
                 </div>
-
-                <p className="mt-3 text-xs text-slate-500">
-                  Data included deliberately: mastery, checkpoint quality, interaction-rule quality, route strength, and intervention signals.
-                  Data excluded (for now): noisy raw clickstream and non-actionable volume metrics.
-                </p>
               </section>
             );
           })}
         </div>
-
-        {teacherProfile.classrooms.length === 0 && (
-          <div className="mt-6 rounded-xl border border-dashed border-slate-300 bg-white p-8 text-center text-sm text-slate-500">
-            No classes linked to this teacher profile yet.
-          </div>
-        )}
       </div>
     </main>
   );
