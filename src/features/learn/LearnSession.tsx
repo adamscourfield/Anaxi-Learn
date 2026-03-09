@@ -73,6 +73,10 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
   );
   const parsedOptions = useMemo(() => parseItemOptions(currentItem?.options), [currentItem?.options]);
   const options = parsedOptions.choices;
+  const displayOptions = useMemo(
+    () => options.map((o) => stripStudentQuestionLabel(o) || o),
+    [options]
+  );
   const questionText = useMemo(() => stripStudentQuestionLabel(currentItem?.question), [currentItem?.question]);
 
   async function submitAnswer() {
@@ -259,7 +263,7 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
                         : 'border-gray-200 text-gray-700 hover:border-gray-300 hover:bg-gray-50'
                     }`}
                   >
-                    {option}
+                    {displayOptions[i] ?? option}
                   </button>
                 ))
               )

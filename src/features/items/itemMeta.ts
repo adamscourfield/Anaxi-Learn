@@ -33,25 +33,30 @@ function parseRoute(input: unknown): ItemMeta['route'] {
 export function stripStudentQuestionLabel(question: unknown): string {
   if (typeof question !== 'string') return '';
 
-  const codeToken = '[A-Za-z0-9]+(?:[.:-][A-Za-z0-9]+)*';
+  const codeToken = '[A-Za-z]{1,6}[A-Za-z0-9]*(?:[.:-][A-Za-z0-9]+)*';
   const patterns = [
     // [N1.1] / [SC:A2] / [SC-C2]
     new RegExp(`^\\s*\\[${codeToken}\\]\\s*`),
     // SC:A2 - ... / SC:A2: ... / SC-C2: ... / N1.1: ...
-    new RegExp(`^\\s*${codeToken}\\s*[:\\-–]\\s*`),
+    new RegExp(`^\\s*${codeToken}\\s*[:：\\-–]\\s*`),
     // SC:A2 DQ ... / N1.1 DQ ... / SC-C2 Q2 ...
-    new RegExp(`^\\s*${codeToken}(?:\\s+[A-Za-z]{1,8}\\d*)?\\s+`),
+    new RegExp(`^\\s*${codeToken}(?:\\s+[A-Za-z]{1,12}\\d*)?\\s+`),
     // DQ1: ... / Q2: ... / Question3 - ...
-    /^\s*(?:DQ|Q|QUESTION)\s*\d+\s*[:\-–]\s*/i,
+    /^\s*(?:DQ|Q|QUESTION)\s*\d+\s*[:：\-–]\s*/i,
     // DQ: ... / Q: ... / Question: ...
-    /^\s*(?:DQ|Q|QUESTION)\s*[:\-–]\s*/i,
+    /^\s*(?:DQ|Q|QUESTION)\s*[:：\-–]\s*/i,
     // Subtopic N1.1: ...
-    /^\s*subtopic\s+[A-Za-z0-9.:\-_/]+\s*[:\-–]?\s*/i,
+    /^\s*subtopic\s+[A-Za-z0-9.:\-_/]+\s*[:：\-–]?\s*/i,
   ];
 
   let cleaned = question;
-  for (const pattern of patterns) {
-    cleaned = cleaned.replace(pattern, '');
+  let changed = true;
+  while (changed) {
+    const before = cleaned;
+    for (const pattern of patterns) {
+      cleaned = cleaned.replace(pattern, '');
+    }
+    changed = cleaned !== before;
   }
 
   return cleaned.trim();
