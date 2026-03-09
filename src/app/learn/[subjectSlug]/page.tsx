@@ -105,7 +105,8 @@ export default async function LearnPage({ params }: Props) {
     .filter((item) => !item.question.startsWith('['));
 
   const pool = realItems.length > 0 ? realItems : itemSkills.map((is) => is.item);
-  const items = pool.slice(0, QUESTIONS_PER_SESSION);
+  const shuffledPool = [...pool].sort(() => Math.random() - 0.5);
+  const items = shuffledPool.slice(0, QUESTIONS_PER_SESSION);
   const gamification = await getUserGamificationSummary(userId);
 
   const routeDecision = await selectExplanationRoute(

@@ -3,7 +3,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/features/auth/authOptions';
 import { prisma } from '@/db/prisma';
 import { z } from 'zod';
-import { gradeAttempt } from '@/features/learn/gradeAttempt';
+import { gradeAttempt, getAnswerFormatHint } from '@/features/learn/gradeAttempt';
 import { emitEvent } from '@/features/telemetry/eventService';
 import { updatePayloadAfterAttempt } from '@/features/diagnostic/diagnosticService';
 import { parseItemOptions } from '@/features/items/itemMeta';
@@ -173,5 +173,9 @@ export async function POST(req: NextRequest) {
     });
   }
 
-  return NextResponse.json({ correct, routeRecommendation: routeDecision ?? null });
+  return NextResponse.json({
+    correct,
+    hint: !correct ? getAnswerFormatHint(item.type) : null,
+    routeRecommendation: routeDecision ?? null,
+  });
 }

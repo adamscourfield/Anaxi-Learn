@@ -1,12 +1,38 @@
+import { parseAnswerType } from '@/features/items/itemMeta';
+
+function stripDiacritics(value: string): string {
+  return value.normalize('NFKD').replace(/[\u0300-\u036f]/g, '');
+}
+
 function normalizeAnswer(input: string): string {
-  return input
+  return stripDiacritics(input)
     .toLowerCase()
+    .replace(/&/g, ' and ')
     .replace(/,/g, ' ')
     .replace(/\band\b/g, ' ')
+    .replace(/[’']/g, '')
+    .replace(/[-_]/g, ' ')
+    .replace(/[^a-z0-9./\s]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 }
 
+function acceptedAnswers(correctAnswer: string): string[] {
+  const split = correctAnswer
+    .split(/\n|\||;/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+  return split.length > 0 ? split : [correctAnswer.trim()];
+}
+
 export function gradeAttempt(correctAnswer: string, submittedAnswer: string): boolean {
-  return normalizeAnswer(correctAnswer) === normalizeAnswer(submittedAnswer);
+  const submitted = normalizeAnswer(submittedAnswer);
+  return acceptedAnswers(correctAnswer).some((candidate) => normalizeAnswer(candidate) === submitted);
+}
+
+export function getAnswerFormatHint(itemType: string | null | undefined): string | null {
+  const answerType = parseAnswerType(itemType);
+  if (answerType === 'SHORT_TEXT') return 'Formatting tip: capitals, commas, and “and” are all accepted.';
+  if (answerType === 'SHORT_NUMERIC') return 'Formatting tip: enter digits only (no words).';
+  return null;
 }

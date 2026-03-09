@@ -84,8 +84,10 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ done: true, reason: 'item_pool_exhausted', itemsSeen: attempts.length });
   }
 
+  const randomItemId = nextSkill.remainingItemIds[Math.floor(Math.random() * nextSkill.remainingItemIds.length)];
+
   const item = await prisma.item.findUnique({
-    where: { id: nextSkill.remainingItemIds[0] },
+    where: { id: randomItemId },
     select: { id: true, question: true, type: true, options: true },
   });
 

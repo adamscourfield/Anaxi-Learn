@@ -3,7 +3,7 @@ import { getServerSession } from 'next-auth';
 import { z } from 'zod';
 import { authOptions } from '@/features/auth/authOptions';
 import { prisma } from '@/db/prisma';
-import { gradeAttempt } from '@/features/learn/gradeAttempt';
+import { gradeAttempt, getAnswerFormatHint } from '@/features/learn/gradeAttempt';
 import { emitEvent } from '@/features/telemetry/eventService';
 
 const schema = z.object({
@@ -68,5 +68,5 @@ export async function POST(req: NextRequest) {
     },
   });
 
-  return NextResponse.json({ correct, itemsSeen });
+  return NextResponse.json({ correct, hint: !correct ? getAnswerFormatHint(item.type) : null, itemsSeen });
 }

@@ -45,8 +45,9 @@ export function DiagnosticRunClient({ subject, skill, item, sessionId, itemsSeen
 
       if (!res.ok) throw new Error('Could not save your answer. Tap Next again.');
 
-      const data = (await res.json()) as { correct?: boolean };
+      const data = (await res.json()) as { correct?: boolean; hint?: string | null };
       const wasCorrect = data.correct === true;
+      if (!wasCorrect && data.hint) setError(data.hint);
       setFeedbackFlash(wasCorrect ? 'correct' : 'incorrect');
       await new Promise((resolve) => setTimeout(resolve, wasCorrect ? 180 : 240));
       setFeedbackFlash(null);

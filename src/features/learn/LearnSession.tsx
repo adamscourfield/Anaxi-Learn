@@ -95,8 +95,9 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
 
       if (!res.ok) throw new Error('Could not save your answer. Please tap Next again.');
 
-      const data = (await res.json()) as { correct?: boolean };
+      const data = (await res.json()) as { correct?: boolean; hint?: string | null };
       if (typeof data.correct !== 'boolean') throw new Error('Invalid response from server');
+      if (!data.correct && data.hint) setError(data.hint);
 
       const newResults = [...results, { itemId: currentItem.id, correct: data.correct }];
       setResults(newResults);

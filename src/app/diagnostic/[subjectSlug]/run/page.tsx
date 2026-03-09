@@ -80,7 +80,13 @@ export default async function DiagnosticRunPage({ params }: Props) {
     return true;
   });
 
-  const nextItem = preferred[0] ?? availableItems.find((item) => !item.question.startsWith('[')) ?? availableItems[0] ?? fullSkill.items[0]?.item;
+  const pickRandom = <T,>(arr: T[]): T | undefined => (arr.length ? arr[Math.floor(Math.random() * arr.length)] : undefined);
+
+  const nextItem =
+    pickRandom(preferred) ??
+    pickRandom(availableItems.filter((candidate) => !candidate.question.startsWith('['))) ??
+    pickRandom(availableItems) ??
+    fullSkill.items[0]?.item;
 
   if (!nextItem) {
     redirect(`/diagnostic/${subjectSlug}/complete?sessionId=${diagSession.id}`);
