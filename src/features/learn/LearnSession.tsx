@@ -353,7 +353,7 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
 
           <div className="space-y-2 rounded-xl border border-gray-100 bg-white p-3">
             {results.map((r, i) => (
-              <div key={r.itemId} className="flex items-center gap-3 rounded-lg px-2 py-1.5 text-sm">
+              <div key={`${r.itemId}-${i}`} className="flex items-center gap-3 rounded-lg px-2 py-1.5 text-sm">
                 <span
                   className={`flex h-5 w-5 items-center justify-center rounded-full text-xs font-bold text-white ${
                     r.correct ? 'bg-emerald-500' : 'bg-rose-500'
