@@ -138,7 +138,7 @@ const compareRenderer: InteractionRenderer = {
                     <button
                       key={`${row.name}-${i}`}
                       onClick={() => markInteraction({ compareColumnIndex: i, completedAt: Date.now() })}
-                      className={`inline-flex h-7 w-7 items-center justify-center rounded text-sm font-semibold ${active ? 'bg-blue-100 text-blue-800' : i === firstDiff ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-100 text-slate-700'}`}
+                      className={`inline-flex h-7 w-7 items-center justify-center rounded text-sm font-semibold ${active ? (picked === firstDiff ? 'bg-emerald-100 text-emerald-800' : 'bg-blue-100 text-blue-800') : 'bg-slate-100 text-slate-700'}`}
                     >
                       {x}
                     </button>

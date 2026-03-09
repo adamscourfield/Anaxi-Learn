@@ -22,6 +22,7 @@ export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete
   const [altShown, setAltShown] = useState<Record<number, boolean>>({});
   const [stepStartMs, setStepStartMs] = useState<number>(Date.now());
   const [interactionByStep, setInteractionByStep] = useState<Record<number, StepInteractionState>>({});
+  const [showGuidedModel, setShowGuidedModel] = useState(false);
 
   const step = plan.steps[stepIndex];
   const interaction = interactionByStep[stepIndex] ?? { decompositionParts: [] };
@@ -88,30 +89,32 @@ export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete
 
     if (correct) {
       setTimeout(() => {
-        setFeedback(null);
-        setSelected('');
         if (stepIndex < plan.steps.length - 1) {
+          setFeedback(null);
+          setSelected('');
           setStepIndex((i) => i + 1);
           setStepStartMs(Date.now());
+          setShowGuidedModel(false);
         }
       }, 420);
     }
   }
 
   const doneSteps = stepIndex >= plan.steps.length - 1 && feedback === 'correct';
-  const normalize = (s: string) => s.toLowerCase().replace(/[,\s]+/g, ' ').trim();
+  const normalize = (s: string) =>
+    s
+      .toLowerCase()
+      .replace(/\band\b/g, ' ')
+      .replace(/,/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
   const guidedOk = normalize(guided) === normalize(plan.guidedAnswer);
+  const needsWritingHint = /words|word form|expanded|extended/i.test(`${step.checkpointQuestion} ${plan.guidedPrompt}`);
   const interactionRequired = (step.interaction?.type ?? step.visualType ?? 'none') !== 'none';
   const canCheck = Boolean(selected) && (!interactionRequired || interactionStatus.completed);
 
   return (
     <div className="space-y-5">
-      <div className="rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-900">
-        <p className="font-semibold">Let’s fix one idea at a time</p>
-        <p className="mt-1">{plan.misconceptionSummary}</p>
-        <p className="mt-1 text-xs text-amber-800">No rush — each step has a quick check before we move on.</p>
-      </div>
-
       <div className={`rounded-2xl border border-slate-200 bg-white p-5 ${feedback === 'correct' ? 'anx-pulse-correct' : ''} ${feedback === 'incorrect' ? 'anx-shake-incorrect' : ''}`}>
         <p className="text-xs uppercase tracking-wide text-slate-500">Step {stepIndex + 1} of {plan.steps.length}</p>
         <h3 className="mt-1 text-base font-semibold text-slate-900">{step.title}</h3>
@@ -119,10 +122,6 @@ export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete
         <p className="mt-2 text-sm leading-relaxed text-slate-700">{step.explanation}</p>
 
         <div className="mt-4">{renderer.render({ step, state: interaction, markInteraction })}</div>
-
-        <div className="mt-2 text-[11px] text-slate-500">
-          Interaction: {interactionStatus.completed ? 'completed' : interactionStatus.started ? 'started' : 'not started'}
-        </div>
 
         <div className="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-4">
           <p className="text-sm font-semibold text-slate-900">Checkpoint</p>
@@ -152,17 +151,23 @@ export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete
         </div>
       </div>
 
-      {stepIndex === plan.steps.length - 1 && (
+      {doneSteps && !showGuidedModel && (
         <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm text-slate-700">
           <p className="font-semibold text-slate-900">Worked example</p>
           <p className="mt-1">{plan.workedExample}</p>
+          <button className="anx-btn-primary mt-4 w-full" onClick={() => setShowGuidedModel(true)}>
+            Continue
+          </button>
         </div>
       )}
 
-      {doneSteps && (
+      {doneSteps && showGuidedModel && (
         <div className="rounded-xl border border-slate-200 bg-white p-4">
-          <p className="text-sm font-semibold text-slate-900">Guided model</p>
+          <p className="text-sm font-semibold text-slate-900">Try one yourself</p>
           <p className="mt-1 text-sm text-slate-700">{plan.guidedPrompt}</p>
+          {needsWritingHint && (
+            <p className="mt-2 text-xs text-slate-600">Write it clearly. Using &quot;and&quot; is optional.</p>
+          )}
           <input
             className="mt-3 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
             value={guided}
@@ -170,7 +175,7 @@ export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete
             placeholder="Type your answer"
           />
           {!guidedOk && guided.length > 0 && (
-            <p className="mt-2 text-xs text-rose-600">Try again — think about the place value column.</p>
+            <p className="mt-2 text-xs text-rose-600">Not quite — try again.</p>
           )}
           <button className="anx-btn-primary mt-3 w-full" onClick={onComplete} disabled={!guidedOk}>
             Continue to key questions

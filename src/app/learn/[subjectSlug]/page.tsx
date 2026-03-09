@@ -8,6 +8,7 @@ import { getUserGamificationSummary } from '@/features/gamification/gamification
 import { selectExplanationRoute } from '@/features/diagnostic/routeAssignment';
 import { emitEvent } from '@/features/telemetry/eventService';
 import { getReteachPlanForSkill } from '@/features/learn/reteachService';
+import { isRoutedSkill } from '@/features/config/learningConfig';
 
 const QUESTIONS_PER_SESSION = 3;
 
@@ -67,7 +68,7 @@ export default async function LearnPage({ params }: Props) {
   );
 
   const unlockedSkills = subject.skills.filter((s) =>
-    isSkillUnlocked(s.id, prereqEdges, masteryMap)
+    isSkillUnlocked(s.id, prereqEdges, masteryMap) && isRoutedSkill(s.code)
   );
 
   if (unlockedSkills.length === 0) redirect('/dashboard');
