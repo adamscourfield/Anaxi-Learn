@@ -40,7 +40,7 @@ export function getAnswerFormatHint(
   question?: string | null,
   options?: unknown
 ): string | null {
-  const answerType = parseAnswerType(itemType, question, options);
+  const answerType = parseAnswerType(itemType, question, options, null);
   if (answerType === 'TRUE_FALSE') return 'Answer tip: choose True or False.';
   if (answerType === 'SHORT_TEXT') return 'Formatting tip: capitals, commas, and “and” are all accepted.';
   if (answerType === 'SHORT_NUMERIC') return 'Formatting tip: enter digits only (no words).';

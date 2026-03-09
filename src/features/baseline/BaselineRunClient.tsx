@@ -25,8 +25,8 @@ export function BaselineRunClient({ subjectSlug }: { subjectSlug: string }) {
   const [error, setError] = useState<string | null>(null);
 
   const answerType = useMemo(
-    () => parseAnswerType(item?.type, item?.question, item?.options),
-    [item?.type, item?.question, item?.options]
+    () => parseAnswerType(item?.type, item?.question, item?.options, item?.answer),
+    [item?.type, item?.question, item?.options, item?.answer]
   );
   const parsedOptions = useMemo(() => parseItemOptions(item?.options ?? {}), [item?.options]);
   const questionText = useMemo(() => stripStudentQuestionLabel(item?.question), [item?.question]);

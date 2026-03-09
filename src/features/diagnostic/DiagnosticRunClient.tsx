@@ -20,7 +20,10 @@ export function DiagnosticRunClient({ subject, skill, item, sessionId, itemsSeen
   const [error, setError] = useState<string | null>(null);
   const [feedbackFlash, setFeedbackFlash] = useState<'correct' | 'incorrect' | null>(null);
   const router = useRouter();
-  const answerType = useMemo(() => parseAnswerType(item.type, item.question, item.options), [item.type, item.question, item.options]);
+  const answerType = useMemo(
+    () => parseAnswerType(item.type, item.question, item.options, item.answer),
+    [item.type, item.question, item.options, item.answer]
+  );
   const parsedOptions = useMemo(() => parseItemOptions(item.options), [item.options]);
   const questionText = useMemo(() => stripStudentQuestionLabel(item.question), [item.question]);
 

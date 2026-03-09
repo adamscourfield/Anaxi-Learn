@@ -147,7 +147,24 @@ function optionsContainBooleanChoices(options: unknown): boolean {
   );
 }
 
-export function parseAnswerType(itemType: unknown, question?: unknown, options?: unknown): AnswerType {
+function answerLooksBoolean(answer: unknown): boolean {
+  if (typeof answer !== 'string') return false;
+  const normalized = answer.trim().toLowerCase();
+  return (
+    normalized === 'true' ||
+    normalized === 'false' ||
+    normalized === 'correct' ||
+    normalized === 'incorrect' ||
+    normalized === 'yes' ||
+    normalized === 'no'
+  );
+}
+
+export function parseAnswerType(itemType: unknown, question?: unknown, options?: unknown, answer?: unknown): AnswerType {
+  if (looksLikeTrueFalseQuestion(question) || optionsContainBooleanChoices(options) || answerLooksBoolean(answer)) {
+    return 'TRUE_FALSE';
+  }
+
   if (typeof itemType === 'string') {
     const normalized = itemType.trim().toUpperCase();
     if (normalized === 'TRUE_FALSE' || normalized === 'BOOLEAN' || normalized === 'TF') return 'TRUE_FALSE';
@@ -155,6 +172,5 @@ export function parseAnswerType(itemType: unknown, question?: unknown, options?:
     if (normalized === 'SHORT_NUMERIC' || normalized === 'NUMERIC') return 'SHORT_NUMERIC';
   }
 
-  if (looksLikeTrueFalseQuestion(question) || optionsContainBooleanChoices(options)) return 'TRUE_FALSE';
   return 'MCQ';
 }

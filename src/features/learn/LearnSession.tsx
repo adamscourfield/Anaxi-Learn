@@ -68,8 +68,8 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
 
   const currentItem = items[currentIndex];
   const answerType = useMemo(
-    () => parseAnswerType(currentItem?.type, currentItem?.question, currentItem?.options),
-    [currentItem?.type, currentItem?.question, currentItem?.options]
+    () => parseAnswerType(currentItem?.type, currentItem?.question, currentItem?.options, currentItem?.answer),
+    [currentItem?.type, currentItem?.question, currentItem?.options, currentItem?.answer]
   );
   const parsedOptions = useMemo(() => parseItemOptions(currentItem?.options), [currentItem?.options]);
   const options = parsedOptions.choices;
