@@ -25,6 +25,20 @@ const DEFAULT_META: ItemMeta = {
   strictnessLevel: 'normalized',
 };
 
+function dedupeChoices(choices: string[]): string[] {
+  const seen = new Set<string>();
+  const out: string[] = [];
+
+  for (const choice of choices) {
+    const key = choice.trim().toLowerCase();
+    if (!key || seen.has(key)) continue;
+    seen.add(key);
+    out.push(choice);
+  }
+
+  return out;
+}
+
 function parseRoute(input: unknown): ItemMeta['route'] {
   if (input === 'A' || input === 'B' || input === 'C') return input;
   return null;
@@ -65,7 +79,7 @@ export function stripStudentQuestionLabel(question: unknown): string {
 export function parseItemOptions(options: unknown): ParsedItemOptions {
   // Legacy shape: options is just string[]
   if (Array.isArray(options)) {
-    const choices = options.filter((o): o is string => typeof o === 'string' && o.trim().length > 0);
+    const choices = dedupeChoices(options.filter((o): o is string => typeof o === 'string' && o.trim().length > 0));
     return { choices, meta: DEFAULT_META };
   }
 
@@ -84,7 +98,7 @@ export function parseItemOptions(options: unknown): ParsedItemOptions {
     };
 
     const choices = Array.isArray(raw.choices)
-      ? raw.choices.filter((o): o is string => typeof o === 'string' && o.trim().length > 0)
+      ? dedupeChoices(raw.choices.filter((o): o is string => typeof o === 'string' && o.trim().length > 0))
       : [];
 
     const role = raw.meta?.role ?? raw.meta?.question_role;
