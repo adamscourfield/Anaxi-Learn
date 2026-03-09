@@ -2,7 +2,7 @@ export type QuestionRole = 'anchor' | 'misconception' | 'prerequisite_probe' | '
 export type MisconceptionTag = string;
 export type TransferLevel = 'none' | 'low' | 'medium' | 'high';
 export type StrictnessLevel = 'exact' | 'normalized';
-export type AnswerType = 'MCQ' | 'SHORT_TEXT' | 'SHORT_NUMERIC';
+export type AnswerType = 'MCQ' | 'SHORT_TEXT' | 'SHORT_NUMERIC' | 'TRUE_FALSE';
 
 export interface ItemMeta {
   questionRole: QuestionRole;
@@ -84,10 +84,31 @@ export function parseItemOptions(options: unknown): ParsedItemOptions {
   return { choices: [], meta: DEFAULT_META };
 }
 
-export function parseAnswerType(itemType: unknown): AnswerType {
-  if (typeof itemType !== 'string') return 'MCQ';
-  const normalized = itemType.trim().toUpperCase();
-  if (normalized === 'SHORT_TEXT' || normalized === 'SHORT') return 'SHORT_TEXT';
-  if (normalized === 'SHORT_NUMERIC' || normalized === 'NUMERIC') return 'SHORT_NUMERIC';
+function looksLikeTrueFalseQuestion(question: unknown): boolean {
+  if (typeof question !== 'string') return false;
+  const text = question.trim();
+  return /^(correct|incorrect)\s*:/i.test(text) || /^is this statement (correct|true)\??/i.test(text);
+}
+
+function optionsContainBooleanChoices(options: unknown): boolean {
+  const parsed = parseItemOptions(options);
+  if (parsed.choices.length < 2) return false;
+  const normalized = new Set(parsed.choices.map((c) => c.trim().toLowerCase()));
+  return (
+    (normalized.has('true') && normalized.has('false')) ||
+    (normalized.has('correct') && normalized.has('incorrect')) ||
+    (normalized.has('yes') && normalized.has('no'))
+  );
+}
+
+export function parseAnswerType(itemType: unknown, question?: unknown, options?: unknown): AnswerType {
+  if (typeof itemType === 'string') {
+    const normalized = itemType.trim().toUpperCase();
+    if (normalized === 'TRUE_FALSE' || normalized === 'BOOLEAN' || normalized === 'TF') return 'TRUE_FALSE';
+    if (normalized === 'SHORT_TEXT' || normalized === 'SHORT') return 'SHORT_TEXT';
+    if (normalized === 'SHORT_NUMERIC' || normalized === 'NUMERIC') return 'SHORT_NUMERIC';
+  }
+
+  if (looksLikeTrueFalseQuestion(question) || optionsContainBooleanChoices(options)) return 'TRUE_FALSE';
   return 'MCQ';
 }

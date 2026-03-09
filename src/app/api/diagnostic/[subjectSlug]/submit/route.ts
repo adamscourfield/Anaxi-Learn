@@ -175,7 +175,7 @@ export async function POST(req: NextRequest) {
 
   return NextResponse.json({
     correct,
-    hint: !correct ? getAnswerFormatHint(item.type) : null,
+    hint: !correct ? getAnswerFormatHint(item.type, item.question, item.options) : null,
     routeRecommendation: routeDecision ?? null,
   });
 }

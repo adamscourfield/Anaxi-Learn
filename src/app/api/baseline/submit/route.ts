@@ -68,5 +68,9 @@ export async function POST(req: NextRequest) {
     },
   });
 
-  return NextResponse.json({ correct, hint: !correct ? getAnswerFormatHint(item.type) : null, itemsSeen });
+  return NextResponse.json({
+    correct,
+    hint: !correct ? getAnswerFormatHint(item.type, item.question, item.options) : null,
+    itemsSeen,
+  });
 }

@@ -20,9 +20,8 @@ export function DiagnosticRunClient({ subject, skill, item, sessionId, itemsSeen
   const [error, setError] = useState<string | null>(null);
   const [feedbackFlash, setFeedbackFlash] = useState<'correct' | 'incorrect' | null>(null);
   const router = useRouter();
-  const answerType = useMemo(() => parseAnswerType(item.type), [item.type]);
+  const answerType = useMemo(() => parseAnswerType(item.type, item.question, item.options), [item.type, item.question, item.options]);
   const parsedOptions = useMemo(() => parseItemOptions(item.options), [item.options]);
-  const isTrueFalsePrompt = useMemo(() => /^(correct|incorrect)\s*:/i.test(item.question), [item.question]);
 
   async function submitAnswer() {
     if (!selectedAnswer.trim() || submitting) return;
@@ -103,7 +102,7 @@ export function DiagnosticRunClient({ subject, skill, item, sessionId, itemsSeen
                 </button>
               ))
             )
-          ) : isTrueFalsePrompt ? (
+          ) : answerType === 'TRUE_FALSE' ? (
             <div className="space-y-2">
               <div className="grid grid-cols-2 gap-2">
                 <button

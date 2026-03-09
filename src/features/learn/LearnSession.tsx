@@ -67,13 +67,12 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
   const router = useRouter();
 
   const currentItem = items[currentIndex];
-  const answerType = useMemo(() => parseAnswerType(currentItem?.type), [currentItem?.type]);
+  const answerType = useMemo(
+    () => parseAnswerType(currentItem?.type, currentItem?.question, currentItem?.options),
+    [currentItem?.type, currentItem?.question, currentItem?.options]
+  );
   const parsedOptions = useMemo(() => parseItemOptions(currentItem?.options), [currentItem?.options]);
   const options = parsedOptions.choices;
-  const isTrueFalsePrompt = useMemo(
-    () => Boolean(currentItem?.question && /^(correct|incorrect)\s*:/i.test(currentItem.question)),
-    [currentItem?.question]
-  );
 
   async function submitAnswer() {
     if (!selectedAnswer.trim() || !currentItem || submitting) return;
@@ -263,7 +262,7 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
                   </button>
                 ))
               )
-            ) : isTrueFalsePrompt ? (
+            ) : answerType === 'TRUE_FALSE' ? (
               <div className="space-y-2">
                 <div className="grid grid-cols-2 gap-2">
                   <button

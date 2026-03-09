@@ -24,9 +24,11 @@ export function BaselineRunClient({ subjectSlug }: { subjectSlug: string }) {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const answerType = useMemo(() => parseAnswerType(item?.type), [item?.type]);
+  const answerType = useMemo(
+    () => parseAnswerType(item?.type, item?.question, item?.options),
+    [item?.type, item?.question, item?.options]
+  );
   const parsedOptions = useMemo(() => parseItemOptions(item?.options ?? {}), [item?.options]);
-  const isTrueFalsePrompt = useMemo(() => Boolean(item?.question && /^(correct|incorrect)\s*:/i.test(item.question)), [item?.question]);
 
   async function loadNext(currentSessionId: string) {
     const nextRes = await fetch('/api/baseline/next', {
@@ -147,7 +149,7 @@ export function BaselineRunClient({ subjectSlug }: { subjectSlug: string }) {
                 {option}
               </button>
             ))
-          ) : isTrueFalsePrompt ? (
+          ) : answerType === 'TRUE_FALSE' ? (
             <div className="space-y-2">
               <div className="grid grid-cols-2 gap-2">
                 <button

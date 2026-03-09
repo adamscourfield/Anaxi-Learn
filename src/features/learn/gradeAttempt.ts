@@ -35,8 +35,13 @@ export function gradeAttempt(correctAnswer: string, submittedAnswer: string): bo
   return acceptedAnswers(correctAnswer).some((candidate) => normalizeAnswer(candidate) === submitted);
 }
 
-export function getAnswerFormatHint(itemType: string | null | undefined): string | null {
-  const answerType = parseAnswerType(itemType);
+export function getAnswerFormatHint(
+  itemType: string | null | undefined,
+  question?: string | null,
+  options?: unknown
+): string | null {
+  const answerType = parseAnswerType(itemType, question, options);
+  if (answerType === 'TRUE_FALSE') return 'Answer tip: choose True or False.';
   if (answerType === 'SHORT_TEXT') return 'Formatting tip: capitals, commas, and “and” are all accepted.';
   if (answerType === 'SHORT_NUMERIC') return 'Formatting tip: enter digits only (no words).';
   return null;
