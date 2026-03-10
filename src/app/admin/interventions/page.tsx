@@ -45,19 +45,27 @@ export default async function AdminInterventionsPage() {
   );
 
   const sevenDaysReteachAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
-  const reteachEscalations = await prisma.event.findMany({
-    where: {
-      name: 'reteach_escalated',
-      createdAt: { gte: sevenDaysReteachAgo },
-    },
-    include: {
-      actor: { select: { name: true, email: true } },
-      skill: { select: { code: true, name: true, strand: true } },
-      subject: { select: { title: true, slug: true } },
-    },
-    orderBy: { createdAt: 'desc' },
-    take: 50,
-  });
+  const [reteachEscalations, policyUpdates] = await Promise.all([
+    prisma.event.findMany({
+      where: {
+        name: 'reteach_escalated',
+        createdAt: { gte: sevenDaysReteachAgo },
+      },
+      include: {
+        actor: { select: { name: true, email: true } },
+        skill: { select: { code: true, name: true, strand: true } },
+        subject: { select: { title: true, slug: true } },
+      },
+      orderBy: { createdAt: 'desc' },
+      take: 50,
+    }),
+    prisma.event.findMany({
+      where: { name: 'reteach_policy_updated' },
+      include: { actor: { select: { name: true, email: true } } },
+      orderBy: { createdAt: 'desc' },
+      take: 10,
+    }),
+  ]);
 
   const reteachExceptions = await Promise.all(
     reteachEscalations.map(async (event) => {
@@ -162,6 +170,28 @@ export default async function AdminInterventionsPage() {
 
         <div className="mb-6">
           <AdminReteachPolicyPanel />
+        </div>
+
+        <div className="mb-6 rounded-xl border border-gray-200 bg-white overflow-hidden">
+          <div className="border-b border-gray-100 px-4 py-3">
+            <h2 className="text-sm font-semibold text-gray-900">Recent policy changes</h2>
+            <p className="mt-1 text-xs text-gray-600">Last 10 updates to Phase 9 thresholds (audit trail).</p>
+          </div>
+          {policyUpdates.length === 0 ? (
+            <div className="px-4 py-4 text-xs text-gray-500">No policy updates yet.</div>
+          ) : (
+            <div className="divide-y divide-gray-100">
+              {policyUpdates.map((event) => (
+                <div key={event.id} className="px-4 py-3 text-xs text-gray-700">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <span className="font-medium text-gray-900">{event.actor?.name ?? event.actor?.email ?? 'Admin'}</span>
+                    <span className="text-gray-500">{event.createdAt.toISOString().replace('T', ' ').slice(0, 16)}</span>
+                  </div>
+                  <pre className="mt-2 overflow-x-auto rounded bg-gray-50 p-2 text-[11px] text-gray-600">{JSON.stringify(event.payload, null, 2)}</pre>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 mb-6">

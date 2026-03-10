@@ -6,10 +6,14 @@ import { getPhase9Analytics } from '@/features/reteach/phase9Analytics';
 
 interface Props {
   params: Promise<{ subjectSlug: string }>;
+  searchParams?: Promise<{ days?: string }>;
 }
 
-export default async function InsightDashboardPage({ params }: Props) {
+export default async function InsightDashboardPage({ params, searchParams }: Props) {
   const { subjectSlug } = await params;
+  const sp = searchParams ? await searchParams : undefined;
+  const daysParam = Number(sp?.days ?? '30');
+  const phase9Days = [7, 30, 90].includes(daysParam) ? daysParam : 30;
   const session = await getServerSession(authOptions);
   if (!session?.user) redirect('/login');
   const role = (session.user as { role: string }).role;
@@ -18,7 +22,7 @@ export default async function InsightDashboardPage({ params }: Props) {
   const subject = await prisma.subject.findUnique({ where: { slug: subjectSlug } });
   if (!subject) return <div>Subject not found</div>;
 
-  const [skills, phase9] = await Promise.all([
+  const [skills, phase9, phase9_7, phase9_30, phase9_90] = await Promise.all([
     prisma.skill.findMany({
       where: { subjectId: subject.id },
       include: {
@@ -26,7 +30,10 @@ export default async function InsightDashboardPage({ params }: Props) {
       },
       orderBy: { sortOrder: 'asc' },
     }),
+    getPhase9Analytics(subject.id, phase9Days),
+    getPhase9Analytics(subject.id, 7),
     getPhase9Analytics(subject.id, 30),
+    getPhase9Analytics(subject.id, 90),
   ]);
 
   // A) Coverage by strand
@@ -235,7 +242,20 @@ export default async function InsightDashboardPage({ params }: Props) {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-800 mb-3">Phase 9 — Student-First Reteach (30d)</h2>
+          <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+            <h2 className="text-lg font-semibold text-gray-800">Phase 9 — Student-First Reteach ({phase9Days}d)</h2>
+            <div className="flex items-center gap-2 text-xs">
+              {[7, 30, 90].map((d) => (
+                <a
+                  key={d}
+                  href={`/admin/insight/${subject.slug}?days=${d}`}
+                  className={`rounded border px-2 py-1 ${phase9Days === d ? 'border-indigo-300 bg-indigo-50 text-indigo-700' : 'border-gray-300 bg-white text-gray-600 hover:bg-gray-50'}`}
+                >
+                  {d}d
+                </a>
+              ))}
+            </div>
+          </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <div className="rounded-xl border border-gray-200 bg-white p-4">
               <p className="text-xs text-gray-500">Loops started</p>
@@ -262,8 +282,13 @@ export default async function InsightDashboardPage({ params }: Props) {
           </div>
           <p className="mt-2 text-xs text-gray-500">
             Avg attempts before pass: {typeof phase9.avgAttemptsBeforePass === 'number' ? phase9.avgAttemptsBeforePass.toFixed(1) : '—'} ·
-            API: <code>/api/admin/insight/{subject.slug}/phase9?days=30</code>
+            API: <code>/api/admin/insight/{subject.slug}/phase9?days={phase9Days}</code>
           </p>
+          <div className="mt-2 rounded-lg border border-gray-200 bg-white p-3 text-xs text-gray-600">
+            Recovery trend: 7d {typeof phase9_7.recoveryRate === 'number' ? `${Math.round(phase9_7.recoveryRate * 100)}%` : '—'} ·
+            30d {typeof phase9_30.recoveryRate === 'number' ? `${Math.round(phase9_30.recoveryRate * 100)}%` : '—'} ·
+            90d {typeof phase9_90.recoveryRate === 'number' ? `${Math.round(phase9_90.recoveryRate * 100)}%` : '—'}
+          </div>
         </section>
 
         <section>
