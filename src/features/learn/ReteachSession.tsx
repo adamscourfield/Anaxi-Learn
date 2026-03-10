@@ -8,13 +8,14 @@ interface Props {
   subjectId: string;
   skillId: string;
   routeType: RouteType;
+  assignedPathId?: string;
   plan: ReteachPlan;
   onComplete: () => void;
 }
 
 type ReteachStage = 'learn' | 'checkpoint' | 'worked' | 'guided';
 
-export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete }: Props) {
+export function ReteachSession({ subjectId, skillId, routeType, assignedPathId, plan, onComplete }: Props) {
   const [stepIndex, setStepIndex] = useState(0);
   const [stage, setStage] = useState<ReteachStage>('learn');
   const [selected, setSelected] = useState('');
@@ -51,6 +52,31 @@ export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete
     () => renderer.status({ step, state: interaction, markInteraction }),
     [renderer, step, interaction, markInteraction]
   );
+
+  async function recordPhase9Attempt(input: { step: ReteachStage | 'retrieval'; correct: boolean; supportLevel: 'INDEPENDENT' | 'LIGHT_PROMPT' | 'WORKED_EXAMPLE' | 'SCAFFOLDED' | 'FULL_EXPLANATION'; isDelayedRetrieval?: boolean; }) {
+    if (!assignedPathId) return;
+    await fetch('/api/student/reteach/attempt', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        subjectId,
+        skillId,
+        assignedPathId,
+        step:
+          input.step === 'learn'
+            ? 'TEACH'
+            : input.step === 'guided'
+              ? 'GUIDED'
+              : input.step === 'retrieval'
+                ? 'RETRIEVAL'
+                : 'INDEPENDENT',
+        stepIndex,
+        correct: input.correct,
+        supportLevel: input.supportLevel,
+        isDelayedRetrieval: input.isDelayedRetrieval ?? false,
+      }),
+    });
+  }
 
   async function checkStep() {
     if (!selected) return;
@@ -89,6 +115,12 @@ export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete
         interactionSelected: interactionStatus.selected ?? null,
         interactionExpected: interactionStatus.firstDiff ?? null,
       }),
+    });
+
+    await recordPhase9Attempt({
+      step: 'checkpoint',
+      correct,
+      supportLevel: 'SCAFFOLDED',
     });
 
     if (!correct) return;
@@ -147,7 +179,43 @@ export function ReteachSession({ subjectId, skillId, routeType, plan, onComplete
           />
           {!guidedOk && guided.length > 0 && <p className="mt-2 text-sm text-rose-600">Nearly there — check each place value and try again.</p>}
           {guidedOk && <p className="mt-2 text-sm text-emerald-600">Brilliant! You got it ✅</p>}
-          <button className="anx-btn-primary mt-3 w-full py-3 text-base" onClick={onComplete} disabled={!guidedOk}>
+          <button
+            className="anx-btn-primary mt-3 w-full py-3 text-base"
+            onClick={async () => {
+              await recordPhase9Attempt({
+                step: 'guided',
+                correct: guidedOk,
+                supportLevel: 'INDEPENDENT',
+                isDelayedRetrieval: true,
+              });
+
+              if (assignedPathId) {
+                const gateRes = await fetch('/api/student/reteach/evaluate-gate', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ subjectId, skillId, assignedPathId }),
+                });
+                if (gateRes.ok) {
+                  const gate = (await gateRes.json()) as { decision?: 'pass' | 'continue' | 'escalate' };
+                  if (gate.decision === 'escalate') {
+                    await fetch('/api/student/reteach/escalate', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({
+                        subjectId,
+                        skillId,
+                        assignedPathId,
+                        reason: 'Student did not meet reteach gate after loop completion',
+                      }),
+                    });
+                  }
+                }
+              }
+
+              onComplete();
+            }}
+            disabled={!guidedOk}
+          >
             Start key questions 🚀
           </button>
         </div>

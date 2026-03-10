@@ -1,10 +1,11 @@
 'use client';
 
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ReteachSession } from './ReteachSession';
 import type { ReteachPlan } from './reteachContent';
 import { parseAnswerType, parseItemOptions, stripStudentQuestionLabel } from '@/features/items/itemMeta';
+import { featureFlags } from '@/features/config/featureFlags';
 
 interface Item {
   id: string;
@@ -68,6 +69,12 @@ interface DLEPayload {
   version: 'v1';
 }
 
+interface ReteachRouteState {
+  assignedPathId: string;
+  reasonCodes: string[];
+  difficultyStart: 'A' | 'B' | 'C';
+}
+
 const SHOW_DEBUG = process.env.NEXT_PUBLIC_SHOW_DEBUG === 'true';
 
 function getMasteryTextColor(masteryPct: number) {
@@ -128,6 +135,8 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
   const [feedbackFlash, setFeedbackFlash] = useState<'correct' | 'incorrect' | null>(null);
   const [nextRecommendation, setNextRecommendation] = useState<NextQuestionRecommendation | null>(null);
   const [latestDle, setLatestDle] = useState<DLEPayload | null>(null);
+  const [routeState, setRouteState] = useState<ReteachRouteState | null>(null);
+  const [routeLoading, setRouteLoading] = useState(false);
   const router = useRouter();
 
   const currentItem = items[currentIndex];
@@ -142,6 +151,37 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
     [options]
   );
   const questionText = useMemo(() => stripStudentQuestionLabel(currentItem?.question), [currentItem?.question]);
+
+  useEffect(() => {
+    if (!featureFlags.phase9ReteachV1 || routeState || routeLoading) return;
+    let cancelled = false;
+
+    async function createRoute() {
+      setRouteLoading(true);
+      try {
+        const res = await fetch('/api/student/reteach/route', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            subjectId: subject.id,
+            skillId: skill.id,
+            routeType,
+            checkpointAccuracy: 0.65,
+          }),
+        });
+        if (!res.ok) return;
+        const data = (await res.json()) as ReteachRouteState;
+        if (!cancelled) setRouteState(data);
+      } finally {
+        if (!cancelled) setRouteLoading(false);
+      }
+    }
+
+    createRoute();
+    return () => {
+      cancelled = true;
+    };
+  }, [routeLoading, routeState, routeType, skill.id, subject.id]);
 
   async function submitAnswer() {
     if (!selectedAnswer.trim() || !currentItem || submitting) return;
@@ -256,21 +296,30 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
 
           {!hasItems && <p className="text-sm text-amber-700">No key questions are available for this skill yet.</p>}
 
+          {featureFlags.phase9ReteachV1 && routeState && (
+            <div className="rounded-lg border border-indigo-100 bg-indigo-50/60 px-4 py-3 text-sm text-indigo-900">
+              <p className="font-semibold">Why this next</p>
+              <p className="mt-1">We’re strengthening this skill first so your independent answers stay stable.</p>
+            </div>
+          )}
+
           <div className="flex flex-wrap gap-3 pt-1">
             <button
-              onClick={() => setPhase('session')}
-              disabled={!hasItems}
+              onClick={() => setPhase(featureFlags.phase9ReteachV1 ? 'reteach' : 'session')}
+              disabled={!hasItems || (featureFlags.phase9ReteachV1 && routeLoading)}
               className="inline-flex flex-1 items-center justify-center rounded-lg bg-blue-600 px-4 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
             >
-              Start key questions ({items.length})
+              {featureFlags.phase9ReteachV1 ? 'Start skill-strengthening loop' : `Start key questions (${items.length})`}
             </button>
-            <button
-              onClick={() => setPhase('reteach')}
-              disabled={!hasItems}
-              className="inline-flex flex-1 items-center justify-center rounded-lg border border-blue-300 px-4 py-3 text-sm font-semibold text-blue-700 transition-colors hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-            >
-              Guided reteach first
-            </button>
+            {!featureFlags.phase9ReteachV1 && (
+              <button
+                onClick={() => setPhase('reteach')}
+                disabled={!hasItems}
+                className="inline-flex flex-1 items-center justify-center rounded-lg border border-blue-300 px-4 py-3 text-sm font-semibold text-blue-700 transition-colors hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+              >
+                Guided reteach first
+              </button>
+            )}
             <button
               onClick={() => router.push('/dashboard')}
               className="inline-flex items-center justify-center rounded-lg border border-gray-300 px-4 py-3 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
@@ -291,6 +340,7 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
             subjectId={subject.id}
             skillId={skill.id}
             routeType={routeType}
+            assignedPathId={routeState?.assignedPathId}
             plan={reteachPlan}
             onComplete={() => setPhase('session')}
           />
