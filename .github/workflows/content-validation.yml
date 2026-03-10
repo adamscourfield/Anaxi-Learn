@@ -27,8 +27,14 @@ jobs:
 
       - name: Resolve validation database URL
         shell: bash
+        env:
+          CONTENT_VALIDATION_DATABASE_URL: ${{ secrets.CONTENT_VALIDATION_DATABASE_URL }}
+          DATABASE_URL_FALLBACK: ${{ secrets.DATABASE_URL }}
         run: |
-          DB_URL="${{ secrets.CONTENT_VALIDATION_DATABASE_URL || secrets.DATABASE_URL }}"
+          DB_URL="$CONTENT_VALIDATION_DATABASE_URL"
+          if [ -z "$DB_URL" ]; then
+            DB_URL="$DATABASE_URL_FALLBACK"
+          fi
           if [ -z "$DB_URL" ]; then
             echo "::error::Missing DB secret. Set CONTENT_VALIDATION_DATABASE_URL (preferred) or DATABASE_URL in repo Actions secrets."
             exit 1
