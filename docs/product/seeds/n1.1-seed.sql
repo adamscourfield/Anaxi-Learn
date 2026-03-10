@@ -63,16 +63,16 @@ SELECT gen_random_uuid()::text,
 FROM "Subject" sub,
 LATERAL (
   VALUES
-  ('What is the value of the digit 7 in 3,742,915?','SHORT','{"meta":{"role":"anchor","misconception_tag":"pv_m1_place_vs_value","transfer_level":"none"}}','700000'),
-  ('In 504,081, what is the place value of digit 4?','MCQ','{"choices":["thousands","ten-thousands","hundreds","ones"],"meta":{"role":"misconception","misconception_tag":"pv_m2_zero_shift","transfer_level":"none"}}','thousands'),
-  ('Write 8,030,406 in expanded form.','SHORT','{"meta":{"role":"prerequisite_probe","misconception_tag":"pv_m2_zero_shift","transfer_level":"low"}}','8000000 + 30000 + 400 + 6'),
-  ('Which number has digit 5 worth 50,000?','MCQ','{"choices":["5,203,410","1,052,340","305,214","250,431"],"meta":{"role":"transfer","misconception_tag":"pv_m3_reading_direction","transfer_level":"medium"}}','1,052,340'),
-  ('What is the value of 8 in 1,863,205?','SHORT','{"meta":{"role":"shadow","route":"A"}}','800000'),
-  ('What place is digit 9 in 4,719,300?','SHORT','{"meta":{"role":"shadow","route":"A"}}','thousands'),
-  ('Write 6,040,070 in expanded form.','SHORT','{"meta":{"role":"shadow","route":"B"}}','6000000 + 40000 + 70'),
-  ('Select the number where 3 represents 300,000.','MCQ','{"choices":["3,041,220","130,422","43,021","703,012"],"meta":{"role":"shadow","route":"B"}}','3,041,220'),
-  ('Correct this: In 2,701,450 the value of 7 is 700,000.','SHORT','{"meta":{"role":"shadow","route":"C"}}','700000'),
-  ('Which value of 5 is correct in 950,214?','MCQ','{"choices":["5","50","5000","50000"],"meta":{"role":"shadow","route":"C"}}','50000')
+  ('What is the value of the digit 7 in 3,742,915?','SHORT','{"meta":{"question_role":"anchor","misconception_tag":"pv_m1_place_vs_value","route":"diagnostic","transfer_level":"none","strictness_level":"normalized"}}','700000'),
+  ('In 504,081, what is the place value of digit 4?','MCQ','{"choices":["thousands","ten-thousands","hundreds","ones"],"meta":{"question_role":"misconception_probe","misconception_tag":"pv_m2_zero_shift","route":"diagnostic","transfer_level":"none","strictness_level":"exact"}}','thousands'),
+  ('Write 8,030,406 in expanded form.','SHORT','{"meta":{"question_role":"prerequisite_probe","misconception_tag":"pv_m2_zero_shift","route":"diagnostic","transfer_level":"low","strictness_level":"normalized"}}','8000000 + 30000 + 400 + 6'),
+  ('Which number has digit 5 worth 50,000?','MCQ','{"choices":["5,203,410","1,052,340","305,214","250,431"],"meta":{"question_role":"transfer","misconception_tag":"pv_m3_reading_direction","route":"diagnostic","transfer_level":"medium","strictness_level":"exact"}}','1,052,340'),
+  ('What is the value of 8 in 1,863,205?','SHORT','{"meta":{"question_role":"shadow","misconception_tag":"pv_m1_place_vs_value","route":"A","transfer_level":"low","strictness_level":"normalized"}}','800000'),
+  ('What place is digit 9 in 4,719,300?','SHORT','{"meta":{"question_role":"shadow","misconception_tag":"pv_m2_zero_shift","route":"A","transfer_level":"low","strictness_level":"normalized"}}','thousands'),
+  ('Write 6,040,070 in expanded form.','SHORT','{"meta":{"question_role":"shadow","misconception_tag":"pv_m2_zero_shift","route":"B","transfer_level":"medium","strictness_level":"normalized"}}','6000000 + 40000 + 70'),
+  ('Select the number where 3 represents 300,000.','MCQ','{"choices":["3,041,220","130,422","43,021","703,012"],"meta":{"question_role":"shadow","misconception_tag":"pv_m3_reading_direction","route":"B","transfer_level":"medium","strictness_level":"exact"}}','3,041,220'),
+  ('Correct this: In 2,701,450 the value of 7 is 700,000.','SHORT','{"meta":{"question_role":"shadow","misconception_tag":"pv_m1_place_vs_value","route":"C","transfer_level":"low","strictness_level":"normalized"}}','700000'),
+  ('Which value of 5 is correct in 950,214?','MCQ','{"choices":["5","50","5000","50000"],"meta":{"question_role":"shadow","misconception_tag":"pv_m2_zero_shift","route":"C","transfer_level":"low","strictness_level":"exact"}}','50000')
 ) AS q(question,type,options,answer)
 WHERE sub."slug"='ks3-maths'
 AND NOT EXISTS (
