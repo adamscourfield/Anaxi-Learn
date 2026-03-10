@@ -11,6 +11,16 @@ export type ReteachReasonCode =
 export type ReteachLoopStep = 'TEACH' | 'GUIDED' | 'INDEPENDENT' | 'RETRIEVAL';
 export type GateDecision = 'pass' | 'continue' | 'escalate';
 
+type SupportLevel = 'INDEPENDENT' | 'LIGHT_PROMPT' | 'WORKED_EXAMPLE' | 'SCAFFOLDED' | 'FULL_EXPLANATION';
+
+type ParsedAttempt = {
+  correct: boolean;
+  supportLevel: SupportLevel;
+  isDelayedRetrieval: boolean;
+  step?: ReteachLoopStep;
+  responseTimeMs?: number;
+};
+
 export interface RouteInput {
   userId: string;
   subjectId: string;
@@ -25,6 +35,34 @@ export interface RouteInput {
 function clamp01(value: number | undefined, fallback = 0): number {
   if (typeof value !== 'number' || Number.isNaN(value)) return fallback;
   return Math.max(0, Math.min(1, value));
+}
+
+function rateCorrect(items: Array<{ correct: boolean }>): number {
+  if (items.length === 0) return 0;
+  return items.filter((x) => x.correct).length / items.length;
+}
+
+function median(values: number[]): number | null {
+  if (values.length === 0) return null;
+  const sorted = [...values].sort((a, b) => a - b);
+  const mid = Math.floor(sorted.length / 2);
+  if (sorted.length % 2 === 0) return (sorted[mid - 1] + sorted[mid]) / 2;
+  return sorted[mid];
+}
+
+function classifyResponseTimeBand(ms: number | null): 'fast' | 'balanced' | 'slow' | 'unknown' {
+  if (ms == null) return 'unknown';
+  if (ms < 8000) return 'fast';
+  if (ms <= 35000) return 'balanced';
+  return 'slow';
+}
+
+function computeCorrectnessTrendDelta(parsed: ParsedAttempt[]): number {
+  const recent = parsed.slice(-3);
+  const prior = parsed.slice(Math.max(0, parsed.length - 6), Math.max(0, parsed.length - 3));
+  const recentRate = rateCorrect(recent);
+  const priorRate = rateCorrect(prior);
+  return recentRate - priorRate;
 }
 
 export function inferReasonCodes(input: RouteInput, config: EffectiveReteachConfig): ReteachReasonCode[] {
@@ -99,8 +137,9 @@ export interface AttemptRecordInput {
   step: ReteachLoopStep;
   stepIndex: number;
   correct: boolean;
-  supportLevel?: 'INDEPENDENT' | 'LIGHT_PROMPT' | 'WORKED_EXAMPLE' | 'SCAFFOLDED' | 'FULL_EXPLANATION';
+  supportLevel?: SupportLevel;
   isDelayedRetrieval?: boolean;
+  responseTimeMs?: number;
 }
 
 export async function recordReteachAttempt(input: AttemptRecordInput) {
@@ -118,9 +157,44 @@ export async function recordReteachAttempt(input: AttemptRecordInput) {
         correct: input.correct,
         supportLevel: input.supportLevel ?? 'INDEPENDENT',
         isDelayedRetrieval: input.isDelayedRetrieval ?? false,
+        responseTimeMs: typeof input.responseTimeMs === 'number' ? Math.max(0, Math.round(input.responseTimeMs)) : null,
       },
     },
   });
+}
+
+function buildGateMetrics(parsed: ParsedAttempt[], config: EffectiveReteachConfig, failedLoops: number) {
+  const independent = parsed.filter((a) => a.supportLevel === 'INDEPENDENT');
+  const independentWindow = Math.max(1, Math.round(config.gateIndependentRateWindow));
+  const independentWindowed = independent.slice(-independentWindow);
+  const independentCorrectRate = rateCorrect(independentWindowed);
+
+  let consecutiveIndependentCorrect = 0;
+  for (let i = independent.length - 1; i >= 0; i -= 1) {
+    if (independent[i].correct) consecutiveIndependentCorrect += 1;
+    else break;
+  }
+
+  const delayedChecks = parsed.filter((a) => a.isDelayedRetrieval);
+  const delayedRetrievalOk = delayedChecks.length === 0 || delayedChecks.slice(-1)[0].correct;
+
+  const attemptsUsed = parsed.length;
+  const hintRelianceRate = parsed.length === 0 ? 0 : parsed.filter((a) => a.supportLevel !== 'INDEPENDENT').length / parsed.length;
+  const correctnessTrendDelta = computeCorrectnessTrendDelta(parsed);
+  const medianResponseTimeMs = median(parsed.map((a) => a.responseTimeMs).filter((v): v is number => typeof v === 'number' && Number.isFinite(v)));
+  const responseTimeBand = classifyResponseTimeBand(medianResponseTimeMs);
+
+  return {
+    consecutiveIndependentCorrect,
+    independentCorrectRate,
+    delayedRetrievalOk,
+    attemptsUsed,
+    hintRelianceRate,
+    correctnessTrendDelta,
+    medianResponseTimeMs,
+    responseTimeBand,
+    failedLoops,
+  };
 }
 
 export async function evaluateGate(input: {
@@ -141,51 +215,89 @@ export async function evaluateGate(input: {
     select: { payload: true, createdAt: true },
   });
 
-  const parsed = attempts.map((event) => {
+  const parsed: ParsedAttempt[] = attempts.map((event) => {
     const payload = (event.payload ?? {}) as {
       correct?: boolean;
       supportLevel?: string;
       isDelayedRetrieval?: boolean;
       step?: ReteachLoopStep;
+      responseTimeMs?: number | null;
     };
     return {
       correct: payload.correct === true,
-      supportLevel: payload.supportLevel ?? 'INDEPENDENT',
+      supportLevel: (payload.supportLevel as SupportLevel) ?? 'INDEPENDENT',
       isDelayedRetrieval: payload.isDelayedRetrieval === true,
       step: payload.step,
+      responseTimeMs: typeof payload.responseTimeMs === 'number' ? payload.responseTimeMs : undefined,
     };
   });
 
-  const independent = parsed.filter((a) => a.supportLevel === 'INDEPENDENT');
   const config = await getEffectiveReteachConfig();
-  const independentWindow = Math.max(1, Math.round(config.gateIndependentRateWindow));
-  const independentWindowed = independent.slice(-independentWindow);
-  const independentCorrectRate =
-    independentWindowed.length === 0
-      ? 0
-      : independentWindowed.filter((a) => a.correct).length / independentWindowed.length;
-
-  let consecutiveIndependentCorrect = 0;
-  for (let i = independent.length - 1; i >= 0; i -= 1) {
-    if (independent[i].correct) consecutiveIndependentCorrect += 1;
-    else break;
-  }
-
-  const delayedChecks = parsed.filter((a) => a.isDelayedRetrieval);
-  const delayedRetrievalOk = delayedChecks.length === 0 || delayedChecks.slice(-1)[0].correct;
-
   const failedLoops = await getRecentFailedLoops(input.userId, input.subjectId, input.skillId);
+  const metrics = buildGateMetrics(parsed, config, failedLoops);
+
+  const rules = {
+    masteryGateMet:
+      metrics.consecutiveIndependentCorrect >= Math.max(1, Math.round(config.gateConsecutiveIndependentCorrect)) &&
+      metrics.independentCorrectRate >= config.gateIndependentRateMin &&
+      metrics.delayedRetrievalOk,
+    lowHintReliance: metrics.hintRelianceRate <= 0.7,
+    attemptsWithinBudget: metrics.attemptsUsed <= 10,
+    trendIsRecovering: metrics.correctnessTrendDelta >= 0,
+    hardEscalationByHistory: metrics.failedLoops >= Math.max(1, Math.round(config.gateEscalateAfterFailedLoops)),
+    hardEscalationByAttempts: metrics.attemptsUsed >= 12,
+    hardEscalationByDependence: metrics.hintRelianceRate > 0.85 && metrics.correctnessTrendDelta <= 0,
+  };
 
   let decision: GateDecision = 'continue';
-  if (
-    consecutiveIndependentCorrect >= Math.max(1, Math.round(config.gateConsecutiveIndependentCorrect)) &&
-    independentCorrectRate >= config.gateIndependentRateMin &&
-    delayedRetrievalOk
-  ) {
-    decision = 'pass';
-  } else if (failedLoops >= Math.max(1, Math.round(config.gateEscalateAfterFailedLoops))) {
-    decision = 'escalate';
+  let decisionReason = 'insufficient_evidence';
+
+  if (config.policyVersion === 'v2') {
+    if (rules.masteryGateMet && rules.lowHintReliance && rules.attemptsWithinBudget) {
+      decision = 'pass';
+      decisionReason = 'mastery_with_independence';
+    } else if (rules.hardEscalationByHistory || rules.hardEscalationByAttempts || rules.hardEscalationByDependence) {
+      decision = 'escalate';
+      decisionReason = rules.hardEscalationByHistory
+        ? 'repeated_failed_loops'
+        : rules.hardEscalationByAttempts
+          ? 'attempt_budget_exhausted'
+          : 'high_hint_dependence_without_recovery';
+    } else if (rules.masteryGateMet && !rules.lowHintReliance) {
+      decision = 'continue';
+      decisionReason = 'needs_more_independent_success';
+    } else if (rules.trendIsRecovering) {
+      decision = 'continue';
+      decisionReason = 'recovering_keep_looping';
+    }
+  } else {
+    if (rules.masteryGateMet) {
+      decision = 'pass';
+      decisionReason = 'v1_mastery_gate_met';
+    } else if (rules.hardEscalationByHistory) {
+      decision = 'escalate';
+      decisionReason = 'v1_repeated_failed_loops';
+    }
   }
+
+  const decisionTrace = {
+    policyVersion: config.policyVersion,
+    signals: {
+      attemptsUsed: metrics.attemptsUsed,
+      hintRelianceRate: Number(metrics.hintRelianceRate.toFixed(3)),
+      correctnessTrendDelta: Number(metrics.correctnessTrendDelta.toFixed(3)),
+      medianResponseTimeMs: metrics.medianResponseTimeMs,
+      responseTimeBand: metrics.responseTimeBand,
+      failedLoops: metrics.failedLoops,
+    },
+    checks: {
+      consecutiveIndependentCorrect: metrics.consecutiveIndependentCorrect,
+      independentCorrectRate: Number(metrics.independentCorrectRate.toFixed(3)),
+      delayedRetrievalOk: metrics.delayedRetrievalOk,
+    },
+    rules,
+    decisionReason,
+  };
 
   await prisma.event.create({
     data: {
@@ -198,10 +310,11 @@ export async function evaluateGate(input: {
         assignedPathId: input.assignedPathId,
         decision,
         checks: {
-          consecutiveIndependentCorrect,
-          independentCorrectRate,
-          delayedRetrievalOk,
+          consecutiveIndependentCorrect: metrics.consecutiveIndependentCorrect,
+          independentCorrectRate: metrics.independentCorrectRate,
+          delayedRetrievalOk: metrics.delayedRetrievalOk,
         },
+        decisionTrace,
       },
     },
   });
@@ -209,10 +322,11 @@ export async function evaluateGate(input: {
   return {
     decision,
     checks: {
-      consecutiveIndependentCorrect,
-      independentCorrectRate,
-      delayedRetrievalOk,
+      consecutiveIndependentCorrect: metrics.consecutiveIndependentCorrect,
+      independentCorrectRate: metrics.independentCorrectRate,
+      delayedRetrievalOk: metrics.delayedRetrievalOk,
     },
+    decisionTrace,
   };
 }
 

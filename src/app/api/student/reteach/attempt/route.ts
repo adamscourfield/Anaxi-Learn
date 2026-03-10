@@ -13,6 +13,7 @@ const schema = z.object({
   correct: z.boolean(),
   supportLevel: z.enum(['INDEPENDENT', 'LIGHT_PROMPT', 'WORKED_EXAMPLE', 'SCAFFOLDED', 'FULL_EXPLANATION']).optional(),
   isDelayedRetrieval: z.boolean().optional(),
+  responseTimeMs: z.number().int().nonnegative().max(600000).optional(),
 });
 
 export async function POST(req: NextRequest) {

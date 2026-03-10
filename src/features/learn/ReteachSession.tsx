@@ -53,7 +53,7 @@ export function ReteachSession({ subjectId, skillId, routeType, assignedPathId, 
     [renderer, step, interaction, markInteraction]
   );
 
-  async function recordPhase9Attempt(input: { step: ReteachStage | 'retrieval'; correct: boolean; supportLevel: 'INDEPENDENT' | 'LIGHT_PROMPT' | 'WORKED_EXAMPLE' | 'SCAFFOLDED' | 'FULL_EXPLANATION'; isDelayedRetrieval?: boolean; }) {
+  async function recordPhase9Attempt(input: { step: ReteachStage | 'retrieval'; correct: boolean; supportLevel: 'INDEPENDENT' | 'LIGHT_PROMPT' | 'WORKED_EXAMPLE' | 'SCAFFOLDED' | 'FULL_EXPLANATION'; isDelayedRetrieval?: boolean; responseTimeMs?: number; }) {
     if (!assignedPathId) return;
     await fetch('/api/student/reteach/attempt', {
       method: 'POST',
@@ -74,6 +74,7 @@ export function ReteachSession({ subjectId, skillId, routeType, assignedPathId, 
         correct: input.correct,
         supportLevel: input.supportLevel,
         isDelayedRetrieval: input.isDelayedRetrieval ?? false,
+        responseTimeMs: input.responseTimeMs,
       }),
     });
   }
@@ -121,6 +122,7 @@ export function ReteachSession({ subjectId, skillId, routeType, assignedPathId, 
       step: 'checkpoint',
       correct,
       supportLevel: 'SCAFFOLDED',
+      responseTimeMs: durationMs,
     });
 
     if (!correct) return;
