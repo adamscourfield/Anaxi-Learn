@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { parseAnswerType, parseItemOptions, stripStudentQuestionLabel } from '@/features/items/itemMeta';
 
@@ -32,7 +32,7 @@ export function BaselineRunClient({ subjectSlug }: { subjectSlug: string }) {
   const parsedOptions = useMemo(() => parseItemOptions(item?.options ?? {}), [item?.options]);
   const questionText = useMemo(() => stripStudentQuestionLabel(item?.question), [item?.question]);
 
-  async function loadNext(currentSessionId: string) {
+  const loadNext = useCallback(async (currentSessionId: string) => {
     const nextRes = await fetch('/api/baseline/next', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -62,7 +62,7 @@ export function BaselineRunClient({ subjectSlug }: { subjectSlug: string }) {
 
     setItem(next.item);
     setSelectedAnswer('');
-  }
+  }, [router, subjectSlug]);
 
   useEffect(() => {
     let cancelled = false;
@@ -93,7 +93,7 @@ export function BaselineRunClient({ subjectSlug }: { subjectSlug: string }) {
     return () => {
       cancelled = true;
     };
-  }, [router, subjectSlug]);
+  }, [loadNext, subjectSlug]);
 
   async function submit() {
     if (!sessionId || !item || !selectedAnswer.trim() || submitting) return;
