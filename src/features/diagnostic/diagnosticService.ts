@@ -17,6 +17,12 @@ export interface SkillEstimate {
   masteryEstimate: number;
 }
 
+export interface RouteRecommendation {
+  status: 'secure' | 'route';
+  route?: 'A' | 'B' | 'C';
+  reason: string;
+}
+
 export interface DiagnosticPayload {
   estimates: Record<string, SkillEstimate>;
   strandCounts: Record<string, number>; // how many items shown per strand
@@ -27,7 +33,7 @@ export interface DiagnosticPayload {
       misconceptionCounts: Record<string, number>;
     }
   >;
-  routeRecommendations?: Record<string, { status: 'secure' | 'route'; route?: 'A' | 'B' | 'C'; reason: string }>;
+  routeRecommendations?: Record<string, RouteRecommendation>;
 }
 
 export function initPayload(): DiagnosticPayload {
@@ -76,6 +82,20 @@ export function updatePayloadAfterAttempt(
     strandCounts,
     skillSignals,
     routeRecommendations: { ...(payload.routeRecommendations ?? {}) },
+  };
+}
+
+export function persistRouteRecommendation(
+  payload: DiagnosticPayload,
+  skillCode: string,
+  recommendation: RouteRecommendation
+): DiagnosticPayload {
+  return {
+    ...payload,
+    routeRecommendations: {
+      ...(payload.routeRecommendations ?? {}),
+      [skillCode]: recommendation,
+    },
   };
 }
 

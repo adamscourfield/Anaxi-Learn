@@ -5,6 +5,7 @@ import {
   selectNextSkill,
   shouldStopEarly,
   STRAND_QUOTAS,
+  persistRouteRecommendation,
 } from '@/features/diagnostic/diagnosticService';
 
 describe('initPayload', () => {
@@ -127,6 +128,40 @@ describe('shouldStopEarly', () => {
     for (let i = 0; i < 2; i++) p = updatePayloadAfterAttempt(p, 'N3.5', 'MUL', true);
     for (let i = 0; i < 2; i++) p = updatePayloadAfterAttempt(p, 'N3.5', 'MUL', false);
     expect(shouldStopEarly(p, 12, 12, 25, 0.85)).toBe(false);
+  });
+});
+
+describe('persistRouteRecommendation', () => {
+  it('persists recommendation by skill code into payload.routeRecommendations', () => {
+    const p = initPayload();
+    const updated = persistRouteRecommendation(p, 'N1.1', {
+      status: 'route',
+      route: 'B',
+      reason: 'dominant misconception pv_m2_zero_shift',
+    });
+
+    expect(updated.routeRecommendations?.['N1.1']).toEqual({
+      status: 'route',
+      route: 'B',
+      reason: 'dominant misconception pv_m2_zero_shift',
+    });
+  });
+
+  it('preserves existing recommendations while adding a new one', () => {
+    let p = initPayload();
+    p = persistRouteRecommendation(p, 'N1.1', {
+      status: 'route',
+      route: 'A',
+      reason: 'initial recommendation',
+    });
+
+    const updated = persistRouteRecommendation(p, 'N1.2', {
+      status: 'secure',
+      reason: 'high mastery and transfer',
+    });
+
+    expect(updated.routeRecommendations?.['N1.1']?.route).toBe('A');
+    expect(updated.routeRecommendations?.['N1.2']?.status).toBe('secure');
   });
 });
 

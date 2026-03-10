@@ -5,7 +5,7 @@ import { prisma } from '@/db/prisma';
 import { z } from 'zod';
 import { gradeAttempt, getAnswerFormatHint } from '@/features/learn/gradeAttempt';
 import { emitEvent } from '@/features/telemetry/eventService';
-import { updatePayloadAfterAttempt } from '@/features/diagnostic/diagnosticService';
+import { persistRouteRecommendation, updatePayloadAfterAttempt, type RouteRecommendation } from '@/features/diagnostic/diagnosticService';
 import { parseItemOptions } from '@/features/items/itemMeta';
 import { decideN1Route } from '@/features/diagnostic/n1Routing';
 import { consumeGuessingSafeguard, grantReward } from '@/features/gamification/gamificationService';
@@ -63,9 +63,7 @@ export async function POST(req: NextRequest) {
     isTransfer: parsedOptions.meta.questionRole === 'transfer' || parsedOptions.meta.transferLevel !== 'none',
   });
 
-  let routeDecision:
-    | { status: 'secure' | 'route'; route?: 'A' | 'B' | 'C'; reason: string }
-    | undefined;
+  let routeDecision: RouteRecommendation | undefined;
 
   if (isRoutedSkill(skillCode)) {
     const est = updatedPayload.estimates[skillCode];
@@ -83,10 +81,8 @@ export async function POST(req: NextRequest) {
         },
       });
 
-      updatedPayload.routeRecommendations = {
-        ...(updatedPayload.routeRecommendations ?? {}),
-        [skillCode]: routeDecision,
-      };
+      const persisted = persistRouteRecommendation(updatedPayload, skillCode, routeDecision);
+      updatedPayload.routeRecommendations = persisted.routeRecommendations;
     }
   }
 
