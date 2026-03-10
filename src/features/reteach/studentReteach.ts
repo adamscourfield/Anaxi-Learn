@@ -1,5 +1,6 @@
 import { prisma } from '@/db/prisma';
 import { RETEACH_CONFIG } from './reteachConfig';
+import { getEffectiveReteachConfig } from './reteachPolicy';
 
 export type ReteachReasonCode =
   | 'LOW_CHECKPOINT_ACCURACY'
@@ -27,12 +28,12 @@ function clamp01(value: number | undefined, fallback = 0): number {
   return Math.max(0, Math.min(1, value));
 }
 
-export function inferReasonCodes(input: RouteInput): ReteachReasonCode[] {
+export function inferReasonCodes(input: RouteInput, config: typeof RETEACH_CONFIG): ReteachReasonCode[] {
   const reasons: ReteachReasonCode[] = [];
-  if (clamp01(input.checkpointAccuracy, 1) < RETEACH_CONFIG.checkpointAccuracyTrigger) reasons.push('LOW_CHECKPOINT_ACCURACY');
-  if (clamp01(input.wrongFirstDifferenceRate, 0) > RETEACH_CONFIG.wrongFirstDifferenceTrigger) reasons.push('HIGH_WRONG_FIRST_DIFF');
-  if (clamp01(input.interactionPassRate, 1) < RETEACH_CONFIG.interactionPassTrigger) reasons.push('LOW_INTERACTION_PASS');
-  if ((input.dleTrend ?? 0) < RETEACH_CONFIG.dleTrendTrigger) reasons.push('NEGATIVE_DLE_TREND');
+  if (clamp01(input.checkpointAccuracy, 1) < config.checkpointAccuracyTrigger) reasons.push('LOW_CHECKPOINT_ACCURACY');
+  if (clamp01(input.wrongFirstDifferenceRate, 0) > config.wrongFirstDifferenceTrigger) reasons.push('HIGH_WRONG_FIRST_DIFF');
+  if (clamp01(input.interactionPassRate, 1) < config.interactionPassTrigger) reasons.push('LOW_INTERACTION_PASS');
+  if ((input.dleTrend ?? 0) < config.dleTrendTrigger) reasons.push('NEGATIVE_DLE_TREND');
   return reasons;
 }
 
@@ -54,7 +55,8 @@ export async function getRecentFailedLoops(userId: string, subjectId: string, sk
 }
 
 export async function createReteachRoute(input: RouteInput) {
-  const reasonCodes = inferReasonCodes(input);
+  const config = await getEffectiveReteachConfig();
+  const reasonCodes = inferReasonCodes(input, config);
   const failedLoops = await getRecentFailedLoops(input.userId, input.subjectId, input.skillId);
   if (failedLoops >= 1 && !reasonCodes.includes('REPEATED_CONCEPT_FAILURE')) {
     reasonCodes.push('REPEATED_CONCEPT_FAILURE');
@@ -156,7 +158,8 @@ export async function evaluateGate(input: {
   });
 
   const independent = parsed.filter((a) => a.supportLevel === 'INDEPENDENT');
-  const independentWindow = Math.max(1, Math.round(RETEACH_CONFIG.gateIndependentRateWindow));
+  const config = await getEffectiveReteachConfig();
+  const independentWindow = Math.max(1, Math.round(config.gateIndependentRateWindow));
   const independentWindowed = independent.slice(-independentWindow);
   const independentCorrectRate =
     independentWindowed.length === 0
@@ -176,12 +179,12 @@ export async function evaluateGate(input: {
 
   let decision: GateDecision = 'continue';
   if (
-    consecutiveIndependentCorrect >= Math.max(1, Math.round(RETEACH_CONFIG.gateConsecutiveIndependentCorrect)) &&
-    independentCorrectRate >= RETEACH_CONFIG.gateIndependentRateMin &&
+    consecutiveIndependentCorrect >= Math.max(1, Math.round(config.gateConsecutiveIndependentCorrect)) &&
+    independentCorrectRate >= config.gateIndependentRateMin &&
     delayedRetrievalOk
   ) {
     decision = 'pass';
-  } else if (failedLoops >= Math.max(1, Math.round(RETEACH_CONFIG.gateEscalateAfterFailedLoops))) {
+  } else if (failedLoops >= Math.max(1, Math.round(config.gateEscalateAfterFailedLoops))) {
     decision = 'escalate';
   }
 

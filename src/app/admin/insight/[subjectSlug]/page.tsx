@@ -2,6 +2,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/features/auth/authOptions';
 import { redirect } from 'next/navigation';
 import { prisma } from '@/db/prisma';
+import { getPhase9Analytics } from '@/features/reteach/phase9Analytics';
 
 interface Props {
   params: Promise<{ subjectSlug: string }>;
@@ -17,13 +18,16 @@ export default async function InsightDashboardPage({ params }: Props) {
   const subject = await prisma.subject.findUnique({ where: { slug: subjectSlug } });
   if (!subject) return <div>Subject not found</div>;
 
-  const skills = await prisma.skill.findMany({
-    where: { subjectId: subject.id },
-    include: {
-      masteries: { select: { mastery: true, confirmedCount: true, userId: true } },
-    },
-    orderBy: { sortOrder: 'asc' },
-  });
+  const [skills, phase9] = await Promise.all([
+    prisma.skill.findMany({
+      where: { subjectId: subject.id },
+      include: {
+        masteries: { select: { mastery: true, confirmedCount: true, userId: true } },
+      },
+      orderBy: { sortOrder: 'asc' },
+    }),
+    getPhase9Analytics(subject.id, 30),
+  ]);
 
   // A) Coverage by strand
   const strandMap = new Map<string, { totalStudents: number; stableStudents: number; masteries: number[] }>();
@@ -227,6 +231,38 @@ export default async function InsightDashboardPage({ params }: Props) {
           <p className="mt-2 text-xs text-gray-500">
             Active days observed: {activeDays} · Avg route accuracy:{' '}
             {routeStats.count > 0 ? `${Math.round((routeStats.sumAccuracy / routeStats.count) * 100)}%` : '—'}
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-lg font-semibold text-gray-800 mb-3">Phase 9 — Student-First Reteach (30d)</h2>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="rounded-xl border border-gray-200 bg-white p-4">
+              <p className="text-xs text-gray-500">Loops started</p>
+              <p className="mt-1 text-2xl font-semibold text-gray-900">{phase9.loopsStarted}</p>
+            </div>
+            <div className="rounded-xl border border-gray-200 bg-white p-4">
+              <p className="text-xs text-gray-500">Recovery rate</p>
+              <p className="mt-1 text-2xl font-semibold text-emerald-700">
+                {typeof phase9.recoveryRate === 'number' ? `${Math.round(phase9.recoveryRate * 100)}%` : '—'}
+              </p>
+            </div>
+            <div className="rounded-xl border border-gray-200 bg-white p-4">
+              <p className="text-xs text-gray-500">Escalation rate</p>
+              <p className="mt-1 text-2xl font-semibold text-rose-700">
+                {typeof phase9.escalationRate === 'number' ? `${Math.round(phase9.escalationRate * 100)}%` : '—'}
+              </p>
+            </div>
+            <div className="rounded-xl border border-gray-200 bg-white p-4">
+              <p className="text-xs text-gray-500">Avg time to recovery</p>
+              <p className="mt-1 text-2xl font-semibold text-gray-900">
+                {typeof phase9.avgHoursToRecovery === 'number' ? `${phase9.avgHoursToRecovery.toFixed(1)}h` : '—'}
+              </p>
+            </div>
+          </div>
+          <p className="mt-2 text-xs text-gray-500">
+            Avg attempts before pass: {typeof phase9.avgAttemptsBeforePass === 'number' ? phase9.avgAttemptsBeforePass.toFixed(1) : '—'} ·
+            API: <code>/api/admin/insight/{subject.slug}/phase9?days=30</code>
           </p>
         </section>
 

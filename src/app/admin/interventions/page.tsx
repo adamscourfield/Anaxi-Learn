@@ -4,6 +4,7 @@ import { authOptions } from '@/features/auth/authOptions';
 import { redirect } from 'next/navigation';
 import { prisma } from '@/db/prisma';
 import { LEARNING_CONFIG } from '@/features/config/learningConfig';
+import { AdminReteachPolicyPanel } from '@/features/reteach/AdminReteachPolicyPanel';
 
 export default async function AdminInterventionsPage() {
   const session = await getServerSession(authOptions);
@@ -157,6 +158,10 @@ export default async function AdminInterventionsPage() {
               → Insight Dashboard
             </a>
           </div>
+        </div>
+
+        <div className="mb-6">
+          <AdminReteachPolicyPanel />
         </div>
 
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 mb-6">
