@@ -69,6 +69,20 @@ enum DurabilityBand {
   DURABLE
 }
 
+enum ItemReviewStatus {
+  OPEN
+  RESOLVED
+}
+
+enum ItemReviewCategory {
+  ANSWER_MODE
+  ANSWER_MAPPING
+  STEM_COPY
+  DISTRACTOR_QUALITY
+  SKILL_MAPPING
+  OTHER
+}
+
 model User {
   id                 String                  @id @default(cuid())
   email              String                  @unique
@@ -93,6 +107,7 @@ model User {
   knowledgeSkillStates   StudentSkillState[]
   knowledgeQuestionAttempts QuestionAttempt[]
   knowledgeSkillReviews  SkillReview[]
+  itemReviewNotes        ItemReviewNote[]       @relation("ItemReviewAuthor")
 }
 
 model Subject {
@@ -165,6 +180,24 @@ model Item {
   baselineAttempts          BaselineAttempt[]
   events                    Event[]
   knowledgeQuestionAttempts QuestionAttempt[]
+  reviewNotes               ItemReviewNote[]
+}
+
+model ItemReviewNote {
+  id           String             @id @default(cuid())
+  itemId        String
+  authorUserId  String
+  status        ItemReviewStatus  @default(OPEN)
+  category      ItemReviewCategory
+  note          String
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+  resolvedAt    DateTime?
+  item          Item              @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  author        User              @relation("ItemReviewAuthor", fields: [authorUserId], references: [id], onDelete: Cascade)
+
+  @@index([itemId, status, createdAt])
+  @@index([authorUserId, createdAt])
 }
 
 model ItemSkill {

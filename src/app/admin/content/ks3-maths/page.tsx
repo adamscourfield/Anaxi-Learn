@@ -2,8 +2,8 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/features/auth/authOptions';
 import { redirect } from 'next/navigation';
 import { prisma } from '@/db/prisma';
-
-const TARGET_SKILLS = ['N1.3', 'N1.5', 'N1.10', 'N1.12'];
+import { QuestionQaWorkbench } from '@/components/admin/QuestionQaWorkbench';
+import { buildQaItemView } from '@/features/items/questionQa.server';
 
 export default async function AdminContentKSMathsPage() {
   const session = await getServerSession(authOptions);
@@ -17,84 +17,78 @@ export default async function AdminContentKSMathsPage() {
   const importedItems = await prisma.item.findMany({
     where: {
       subjectId: subject.id,
-      question: { startsWith: '[Slide' },
     },
     include: {
       skills: {
         include: {
-          skill: { select: { code: true, name: true, strand: true } },
+          skill: { select: { code: true } },
         },
+      },
+      reviewNotes: {
+        include: {
+          author: { select: { name: true, email: true } },
+        },
+        orderBy: { createdAt: 'desc' },
       },
     },
     orderBy: { question: 'asc' },
   });
 
-  const countsBySkill = TARGET_SKILLS.map((skillCode) => {
-    const count = importedItems.filter((item) => item.skills.some((s) => s.skill.code === skillCode)).length;
-    return { skillCode, count };
-  });
+  const qaItems = importedItems.map(buildQaItemView);
+  const skillSet = Array.from(new Set(qaItems.flatMap((item) => item.skills))).sort();
+  const issueCount = qaItems.reduce((sum, item) => sum + item.issues.length, 0);
+  const flaggedCount = qaItems.filter((item) => item.issues.length > 0).length;
+  const repairOpenCount = qaItems.reduce(
+    (sum, item) => sum + item.reviewNotes.filter((note) => note.status === 'OPEN').length,
+    0
+  );
 
   return (
     <main className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-6xl mx-auto px-4 space-y-8">
+      <div className="mx-auto max-w-7xl px-4 space-y-8">
         <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-gray-900">Content Verification — KS3 Maths</h1>
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900">Question QA Lab</h1>
+            <p className="mt-1 text-sm text-gray-500">
+              Review answer mode, stored answers, accepted answers, and grading behaviour before students see items.
+            </p>
+          </div>
           <a href="/admin/insight/ks3-maths" className="text-sm text-blue-600 hover:underline">
             ← Back to Insight Dashboard
           </a>
         </div>
 
-        <section className="bg-white rounded-xl border border-gray-200 p-4">
-          <h2 className="text-lg font-semibold text-gray-800 mb-4">Unit 1 Part A Foundation — Imported Questions</h2>
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-3">
-            <div className="rounded-lg border border-gray-200 p-3">
-              <div className="text-xs text-gray-500">Imported Items</div>
-              <div className="text-2xl font-bold text-gray-900">{importedItems.length}</div>
-            </div>
-            {countsBySkill.map((entry) => (
-              <div key={entry.skillCode} className="rounded-lg border border-gray-200 p-3">
-                <div className="text-xs text-gray-500">{entry.skillCode}</div>
-                <div className="text-2xl font-bold text-gray-900">{entry.count}</div>
-              </div>
-            ))}
+        <section className="grid gap-4 md:grid-cols-5">
+          <div className="rounded-xl border border-gray-200 bg-white p-4">
+            <div className="text-xs text-gray-500">Questions loaded</div>
+            <div className="mt-1 text-2xl font-bold text-gray-900">{qaItems.length}</div>
+          </div>
+          <div className="rounded-xl border border-gray-200 bg-white p-4">
+            <div className="text-xs text-gray-500">Flagged items</div>
+            <div className="mt-1 text-2xl font-bold text-red-600">{flaggedCount}</div>
+          </div>
+          <div className="rounded-xl border border-gray-200 bg-white p-4">
+            <div className="text-xs text-gray-500">Contract issues</div>
+            <div className="mt-1 text-2xl font-bold text-amber-600">{issueCount}</div>
+          </div>
+          <div className="rounded-xl border border-gray-200 bg-white p-4">
+            <div className="text-xs text-gray-500">Skills covered</div>
+            <div className="mt-1 text-2xl font-bold text-gray-900">{skillSet.length}</div>
+          </div>
+          <div className="rounded-xl border border-gray-200 bg-white p-4">
+            <div className="text-xs text-gray-500">Open repair notes</div>
+            <div className="mt-1 text-2xl font-bold text-indigo-600">{repairOpenCount}</div>
           </div>
         </section>
 
-        <section className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-          <table className="w-full text-sm">
-            <thead className="bg-gray-50 border-b border-gray-200">
-              <tr>
-                <th className="text-left px-4 py-3 font-medium text-gray-600">Question</th>
-                <th className="text-left px-4 py-3 font-medium text-gray-600">Answer</th>
-                <th className="text-left px-4 py-3 font-medium text-gray-600">Mapped Skills</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-100">
-              {importedItems.map((item) => (
-                <tr key={item.id} className="hover:bg-gray-50 align-top">
-                  <td className="px-4 py-3 text-gray-700">{item.question}</td>
-                  <td className="px-4 py-3 font-medium text-gray-900">{item.answer}</td>
-                  <td className="px-4 py-3">
-                    <div className="flex flex-wrap gap-2">
-                      {item.skills.map((s) => (
-                        <span key={s.skillId} className="px-2 py-0.5 bg-gray-100 rounded text-xs text-gray-700">
-                          {s.skill.code}
-                        </span>
-                      ))}
-                    </div>
-                  </td>
-                </tr>
-              ))}
-              {importedItems.length === 0 && (
-                <tr>
-                  <td colSpan={3} className="px-4 py-8 text-center text-gray-400">
-                    No imported Slide-tagged items found yet. Run db:import:unit1-first25 or db:import:unit1-next25 first.
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+        <section className="rounded-xl border border-blue-200 bg-blue-50 p-5 text-sm text-blue-900">
+          <p className="font-semibold">Use this page to test how the student actually answers the question.</p>
+          <p className="mt-1">
+            Filter by answer mode, preview the student input, and check whether the stored answer can really be selected or typed.
+          </p>
         </section>
+
+        <QuestionQaWorkbench items={qaItems} availableSkills={skillSet} />
       </div>
     </main>
   );
