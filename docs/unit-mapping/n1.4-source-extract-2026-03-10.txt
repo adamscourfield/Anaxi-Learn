@@ -1,0 +1,110 @@
+Subtopic
+N1.4 – Order a List of Integers
+Objectives:
+To order integers using a number line.
+To order integers without a number line.
+To solve problems involving ordering integers.
+LEARNING OUTCOME: To understand how to order integers.
+Keywords:
+Integer
+Place Value
+Ascending
+Descending
+Introduction – Read and annotate:
+Ordering a list of integers builds on our understanding of place value and comparing numbers. By
+arranging numbers from smallest to largest (or vice versa), we practise reading, writing, and
+interpreting values accurately — whether they're written in digits or words.
+Definition
+Characteristics
+Examples
+Non - Examples
+A whole number.
+Can be positive or negative.
+No decimal or fractional part when simplified.
+Integer
+11
+-42
+1.1
+-8.5
+-11
+27.5
+0.42
+
+===== ppt/slides/slide26.xml =====
+26
+Independent Practice
+a)
+8, 5, 9, 10, 2
+b)
+11, 20, 9, 15, 14, 3
+c)
+40, 60, 20, 30, 90, 10
+d)
+83, 18, 45, 37, 90, 21
+e)
+140, 180, 210, 70, 300
+f)
+605, 56, 566, 655, 506, 65, 555
+g)
+2000, 375, 7100, 2900, 999, 400
+h)
+3
+000, 375, 3100, 3900, 399, 300
+Steps
+562, 56, 5620, 526, 5260
+7312, 7321, 732, 73, 723
+32, 372, 3372, 3732, 327
+Look at the place value of the leftmost digit. Write down the number with the smallest place value.
+If any have the same place value, look at the digit to the right and write down the number with the smallest value. Repeat until all numbers have been ordered.
+Example 10 - I do…
+Example 12 – You do…
+Example 11 – We do…
+For the following questions, list the numbers in
+ascending
+order.
+1.
+For the following questions, list the numbers in
+ascending
+order.
+2. Order the following temperatures from coldest to warmest:
+8°C, 12°C, 9°C, 15°C, 11°C, 7°C, 2°C
+
+===== ppt/slides/slide27.xml =====
+a)
+321, 301, 312, 213, 212
+b)
+1031, 1021, 2021, 1030, 2020
+c)
+21031, 20121, 32021, 31030, 32020
+d)
+21531, 21331, 21351, 231151, 23151
+e)
+20531, 20031, 25031, 23051, 21053
+f)
+90531, 95031, 91530, 95130, 95101
+3
+.
+For the following questions, list the numbers in
+descending
+order.
+4. Shown below are the heights of five hills.
+List the hills in order of size, starting with the largest.
+5. The table shows the prices of five televisions
+Write down the televisions in order of price. Start with the cheapest television.
+27
+
+===== ppt/slides/slide28.xml =====
+6. The table below shows the average attendance for five football teams last season.
+Write down the teams in order of average attendance. Start with the highest.
+7. Here are the populations of five countries in 2022.
+Arrange the countries in order of population, starting with the smallest.
+8. Arrange these numbers in ascending order.
+28
+9. How many different four-digit numbers can you make using the cards below? Put your numbers in order, starting with the smallest.
+
+===== ppt/slides/slide29.xml =====
+Skills Check
+29
+
+===== ppt/slides/slide30.xml =====
+30
