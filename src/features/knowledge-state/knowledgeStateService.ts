@@ -7,6 +7,12 @@ import {
 } from './scoreAttempt';
 import { updateSkillState, type KnowledgeState } from './updateSkillState';
 import { decideNextQuestion, type NextQuestionRecommendation, NEXT_QUESTION_POLICY_VERSION } from './nextQuestionPolicy';
+import {
+  computeDLE,
+  computeInstructionalTimeMs,
+  computeKnowledgeStability,
+  computeLearningGain,
+} from './dle';
 
 export interface RecordKnowledgeAttemptInput {
   userId: string;
@@ -39,18 +45,37 @@ const DEFAULT_STATE: KnowledgeState = {
   lastReviewAt: null,
 };
 
+
+export interface DLEMetrics {
+  value: number;
+  learningGain: number;
+  knowledgeStability: number;
+  instructionalTimeMs: number;
+  durabilityBand: 'AT_RISK' | 'DEVELOPING' | 'DURABLE';
+  version: 'v1';
+}
+
 export interface KnowledgeAttemptResult {
   recommendation: NextQuestionRecommendation;
   policyVersion: string;
+  state: KnowledgeState;
+  dle: DLEMetrics;
 }
 
 export async function recordKnowledgeAttempt(input: RecordKnowledgeAttemptInput): Promise<KnowledgeAttemptResult> {
   const prismaAny = prisma as unknown as Record<string, unknown>;
   const fallbackRecommendation = decideNextQuestion({ state: DEFAULT_STATE });
   if (!('studentSkillState' in prismaAny) || !('questionAttempt' in prismaAny) || !('skillReview' in prismaAny)) {
+    const instructionalTimeMs = computeInstructionalTimeMs(input);
+    const learningGain = 0;
+    const knowledgeStability = computeKnowledgeStability(DEFAULT_STATE);
+    const dle = computeDLE({ learningGain, knowledgeStability, instructionalTimeMs });
+
     return {
       recommendation: fallbackRecommendation,
       policyVersion: NEXT_QUESTION_POLICY_VERSION,
+      state: DEFAULT_STATE,
+      dle,
     };
   }
 
@@ -105,6 +130,18 @@ export async function recordKnowledgeAttempt(input: RecordKnowledgeAttemptInput)
     },
   });
 
+  const learningGain = computeLearningGain(state, nextState);
+  const knowledgeStability = computeKnowledgeStability(nextState);
+  const instructionalTimeMs = computeInstructionalTimeMs(input);
+  const dle = computeDLE({ learningGain, knowledgeStability, instructionalTimeMs });
+  const durabilityBand = dle.durabilityBand;
+
+  const contextType = input.isTransferItem ? 'TRANSFER' : input.isMixedItem ? 'MIXED' : 'ROUTINE';
+  const daysSinceLastAttempt = state.lastAttemptAt
+    ? (occurredAt.getTime() - state.lastAttemptAt.getTime()) / (1000 * 60 * 60 * 24)
+    : 0;
+  const delayBucket = daysSinceLastAttempt >= 7 ? 'D7_PLUS' : daysSinceLastAttempt >= 3 ? 'D3' : daysSinceLastAttempt >= 1 ? 'D1' : input.isReviewItem ? 'SAME_DAY' : 'IMMEDIATE';
+
   const nextReviewAt = new Date(occurredAt.getTime() + Math.max(1, nextState.halfLifeDays * 0.9) * 24 * 60 * 60 * 1000);
 
   await prisma.$transaction(async (tx) => {
@@ -121,6 +158,9 @@ export async function recordKnowledgeAttempt(input: RecordKnowledgeAttemptInput)
         attemptNumber: input.attemptNumber ?? 1,
         questionDifficulty: input.questionDifficulty ?? 0.5,
         questionType: scoreInput.questionType,
+        contextType,
+        delayBucket,
+        instructionalTimeMs,
         isTransferItem: scoreInput.isTransferItem,
         isMixedItem: scoreInput.isMixedItem,
         isReviewItem: scoreInput.isReviewItem,
@@ -142,6 +182,11 @@ export async function recordKnowledgeAttempt(input: RecordKnowledgeAttemptInput)
         retrievalStrength: nextState.retrievalStrength,
         transferAbility: nextState.transferAbility,
         confidence: nextState.confidence,
+        latestDle: dle.value,
+        latestLearningGain: learningGain,
+        latestKnowledgeStability: knowledgeStability,
+        latestInstructionalTimeMs: instructionalTimeMs,
+        durabilityBand,
         evidenceCount: nextState.evidenceCount,
         lastAttemptAt: nextState.lastAttemptAt,
         lastSuccessAt: nextState.lastSuccessAt,
@@ -156,6 +201,11 @@ export async function recordKnowledgeAttempt(input: RecordKnowledgeAttemptInput)
         retrievalStrength: nextState.retrievalStrength,
         transferAbility: nextState.transferAbility,
         confidence: nextState.confidence,
+        latestDle: dle.value,
+        latestLearningGain: learningGain,
+        latestKnowledgeStability: knowledgeStability,
+        latestInstructionalTimeMs: instructionalTimeMs,
+        durabilityBand,
         evidenceCount: nextState.evidenceCount,
         lastAttemptAt: nextState.lastAttemptAt,
         lastSuccessAt: nextState.lastSuccessAt,
@@ -202,5 +252,7 @@ export async function recordKnowledgeAttempt(input: RecordKnowledgeAttemptInput)
   return {
     recommendation: decideNextQuestion({ state: nextState, now: occurredAt }),
     policyVersion: NEXT_QUESTION_POLICY_VERSION,
+    state: nextState,
+    dle,
   };
 }

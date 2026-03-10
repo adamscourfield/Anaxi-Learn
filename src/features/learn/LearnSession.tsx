@@ -59,12 +59,27 @@ interface NextQuestionRecommendation {
   rationale: string;
 }
 
+interface DLEPayload {
+  value: number;
+  learningGain: number;
+  knowledgeStability: number;
+  instructionalTimeMs: number;
+  durabilityBand: 'AT_RISK' | 'DEVELOPING' | 'DURABLE';
+  version: 'v1';
+}
+
 const SHOW_DEBUG = process.env.NEXT_PUBLIC_SHOW_DEBUG === 'true';
 
 function getMasteryTextColor(masteryPct: number) {
   if (masteryPct >= 80) return 'text-emerald-600';
   if (masteryPct >= 50) return 'text-amber-500';
   return 'text-rose-500';
+}
+
+function durabilityBadgeStyles(band: DLEPayload['durabilityBand'] | null) {
+  if (band === 'DURABLE') return 'border-emerald-200 bg-emerald-50 text-emerald-700';
+  if (band === 'DEVELOPING') return 'border-amber-200 bg-amber-50 text-amber-700';
+  return 'border-rose-200 bg-rose-50 text-rose-700';
 }
 
 function itemMatchesRecommendation(item: Item, recommendation: NextQuestionRecommendation): boolean {
@@ -112,6 +127,7 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
   const [error, setError] = useState<string | null>(null);
   const [feedbackFlash, setFeedbackFlash] = useState<'correct' | 'incorrect' | null>(null);
   const [nextRecommendation, setNextRecommendation] = useState<NextQuestionRecommendation | null>(null);
+  const [latestDle, setLatestDle] = useState<DLEPayload | null>(null);
   const router = useRouter();
 
   const currentItem = items[currentIndex];
@@ -167,6 +183,7 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
         correct?: boolean;
         hint?: string | null;
         nextQuestion?: NextQuestionRecommendation | null;
+        dle?: DLEPayload | null;
       };
       if (typeof data.correct !== 'boolean') throw new Error('Invalid response from server');
       if (!data.correct && data.hint) setError(data.hint);
@@ -174,6 +191,7 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
       const newResults = [...results, { itemId: currentItem.id, correct: data.correct }];
       setResults(newResults);
       setNextRecommendation(data.nextQuestion ?? null);
+      setLatestDle(data.dle ?? null);
       setFeedbackFlash(data.correct ? 'correct' : 'incorrect');
 
       await new Promise((resolve) => setTimeout(resolve, data.correct ? 180 : 240));
@@ -307,6 +325,15 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
             />
           </div>
 
+          {latestDle && (
+            <div className="flex items-center justify-between gap-3 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-xs">
+              <span className={`rounded-full border px-2 py-1 font-semibold ${durabilityBadgeStyles(latestDle.durabilityBand)}`}>
+                Durability: {latestDle.durabilityBand.replace('_', ' ')}
+              </span>
+              <span className="font-mono text-slate-600">DLE {latestDle.value.toFixed(2)}</span>
+            </div>
+          )}
+
           <div className={`rounded-2xl border-2 border-blue-100 bg-white px-5 py-6 sm:px-6 sm:py-7 ${feedbackFlash === 'correct' ? 'anx-pulse-correct' : ''} ${feedbackFlash === 'incorrect' ? 'anx-shake-incorrect' : ''}`}>
             <h2 className="text-2xl font-bold leading-tight text-gray-900 sm:text-3xl">{questionText}</h2>
           </div>
@@ -426,6 +453,11 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
               {correctCount} out of {results.length} correct
             </p>
             <p className="mt-1 text-xs text-slate-500">Estimated XP earned this route: +{estimatedXp}</p>
+            {latestDle && (
+              <p className="mt-1 text-xs text-slate-600">
+                Latest DLE: <span className="font-mono">{latestDle.value.toFixed(2)}</span> · {latestDle.durabilityBand.replace('_', ' ')}
+              </p>
+            )}
           </div>
 
           <div className="space-y-2 rounded-xl border border-gray-100 bg-white p-3">
@@ -451,6 +483,7 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
                   setSelectedAnswer('');
                   setResults([]);
                   setNextRecommendation(null);
+                  setLatestDle(null);
                   setPhase('reteach');
                 }}
                 className="inline-flex flex-1 items-center justify-center rounded-lg border border-blue-300 px-4 py-3 text-sm font-semibold text-blue-700 transition-colors hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
@@ -466,6 +499,7 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
                 setError(null);
                 setFeedbackFlash(null);
                 setNextRecommendation(null);
+                setLatestDle(null);
                 setPhase('session');
               }}
               className="inline-flex flex-1 items-center justify-center rounded-lg border border-gray-300 px-4 py-3 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"

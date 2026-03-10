@@ -17,6 +17,33 @@ function parseDays(input: string | undefined): number {
   return n;
 }
 
+type TrendDirection = 'UP' | 'FLAT' | 'DOWN';
+
+function efficiencyScore(attempts: Array<{ correct: boolean; instructionalTimeMs: number }>): number {
+  if (attempts.length === 0) return 0;
+  const value = attempts.reduce((sum, a) => {
+    const minutes = Math.max(1 / 60, (a.instructionalTimeMs ?? 0) / 60000);
+    return sum + (a.correct ? 1 : 0) / minutes;
+  }, 0);
+  return value / attempts.length;
+}
+
+function trendDirection(recent: number, previous: number): TrendDirection {
+  const delta = recent - previous;
+  if (delta > 0.03) return 'UP';
+  if (delta < -0.03) return 'DOWN';
+  return 'FLAT';
+}
+
+function trendBadge(direction: TrendDirection): string {
+  if (direction === 'UP') return '↑ Improving';
+  if (direction === 'DOWN') return '↓ Declining';
+  return '→ Stable';
+}
+
+const MOMENTUM_HELP =
+  'Momentum is a proxy, not a clinical metric. We compare recent vs previous equal windows using efficiency = correctness ÷ time-on-task (minutes), then bucket into Improving / Stable / Declining.';
+
 function getRiskModel(params: { checkpointRate: number; interactionPassRate: number; interventions: number; wrongFirstDiff: number }) {
   const { checkpointRate, interactionPassRate, interventions, wrongFirstDiff } = params;
   let score = 0;
@@ -60,6 +87,13 @@ export default async function TeacherDashboardPage({ searchParams }: Props) {
                     include: {
                       skillMasteries: {
                         select: { mastery: true, confirmedCount: true, nextReviewAt: true },
+                      },
+                      knowledgeSkillStates: {
+                        select: {
+                          latestDle: true,
+                          durabilityBand: true,
+                          latestInstructionalTimeMs: true,
+                        },
                       },
                     },
                   },
@@ -115,6 +149,23 @@ export default async function TeacherDashboardPage({ searchParams }: Props) {
       })
     : [];
 
+  const trendWindowStart = new Date(since.getTime() - days * 24 * 60 * 60 * 1000);
+  const questionAttempts = allStudentIds.length
+    ? await prisma.questionAttempt.findMany({
+        where: {
+          userId: { in: allStudentIds },
+          occurredAt: { gte: trendWindowStart },
+        },
+        select: {
+          userId: true,
+          correct: true,
+          instructionalTimeMs: true,
+          occurredAt: true,
+          skill: { select: { subjectId: true } },
+        },
+      })
+    : [];
+
   const subjectMap = new Map((await prisma.subject.findMany({ select: { id: true, slug: true } })).map((s) => [s.slug, s.id]));
   const now = new Date();
 
@@ -129,6 +180,9 @@ export default async function TeacherDashboardPage({ searchParams }: Props) {
           <p><span className="font-semibold">Observe School ID:</span> {teacherProfile.externalSchoolId ?? '—'}</p>
           <p><span className="font-semibold">Time window:</span> last {days} days</p>
           <p><span className="font-semibold">Subtopic filter:</span> {subtopicFilter || 'All'}</p>
+          <p className="mt-2 rounded-md border border-sky-200 bg-sky-50 px-2 py-1 text-xs text-sky-900">
+            <span className="font-semibold">DLE momentum note:</span> {MOMENTUM_HELP}
+          </p>
         </div>
 
         <div className="mt-4 flex flex-wrap gap-2 text-xs">
@@ -173,6 +227,30 @@ export default async function TeacherDashboardPage({ searchParams }: Props) {
             const rulePassed = interactionEvalEvents.filter((e) => Boolean((e.payload as EventPayload).rulePassed)).length;
             const wrongFirstDiff = interactionEvalEvents.filter((e) => (e.payload as EventPayload).errorType === 'wrong_first_difference').length;
 
+            const classKnowledgeStates = classStudents.flatMap((s) => s.knowledgeSkillStates);
+            const classDleValues = classKnowledgeStates.map((s) => s.latestDle).filter((v): v is number => typeof v === 'number');
+            const classAvgDle = classDleValues.length ? classDleValues.reduce((sum, v) => sum + v, 0) / classDleValues.length : null;
+            const classDurableCount = classKnowledgeStates.filter((s) => s.durabilityBand === 'DURABLE').length;
+            const classAtRiskCount = classKnowledgeStates.filter((s) => s.durabilityBand === 'AT_RISK').length;
+            const classInstructionalTimes = classKnowledgeStates
+              .map((s) => s.latestInstructionalTimeMs)
+              .filter((v): v is number => typeof v === 'number');
+            const classAvgInstructionalTimeMs = classInstructionalTimes.length
+              ? Math.round(classInstructionalTimes.reduce((sum, v) => sum + v, 0) / classInstructionalTimes.length)
+              : null;
+
+            const classAttempts = questionAttempts.filter((a) => {
+              if (!classStudentIds.has(a.userId)) return false;
+              if (classSubjectId && a.skill.subjectId !== classSubjectId) return false;
+              return true;
+            });
+            const classRecentAttempts = classAttempts.filter((a) => a.occurredAt >= since);
+            const classPreviousAttempts = classAttempts.filter((a) => a.occurredAt < since);
+            const classTrend = trendDirection(
+              efficiencyScore(classRecentAttempts),
+              efficiencyScore(classPreviousAttempts)
+            );
+
             const studentRows = cls.enrollments.map((enrollment) => {
               const student = enrollment.student;
               const studentEvents = classEvents.filter((e) => e.studentUserId === student.id);
@@ -186,6 +264,17 @@ export default async function TeacherDashboardPage({ searchParams }: Props) {
               const checkpointHits = studentStep.filter((e) => Boolean((e.payload as EventPayload).correct)).length;
               const evalPass = studentEval.filter((e) => Boolean((e.payload as EventPayload).rulePassed)).length;
               const evalWrong = studentEval.filter((e) => (e.payload as EventPayload).errorType === 'wrong_first_difference').length;
+              const studentDleValues = student.knowledgeSkillStates
+                .map((s) => s.latestDle)
+                .filter((v): v is number => typeof v === 'number');
+              const studentAvgDle = studentDleValues.length
+                ? studentDleValues.reduce((sum, v) => sum + v, 0) / studentDleValues.length
+                : null;
+              const studentDurability =
+                student.knowledgeSkillStates.find((s) => s.durabilityBand === 'AT_RISK')?.durabilityBand ??
+                student.knowledgeSkillStates.find((s) => s.durabilityBand === 'DEVELOPING')?.durabilityBand ??
+                student.knowledgeSkillStates.find((s) => s.durabilityBand === 'DURABLE')?.durabilityBand ??
+                null;
 
               const checkpointRateValue = studentStep.length > 0 ? checkpointHits / studentStep.length : 1;
               const interactionPassRateValue = studentEval.length > 0 ? evalPass / studentEval.length : 1;
@@ -195,6 +284,15 @@ export default async function TeacherDashboardPage({ searchParams }: Props) {
                 interventions: studentInterventions,
                 wrongFirstDiff: evalWrong,
               });
+              const studentAttempts = questionAttempts.filter((a) => {
+                if (a.userId !== student.id) return false;
+                if (classSubjectId && a.skill.subjectId !== classSubjectId) return false;
+                return true;
+              });
+              const studentTrend = trendDirection(
+                efficiencyScore(studentAttempts.filter((a) => a.occurredAt >= since)),
+                efficiencyScore(studentAttempts.filter((a) => a.occurredAt < since))
+              );
               const needsAction = riskLevel !== 'GREEN';
 
               return {
@@ -209,6 +307,9 @@ export default async function TeacherDashboardPage({ searchParams }: Props) {
                 interventions: studentInterventions,
                 riskLevel,
                 riskScore,
+                studentAvgDle,
+                studentDurability,
+                studentTrend,
                 needsAction,
               };
             });
@@ -241,6 +342,14 @@ export default async function TeacherDashboardPage({ searchParams }: Props) {
                   <div className="rounded-lg border border-rose-200 bg-rose-50 p-3"><p className="text-xs text-rose-700">Wrong first-difference</p><p className="text-lg font-semibold text-rose-900">{wrongFirstDiff}</p></div>
                 </div>
 
+                <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+                  <div className="rounded-lg border border-teal-200 bg-teal-50 p-3"><p className="text-xs text-teal-700">Avg DLE (latest)</p><p className="text-lg font-semibold text-teal-900">{classAvgDle != null ? classAvgDle.toFixed(2) : '—'}</p></div>
+                  <div className="rounded-lg border border-sky-200 bg-sky-50 p-3" title={MOMENTUM_HELP}><p className="text-xs text-sky-700">DLE momentum</p><p className="text-lg font-semibold text-sky-900">{trendBadge(classTrend)}</p><p className="mt-1 text-[11px] text-sky-700">proxy metric</p></div>
+                  <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-3"><p className="text-xs text-emerald-700">Durable states</p><p className="text-lg font-semibold text-emerald-900">{classDurableCount}</p></div>
+                  <div className="rounded-lg border border-amber-200 bg-amber-50 p-3"><p className="text-xs text-amber-700">At-risk states</p><p className="text-lg font-semibold text-amber-900">{classAtRiskCount}</p></div>
+                  <div className="rounded-lg border border-cyan-200 bg-cyan-50 p-3"><p className="text-xs text-cyan-700">Avg instructional time</p><p className="text-lg font-semibold text-cyan-900">{classAvgInstructionalTimeMs != null ? `${Math.round(classAvgInstructionalTimeMs / 1000)}s` : '—'}</p></div>
+                </div>
+
                 <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-3">
                   <p className="text-xs font-semibold uppercase tracking-wide text-amber-800">Students requiring action</p>
                   <p className="mt-1 text-sm text-amber-900">
@@ -255,15 +364,15 @@ export default async function TeacherDashboardPage({ searchParams }: Props) {
                   <div className="overflow-x-auto">
                     <table className="w-full text-sm">
                       <thead className="bg-white text-xs text-slate-500">
-                        <tr><th className="px-3 py-2 text-left">Student</th><th className="px-3 py-2 text-left">Observe ID</th><th className="px-3 py-2 text-left">Risk</th><th className="px-3 py-2 text-left">Mastery</th><th className="px-3 py-2 text-left">Questions</th><th className="px-3 py-2 text-left">Checkpoint</th><th className="px-3 py-2 text-left">Interaction pass</th><th className="px-3 py-2 text-left">Wrong first-diff</th><th className="px-3 py-2 text-left">Interventions</th></tr>
+                        <tr><th className="px-3 py-2 text-left">Student</th><th className="px-3 py-2 text-left">Observe ID</th><th className="px-3 py-2 text-left">Risk</th><th className="px-3 py-2 text-left">DLE</th><th className="px-3 py-2 text-left">Durability</th><th className="px-3 py-2 text-left">Trend</th><th className="px-3 py-2 text-left">Mastery</th><th className="px-3 py-2 text-left">Questions</th><th className="px-3 py-2 text-left">Checkpoint</th><th className="px-3 py-2 text-left">Interaction pass</th><th className="px-3 py-2 text-left">Wrong first-diff</th><th className="px-3 py-2 text-left">Interventions</th></tr>
                       </thead>
                       <tbody className="divide-y divide-slate-100">
                         {studentRows.map((row) => (
                           <tr key={row.id} className={row.needsAction ? 'bg-amber-50/60' : ''}>
-                            <td className="px-3 py-2 text-slate-800">{row.name}</td><td className="px-3 py-2 font-mono text-xs text-slate-600">{row.observeStudentId}</td><td className="px-3 py-2"><span className={`rounded px-2 py-0.5 text-xs font-semibold ${row.riskLevel === 'RED' ? 'bg-rose-100 text-rose-800' : row.riskLevel === 'AMBER' ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800'}`}>{row.riskLevel} ({row.riskScore})</span></td><td className="px-3 py-2">{row.masteryAvg}%</td><td className="px-3 py-2">{row.questionCount}</td><td className="px-3 py-2">{row.checkpointRate}</td><td className="px-3 py-2">{row.interactionPassRate}</td><td className="px-3 py-2 text-rose-700">{row.wrongFirstDiff}</td><td className="px-3 py-2">{row.interventions}</td>
+                            <td className="px-3 py-2 text-slate-800">{row.name}</td><td className="px-3 py-2 font-mono text-xs text-slate-600">{row.observeStudentId}</td><td className="px-3 py-2"><span className={`rounded px-2 py-0.5 text-xs font-semibold ${row.riskLevel === 'RED' ? 'bg-rose-100 text-rose-800' : row.riskLevel === 'AMBER' ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800'}`}>{row.riskLevel} ({row.riskScore})</span></td><td className="px-3 py-2 font-mono text-xs">{row.studentAvgDle != null ? row.studentAvgDle.toFixed(2) : '—'}</td><td className="px-3 py-2"><span className={`rounded px-2 py-0.5 text-xs font-semibold ${row.studentDurability === 'AT_RISK' ? 'bg-rose-100 text-rose-800' : row.studentDurability === 'DEVELOPING' ? 'bg-amber-100 text-amber-800' : row.studentDurability === 'DURABLE' ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-100 text-slate-600'}`}>{row.studentDurability ?? '—'}</span></td><td className="px-3 py-2 text-xs text-sky-800">{trendBadge(row.studentTrend)}</td><td className="px-3 py-2">{row.masteryAvg}%</td><td className="px-3 py-2">{row.questionCount}</td><td className="px-3 py-2">{row.checkpointRate}</td><td className="px-3 py-2">{row.interactionPassRate}</td><td className="px-3 py-2 text-rose-700">{row.wrongFirstDiff}</td><td className="px-3 py-2">{row.interventions}</td>
                           </tr>
                         ))}
-                        {studentRows.length === 0 && <tr><td colSpan={9} className="px-3 py-8 text-center text-slate-400">No students enrolled in this class yet.</td></tr>}
+                        {studentRows.length === 0 && <tr><td colSpan={12} className="px-3 py-8 text-center text-slate-400">No students enrolled in this class yet.</td></tr>}
                       </tbody>
                     </table>
                   </div>

@@ -94,7 +94,27 @@ export async function POST(req: NextRequest) {
     data: { userId, itemId, answer, correct, mode },
   });
 
-  let recommendation: { recommendation: unknown; policyVersion: string } | null = null;
+  let recommendation:
+    | {
+        recommendation: unknown;
+        policyVersion: string;
+        state: {
+          masteryProbability: number;
+          retrievalStrength: number;
+          transferAbility: number;
+          forgettingRate: number;
+          confidence: number;
+        };
+        dle: {
+          value: number;
+          learningGain: number;
+          knowledgeStability: number;
+          instructionalTimeMs: number;
+          durabilityBand: 'AT_RISK' | 'DEVELOPING' | 'DURABLE';
+          version: 'v1';
+        };
+      }
+    | null = null;
   try {
     recommendation = await recordKnowledgeAttempt({
       userId,
@@ -273,7 +293,7 @@ export async function POST(req: NextRequest) {
     });
   }
 
-  const nextQuestion = recommendation ? (recommendation as { recommendation: unknown }).recommendation : null;
+  const nextQuestion = recommendation ? recommendation.recommendation : null;
   const nextQuestionPolicyVersion = recommendation ? recommendation.policyVersion : null;
 
   return NextResponse.json({
@@ -281,5 +301,15 @@ export async function POST(req: NextRequest) {
     hint: !correct ? getAnswerFormatHint(item.type, item.question, item.options) : null,
     nextQuestion,
     nextQuestionPolicyVersion,
+    skillState: recommendation
+      ? {
+          masteryProbability: recommendation.state.masteryProbability,
+          retrievalStrength: recommendation.state.retrievalStrength,
+          transferAbility: recommendation.state.transferAbility,
+          forgettingRate: recommendation.state.forgettingRate,
+          confidence: recommendation.state.confidence,
+        }
+      : null,
+    dle: recommendation ? recommendation.dle : null,
   });
 }

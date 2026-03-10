@@ -9,6 +9,9 @@ function parseDays(input: string | null): number {
   return n;
 }
 
+const MOMENTUM_DEFINITION =
+  'Momentum is a proxy, not a clinical metric. Compare recent vs previous equal windows using efficiency = correctness ÷ time-on-task (minutes), then bucket into Improving / Stable / Declining.';
+
 function getRiskModel(params: { checkpointRate: number; interactionPassRate: number; interventions: number; wrongFirstDiff: number }) {
   const { checkpointRate, interactionPassRate, interventions, wrongFirstDiff } = params;
   let score = 0;
@@ -59,17 +62,28 @@ export async function GET(req: NextRequest) {
       const cls = tc.classroom;
       const studentIds = cls.enrollments.map((e) => e.studentUserId);
 
-      const events = studentIds.length
-        ? await prisma.event.findMany({
-            where: {
-              studentUserId: { in: studentIds },
-              createdAt: { gte: since },
-              ...(subtopic ? { payload: { path: ['subtopicCode'], equals: subtopic } } : {}),
-              name: { in: ['step_checkpoint_attempted', 'step_interaction_evaluated', 'intervention_flagged'] },
-            },
-            select: { name: true, payload: true, studentUserId: true },
-          })
-        : [];
+      const [events, skillStates] = studentIds.length
+        ? await Promise.all([
+            prisma.event.findMany({
+              where: {
+                studentUserId: { in: studentIds },
+                createdAt: { gte: since },
+                ...(subtopic ? { payload: { path: ['subtopicCode'], equals: subtopic } } : {}),
+                name: { in: ['step_checkpoint_attempted', 'step_interaction_evaluated', 'intervention_flagged'] },
+              },
+              select: { name: true, payload: true, studentUserId: true },
+            }),
+            prisma.studentSkillState.findMany({
+              where: { userId: { in: studentIds } },
+              select: {
+                userId: true,
+                latestDle: true,
+                latestInstructionalTimeMs: true,
+                durabilityBand: true,
+              },
+            }),
+          ])
+        : [[], []];
 
       const stepAttempts = events.filter((e) => e.name === 'step_checkpoint_attempted');
       const interactions = events.filter((e) => e.name === 'step_interaction_evaluated');
@@ -87,6 +101,17 @@ export async function GET(req: NextRequest) {
         wrongFirstDiff,
       });
 
+      const dleValues = skillStates.map((s) => s.latestDle).filter((v): v is number => typeof v === 'number');
+      const avgDle = dleValues.length ? dleValues.reduce((sum, v) => sum + v, 0) / dleValues.length : null;
+      const atRiskCount = skillStates.filter((s) => s.durabilityBand === 'AT_RISK').length;
+      const durableCount = skillStates.filter((s) => s.durabilityBand === 'DURABLE').length;
+      const instructionalTimes = skillStates
+        .map((s) => s.latestInstructionalTimeMs)
+        .filter((v): v is number => typeof v === 'number');
+      const avgInstructionalTimeMs = instructionalTimes.length
+        ? Math.round(instructionalTimes.reduce((sum, v) => sum + v, 0) / instructionalTimes.length)
+        : null;
+
       return {
         id: cls.id,
         externalClassId: cls.externalClassId,
@@ -100,6 +125,10 @@ export async function GET(req: NextRequest) {
         wrongFirstDiff,
         riskLevel: classRisk.riskLevel,
         riskScore: classRisk.riskScore,
+        avgDle,
+        durabilityAtRisk: atRiskCount,
+        durabilityDurable: durableCount,
+        avgInstructionalTimeMs,
       };
     })
   );
@@ -112,6 +141,9 @@ export async function GET(req: NextRequest) {
     },
     windowDays: days,
     subtopic: subtopic || null,
+    definitions: {
+      momentum: MOMENTUM_DEFINITION,
+    },
     classes,
   });
 }

@@ -49,6 +49,26 @@ enum SupportLevel {
   FULL_EXPLANATION
 }
 
+enum QuestionContextType {
+  ROUTINE
+  MIXED
+  TRANSFER
+}
+
+enum DelayBucket {
+  IMMEDIATE
+  SAME_DAY
+  D1
+  D3
+  D7_PLUS
+}
+
+enum DurabilityBand {
+  AT_RISK
+  DEVELOPING
+  DURABLE
+}
+
 model User {
   id                 String                  @id @default(cuid())
   email              String                  @unique
@@ -191,23 +211,28 @@ model SkillMastery {
 }
 
 model StudentSkillState {
-  id                 String   @id @default(cuid())
-  userId             String
-  skillId            String
-  masteryProbability Float    @default(0.35)
-  forgettingRate     Float    @default(0.12)
-  halfLifeDays       Float    @default(5.776226504666211)
-  retrievalStrength  Float    @default(0.3)
-  transferAbility    Float    @default(0.2)
-  confidence         Float    @default(0.1)
-  lastAttemptAt      DateTime?
-  lastSuccessAt      DateTime?
-  lastReviewAt       DateTime?
-  evidenceCount      Int      @default(0)
-  createdAt          DateTime @default(now())
-  updatedAt          DateTime @updatedAt
-  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  skill              Skill    @relation(fields: [skillId], references: [id], onDelete: Cascade)
+  id                      String         @id @default(cuid())
+  userId                  String
+  skillId                 String
+  masteryProbability      Float          @default(0.35)
+  forgettingRate          Float          @default(0.12)
+  halfLifeDays            Float          @default(5.776226504666211)
+  retrievalStrength       Float          @default(0.3)
+  transferAbility         Float          @default(0.2)
+  confidence              Float          @default(0.1)
+  latestDle               Float?
+  latestLearningGain      Float?
+  latestKnowledgeStability Float?
+  latestInstructionalTimeMs Int?
+  durabilityBand          DurabilityBand @default(AT_RISK)
+  lastAttemptAt           DateTime?
+  lastSuccessAt           DateTime?
+  lastReviewAt            DateTime?
+  evidenceCount           Int            @default(0)
+  createdAt               DateTime       @default(now())
+  updatedAt               DateTime       @updatedAt
+  user                    User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  skill                   Skill          @relation(fields: [skillId], references: [id], onDelete: Cascade)
 
   @@unique([userId, skillId])
   @@index([skillId])
@@ -226,6 +251,9 @@ model QuestionAttempt {
   attemptNumber      Int                   @default(1)
   questionDifficulty Float                 @default(0.5)
   questionType       KnowledgeQuestionType @default(ROUTINE)
+  contextType        QuestionContextType   @default(ROUTINE)
+  delayBucket        DelayBucket           @default(IMMEDIATE)
+  instructionalTimeMs Int                  @default(0)
   isTransferItem     Boolean               @default(false)
   isMixedItem        Boolean               @default(false)
   isReviewItem       Boolean               @default(false)
