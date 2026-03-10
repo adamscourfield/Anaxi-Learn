@@ -45,6 +45,14 @@ function unique<T>(arr: T[]): T[] {
   return [...new Set(arr)];
 }
 
+function inferItemType(options: string[], answer: string): string {
+  const normalized = new Set(options.map((o) => o.trim().toLowerCase()));
+  const answerNorm = answer.trim().toLowerCase();
+  const tf = normalized.has('true') && normalized.has('false');
+  if (tf && (answerNorm === 'true' || answerNorm === 'false')) return 'TRUE_FALSE';
+  return 'MCQ';
+}
+
 async function main() {
   const mappingPath = path.resolve(process.cwd(), 'docs/unit-mapping/review-pack-unit1-partA-foundation-gapfill-n11-n12-n15.jsonl');
   if (!fs.existsSync(mappingPath)) throw new Error(`Mapping file not found: ${mappingPath}`);
@@ -64,6 +72,8 @@ async function main() {
       ? unique(row.question.options)
       : unique(optionsForQuestion(row.question.stem, answer));
 
+    const itemType = inferItemType(options, answer);
+
     const questionText = `[${row.source.question_ref}] ${row.question.stem}`;
 
     let item = await prisma.item.findFirst({ where: { question: questionText, subjectId: subject.id } });
@@ -71,7 +81,7 @@ async function main() {
       item = await prisma.item.create({
         data: {
           subjectId: subject.id,
-          type: 'MCQ',
+          type: itemType,
           question: questionText,
           options,
           answer,
@@ -79,7 +89,7 @@ async function main() {
       });
       created += 1;
     } else {
-      item = await prisma.item.update({ where: { id: item.id }, data: { options, answer, type: 'MCQ' } });
+      item = await prisma.item.update({ where: { id: item.id }, data: { options, answer, type: itemType } });
       updated += 1;
     }
 
