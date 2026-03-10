@@ -135,8 +135,9 @@ export const ExplanationRouteAssignedPayloadSchema = z.object({
   skillCode: z.string().optional(),
   routeType: z.enum(['A', 'B', 'C']),
   reason: z.string(),
-  source: z.enum(['diagnostic_signals', 'fallback_chain', 'history_default']),
+  source: z.enum(['diagnostic_signals', 'fallback_chain', 'history_default', 'secure_fast_pass']),
   interventionRecommended: z.boolean().optional(),
+  secureFastPass: z.boolean().optional(),
 });
 
 export const StepCheckpointAttemptedPayloadSchema = z.object({
