@@ -624,7 +624,7 @@ async function main() {
 
         const step = await prisma.explanationStep.upsert({
           where: { explanationRouteId_stepOrder: { explanationRouteId: route.id, stepOrder: i + 1 } },
-          update: { title, explanation, stepType, checkpointQuestion, checkpointOptions: checkpointOptionsPayload, checkpointAnswer, alternativeHint },
+          update: { title, explanation, stepType, checkpointQuestion, checkpointOptions: checkpointOptionsPayload, checkpointAnswer, questionType: 'MCQ', alternativeHint },
           create: {
             explanationRouteId: route.id,
             stepOrder: i + 1,
@@ -634,6 +634,7 @@ async function main() {
             checkpointQuestion,
             checkpointOptions: checkpointOptionsPayload,
             checkpointAnswer,
+            questionType: 'MCQ',
             alternativeHint,
           },
         });
@@ -860,6 +861,7 @@ async function main() {
             checkpointQuestion,
             checkpointOptions: { options: [...checkpointOptions], stepType: 'checkpoint', visualType: 'decompose_number', visualPayload: { mode: 'word_figure' } },
             checkpointAnswer,
+            questionType: 'MCQ',
             alternativeHint: `Try place-value columns first: ${explanation}`,
           },
           create: {
@@ -871,6 +873,7 @@ async function main() {
             checkpointQuestion,
             checkpointOptions: { options: [...checkpointOptions], stepType: 'checkpoint', visualType: 'decompose_number', visualPayload: { mode: 'word_figure' } },
             checkpointAnswer,
+            questionType: 'MCQ',
             alternativeHint: `Try place-value columns first: ${explanation}`,
           },
         });
@@ -1105,6 +1108,7 @@ async function main() {
               visualPayload: { mode: routeDef.routeType === 'C' ? 'integer_order' : 'inequality_symbol' },
             },
             checkpointAnswer,
+            questionType: 'MCQ',
             alternativeHint: `Try checking with a number line or place-value comparison: ${explanation}`,
           },
           create: {
@@ -1121,6 +1125,7 @@ async function main() {
               visualPayload: { mode: routeDef.routeType === 'C' ? 'integer_order' : 'inequality_symbol' },
             },
             checkpointAnswer,
+            questionType: 'MCQ',
             alternativeHint: `Try checking with a number line or place-value comparison: ${explanation}`,
           },
         });

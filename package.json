@@ -24,6 +24,7 @@
     "db:import:unit1-all": "npm run db:import:unit1-first25 && npm run db:import:unit1-next25 && npm run db:import:unit1-n14 && npm run db:import:unit1-gapfill-n11-n12-n15 && npm run db:import:unit1-gapfill-n14 && npm run db:ensure:routes:n14-n15 && npm run db:normalize:step-question-types",
     "validate:learning": "node scripts/validate-learning-config.mjs",
     "validate:items": "node scripts/validate-item-answer-types.mjs",
+    "validate:explanations": "node scripts/validate-explanations.mjs",
     "validate:n13": "node scripts/validate-n13-content-integrity.mjs",
     "validate:qa": "npm run validate:items && npm run validate:n13 && npm test"
   },
