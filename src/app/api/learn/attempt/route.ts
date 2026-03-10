@@ -114,6 +114,7 @@ export async function POST(req: NextRequest) {
         mode,
         isShadowQuestion,
         routeType,
+        rewardKey: `attempt:${attempt.id}:${isShadowQuestion && correct ? 'shadow_item_correct' : correct ? 'diagnostic_item_correct' : 'diagnostic_item_incorrect'}`,
       }
     );
   });
@@ -130,7 +131,12 @@ export async function POST(req: NextRequest) {
 
   if (correct && hadRecentIncorrect) {
     await safeSideEffect('retry_recovery_reward', async () => {
-      await grantReward(userId, subjectId, 'retry_recovery', { itemId, skillId, mode });
+      await grantReward(userId, subjectId, 'retry_recovery', {
+        itemId,
+        skillId,
+        mode,
+        rewardKey: `attempt:${attempt.id}:retry_recovery`,
+      });
     });
   }
 
@@ -155,7 +161,12 @@ export async function POST(req: NextRequest) {
     });
 
     await safeSideEffect('route_completed_reward', async () => {
-      await grantReward(userId, subjectId, 'route_completed', { skillId, accuracy, routeType: routeType ?? 'A' });
+      await grantReward(userId, subjectId, 'route_completed', {
+        skillId,
+        accuracy,
+        routeType: routeType ?? 'A',
+        rewardKey: `attempt:${attempt.id}:route_completed`,
+      });
     });
 
     const shadowPair = allResults.slice(-2);

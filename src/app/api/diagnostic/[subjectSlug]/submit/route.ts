@@ -152,6 +152,7 @@ export async function POST(req: NextRequest) {
     itemId,
     skillId,
     mode: 'DIAGNOSTIC',
+    rewardKey: `attempt:${attempt.id}:${correct ? 'diagnostic_item_correct' : 'diagnostic_item_incorrect'}`,
   });
 
   if (routeDecision) {

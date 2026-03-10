@@ -32,13 +32,13 @@ enum BaselineStatus {
 }
 
 model User {
-  id                 String               @id @default(cuid())
-  email              String               @unique
+  id                 String                @id @default(cuid())
+  email              String                @unique
   password           String
   name               String?
-  role               Role                 @default(STUDENT)
-  createdAt          DateTime             @default(now())
-  updatedAt          DateTime             @updatedAt
+  role               Role                  @default(STUDENT)
+  createdAt          DateTime              @default(now())
+  updatedAt          DateTime              @updatedAt
   attempts           Attempt[]
   baselineAttempts   BaselineAttempt[]
   skillMasteries     SkillMastery[]
@@ -49,37 +49,40 @@ model User {
   teacherProfile     TeacherProfile?
   studentProfile     StudentProfile?
   classEnrollments   ClassroomEnrollment[]
+  rewardBalance      StudentRewardBalance?
+  rewardTransactions RewardTransaction[]
 }
 
 model Subject {
-  id                 String               @id @default(cuid())
+  id                 String              @id @default(cuid())
   title              String
-  slug               String               @unique
+  slug               String              @unique
   description        String?
-  createdAt          DateTime             @default(now())
+  createdAt          DateTime            @default(now())
   skills             Skill[]
   items              Item[]
   events             Event[]
   diagnosticSessions DiagnosticSession[]
   baselineSessions   BaselineSession[]
   interventionFlags  InterventionFlag[]
+  rewardTransactions RewardTransaction[]
 }
 
 model Skill {
-  id                String           @id @default(cuid())
+  id                String             @id @default(cuid())
   code              String
   name              String
   slug              String
-  strand            String           @default("")
-  isStretch         Boolean          @default(false)
-  sortOrder         Int              @default(0)
+  strand            String             @default("")
+  isStretch         Boolean            @default(false)
+  sortOrder         Int                @default(0)
   description       String?
   intro             String?
   subjectId         String
-  createdAt         DateTime         @default(now())
-  subject           Subject          @relation(fields: [subjectId], references: [id])
-  prerequisites     SkillPrereq[]    @relation("SkillToPrereq")
-  dependents        SkillPrereq[]    @relation("PrereqToSkill")
+  createdAt         DateTime           @default(now())
+  subject           Subject            @relation(fields: [subjectId], references: [id])
+  prerequisites     SkillPrereq[]      @relation("SkillToPrereq")
+  dependents        SkillPrereq[]      @relation("PrereqToSkill")
   items             ItemSkill[]
   masteries         SkillMastery[]
   events            Event[]
@@ -92,11 +95,11 @@ model Skill {
 }
 
 model SkillPrereq {
-  skillId    String
-  prereqId   String
-  weight     Int    @default(1)
-  skill      Skill  @relation("SkillToPrereq", fields: [skillId], references: [id])
-  prereq     Skill  @relation("PrereqToSkill", fields: [prereqId], references: [id])
+  skillId  String
+  prereqId String
+  weight   Int    @default(1)
+  skill    Skill  @relation("SkillToPrereq", fields: [skillId], references: [id])
+  prereq   Skill  @relation("PrereqToSkill", fields: [prereqId], references: [id])
 
   @@id([skillId, prereqId])
 }
@@ -118,10 +121,10 @@ model Item {
 }
 
 model ItemSkill {
-  itemId    String
-  skillId   String
-  item      Item   @relation(fields: [itemId], references: [id])
-  skill     Skill  @relation(fields: [skillId], references: [id])
+  itemId  String
+  skillId String
+  item    Item   @relation(fields: [itemId], references: [id])
+  skill   Skill  @relation(fields: [skillId], references: [id])
 
   @@id([itemId, skillId])
 }
@@ -160,8 +163,37 @@ model SkillMastery {
   @@unique([userId, skillId])
 }
 
+model StudentRewardBalance {
+  id         String   @id @default(cuid())
+  userId     String   @unique
+  xpTotal    Int      @default(0)
+  tokenTotal Int      @default(0)
+  streakDays Int      @default(0)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model RewardTransaction {
+  id             String   @id @default(cuid())
+  userId         String
+  subjectId      String?
+  eventName      String
+  xpDelta        Int
+  tokenDelta     Int
+  reason         String
+  idempotencyKey String?  @unique
+  metadata       Json?
+  createdAt      DateTime @default(now())
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  subject        Subject? @relation(fields: [subjectId], references: [id], onDelete: SetNull)
+
+  @@index([userId, createdAt])
+  @@index([eventName, createdAt])
+}
+
 model Event {
-  id            String    @id @default(cuid())
+  id            String   @id @default(cuid())
   name          String
   actorUserId   String?
   studentUserId String?
@@ -170,12 +202,12 @@ model Event {
   itemId        String?
   attemptId     String?
   payload       Json
-  createdAt     DateTime  @default(now())
-  actor         User?     @relation(fields: [actorUserId], references: [id])
-  subject       Subject?  @relation(fields: [subjectId], references: [id])
-  skill         Skill?    @relation(fields: [skillId], references: [id])
-  item          Item?     @relation(fields: [itemId], references: [id])
-  attempt       Attempt?  @relation(fields: [attemptId], references: [id])
+  createdAt     DateTime @default(now())
+  actor         User?    @relation(fields: [actorUserId], references: [id])
+  subject       Subject? @relation(fields: [subjectId], references: [id])
+  skill         Skill?   @relation(fields: [skillId], references: [id])
+  item          Item?    @relation(fields: [itemId], references: [id])
+  attempt       Attempt? @relation(fields: [attemptId], references: [id])
 }
 
 model ExplanationRoute {
@@ -196,21 +228,21 @@ model ExplanationRoute {
 }
 
 model ExplanationStep {
-  id                 String           @id @default(cuid())
+  id                 String            @id @default(cuid())
   explanationRouteId String
   stepOrder          Int
   title              String
   explanation        String
-  stepType           String           @default("checkpoint")
+  stepType           String            @default("checkpoint")
   checkpointQuestion String
   checkpointOptions  Json
   checkpointAnswer   String
   alternativeHint    String?
   subtopicCode       String?
   questionType       String?
-  createdAt          DateTime         @default(now())
-  updatedAt          DateTime         @updatedAt
-  route              ExplanationRoute @relation(fields: [explanationRouteId], references: [id], onDelete: Cascade)
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+  route              ExplanationRoute  @relation(fields: [explanationRouteId], references: [id], onDelete: Cascade)
   interactions       StepInteraction[]
 
   @@unique([explanationRouteId, stepOrder])
@@ -262,38 +294,38 @@ model DiagnosticSession {
 }
 
 model BaselineSession {
-  id               String         @id @default(cuid())
-  userId           String
-  subjectId        String
-  startedAt        DateTime       @default(now())
-  completedAt      DateTime?
-  status           BaselineStatus @default(IN_PROGRESS)
-  itemsSeen        Int            @default(0)
-  maxItems         Int            @default(24)
-  payload          Json           @default("{}")
-  user             User           @relation(fields: [userId], references: [id])
-  subject          Subject        @relation(fields: [subjectId], references: [id])
-  attempts         BaselineAttempt[]
+  id          String            @id @default(cuid())
+  userId      String
+  subjectId   String
+  startedAt   DateTime          @default(now())
+  completedAt DateTime?
+  status      BaselineStatus    @default(IN_PROGRESS)
+  itemsSeen   Int               @default(0)
+  maxItems    Int               @default(24)
+  payload     Json              @default("{}")
+  user        User              @relation(fields: [userId], references: [id])
+  subject     Subject           @relation(fields: [subjectId], references: [id])
+  attempts    BaselineAttempt[]
 
   @@index([userId, subjectId, status])
 }
 
 model BaselineAttempt {
-  id              String          @id @default(cuid())
+  id                String          @id @default(cuid())
   baselineSessionId String
-  userId          String
-  itemId          String
-  skillId         String
-  answer          String
-  correct         Boolean
-  createdAt       DateTime        @default(now())
-  baselineSession BaselineSession @relation(fields: [baselineSessionId], references: [id], onDelete: Cascade)
-  user            User            @relation(fields: [userId], references: [id])
-  item            Item            @relation(fields: [itemId], references: [id])
-  skill           Skill           @relation(fields: [skillId], references: [id])
+  userId            String
+  itemId            String
+  skillId           String
+  answer            String
+  correct           Boolean
+  createdAt         DateTime        @default(now())
+  baselineSession   BaselineSession @relation(fields: [baselineSessionId], references: [id], onDelete: Cascade)
+  user              User            @relation(fields: [userId], references: [id])
+  item              Item            @relation(fields: [itemId], references: [id])
+  skill             Skill           @relation(fields: [skillId], references: [id])
 
-  @@index([baselineSessionId, skillId])
   @@unique([baselineSessionId, itemId])
+  @@index([baselineSessionId, skillId])
 }
 
 model InterventionFlag {
@@ -314,15 +346,15 @@ model InterventionFlag {
 }
 
 model TeacherProfile {
-  id                String           @id @default(cuid())
-  userId            String           @unique
-  externalSource    String           @default("anaxi_observe")
+  id                String             @id @default(cuid())
+  userId            String             @unique
+  externalSource    String             @default("anaxi_observe")
   externalTeacherId String
   externalSchoolId  String?
   displayName       String?
-  createdAt         DateTime         @default(now())
-  updatedAt         DateTime         @updatedAt
-  user              User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  user              User               @relation(fields: [userId], references: [id], onDelete: Cascade)
   classrooms        TeacherClassroom[]
 
   @@unique([externalSource, externalTeacherId])
@@ -343,17 +375,17 @@ model StudentProfile {
 }
 
 model Classroom {
-  id              String                @id @default(cuid())
-  externalSource  String                @default("anaxi_observe")
-  externalClassId String
+  id               String                @id @default(cuid())
+  externalSource   String                @default("anaxi_observe")
+  externalClassId  String
   externalSchoolId String?
-  name            String
-  yearGroup       String?
-  subjectSlug     String?
-  createdAt       DateTime              @default(now())
-  updatedAt       DateTime              @updatedAt
-  teachers        TeacherClassroom[]
-  enrollments     ClassroomEnrollment[]
+  name             String
+  yearGroup        String?
+  subjectSlug      String?
+  createdAt        DateTime              @default(now())
+  updatedAt        DateTime              @updatedAt
+  teachers         TeacherClassroom[]
+  enrollments      ClassroomEnrollment[]
 
   @@unique([externalSource, externalClassId])
 }
@@ -371,13 +403,13 @@ model TeacherClassroom {
 }
 
 model ClassroomEnrollment {
-  id               String         @id @default(cuid())
+  id               String          @id @default(cuid())
   classroomId      String
   studentUserId    String
   studentProfileId String?
-  createdAt        DateTime       @default(now())
-  classroom        Classroom      @relation(fields: [classroomId], references: [id], onDelete: Cascade)
-  student          User           @relation(fields: [studentUserId], references: [id], onDelete: Cascade)
+  createdAt        DateTime        @default(now())
+  classroom        Classroom       @relation(fields: [classroomId], references: [id], onDelete: Cascade)
+  student          User            @relation(fields: [studentUserId], references: [id], onDelete: Cascade)
   studentProfile   StudentProfile? @relation(fields: [studentProfileId], references: [id], onDelete: SetNull)
 
   @@unique([classroomId, studentUserId])
