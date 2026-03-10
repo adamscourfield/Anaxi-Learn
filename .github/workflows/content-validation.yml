@@ -52,8 +52,8 @@ jobs:
       - name: Validate learning config
         run: npm run validate:learning
         env:
-          NEXT_PUBLIC_DEFAULT_SUBJECT_SLUG: ${{ vars.NEXT_PUBLIC_DEFAULT_SUBJECT_SLUG }}
-          NEXT_PUBLIC_ROUTED_SKILL_CODES: ${{ vars.NEXT_PUBLIC_ROUTED_SKILL_CODES }}
+          NEXT_PUBLIC_DEFAULT_SUBJECT_SLUG: ${{ vars.NEXT_PUBLIC_DEFAULT_SUBJECT_SLUG || 'ks3-maths' }}
+          NEXT_PUBLIC_ROUTED_SKILL_CODES: ${{ vars.NEXT_PUBLIC_ROUTED_SKILL_CODES || 'N1.1,N1.2,N1.3' }}
 
       - name: Validate item answer types
         run: npm run validate:items
