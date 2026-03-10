@@ -9,6 +9,22 @@ on:
 jobs:
   validate-items:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: anaxi
+          POSTGRES_PASSWORD: anaxi_secret
+          POSTGRES_DB: anaxi_learn
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      DATABASE_URL: postgresql://anaxi:anaxi_secret@localhost:5432/anaxi_learn
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -25,30 +41,17 @@ jobs:
       - name: Generate Prisma client
         run: npm run db:generate
 
-      - name: Resolve validation database URL
-        shell: bash
-        env:
-          CONTENT_VALIDATION_DATABASE_URL: ${{ secrets.CONTENT_VALIDATION_DATABASE_URL }}
-          DATABASE_URL_FALLBACK: ${{ secrets.DATABASE_URL }}
-        run: |
-          DB_URL="$CONTENT_VALIDATION_DATABASE_URL"
-          if [ -z "$DB_URL" ]; then
-            DB_URL="$DATABASE_URL_FALLBACK"
-          fi
-          if [ -z "$DB_URL" ]; then
-            echo "::error::Missing DB secret. Set CONTENT_VALIDATION_DATABASE_URL (preferred) or DATABASE_URL in repo Actions secrets."
-            exit 1
-          fi
-          echo "DATABASE_URL=$DB_URL" >> "$GITHUB_ENV"
+      - name: Apply database migrations
+        run: npx prisma migrate deploy
+
+      - name: Seed database
+        run: npm run db:seed
 
       - name: Validate learning config
         run: npm run validate:learning
         env:
-          DATABASE_URL: ${{ env.DATABASE_URL }}
           NEXT_PUBLIC_DEFAULT_SUBJECT_SLUG: ${{ vars.NEXT_PUBLIC_DEFAULT_SUBJECT_SLUG }}
           NEXT_PUBLIC_ROUTED_SKILL_CODES: ${{ vars.NEXT_PUBLIC_ROUTED_SKILL_CODES }}
 
       - name: Validate item answer types
         run: npm run validate:items
-        env:
-          DATABASE_URL: ${{ env.DATABASE_URL }}
