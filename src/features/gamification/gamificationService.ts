@@ -2,11 +2,21 @@ import { prisma } from '@/db/prisma';
 import { emitEvent } from '@/features/telemetry/eventService';
 import { grantFor, type RewardEventName } from './rewardEconomy';
 
+const RAPID_WRONG_WINDOW_MS = 6000;
+const RAPID_WRONG_TRIGGER = 3;
+const PENALTY_QUESTION_COUNT = 5;
+
 export interface UserGamificationSummary {
   xp: number;
   tokens: number;
   streakDays: number;
   activeDaysThisWeek: number;
+}
+
+export interface GuessingSafeguardResult {
+  xpMultiplier: number;
+  penaltyApplied: boolean;
+  penaltyRemaining: number;
 }
 
 function startOfDay(date: Date): Date {
@@ -23,6 +33,61 @@ function startOfWeek(date: Date): Date {
   return d;
 }
 
+export async function consumeGuessingSafeguard(
+  userId: string,
+  correct: boolean,
+  answeredAt: Date = new Date()
+): Promise<GuessingSafeguardResult> {
+  return prisma.$transaction(async (tx) => {
+    const state = await tx.guessingSafeguardState.upsert({
+      where: { userId },
+      update: {},
+      create: { userId },
+      select: { rapidWrongStreak: true, lastWrongAt: true, penaltyRemaining: true },
+    });
+
+    let penaltyRemaining = state.penaltyRemaining;
+    let penaltyApplied = false;
+
+    if (penaltyRemaining > 0) {
+      penaltyApplied = true;
+      penaltyRemaining -= 1;
+    }
+
+    let rapidWrongStreak = state.rapidWrongStreak;
+    let lastWrongAt = state.lastWrongAt;
+
+    if (!correct) {
+      const isRapidWrong =
+        lastWrongAt != null && answeredAt.getTime() - lastWrongAt.getTime() <= RAPID_WRONG_WINDOW_MS;
+      rapidWrongStreak = isRapidWrong ? rapidWrongStreak + 1 : 1;
+      lastWrongAt = answeredAt;
+
+      if (rapidWrongStreak >= RAPID_WRONG_TRIGGER) {
+        penaltyRemaining = PENALTY_QUESTION_COUNT;
+        rapidWrongStreak = 0;
+      }
+    } else {
+      rapidWrongStreak = 0;
+    }
+
+    await tx.guessingSafeguardState.update({
+      where: { userId },
+      data: {
+        rapidWrongStreak,
+        lastWrongAt,
+        penaltyRemaining,
+      },
+    });
+
+    return {
+      xpMultiplier: penaltyApplied ? 0.5 : 1,
+      penaltyApplied,
+      penaltyRemaining,
+    };
+  });
+}
+
 export async function grantReward(
   userId: string,
   subjectId: string,
@@ -31,6 +96,8 @@ export async function grantReward(
 ): Promise<void> {
   const grant = grantFor(rewardEvent);
   const idempotencyKey = typeof context.rewardKey === 'string' ? context.rewardKey : undefined;
+  const xpMultiplier = typeof context.xpMultiplier === 'number' ? context.xpMultiplier : 1;
+  const adjustedXp = Math.max(0, Math.floor(grant.xp * xpMultiplier));
 
   const transactionResult = await prisma.$transaction(async (tx) => {
     if (idempotencyKey) {
@@ -48,7 +115,7 @@ export async function grantReward(
         userId,
         subjectId,
         eventName: rewardEvent,
-        xpDelta: grant.xp,
+        xpDelta: adjustedXp,
         tokenDelta: grant.tokens,
         reason: grant.reason,
         idempotencyKey,
@@ -59,12 +126,12 @@ export async function grantReward(
     const updatedBalance = await tx.studentRewardBalance.upsert({
       where: { userId },
       update: {
-        xpTotal: { increment: grant.xp },
+        xpTotal: { increment: adjustedXp },
         tokenTotal: { increment: grant.tokens },
       },
       create: {
         userId,
-        xpTotal: grant.xp,
+        xpTotal: adjustedXp,
         tokenTotal: grant.tokens,
       },
       select: { xpTotal: true, tokenTotal: true, streakDays: true },
@@ -82,11 +149,13 @@ export async function grantReward(
     subjectId,
     payload: {
       rewardEvent,
-      xp: grant.xp,
+      xp: adjustedXp,
+      baseXp: grant.xp,
+      xpMultiplier,
       tokens: grant.tokens,
       reason: grant.reason,
       balanceAfter: {
-        xpTotal: transactionResult.balance?.xpTotal ?? grant.xp,
+        xpTotal: transactionResult.balance?.xpTotal ?? adjustedXp,
         tokenTotal: transactionResult.balance?.tokenTotal ?? grant.tokens,
       },
       ...context,

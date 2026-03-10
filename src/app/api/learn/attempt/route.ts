@@ -6,7 +6,7 @@ import { z } from 'zod';
 import { gradeAttempt, getAnswerFormatHint } from '@/features/learn/gradeAttempt';
 import { emitEvent } from '@/features/telemetry/eventService';
 import { updateSkillMastery } from '@/features/mastery/updateMastery';
-import { grantReward, maybeGrantDailyStreak } from '@/features/gamification/gamificationService';
+import { consumeGuessingSafeguard, grantReward, maybeGrantDailyStreak } from '@/features/gamification/gamificationService';
 
 const attemptSchema = z.object({
   itemId: z.string(),
@@ -103,6 +103,8 @@ export async function POST(req: NextRequest) {
     });
   });
 
+  const safeguard = await consumeGuessingSafeguard(userId, correct, attempt.createdAt);
+
   await safeSideEffect('diagnostic_reward', async () => {
     await grantReward(
       userId,
@@ -114,6 +116,9 @@ export async function POST(req: NextRequest) {
         mode,
         isShadowQuestion,
         routeType,
+        xpMultiplier: safeguard.xpMultiplier,
+        safeguardPenaltyApplied: safeguard.penaltyApplied,
+        safeguardPenaltyRemaining: safeguard.penaltyRemaining,
         rewardKey: `attempt:${attempt.id}:${isShadowQuestion && correct ? 'shadow_item_correct' : correct ? 'diagnostic_item_correct' : 'diagnostic_item_incorrect'}`,
       }
     );

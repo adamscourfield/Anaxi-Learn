@@ -8,7 +8,7 @@ import { emitEvent } from '@/features/telemetry/eventService';
 import { updatePayloadAfterAttempt } from '@/features/diagnostic/diagnosticService';
 import { parseItemOptions } from '@/features/items/itemMeta';
 import { decideN1Route } from '@/features/diagnostic/n1Routing';
-import { grantReward } from '@/features/gamification/gamificationService';
+import { consumeGuessingSafeguard, grantReward } from '@/features/gamification/gamificationService';
 import { inferN11MisconceptionTag } from '@/features/diagnostic/misconceptions';
 import { isRoutedSkill } from '@/features/config/learningConfig';
 
@@ -148,10 +148,15 @@ export async function POST(req: NextRequest) {
     payload: { itemId, skillId, subjectId, correct, mode: 'DIAGNOSTIC' },
   });
 
+  const safeguard = await consumeGuessingSafeguard(userId, correct, attempt.createdAt);
+
   await grantReward(userId, subjectId, correct ? 'diagnostic_item_correct' : 'diagnostic_item_incorrect', {
     itemId,
     skillId,
     mode: 'DIAGNOSTIC',
+    xpMultiplier: safeguard.xpMultiplier,
+    safeguardPenaltyApplied: safeguard.penaltyApplied,
+    safeguardPenaltyRemaining: safeguard.penaltyRemaining,
     rewardKey: `attempt:${attempt.id}:${correct ? 'diagnostic_item_correct' : 'diagnostic_item_incorrect'}`,
   });
 
