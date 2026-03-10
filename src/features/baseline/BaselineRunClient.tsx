@@ -9,6 +9,7 @@ type BaselineItem = {
   question: string;
   type?: string;
   options: unknown;
+  answer?: string;
   skillId: string;
   skillCode: string;
 };

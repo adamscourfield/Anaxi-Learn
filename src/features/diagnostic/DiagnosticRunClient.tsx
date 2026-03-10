@@ -7,7 +7,7 @@ import { parseAnswerType, parseItemOptions, stripStudentQuestionLabel } from '@/
 interface Props {
   subject: { id: string; title: string; slug: string };
   skill: { id: string; code: string; name: string; strand: string };
-  item: { id: string; question: string; options: unknown; type?: string };
+  item: { id: string; question: string; options: unknown; type?: string; answer?: string };
   sessionId: string;
   itemsSeen: number;
   maxItems: number;

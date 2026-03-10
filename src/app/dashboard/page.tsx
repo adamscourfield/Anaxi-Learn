@@ -283,7 +283,10 @@ export default async function DashboardPage() {
           </div>
         )}
 
-        {(['TEACHER', 'ADMIN'] as const).includes((session.user as { role?: 'STUDENT' | 'TEACHER' | 'ADMIN' }).role ?? 'STUDENT') && (
+        {(() => {
+          const role = (session.user as { role?: 'STUDENT' | 'TEACHER' | 'ADMIN' }).role;
+          return role === 'TEACHER' || role === 'ADMIN';
+        })() && (
           <section className="mt-8 rounded-2xl border border-indigo-200 bg-indigo-50 p-5 sm:p-6">
             <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-indigo-800">Teaching Tools</h2>
             <div className="flex flex-wrap gap-3">

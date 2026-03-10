@@ -1,3 +1,4 @@
+import { Prisma } from '@prisma/client';
 import { prisma } from '@/db/prisma';
 import { emitEvent } from '@/features/telemetry/eventService';
 import { grantFor, type RewardEventName } from './rewardEconomy';
@@ -119,7 +120,7 @@ export async function grantReward(
         tokenDelta: grant.tokens,
         reason: grant.reason,
         idempotencyKey,
-        metadata: context,
+        metadata: context as Prisma.InputJsonValue,
       },
     });
 
