@@ -327,6 +327,44 @@ export default async function InsightDashboardPage({ params, searchParams }: Pro
               </div>
             </div>
           </div>
+
+          <div className="mt-3 grid grid-cols-1 gap-4 lg:grid-cols-2">
+            <div className="rounded-xl border border-gray-200 bg-white p-4">
+              <p className="mb-2 text-sm font-medium text-gray-700">Escalation reason codes ({phase9Days}d)</p>
+              <div className="space-y-2 text-xs">
+                {(phase9.escalationReasonDistribution ?? []).slice(0, 6).map((row: { reasonCode: string; count: number; share: number }) => (
+                  <div key={`esc-reason-${row.reasonCode}`} className="flex items-center justify-between rounded border border-gray-100 px-2 py-1">
+                    <span className="font-mono text-[11px] text-gray-700">{row.reasonCode}</span>
+                    <span className="text-gray-500">{row.count} ({Math.round((row.share ?? 0) * 100)}%)</span>
+                  </div>
+                ))}
+                {(phase9.escalationReasonDistribution ?? []).length === 0 && (
+                  <p className="text-gray-400">No escalation reason data yet.</p>
+                )}
+              </div>
+            </div>
+
+            <div className="rounded-xl border border-gray-200 bg-white p-4">
+              <p className="mb-2 text-sm font-medium text-gray-700">Suggestion effectiveness ({phase9Days}d)</p>
+              <div className="space-y-2 text-xs">
+                {(phase9.suggestionEffectiveness ?? []).slice(0, 6).map((row: { suggestionCode: string; assignedCount: number; recoveredCount: number; recoveryRate: number | null }) => (
+                  <div key={`suggestion-${row.suggestionCode}`} className="rounded border border-gray-100 px-2 py-1">
+                    <div className="flex items-center justify-between">
+                      <span className="font-mono text-[11px] text-gray-700">{row.suggestionCode}</span>
+                      <span className="text-gray-500">{row.assignedCount} assigned</span>
+                    </div>
+                    <p className="mt-0.5 text-gray-600">
+                      Recovered later: {row.recoveredCount}
+                      {typeof row.recoveryRate === 'number' ? ` (${Math.round(row.recoveryRate * 100)}%)` : ''}
+                    </p>
+                  </div>
+                ))}
+                {(phase9.suggestionEffectiveness ?? []).length === 0 && (
+                  <p className="text-gray-400">No suggestion effectiveness data yet.</p>
+                )}
+              </div>
+            </div>
+          </div>
         </section>
 
         <section>
