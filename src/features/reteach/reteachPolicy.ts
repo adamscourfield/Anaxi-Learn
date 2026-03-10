@@ -1,7 +1,11 @@
 import { prisma } from '@/db/prisma';
-import { RETEACH_CONFIG } from './reteachConfig';
+import {
+  getDefaultReteachPolicy,
+  parsePersistedReteachPolicy,
+  type ReteachPolicy,
+} from './reteachPolicyContract';
 
-export type EffectiveReteachConfig = typeof RETEACH_CONFIG;
+export type EffectiveReteachConfig = ReteachPolicy;
 
 export async function getEffectiveReteachConfig(): Promise<EffectiveReteachConfig> {
   const latest = await prisma.event.findFirst({
@@ -10,18 +14,9 @@ export async function getEffectiveReteachConfig(): Promise<EffectiveReteachConfi
     select: { payload: true },
   });
 
-  const payload = (latest?.payload ?? {}) as Partial<EffectiveReteachConfig>;
+  if (!latest?.payload) {
+    return getDefaultReteachPolicy('v1');
+  }
 
-  return {
-    checkpointAccuracyTrigger: payload.checkpointAccuracyTrigger ?? RETEACH_CONFIG.checkpointAccuracyTrigger,
-    wrongFirstDifferenceTrigger: payload.wrongFirstDifferenceTrigger ?? RETEACH_CONFIG.wrongFirstDifferenceTrigger,
-    interactionPassTrigger: payload.interactionPassTrigger ?? RETEACH_CONFIG.interactionPassTrigger,
-    dleTrendTrigger: payload.dleTrendTrigger ?? RETEACH_CONFIG.dleTrendTrigger,
-    gateConsecutiveIndependentCorrect:
-      payload.gateConsecutiveIndependentCorrect ?? RETEACH_CONFIG.gateConsecutiveIndependentCorrect,
-    gateIndependentRateWindow: payload.gateIndependentRateWindow ?? RETEACH_CONFIG.gateIndependentRateWindow,
-    gateIndependentRateMin: payload.gateIndependentRateMin ?? RETEACH_CONFIG.gateIndependentRateMin,
-    gateEscalateAfterFailedLoops:
-      payload.gateEscalateAfterFailedLoops ?? RETEACH_CONFIG.gateEscalateAfterFailedLoops,
-  };
+  return parsePersistedReteachPolicy(latest.payload);
 }

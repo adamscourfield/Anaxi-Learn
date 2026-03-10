@@ -1,20 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
-import { z } from 'zod';
 import { authOptions } from '@/features/auth/authOptions';
 import { prisma } from '@/db/prisma';
 import { getEffectiveReteachConfig } from '@/features/reteach/reteachPolicy';
-
-const schema = z.object({
-  checkpointAccuracyTrigger: z.number().min(0).max(1),
-  wrongFirstDifferenceTrigger: z.number().min(0).max(1),
-  interactionPassTrigger: z.number().min(0).max(1),
-  dleTrendTrigger: z.number().min(-1).max(1),
-  gateConsecutiveIndependentCorrect: z.number().int().min(1).max(10),
-  gateIndependentRateWindow: z.number().int().min(1).max(20),
-  gateIndependentRateMin: z.number().min(0).max(1),
-  gateEscalateAfterFailedLoops: z.number().int().min(1).max(10),
-});
+import {
+  parsePersistedReteachPolicy,
+  reteachPolicyWriteSchema,
+} from '@/features/reteach/reteachPolicyContract';
 
 async function requireAdmin() {
   const session = await getServerSession(authOptions);
@@ -37,18 +29,20 @@ export async function POST(req: NextRequest) {
   const auth = await requireAdmin();
   if ('error' in auth) return auth.error;
 
-  const parsed = schema.safeParse(await req.json());
+  const parsed = reteachPolicyWriteSchema.safeParse(await req.json());
   if (!parsed.success) {
     return NextResponse.json({ error: 'Invalid input', issues: parsed.error.issues }, { status: 400 });
   }
+
+  const normalizedPolicy = parsePersistedReteachPolicy(parsed.data);
 
   await prisma.event.create({
     data: {
       name: 'reteach_policy_updated',
       actorUserId: auth.userId,
-      payload: parsed.data,
+      payload: normalizedPolicy,
     },
   });
 
-  return NextResponse.json({ ok: true, policy: parsed.data });
+  return NextResponse.json({ ok: true, policy: normalizedPolicy });
 }

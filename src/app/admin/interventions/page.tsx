@@ -181,11 +181,11 @@ export default async function AdminInterventionsPage() {
             <div className="px-4 py-4 text-xs text-gray-500">No policy updates yet.</div>
           ) : (
             <div className="divide-y divide-gray-100">
-              {policyUpdates.map((event) => (
-                <div key={event.id} className="px-4 py-3 text-xs text-gray-700">
+              {policyUpdates.map((event, index) => (
+                <div key={event.id ?? `policy-update-${index}`} className="px-4 py-3 text-xs text-gray-700">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <span className="font-medium text-gray-900">{event.actor?.name ?? event.actor?.email ?? 'Admin'}</span>
-                    <span className="text-gray-500">{event.createdAt.toISOString().replace('T', ' ').slice(0, 16)}</span>
+                    <span className="text-gray-500">{event.createdAt ? event.createdAt.toISOString().replace('T', ' ').slice(0, 16) : 'Unknown time'}</span>
                   </div>
                   <pre className="mt-2 overflow-x-auto rounded bg-gray-50 p-2 text-[11px] text-gray-600">{JSON.stringify(event.payload, null, 2)}</pre>
                 </div>

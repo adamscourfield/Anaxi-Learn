@@ -1,6 +1,5 @@
 import { prisma } from '@/db/prisma';
-import { RETEACH_CONFIG } from './reteachConfig';
-import { getEffectiveReteachConfig } from './reteachPolicy';
+import { getEffectiveReteachConfig, type EffectiveReteachConfig } from './reteachPolicy';
 
 export type ReteachReasonCode =
   | 'LOW_CHECKPOINT_ACCURACY'
@@ -28,7 +27,7 @@ function clamp01(value: number | undefined, fallback = 0): number {
   return Math.max(0, Math.min(1, value));
 }
 
-export function inferReasonCodes(input: RouteInput, config: typeof RETEACH_CONFIG): ReteachReasonCode[] {
+export function inferReasonCodes(input: RouteInput, config: EffectiveReteachConfig): ReteachReasonCode[] {
   const reasons: ReteachReasonCode[] = [];
   if (clamp01(input.checkpointAccuracy, 1) < config.checkpointAccuracyTrigger) reasons.push('LOW_CHECKPOINT_ACCURACY');
   if (clamp01(input.wrongFirstDifferenceRate, 0) > config.wrongFirstDifferenceTrigger) reasons.push('HIGH_WRONG_FIRST_DIFF');

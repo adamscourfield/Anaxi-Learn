@@ -1,8 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface Policy {
+  policyVersion: 'v1' | 'v2';
   checkpointAccuracyTrigger: number;
   wrongFirstDifferenceTrigger: number;
   interactionPassTrigger: number;
@@ -12,6 +13,17 @@ interface Policy {
   gateIndependentRateMin: number;
   gateEscalateAfterFailedLoops: number;
 }
+
+const numericFields: Array<{ key: keyof Policy; label: string; step?: string }> = [
+  { key: 'checkpointAccuracyTrigger', label: 'Checkpoint accuracy trigger', step: '0.01' },
+  { key: 'wrongFirstDifferenceTrigger', label: 'Wrong first-difference trigger', step: '0.01' },
+  { key: 'interactionPassTrigger', label: 'Interaction pass trigger', step: '0.01' },
+  { key: 'dleTrendTrigger', label: 'DLE trend trigger', step: '0.01' },
+  { key: 'gateConsecutiveIndependentCorrect', label: 'Gate consecutive independent correct', step: '1' },
+  { key: 'gateIndependentRateWindow', label: 'Gate independent rate window', step: '1' },
+  { key: 'gateIndependentRateMin', label: 'Gate independent rate min', step: '0.01' },
+  { key: 'gateEscalateAfterFailedLoops', label: 'Escalate after failed loops', step: '1' },
+];
 
 export function AdminReteachPolicyPanel() {
   const [policy, setPolicy] = useState<Policy | null>(null);
@@ -51,17 +63,34 @@ export function AdminReteachPolicyPanel() {
     <div className="rounded-xl border border-gray-200 bg-white p-4">
       <h2 className="text-sm font-semibold text-gray-900">Phase 9 Threshold Controls</h2>
       <p className="mt-1 text-xs text-gray-600">Tune reteach triggers and gate thresholds without redeploying.</p>
+      <div className="mt-3">
+        <label className="text-xs text-gray-600">
+          <div className="mb-1">Policy version</div>
+          <select
+            className="w-full max-w-xs rounded border border-gray-300 px-2 py-1 text-sm text-gray-800"
+            value={policy.policyVersion}
+            onChange={(e) =>
+              setPolicy((prev) =>
+                prev ? { ...prev, policyVersion: e.target.value === 'v2' ? 'v2' : 'v1' } : prev,
+              )
+            }
+          >
+            <option value="v1">v1 (legacy)</option>
+            <option value="v2">v2</option>
+          </select>
+        </label>
+      </div>
       <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        {(Object.keys(policy) as Array<keyof Policy>).map((key) => (
-          <label key={String(key)} className="text-xs text-gray-600">
-            <div className="mb-1">{String(key)}</div>
+        {numericFields.map((field) => (
+          <label key={String(field.key)} className="text-xs text-gray-600">
+            <div className="mb-1">{field.label}</div>
             <input
               className="w-full rounded border border-gray-300 px-2 py-1 text-sm text-gray-800"
               type="number"
-              step="0.01"
-              value={policy[key]}
+              step={field.step ?? '0.01'}
+              value={policy[field.key] as number}
               onChange={(e) =>
-                setPolicy((prev) => (prev ? { ...prev, [key]: Number(e.target.value) } : prev))
+                setPolicy((prev) => (prev ? { ...prev, [field.key]: Number(e.target.value) } : prev))
               }
             />
           </label>
