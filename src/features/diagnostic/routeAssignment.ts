@@ -2,6 +2,7 @@ import { prisma } from '@/db/prisma';
 import { nextFallbackRoute, selectN11Route, type N11Route } from './n11RouteLogic';
 import { isRoutedSkill } from '@/features/config/learningConfig';
 import { isSkillStable } from '@/features/mastery/masteryService';
+import { parseItemOptions } from '@/features/items/itemMeta';
 
 interface RouteSelectionResult {
   routeType: N11Route;
@@ -9,6 +10,17 @@ interface RouteSelectionResult {
   source: 'diagnostic_signals' | 'fallback_chain' | 'history_default' | 'secure_fast_pass';
   interventionRecommended?: boolean;
   secureFastPass?: boolean;
+  transferSignalPositive?: boolean;
+}
+
+export function hasPositiveTransferSignalForAttempts(
+  attempts: Array<{ correct: boolean; itemOptions: unknown }>
+): boolean {
+  return attempts.some((attempt) => {
+    if (!attempt.correct) return false;
+    const meta = parseItemOptions(attempt.itemOptions).meta;
+    return meta.questionRole === 'transfer';
+  });
 }
 
 export async function selectExplanationRoute(
@@ -62,27 +74,50 @@ export async function selectExplanationRoute(
     };
   }
 
-  if (skillMastery && isSkillStable(skillMastery.mastery, skillMastery.confirmedCount)) {
+  const recentDiagnostic = await prisma.event.findMany({
+    where: {
+      name: 'attempt_graded',
+      studentUserId: userId,
+      subjectId,
+      skillId,
+    },
+    orderBy: { createdAt: 'desc' },
+    take: 20,
+    select: { payload: true },
+  });
+
+  const attemptPayloads = recentDiagnostic.map((e) =>
+    (e.payload as { itemId?: string; correct?: boolean; misconceptionTag?: string } | undefined) ?? {}
+  );
+  const itemIds = Array.from(new Set(attemptPayloads.map((p) => p.itemId).filter((id): id is string => Boolean(id))));
+
+  const relatedItems =
+    itemIds.length > 0
+      ? await prisma.item.findMany({
+          where: { id: { in: itemIds } },
+          select: { id: true, options: true },
+        })
+      : [];
+
+  const optionsByItemId = new Map(relatedItems.map((item) => [item.id, item.options]));
+  const transferSignalPositive = hasPositiveTransferSignalForAttempts(
+    attemptPayloads.map((p) => ({
+      correct: p.correct === true,
+      itemOptions: p.itemId ? optionsByItemId.get(p.itemId) : undefined,
+    }))
+  );
+
+  if (skillMastery && isSkillStable(skillMastery.mastery, skillMastery.confirmedCount) && transferSignalPositive) {
     return {
       routeType: 'A',
-      reason: 'Secure fast-pass (stable mastery)',
+      reason: 'Secure fast-pass (stable mastery + positive transfer signal)',
       source: 'secure_fast_pass',
       secureFastPass: true,
+      transferSignalPositive: true,
     };
   }
 
   if (isRoutedSkill(skillCode)) {
-    const recentDiagnostic = await prisma.event.findMany({
-      where: {
-        name: 'attempt_graded',
-        studentUserId: userId,
-        subjectId,
-        skillId,
-      },
-      orderBy: { createdAt: 'desc' },
-      take: 20,
-      select: { payload: true },
-    });
 
     const misconceptionTags = recentDiagnostic
       .map((e) => (e.payload as { misconceptionTag?: string } | undefined)?.misconceptionTag)
@@ -94,6 +129,7 @@ export async function selectExplanationRoute(
         routeType,
         reason: `Selected from diagnostic misconception tags (${[...new Set(misconceptionTags)].join(', ')})`,
         source: 'diagnostic_signals',
+        transferSignalPositive,
       };
     }
   }
@@ -104,6 +140,7 @@ export async function selectExplanationRoute(
       routeType: prior,
       reason: `Reusing previous route ${prior}`,
       source: 'history_default',
+      transferSignalPositive,
     };
   }
 
@@ -111,5 +148,6 @@ export async function selectExplanationRoute(
     routeType: 'A',
     reason: 'Default route (no prior signals)',
     source: 'history_default',
+    transferSignalPositive,
   };
 }

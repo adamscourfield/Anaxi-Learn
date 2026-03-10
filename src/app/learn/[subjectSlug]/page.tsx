@@ -130,6 +130,7 @@ export default async function LearnPage({ params }: Props) {
       source: routeDecision.source,
       interventionRecommended: routeDecision.interventionRecommended ?? false,
       secureFastPass: routeDecision.secureFastPass ?? false,
+      transferSignalPositive: routeDecision.transferSignalPositive ?? false,
     },
   });
 

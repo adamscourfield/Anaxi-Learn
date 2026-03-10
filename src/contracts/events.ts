@@ -138,6 +138,7 @@ export const ExplanationRouteAssignedPayloadSchema = z.object({
   source: z.enum(['diagnostic_signals', 'fallback_chain', 'history_default', 'secure_fast_pass']),
   interventionRecommended: z.boolean().optional(),
   secureFastPass: z.boolean().optional(),
+  transferSignalPositive: z.boolean().optional(),
 });
 
 export const StepCheckpointAttemptedPayloadSchema = z.object({
