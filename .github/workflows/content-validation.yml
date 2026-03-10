@@ -43,8 +43,8 @@ jobs:
       - name: Generate Prisma client
         run: npm run db:generate
 
-      - name: Apply migrations
-        run: npx prisma migrate deploy
+      - name: Sync schema to CI database
+        run: npx prisma db push --skip-generate
 
       - name: Seed database
         run: npm run db:seed
