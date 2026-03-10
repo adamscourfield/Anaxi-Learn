@@ -48,12 +48,59 @@ interface Props {
 
 type Phase = 'intro' | 'reteach' | 'session' | 'results';
 
+type QuestionType = 'ROUTINE' | 'FLUENCY' | 'RETRIEVAL' | 'TRANSFER' | 'APPLICATION' | 'MIXED' | 'DIAGNOSTIC';
+
+interface NextQuestionRecommendation {
+  questionType: QuestionType;
+  supportLevel: 'INDEPENDENT' | 'LIGHT_PROMPT' | 'WORKED_EXAMPLE' | 'SCAFFOLDED' | 'FULL_EXPLANATION';
+  isReviewItem: boolean;
+  isTransferItem: boolean;
+  isMixedItem: boolean;
+  rationale: string;
+}
+
 const SHOW_DEBUG = process.env.NEXT_PUBLIC_SHOW_DEBUG === 'true';
 
 function getMasteryTextColor(masteryPct: number) {
   if (masteryPct >= 80) return 'text-emerald-600';
   if (masteryPct >= 50) return 'text-amber-500';
   return 'text-rose-500';
+}
+
+function itemMatchesRecommendation(item: Item, recommendation: NextQuestionRecommendation): boolean {
+  const meta = parseItemOptions(item.options).meta;
+  const transferCandidate = meta.questionRole === 'transfer' || meta.transferLevel === 'medium' || meta.transferLevel === 'high';
+
+  switch (recommendation.questionType) {
+    case 'TRANSFER':
+      return transferCandidate;
+    case 'MIXED':
+      return transferCandidate || meta.questionRole === 'practice';
+    case 'RETRIEVAL':
+      return meta.questionRole === 'shadow' || meta.questionRole === 'anchor' || meta.questionRole === 'practice';
+    case 'APPLICATION':
+      return transferCandidate || meta.questionRole === 'misconception';
+    case 'ROUTINE':
+    case 'FLUENCY':
+    default:
+      return !transferCandidate;
+  }
+}
+
+function pickNextIndex(
+  items: Item[],
+  answeredItemIds: Set<string>,
+  recommendation: NextQuestionRecommendation | null
+): number | null {
+  const remaining = items
+    .map((item, index) => ({ item, index }))
+    .filter(({ item }) => !answeredItemIds.has(item.id));
+
+  if (remaining.length === 0) return null;
+  if (!recommendation) return remaining[0].index;
+
+  const matched = remaining.find(({ item }) => itemMatchesRecommendation(item, recommendation));
+  return (matched ?? remaining[0]).index;
 }
 
 export function LearnSession({ subject, skill, items, userId, gamification, routeType, reteachPlan }: Props) {
@@ -64,6 +111,7 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [feedbackFlash, setFeedbackFlash] = useState<'correct' | 'incorrect' | null>(null);
+  const [nextRecommendation, setNextRecommendation] = useState<NextQuestionRecommendation | null>(null);
   const router = useRouter();
 
   const currentItem = items[currentIndex];
@@ -85,6 +133,9 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
     setError(null);
 
     try {
+      const answeredItemIds = new Set(results.map((r) => r.itemId));
+      const remainingCount = items.filter((item) => !answeredItemIds.has(item.id)).length;
+
       const res = await fetch('/api/learn/attempt', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -93,29 +144,46 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
           skillId: skill.id,
           subjectId: subject.id,
           answer: selectedAnswer,
-          isLast: currentIndex === items.length - 1,
-          questionIndex: currentIndex,
+          isLast: remainingCount <= 1,
+          questionIndex: results.length,
           totalItems: items.length,
           routeType,
           previousResults: results,
+          isTransferItem: parsedOptions.meta.questionRole === 'transfer' || parsedOptions.meta.transferLevel === 'medium' || parsedOptions.meta.transferLevel === 'high',
+          isMixedItem: parsedOptions.meta.transferLevel === 'low' && parsedOptions.meta.questionRole === 'practice',
+          questionType:
+            parsedOptions.meta.questionRole === 'transfer'
+              ? 'TRANSFER'
+              : parsedOptions.meta.questionRole === 'shadow'
+                ? 'RETRIEVAL'
+                : 'ROUTINE',
+          supportLevel: 'INDEPENDENT',
         }),
       });
 
       if (!res.ok) throw new Error('Could not save your answer. Please tap Next again.');
 
-      const data = (await res.json()) as { correct?: boolean; hint?: string | null };
+      const data = (await res.json()) as {
+        correct?: boolean;
+        hint?: string | null;
+        nextQuestion?: NextQuestionRecommendation | null;
+      };
       if (typeof data.correct !== 'boolean') throw new Error('Invalid response from server');
       if (!data.correct && data.hint) setError(data.hint);
 
       const newResults = [...results, { itemId: currentItem.id, correct: data.correct }];
       setResults(newResults);
+      setNextRecommendation(data.nextQuestion ?? null);
       setFeedbackFlash(data.correct ? 'correct' : 'incorrect');
 
       await new Promise((resolve) => setTimeout(resolve, data.correct ? 180 : 240));
       setFeedbackFlash(null);
 
-      if (currentIndex < items.length - 1) {
-        setCurrentIndex(currentIndex + 1);
+      const answeredIdsAfterSubmit = new Set(newResults.map((r) => r.itemId));
+      const nextIndex = pickNextIndex(items, answeredIdsAfterSubmit, data.nextQuestion ?? null);
+
+      if (nextIndex !== null) {
+        setCurrentIndex(nextIndex);
         setSelectedAnswer('');
       } else {
         setPhase('results');
@@ -227,7 +295,7 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
                 🔥 {gamification.streakDays}
               </span>
               <span className="text-sm tabular-nums text-gray-400">
-                {currentIndex + 1} / {items.length}
+                {results.length + 1} / {items.length}
               </span>
             </div>
           </div>
@@ -235,7 +303,7 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
           <div className="h-2 w-full rounded-full bg-gray-100">
             <div
               className="h-full rounded-full bg-blue-500 transition-all"
-              style={{ width: `${((currentIndex + 1) / items.length) * 100}%` }}
+              style={{ width: `${((results.length + 1) / items.length) * 100}%` }}
             />
           </div>
 
@@ -321,13 +389,18 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
           {error && <p className="text-sm text-rose-600">{error}</p>}
           {feedbackFlash === 'correct' && <p className="text-sm font-semibold text-emerald-600">+AX</p>}
           {feedbackFlash === 'incorrect' && <p className="text-sm text-amber-600">Good try — keep going.</p>}
+          {SHOW_DEBUG && nextRecommendation && (
+            <p className="text-xs text-slate-500">
+              Next policy: {nextRecommendation.questionType} · {nextRecommendation.supportLevel} — {nextRecommendation.rationale}
+            </p>
+          )}
 
           <button
             onClick={submitAnswer}
             disabled={!selectedAnswer.trim() || submitting || (answerType === 'MCQ' && options.length === 0)}
             className="w-full rounded-lg bg-blue-600 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
           >
-            {submitting ? 'Saving…' : currentIndex < items.length - 1 ? 'Next question' : 'Finish session'}
+            {submitting ? 'Saving…' : results.length + 1 < items.length ? 'Next question' : 'Finish session'}
           </button>
         </div>
       </main>
@@ -377,6 +450,7 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
                   setCurrentIndex(0);
                   setSelectedAnswer('');
                   setResults([]);
+                  setNextRecommendation(null);
                   setPhase('reteach');
                 }}
                 className="inline-flex flex-1 items-center justify-center rounded-lg border border-blue-300 px-4 py-3 text-sm font-semibold text-blue-700 transition-colors hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
@@ -391,6 +465,7 @@ export function LearnSession({ subject, skill, items, userId, gamification, rout
                 setResults([]);
                 setError(null);
                 setFeedbackFlash(null);
+                setNextRecommendation(null);
                 setPhase('session');
               }}
               className="inline-flex flex-1 items-center justify-center rounded-lg border border-gray-300 px-4 py-3 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"

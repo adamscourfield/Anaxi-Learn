@@ -31,6 +31,24 @@ enum BaselineStatus {
   ABANDONED
 }
 
+enum KnowledgeQuestionType {
+  ROUTINE
+  FLUENCY
+  RETRIEVAL
+  TRANSFER
+  APPLICATION
+  MIXED
+  DIAGNOSTIC
+}
+
+enum SupportLevel {
+  INDEPENDENT
+  LIGHT_PROMPT
+  WORKED_EXAMPLE
+  SCAFFOLDED
+  FULL_EXPLANATION
+}
+
 model User {
   id                 String                  @id @default(cuid())
   email              String                  @unique
@@ -48,10 +66,13 @@ model User {
   interventionFlags  InterventionFlag[]
   teacherProfile     TeacherProfile?
   studentProfile     StudentProfile?
-  classEnrollments   ClassroomEnrollment[]
-  rewardBalance      StudentRewardBalance?
-  rewardTransactions RewardTransaction[]
-  guessingSafeguard  GuessingSafeguardState?
+  classEnrollments       ClassroomEnrollment[]
+  rewardBalance          StudentRewardBalance?
+  rewardTransactions     RewardTransaction[]
+  guessingSafeguard      GuessingSafeguardState?
+  knowledgeSkillStates   StudentSkillState[]
+  knowledgeQuestionAttempts QuestionAttempt[]
+  knowledgeSkillReviews  SkillReview[]
 }
 
 model Subject {
@@ -87,9 +108,13 @@ model Skill {
   items             ItemSkill[]
   masteries         SkillMastery[]
   events            Event[]
-  baselineAttempts  BaselineAttempt[]
-  interventionFlags InterventionFlag[]
-  explanationRoutes ExplanationRoute[]
+  baselineAttempts         BaselineAttempt[]
+  interventionFlags        InterventionFlag[]
+  explanationRoutes        ExplanationRoute[]
+  knowledgeSkillStates     StudentSkillState[]
+  knowledgeQuestionAttempts QuestionAttempt[]
+  knowledgeSkillReviews    SkillReview[]
+  explanationPerformance   ExplanationPerformance[]
 
   @@unique([subjectId, slug])
   @@unique([subjectId, code])
@@ -116,9 +141,10 @@ model Item {
   createdAt        DateTime          @default(now())
   subject          Subject?          @relation(fields: [subjectId], references: [id])
   skills           ItemSkill[]
-  attempts         Attempt[]
-  baselineAttempts BaselineAttempt[]
-  events           Event[]
+  attempts                  Attempt[]
+  baselineAttempts          BaselineAttempt[]
+  events                    Event[]
+  knowledgeQuestionAttempts QuestionAttempt[]
 }
 
 model ItemSkill {
@@ -162,6 +188,91 @@ model SkillMastery {
   skill                Skill     @relation(fields: [skillId], references: [id])
 
   @@unique([userId, skillId])
+}
+
+model StudentSkillState {
+  id                 String   @id @default(cuid())
+  userId             String
+  skillId            String
+  masteryProbability Float    @default(0.35)
+  forgettingRate     Float    @default(0.12)
+  halfLifeDays       Float    @default(5.776226504666211)
+  retrievalStrength  Float    @default(0.3)
+  transferAbility    Float    @default(0.2)
+  confidence         Float    @default(0.1)
+  lastAttemptAt      DateTime?
+  lastSuccessAt      DateTime?
+  lastReviewAt       DateTime?
+  evidenceCount      Int      @default(0)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  skill              Skill    @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, skillId])
+  @@index([skillId])
+}
+
+model QuestionAttempt {
+  id                 String                @id @default(cuid())
+  userId             String
+  skillId            String
+  itemId             String
+  occurredAt         DateTime              @default(now())
+  correct            Boolean
+  responseTimeMs     Int
+  hintsUsed          Int                   @default(0)
+  explanationId      String?
+  attemptNumber      Int                   @default(1)
+  questionDifficulty Float                 @default(0.5)
+  questionType       KnowledgeQuestionType @default(ROUTINE)
+  isTransferItem     Boolean               @default(false)
+  isMixedItem        Boolean               @default(false)
+  isReviewItem       Boolean               @default(false)
+  supportLevel       SupportLevel          @default(INDEPENDENT)
+  createdAt          DateTime              @default(now())
+  user               User                  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  skill              Skill                 @relation(fields: [skillId], references: [id], onDelete: Cascade)
+  item               Item                  @relation(fields: [itemId], references: [id], onDelete: Cascade)
+
+  @@index([userId, skillId, occurredAt])
+  @@index([skillId, occurredAt])
+}
+
+model SkillReview {
+  id                    String    @id @default(cuid())
+  userId                String
+  skillId               String
+  scheduledFor          DateTime
+  completedAt           DateTime?
+  successScore          Float?
+  daysSinceLastExposure Float?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  skill                 Skill     @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  @@index([userId, scheduledFor])
+  @@index([userId, skillId, scheduledFor])
+}
+
+model ExplanationPerformance {
+  id                     String           @id @default(cuid())
+  explanationId          String
+  skillId                String
+  studentSegment         String           @default("default")
+  averageLearningGain    Float            @default(0)
+  averageHalfLifeDays    Float            @default(0)
+  averageInstructionTime Float            @default(0)
+  dle                    Float            @default(0)
+  evidenceCount          Int              @default(0)
+  createdAt              DateTime         @default(now())
+  updatedAt              DateTime         @updatedAt
+  explanation            ExplanationRoute @relation(fields: [explanationId], references: [id], onDelete: Cascade)
+  skill                  Skill            @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  @@unique([explanationId, studentSegment])
+  @@index([skillId, studentSegment])
 }
 
 model StudentRewardBalance {
@@ -233,8 +344,9 @@ model ExplanationRoute {
   isActive             Boolean           @default(true)
   createdAt            DateTime          @default(now())
   updatedAt            DateTime          @updatedAt
-  skill                Skill             @relation(fields: [skillId], references: [id])
-  steps                ExplanationStep[]
+  skill                  Skill                     @relation(fields: [skillId], references: [id])
+  steps                  ExplanationStep[]
+  explanationPerformance ExplanationPerformance[]
 
   @@unique([skillId, routeType])
 }

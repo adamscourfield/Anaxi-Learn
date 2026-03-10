@@ -83,9 +83,14 @@ export default async function AdminInterventionsPage() {
       <div className="max-w-5xl mx-auto px-4">
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-2xl font-bold text-gray-900">Intervention Flags</h1>
-          <a href={`/admin/insight/${LEARNING_CONFIG.defaultSubjectSlug}`} className="text-sm text-blue-600 hover:underline">
-            → Insight Dashboard
-          </a>
+          <div className="flex items-center gap-4">
+            <a href="/admin/knowledge-state" className="text-sm text-blue-600 hover:underline">
+              → Knowledge State Debug
+            </a>
+            <a href={`/admin/insight/${LEARNING_CONFIG.defaultSubjectSlug}`} className="text-sm text-blue-600 hover:underline">
+              → Insight Dashboard
+            </a>
+          </div>
         </div>
 
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 mb-6">

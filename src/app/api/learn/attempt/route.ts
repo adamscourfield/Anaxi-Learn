@@ -7,6 +7,7 @@ import { gradeAttempt, getAnswerFormatHint } from '@/features/learn/gradeAttempt
 import { emitEvent } from '@/features/telemetry/eventService';
 import { updateSkillMastery } from '@/features/mastery/updateMastery';
 import { consumeGuessingSafeguard, grantReward, maybeGrantDailyStreak } from '@/features/gamification/gamificationService';
+import { recordKnowledgeAttempt } from '@/features/knowledge-state/knowledgeStateService';
 
 const attemptSchema = z.object({
   itemId: z.string(),
@@ -18,6 +19,15 @@ const attemptSchema = z.object({
   routeType: z.enum(['A', 'B', 'C']).optional(),
   totalItems: z.number(),
   previousResults: z.array(z.object({ itemId: z.string(), correct: z.boolean() })),
+  responseTimeMs: z.number().int().positive().optional(),
+  hintsUsed: z.number().int().min(0).optional(),
+  explanationId: z.string().optional(),
+  attemptNumber: z.number().int().positive().optional(),
+  questionDifficulty: z.number().min(0).max(1).optional(),
+  questionType: z.enum(['ROUTINE', 'FLUENCY', 'RETRIEVAL', 'TRANSFER', 'APPLICATION', 'MIXED', 'DIAGNOSTIC']).optional(),
+  supportLevel: z.enum(['INDEPENDENT', 'LIGHT_PROMPT', 'WORKED_EXAMPLE', 'SCAFFOLDED', 'FULL_EXPLANATION']).optional(),
+  isTransferItem: z.boolean().optional(),
+  isMixedItem: z.boolean().optional(),
 });
 
 async function safeSideEffect(label: string, fn: () => Promise<void>) {
@@ -42,7 +52,26 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Invalid input' }, { status: 400 });
   }
 
-  const { itemId, skillId, subjectId, answer, isLast, questionIndex, routeType, totalItems, previousResults } = parsed.data;
+  const {
+    itemId,
+    skillId,
+    subjectId,
+    answer,
+    isLast,
+    questionIndex,
+    routeType,
+    totalItems,
+    previousResults,
+    responseTimeMs,
+    hintsUsed,
+    explanationId,
+    attemptNumber,
+    questionDifficulty,
+    questionType,
+    supportLevel,
+    isTransferItem,
+    isMixedItem,
+  } = parsed.data;
 
   const item = await prisma.item.findUnique({ where: { id: itemId } });
   if (!item) {
@@ -64,6 +93,29 @@ export async function POST(req: NextRequest) {
   const attempt = await prisma.attempt.create({
     data: { userId, itemId, answer, correct, mode },
   });
+
+  let recommendation: { recommendation: unknown; policyVersion: string } | null = null;
+  try {
+    recommendation = await recordKnowledgeAttempt({
+      userId,
+      skillId,
+      itemId,
+      correct,
+      occurredAt: attempt.createdAt,
+      responseTimeMs,
+      hintsUsed,
+      explanationId,
+      attemptNumber,
+      questionDifficulty,
+      questionType,
+      supportLevel,
+      isTransferItem,
+      isMixedItem,
+      isReviewItem: mode === 'REVIEW',
+    });
+  } catch (error) {
+    console.error('[learn/attempt] Side effect failed: knowledge_attempt_recorded', error);
+  }
 
   await safeSideEffect('attempt_submitted', async () => {
     await emitEvent({
@@ -221,8 +273,13 @@ export async function POST(req: NextRequest) {
     });
   }
 
+  const nextQuestion = recommendation ? (recommendation as { recommendation: unknown }).recommendation : null;
+  const nextQuestionPolicyVersion = recommendation ? recommendation.policyVersion : null;
+
   return NextResponse.json({
     correct,
     hint: !correct ? getAnswerFormatHint(item.type, item.question, item.options) : null,
+    nextQuestion,
+    nextQuestionPolicyVersion,
   });
 }
