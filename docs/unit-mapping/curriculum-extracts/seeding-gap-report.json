@@ -1,0 +1,762 @@
+{
+  "summary": {
+    "generatedAt": "2026-03-11T09:41:55.839Z",
+    "totalSkills": 58,
+    "seededSkills": 50,
+    "unseededSkills": 8
+  },
+  "report": [
+    {
+      "skillCode": "N1.1",
+      "sourceTitle": "Recognise the place value of any number in an integer up to one billion",
+      "appSkillName": "Recognise the place value of each digit in whole numbers up to millions",
+      "itemCount": 32,
+      "typeCounts": {
+        "MCQ": 11,
+        "SHORT_NUMERIC": 10,
+        "SHORT_TEXT": 9,
+        "TRUE_FALSE": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Recognise the place value of each digit in whole numbers up to millions",
+        "Placeholder question 2 for: Recognise the place value of each digit in whole numbers up to millions",
+        "What is the value of the digit 7 in 3,742,915?",
+        "In 504,081, what is the place value of digit 4?",
+        "Write 8,030,406 in expanded form."
+      ]
+    },
+    {
+      "skillCode": "N1.2",
+      "sourceTitle": "Write integers in words and figures",
+      "appSkillName": "Write integers in words and figures",
+      "itemCount": 31,
+      "typeCounts": {
+        "SHORT_TEXT": 15,
+        "SHORT_NUMERIC": 13,
+        "MCQ": 3
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Write integers in words and figures",
+        "Placeholder question 2 for: Write integers in words and figures",
+        "Write 4,206 in words.",
+        "Write \"seven thousand and forty\" in figures.",
+        "Which is the correct figure for \"ninety thousand three hundred and five\"?"
+      ]
+    },
+    {
+      "skillCode": "N1.3",
+      "sourceTitle": "Compare two numbers using =, ≠, <, >, ≤, ≥",
+      "appSkillName": "Compare two numbers using =, ≠, <, >, ≤, ≥",
+      "itemCount": 138,
+      "typeCounts": {
+        "MCQ": 59,
+        "TRUE_FALSE": 15,
+        "SHORT_TEXT": 43,
+        "SHORT_NUMERIC": 21
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Compare two numbers using =, ≠, <, >, ≤, ≥",
+        "Placeholder question 2 for: Compare two numbers using =, ≠, <, >, ≤, ≥",
+        "3 < 5",
+        "1 < 0",
+        "902 < 93"
+      ]
+    },
+    {
+      "skillCode": "N1.4",
+      "sourceTitle": "Order a list of integers",
+      "appSkillName": "Use and interpret inequalities in context (incl number lines and statements)",
+      "itemCount": 32,
+      "typeCounts": {
+        "MCQ": 2,
+        "SHORT_TEXT": 25,
+        "SHORT_NUMERIC": 3,
+        "TRUE_FALSE": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Use and interpret inequalities in context (incl number lines and statements)",
+        "Placeholder question 2 for: Use and interpret inequalities in context (incl number lines and statements)",
+        "Order these integers in descending order: 872, 802, 870, 780, 827.",
+        "Order these integers in descending order: 542, 412, 585, 591, 572.",
+        "Which is the correct descending order for 333, 395, 299, 313, 329?"
+      ]
+    },
+    {
+      "skillCode": "N1.5",
+      "sourceTitle": "Finding the median from a set of numbers",
+      "appSkillName": "Find the median from a set of numbers (incl midpoint using a calculator)",
+      "itemCount": 32,
+      "typeCounts": {
+        "MCQ": 32
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Find the median from a set of numbers (incl midpoint using a calculator)",
+        "Placeholder question 2 for: Find the median from a set of numbers (incl midpoint using a calculator)",
+        "Find the median of: 10, 12, 7",
+        "Find the median of: 28, 31, 9",
+        "Find the median of: 1003, 1001, 1002"
+      ]
+    },
+    {
+      "skillCode": "N1.6",
+      "sourceTitle": "Decimal place value",
+      "appSkillName": "Decimal place value",
+      "itemCount": 3,
+      "typeCounts": {
+        "MCQ": 3
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Decimal place value",
+        "Placeholder question 2 for: Decimal place value",
+        "Which one of the following statements is correct?"
+      ]
+    },
+    {
+      "skillCode": "N1.7",
+      "sourceTitle": "Comparing decimals using =, ≠, <, >, ≤, ≥",
+      "appSkillName": "Compare decimals using =, ≠, <, >, ≤, ≥",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Compare decimals using =, ≠, <, >, ≤, ≥",
+        "Placeholder question 2 for: Compare decimals using =, ≠, <, >, ≤, ≥"
+      ]
+    },
+    {
+      "skillCode": "N1.8",
+      "sourceTitle": "Order a list of decimals",
+      "appSkillName": "Order a list of decimals",
+      "itemCount": 2,
+      "typeCounts": {
+        "SHORT_TEXT": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Order a list of decimals",
+        "Placeholder question 2 for: Order a list of decimals"
+      ]
+    },
+    {
+      "skillCode": "N1.9",
+      "sourceTitle": "Position integers on a number line",
+      "appSkillName": "Position integers on a number line",
+      "itemCount": 19,
+      "typeCounts": {
+        "MCQ": 6,
+        "TRUE_FALSE": 11,
+        "SHORT_TEXT": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Position integers on a number line",
+        "Placeholder question 2 for: Position integers on a number line",
+        "3 < 5",
+        "1 < 0",
+        "902 < 93"
+      ]
+    },
+    {
+      "skillCode": "N1.10",
+      "sourceTitle": "Rounding to the nearest 10, 100, 1000, integer",
+      "appSkillName": "Rounding to the nearest 10, 100, 1000, integer",
+      "itemCount": 19,
+      "typeCounts": {
+        "MCQ": 19
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Rounding to the nearest 10, 100, 1000, integer",
+        "Placeholder question 2 for: Rounding to the nearest 10, 100, 1000, integer",
+        "Round 384 to nearest 100.",
+        "Round 942 to nearest 10.",
+        "Round 7460.8 to nearest 1000."
+      ]
+    },
+    {
+      "skillCode": "N1.11",
+      "sourceTitle": "Position decimals on a number line",
+      "appSkillName": "Position decimals on a number line (incl midpoint using a calculator)",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Position decimals on a number line (incl midpoint using a calculator)",
+        "Placeholder question 2 for: Position decimals on a number line (incl midpoint using a calculator)"
+      ]
+    },
+    {
+      "skillCode": "N1.12",
+      "sourceTitle": "Rounding to decimal places",
+      "appSkillName": "Rounding to decimal places",
+      "itemCount": 15,
+      "typeCounts": {
+        "MCQ": 15
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Rounding to decimal places",
+        "Placeholder question 2 for: Rounding to decimal places",
+        "Round 47.5 to nearest integer.",
+        "Round 525.94 to nearest integer.",
+        "Round 0.437 to nearest integer."
+      ]
+    },
+    {
+      "skillCode": "N1.13",
+      "sourceTitle": "Position negatives on a number line",
+      "appSkillName": "Position negatives on a number line",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Position negatives on a number line",
+        "Placeholder question 2 for: Position negatives on a number line"
+      ]
+    },
+    {
+      "skillCode": "N1.14",
+      "sourceTitle": "Compare negatives using =, ≠, <, >, ≤, ≥",
+      "appSkillName": "Compare negatives using =, ≠, <, >, ≤, ≥",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Compare negatives using =, ≠, <, >, ≤, ≥",
+        "Placeholder question 2 for: Compare negatives using =, ≠, <, >, ≤, ≥"
+      ]
+    },
+    {
+      "skillCode": "N1.15",
+      "sourceTitle": "Order any integers, negatives and decimals",
+      "appSkillName": "Order any integers, negatives and decimals",
+      "itemCount": 2,
+      "typeCounts": {
+        "SHORT_TEXT": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Order any integers, negatives and decimals",
+        "Placeholder question 2 for: Order any integers, negatives and decimals"
+      ]
+    },
+    {
+      "skillCode": "N1.16",
+      "sourceTitle": "Rounding to significant figures (CHALLENGE)",
+      "appSkillName": "Rounding to significant figures",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Rounding to significant figures",
+        "Placeholder question 2 for: Rounding to significant figures"
+      ]
+    },
+    {
+      "skillCode": "N1.17",
+      "sourceTitle": "Write 10, 100, 1000 etc. as powers of 10 (CHALLENGE)",
+      "appSkillName": "Write 10, 100, 1000 etc. as powers of 10",
+      "itemCount": 2,
+      "typeCounts": {
+        "SHORT_TEXT": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Write 10, 100, 1000 etc. as powers of 10",
+        "Placeholder question 2 for: Write 10, 100, 1000 etc. as powers of 10"
+      ]
+    },
+    {
+      "skillCode": "N1.19",
+      "sourceTitle": "Understand negative powers of 10",
+      "appSkillName": "Understand negative powers of 10",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Understand negative powers of 10",
+        "Placeholder question 2 for: Understand negative powers of 10"
+      ]
+    },
+    {
+      "skillCode": "N1.20",
+      "sourceTitle": "Place value systems beyond base 10 (CHALLENGE)",
+      "appSkillName": "Place value systems beyond base 10",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Place value systems beyond base 10",
+        "Placeholder question 2 for: Place value systems beyond base 10"
+      ]
+    },
+    {
+      "skillCode": "N2.1",
+      "sourceTitle": "Properties of addition and subtraction",
+      "appSkillName": null,
+      "itemCount": 0,
+      "typeCounts": {},
+      "sampleQuestions": []
+    },
+    {
+      "skillCode": "N2.2",
+      "sourceTitle": "Mental strategies for addition and subtraction",
+      "appSkillName": null,
+      "itemCount": 0,
+      "typeCounts": {},
+      "sampleQuestions": []
+    },
+    {
+      "skillCode": "N2.3",
+      "sourceTitle": "Use commutative and associative laws",
+      "appSkillName": "Use commutative and associative laws",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Use commutative and associative laws",
+        "Placeholder question 2 for: Use commutative and associative laws"
+      ]
+    },
+    {
+      "skillCode": "N2.4",
+      "sourceTitle": "Use formal methods for addition of integers",
+      "appSkillName": null,
+      "itemCount": 0,
+      "typeCounts": {},
+      "sampleQuestions": []
+    },
+    {
+      "skillCode": "N2.5",
+      "sourceTitle": "Use formal methods for addition of decimals",
+      "appSkillName": "Use formal methods for addition of decimals",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Use formal methods for addition of decimals",
+        "Placeholder question 2 for: Use formal methods for addition of decimals"
+      ]
+    },
+    {
+      "skillCode": "N2.6",
+      "sourceTitle": "Use formal methods for subtraction of integers",
+      "appSkillName": null,
+      "itemCount": 0,
+      "typeCounts": {},
+      "sampleQuestions": []
+    },
+    {
+      "skillCode": "N2.7",
+      "sourceTitle": "Use formal methods for subtraction of decimals",
+      "appSkillName": "Use formal methods for subtraction of decimals; complement of a decimal (1 − p)",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Use formal methods for subtraction of decimals; complement of a decimal (1 − p)",
+        "Placeholder question 2 for: Use formal methods for subtraction of decimals; complement of a decimal (1 − p)"
+      ]
+    },
+    {
+      "skillCode": "N2.8",
+      "sourceTitle": "Money problems involving addition and subtraction",
+      "appSkillName": "Money problems involving addition and subtraction",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Money problems involving addition and subtraction",
+        "Placeholder question 2 for: Money problems involving addition and subtraction"
+      ]
+    },
+    {
+      "skillCode": "N2.9",
+      "sourceTitle": "Perimeter of irregular polygons",
+      "appSkillName": "Perimeter of irregular polygons",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Perimeter of irregular polygons",
+        "Placeholder question 2 for: Perimeter of irregular polygons"
+      ]
+    },
+    {
+      "skillCode": "N2.10",
+      "sourceTitle": "Perimeter of regular polygons",
+      "appSkillName": "Perimeter of regular polygons",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Perimeter of regular polygons",
+        "Placeholder question 2 for: Perimeter of regular polygons"
+      ]
+    },
+    {
+      "skillCode": "N2.11",
+      "sourceTitle": "Perimeter of rectangles and parallelograms",
+      "appSkillName": "Perimeter of rectangles and parallelograms",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Perimeter of rectangles and parallelograms",
+        "Placeholder question 2 for: Perimeter of rectangles and parallelograms"
+      ]
+    },
+    {
+      "skillCode": "N2.12",
+      "sourceTitle": "Perimeter of an isosceles triangle or an isosceles trapezium",
+      "appSkillName": "Perimeter of an isosceles triangle or an isosceles trapezium",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Perimeter of an isosceles triangle or an isosceles trapezium",
+        "Placeholder question 2 for: Perimeter of an isosceles triangle or an isosceles trapezium"
+      ]
+    },
+    {
+      "skillCode": "N2.13",
+      "sourceTitle": "Perimeter of a compound shape",
+      "appSkillName": "Perimeter of a compound shape",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Perimeter of a compound shape",
+        "Placeholder question 2 for: Perimeter of a compound shape"
+      ]
+    },
+    {
+      "skillCode": "N2.14",
+      "sourceTitle": "Solve problems involving tables and timetables",
+      "appSkillName": "Solve problems involving tables and timetables",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Solve problems involving tables and timetables",
+        "Placeholder question 2 for: Solve problems involving tables and timetables"
+      ]
+    },
+    {
+      "skillCode": "N2.15",
+      "sourceTitle": "Solve problems involving frequency trees",
+      "appSkillName": "Solve problems with frequency trees",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Solve problems with frequency trees",
+        "Placeholder question 2 for: Solve problems with frequency trees"
+      ]
+    },
+    {
+      "skillCode": "N2.16",
+      "sourceTitle": "Add and subtract numbers given in standard form (CHALLENGE)",
+      "appSkillName": "Add and subtract numbers given in standard form",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Add and subtract numbers given in standard form",
+        "Placeholder question 2 for: Add and subtract numbers given in standard form"
+      ]
+    },
+    {
+      "skillCode": "N3.1",
+      "sourceTitle": "Properties of Multiplication and Division",
+      "appSkillName": null,
+      "itemCount": 0,
+      "typeCounts": {},
+      "sampleQuestions": []
+    },
+    {
+      "skillCode": "N3.2",
+      "sourceTitle": "Mental Strategies for Multiplication and Division",
+      "appSkillName": null,
+      "itemCount": 0,
+      "typeCounts": {},
+      "sampleQuestions": []
+    },
+    {
+      "skillCode": "N3.3",
+      "sourceTitle": "Multiply and divide by powers of 10",
+      "appSkillName": "Multiply and divide integers and decimals by powers of 10",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Multiply and divide integers and decimals by powers of 10",
+        "Placeholder question 2 for: Multiply and divide integers and decimals by powers of 10"
+      ]
+    },
+    {
+      "skillCode": "N3.4",
+      "sourceTitle": "Multiplication (without carrying)",
+      "appSkillName": null,
+      "itemCount": 0,
+      "typeCounts": {},
+      "sampleQuestions": []
+    },
+    {
+      "skillCode": "N3.5",
+      "sourceTitle": "Multiplication (with carrying)",
+      "appSkillName": "Multiplication (with carrying)",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Multiplication (with carrying)",
+        "Placeholder question 2 for: Multiplication (with carrying)"
+      ]
+    },
+    {
+      "skillCode": "N3.6",
+      "sourceTitle": "Area",
+      "appSkillName": "Area of rectangles, parallelograms, triangles and compound shapes",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Area of rectangles, parallelograms, triangles and compound shapes",
+        "Placeholder question 2 for: Area of rectangles, parallelograms, triangles and compound shapes"
+      ]
+    },
+    {
+      "skillCode": "N3.7",
+      "sourceTitle": "Short division (without carrying)",
+      "appSkillName": null,
+      "itemCount": 0,
+      "typeCounts": {},
+      "sampleQuestions": []
+    },
+    {
+      "skillCode": "N3.8",
+      "sourceTitle": "Short division (carrying)",
+      "appSkillName": "Short division (with carrying)",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Short division (with carrying)",
+        "Placeholder question 2 for: Short division (with carrying)"
+      ]
+    },
+    {
+      "skillCode": "N3.9",
+      "sourceTitle": "Order of operations",
+      "appSkillName": "Order of Operations (DM before AS, L→R, indices/roots, brackets, inserting brackets)",
+      "itemCount": 2,
+      "typeCounts": {
+        "SHORT_TEXT": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Order of Operations (DM before AS, L→R, indices/roots, brackets, inserting brackets)",
+        "Placeholder question 2 for: Order of Operations (DM before AS, L→R, indices/roots, brackets, inserting brackets)"
+      ]
+    },
+    {
+      "skillCode": "N3.10",
+      "sourceTitle": "Multiples",
+      "appSkillName": "Multiples",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Multiples",
+        "Placeholder question 2 for: Multiples"
+      ]
+    },
+    {
+      "skillCode": "N3.11",
+      "sourceTitle": "Factors",
+      "appSkillName": "Factors",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Factors",
+        "Placeholder question 2 for: Factors"
+      ]
+    },
+    {
+      "skillCode": "N3.12",
+      "sourceTitle": "Lowest common multiple",
+      "appSkillName": "Lowest Common Multiple",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Lowest Common Multiple",
+        "Placeholder question 2 for: Lowest Common Multiple"
+      ]
+    },
+    {
+      "skillCode": "N3.13",
+      "sourceTitle": "Highest common factor",
+      "appSkillName": "Highest Common Factor",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Highest Common Factor",
+        "Placeholder question 2 for: Highest Common Factor"
+      ]
+    },
+    {
+      "skillCode": "N3.14",
+      "sourceTitle": "Converting metric units",
+      "appSkillName": "Convert metric units",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Convert metric units",
+        "Placeholder question 2 for: Convert metric units"
+      ]
+    },
+    {
+      "skillCode": "N3.15",
+      "sourceTitle": "Decimal multiplication (decimal and integer)",
+      "appSkillName": "Decimal multiplication (decimal × integer)",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Decimal multiplication (decimal × integer)",
+        "Placeholder question 2 for: Decimal multiplication (decimal × integer)"
+      ]
+    },
+    {
+      "skillCode": "N3.16",
+      "sourceTitle": "Decimal multiplication (decimal and decimal)",
+      "appSkillName": "Decimal multiplication (decimal × decimal)",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Decimal multiplication (decimal × decimal)",
+        "Placeholder question 2 for: Decimal multiplication (decimal × decimal)"
+      ]
+    },
+    {
+      "skillCode": "N3.18",
+      "sourceTitle": "Short division (remainders)",
+      "appSkillName": "Short division (remainders)",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Short division (remainders)",
+        "Placeholder question 2 for: Short division (remainders)"
+      ]
+    },
+    {
+      "skillCode": "N3.19",
+      "sourceTitle": "Short division (decimals)",
+      "appSkillName": "Short division (decimal answers)",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Short division (decimal answers)",
+        "Placeholder question 2 for: Short division (decimal answers)"
+      ]
+    },
+    {
+      "skillCode": "N3.20",
+      "sourceTitle": "Dividing decimals (CHALLENGE)",
+      "appSkillName": "Divide decimals (by an integer / by a decimal; incl ÷0.1, ÷0.2, ÷0.5 etc.)",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Divide decimals (by an integer / by a decimal; incl ÷0.1, ÷0.2, ÷0.5 etc.)",
+        "Placeholder question 2 for: Divide decimals (by an integer / by a decimal; incl ÷0.1, ÷0.2, ÷0.5 etc.)"
+      ]
+    },
+    {
+      "skillCode": "N3.21",
+      "sourceTitle": "Area (missing lengths)",
+      "appSkillName": "Find missing lengths given area (rectangles, parallelograms, triangles and compound shapes)",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Find missing lengths given area (rectangles, parallelograms, triangles and compound shapes)",
+        "Placeholder question 2 for: Find missing lengths given area (rectangles, parallelograms, triangles and compound shapes)"
+      ]
+    },
+    {
+      "skillCode": "N3.22",
+      "sourceTitle": "The mean",
+      "appSkillName": "Solve problems using the mean",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Solve problems using the mean",
+        "Placeholder question 2 for: Solve problems using the mean"
+      ]
+    },
+    {
+      "skillCode": "N3.23",
+      "sourceTitle": "Squares and Cubes",
+      "appSkillName": "Square and cube numbers, roots",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Square and cube numbers, roots",
+        "Placeholder question 2 for: Square and cube numbers, roots"
+      ]
+    },
+    {
+      "skillCode": "N3.24",
+      "sourceTitle": "Introduction to primes (CHALLENGE)",
+      "appSkillName": "Introduction to primes",
+      "itemCount": 2,
+      "typeCounts": {
+        "MCQ": 2
+      },
+      "sampleQuestions": [
+        "Placeholder question 1 for: Introduction to primes",
+        "Placeholder question 2 for: Introduction to primes"
+      ]
+    }
+  ]
+}

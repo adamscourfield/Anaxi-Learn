@@ -1,0 +1,1176 @@
+{
+  "id": "part-b-foundation",
+  "file": "(PART B) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard).pptx",
+  "part": "B",
+  "tier": "FOUNDATION",
+  "answers": false,
+  "slideCount": 132,
+  "questionSignalSlides": 34,
+  "contentsEntries": [
+    {
+      "skillCode": "N3.1",
+      "title": "Properties of Multiplication and Division"
+    },
+    {
+      "skillCode": "N3.2",
+      "title": "Mental Strategies for Multiplication and Division"
+    },
+    {
+      "skillCode": "N3.3",
+      "title": "Multiply and divide by powers of 10"
+    },
+    {
+      "skillCode": "N3.4",
+      "title": "Multiplication (without carrying)"
+    },
+    {
+      "skillCode": "N3.5",
+      "title": "Multiplication (with carrying)"
+    },
+    {
+      "skillCode": "N3.6",
+      "title": "Area"
+    },
+    {
+      "skillCode": "N3.7",
+      "title": "Short division (without carrying)"
+    },
+    {
+      "skillCode": "N3.8",
+      "title": "Short division (carrying)"
+    },
+    {
+      "skillCode": "N3.23",
+      "title": "Squares and Cubes"
+    },
+    {
+      "skillCode": "N3.9",
+      "title": "Order of operations"
+    },
+    {
+      "skillCode": "N3.10",
+      "title": "Multiples"
+    },
+    {
+      "skillCode": "N3.11",
+      "title": "Factors"
+    },
+    {
+      "skillCode": "N3.12",
+      "title": "Lowest common multiple"
+    },
+    {
+      "skillCode": "N3.13",
+      "title": "Highest common factor"
+    }
+  ],
+  "subtopicCoverage": [
+    "N3.1",
+    "N3.10",
+    "N3.11",
+    "N3.12",
+    "N3.13",
+    "N3.2",
+    "N3.23",
+    "N3.3",
+    "N3.9"
+  ],
+  "slides": [
+    {
+      "slideNumber": 1,
+      "text": "Name _____________________ Class ________ Teacher ______________________ | Y7 Mathematics | Number | N1-3 'Secondary Ready': Applications of Numeracy (Foundation) Part B",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 2,
+      "text": "2 | N3 Multiplication, Division and their Applications | Knowledge Organiser | 2 | Knowledge | Answer | 1 | What is multiplication? | Repeated addition of the same number. | 2 | What is division? | Splitting a number into equal parts. | 3 | What is meant by metric measurements? | A decimal system of weights and measures. | 4 | What is a product? | The result of multiplying two or more numbers. | 5 | What are decimals? | Numbers between whole numbers, expressed with a decimal point. | 6 | What is the area? | The space inside a shape. | 7 | What is the mean of a data set? | The average value of the data. | 8 | What is a square number? | A number that is the product of an integer multiplied by itself. | 9 | What is a cube number? | A number that is the product of an integer multiplied by itself twice. | 10 | What is a square root? | A value that, when squared, gives the original number. | 11 | What is a cube root? | A value that, when cubed, gives the original number. | 12 | What is an operation? | A mathematical action like addition, subtraction, multiplication or division. | 13 | What is a multiple? | The result of multiplying a number by an integer. | 14 | What is a lowest common multiple? | The smallest multiple shared by two or more integers. | 15 | What is a factor? | A number that divides exactly into another number. | 16 | What is a highest common factor? | The largest factor shared by two or more integers. | 17 | What is a prime number? | A positive integer with exactly two factors. | 18 | What is a composite number? | A number with more than two factors.",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 3,
+      "text": "CONTENTS | | PAGE | SUBTOPIC N3.1 | Properties of Multiplication and Division | SUBTOPIC N3.2 | Mental Strategies for Multiplication and Division | SUBTOPIC N3.3 | Multiply and divide by powers of 10 | SUBTOPIC N3.4 | Multiplication (without carrying) | SUBTOPIC N3.5 | Multiplication (with carrying) | SUBTOPIC N3.6 | Area | SUBTOPIC N3.7 | Short division (without carrying) | SUBTOPIC N3.8 | Short division (carrying) | SUBTOPIC N3.23 | Squares and Cubes | SUBTOPIC N3.9 | Order of operations | SUBTOPIC N3.10 | Multiples | SUBTOPIC N3.11 | Factors | SUBTOPIC N3.12 | Lowest common multiple | SUBTOPIC N3.13 | Highest common factor | 3 | Start of subtopic: | Read the information in the Frayer model and/or introductory text. | I do (teacher led example). | We do (teacher and scholar led example). | You do | (usually involving a whiteboard check | ). | Independent | practice, including depth questions; celebrate your success! | End of subtopic: | | There will often be a | Skills Check | BOOKLET STRUCTURE",
+      "subtopicCode": "N3.1",
+      "questionRefs": [],
+      "contentsEntries": [
+        {
+          "skillCode": "N3.1",
+          "title": "Properties of Multiplication and Division"
+        },
+        {
+          "skillCode": "N3.2",
+          "title": "Mental Strategies for Multiplication and Division"
+        },
+        {
+          "skillCode": "N3.3",
+          "title": "Multiply and divide by powers of 10"
+        },
+        {
+          "skillCode": "N3.4",
+          "title": "Multiplication (without carrying)"
+        },
+        {
+          "skillCode": "N3.5",
+          "title": "Multiplication (with carrying)"
+        },
+        {
+          "skillCode": "N3.6",
+          "title": "Area"
+        },
+        {
+          "skillCode": "N3.7",
+          "title": "Short division (without carrying)"
+        },
+        {
+          "skillCode": "N3.8",
+          "title": "Short division (carrying)"
+        },
+        {
+          "skillCode": "N3.23",
+          "title": "Squares and Cubes"
+        },
+        {
+          "skillCode": "N3.9",
+          "title": "Order of operations"
+        },
+        {
+          "skillCode": "N3.10",
+          "title": "Multiples"
+        },
+        {
+          "skillCode": "N3.11",
+          "title": "Factors"
+        },
+        {
+          "skillCode": "N3.12",
+          "title": "Lowest common multiple"
+        },
+        {
+          "skillCode": "N3.13",
+          "title": "Highest common factor"
+        }
+      ]
+    },
+    {
+      "slideNumber": 4,
+      "text": "Subtopic N3.1 - Properties of Multiplication and Division | | Objectives: | To visually represent multiplication and division. | To use bar models to write multiplication and division. | LEARNING OUTCOME: | To understand the properties of multiplication and division. | Keywords: | Multiplication | Division | Product | Share | 4 | Example 1 - I do | Write | the | multiplication | facts from the bar models and array given | | | | | Properties of multiplication | Definition | Characteristics | Examples | Non - Examples | Multiplication | Repeated addition of the same number. | O | ften represented by the \"×\" sign | . | Commutative | Distributive property: | Multiplication can be distributed over addition. For example, 3 × (2 + 4) is the same as (3 × 2) + (3 × 4), and both equal 18 | If you have 3 groups of 4 apples, you can use multiplication to find the total number of apples by calculating 3 × 4, which equals 12. | Sarah has 12 cookies. She wants to share them equally among 4 friends. How many cookies will each friend get? This is a | division problem | . | Introduction – read and annotate: | In this subtopic, we’ll explore the properties of multiplication and division that help us understand how | numbers work together. We'll look at fact families, which show how multiplication and division are | connected, just like addition and subtraction. You'll also revisit the commutative property—where the | order of numbers doesn't change the result—and see how it applies to multiplication but | not | to | division. These properties are key to solving problems such as area, square and cube numbers, and | order of operations. Understanding how multiplication and division work together will strengthen your | overall number sense and prepare you for more complex | maths | .",
+      "subtopicCode": "N3.1",
+      "questionRefs": [
+        "4",
+        "2"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 5,
+      "text": "Example 3 – You | do | Write | the | multiplication | facts from the bar model and array given | | | | | Example 2 – We do | Write | the | multiplication | facts from the bar model and array given | Why does this example only have one bar model and one multiplication fact? | | | 1. Write the | multiplication | facts from the bar models or arrays given | Independent Practice | Question | Representations | Multiplication Facts | a) | 5 | | | |",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 6,
+      "text": "Question | Representations | Multiplication Facts | b) | c) | d) | e) | f) | | | | | | | | | | | | | 6 | | | | | | | |",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 7,
+      "text": "Question | Representations | Multiplication Facts | g) | h) | i | ) | 2. For the following questions, complete the bar models and write the multiplication facts. | Question | Bar Model | Multiplication Facts | a) | b) | c) | 7 | | | | | | | | | | | | | | | | | | | | | | | | | 16 | 4 | 4 | 4 | 4 | 24 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 24 | 12 | 12 | 24 | 6 | 6 | 6 | 6 | 24 | 40 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 4 | 40 | 18 | 3 | 3 | 3 | 3 | 3 | 3",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 8,
+      "text": "Question | Bar Model | Multiplication Facts | d) | e) | 3. For the following questions, use the one bar model to deduce | both | multiplication facts. | a) | b) | c) | d) | e) | 8 | | | | | | | | | | | | | | | | | | | | | | | | | | | | | 35 | 7 | 7 | 7 | 7 | 7 | 45 | 9 | 9 | 9 | 9 | 9 | 63 | 9 | 9 | 9 | 9 | 9 | 9 | 9 | 49 | 7 | 7 | 7 | 7 | 7 | 7 | 7",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 9,
+      "text": "Example 4 - I do | Write | the | division | facts from the bar model and array given | | | | | 12 | 3 | 3 | 3 | 3 | Example 5 - We do | Write | the | division | facts from the bar model and array given | Why does this example only have one bar model and one multiplication fact? | 9 | 3 | 3 | 3 | | | 9 | 12 | 4 | 4 | 4 | Properties of division | Definition | Characteristics | Examples | Non - Examples | Division | is the | arithmetical | process of dividing one number into another number. | Involves two numbers: dividend and divisor. | The result of division is called the quotient. | Can result in a whole number, a fraction, or a decimal, depending on the numbers involved. | Denoted by the symbol \"÷\" or the fraction bar \"⁄“ | Not commutative | Division | 10 ÷ 2 = 5 | 8 ÷ 4 = 2 | 21 ÷ 7 = 3 | 1.5 ÷ 0.5 = 3 | Addition & subtraction are not division operations. | Multiplication is the inverse of division but is a different operation. | Ratios and proportions are related concepts but are not division.",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 10,
+      "text": "Example 6 - You do | Write | the | division | facts from the bar model and array given | Question | Representations | Division Facts | a) | b) | c) | | | | | | | | | 4. Write the | division | facts from the representations given | | | | | 10 | 24 | 6 | 6 | 6 | 6 | 24 | 4 | 4 | 4 | 4 | 4 | 4 | Independent Practice | | | |",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 11,
+      "text": "d) | e) | f) | | | 25 | 5 | 5 | 5 | 5 | 5 | | | | | 11 | | | |",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 12,
+      "text": "Question | Bar Model | Division Facts | a) | b) | c) | d) | e) | f) | g) | h) | i | ) | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | 12 | 10 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 10 | 10 | 10 | 2 | 2 | 2 | 2 | 2 | 100 | 10 | 10 | 10 | 10 | 10 | 10 | 10 | 10 | 10 | 10 | 24 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 24 | 4 | 4 | 4 | 4 | 4 | 4 | 27 | 9 | 9 | 9 | 63 | 7 | 7 | 7 | 7 | 7 | 7 | 7 | 7 | 7 | 5 | 1 | 1 | 1 | 1 | 1 | 5 | . For the following questions, use the one bar model to deduce | both | division facts.",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 13,
+      "text": "Example 7 - I do | Example 8 - We do | Example 9 - You do… | Write | the | number | | families | from the bar models given | | | | | | | | | | | | | | | | | | | | | | | | | a) | b) | c) | d) | Independent Practice. | 6. Write the | number | | families | from the bar models given | | = | | = | | = | | = | | e) | f) | g) | h) | 13 | 10 | 5 | 5 | 14 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 20 | 4 | 4 | 4 | 4 | 4 | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | | = | | | = | | = | | = | | = | | 60 | 12 | 12 | 12 | 12 | 12 | 36 | 9 | 9 | 9 | 9 | 6 | 2 | 2 | 2 | 4 | 1 | 1 | 1 | 1 | 45 | 9 | 9 | 9 | 9 | 9 | 45 | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 64 | 8 | 8 | 8 | 8 | 8 | 8 | 8 | 8 | 28 | 7 | 7 | 7 | 7 | Number families with multiplication and division",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 14,
+      "text": "i) | j) | k) | l) | m) | n) | o) | p) | q) | r) | s) | t) | 14 | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | = | | 54 | 6 | 6 | 6 | 6 | 6 | 6 | 6 | 6 | 6 | 21 | 3 | 3 | 3 | 3 | 3 | 3 | 3 | 90 | 9 | 9 | 9 | 9 | 9 | 9 | 9 | 9 | 9 | 9 | 72 | 8 | 8 | 8 | 8 | 8 | 8 | 8 | 8 | 8 | 36 | 12 | 12 | 12 | 36 | 6 | 6 | 6 | 6 | 6 | 6 | 3 | 1 | 1 | 1 | 3 | 3 | 40 | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 40 | 10 | 10 | 10 | 10 | 16 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 16 | 8 | 8",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 15,
+      "text": "Skills Check | 1. | 2. | 3. Which calculation is missing from the number | family? | 4. | Deduce both multiplication facts from this bar model | 5 x 6 = 30 | 6 x 5 = 30 | 30 ÷ 6 = 5 | 30 ÷ 5 = 6 | 5 ÷ 6 = 30 | c) 6 ÷ 5 = 30 | d) 30 ÷ 6 = 5 | Deduce both division facts from this bar model | ÷ | | | x | | x | | 15 | ÷ | 40 | 8 | 8 | 8 | 8 | 8 | 27 | 9 | 9 | 9 | 20 | 4 | 4 | 4 | 4 | 4 x 5 = 20 | 20 ÷ 5 = 4",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 16,
+      "text": "16 | Steps | Example 1 - I do | Example 2 - We do | Example 3 - You do… | List each number in the times table, starting with multiplying by 1. | To work out the next number, add on the number of the times table you are working with. | Write out the fact series for the two times table, up to 2 x 12. | 2 x 1 = ______ | 2 x 2 = ______ | 2 x 3 = ______ | 2 x 4 = ______ | 2 x 5 = ______ | 2 x 6 = ______ | 2 x 7 = ______ | 2 x 8 = ______ | 2 x 9 = ______ | 2 x 10 = ______ | 2 x 11 = ______ | 2 x 12 = ______ | Write out the fact series for the six times table, up to 6 x 12. | 6 x ______ = ______ | 6 x ______ = ______ | 6 x ______ = ______ | 6 x ______ = ______ | 6 x ______ = ______ | 6 x ______ = ______ | 6 x ______ = ______ | 6 x ______ = ______ | 6 x ______ = ______ | 6 x ______ = ______ | 6 x ______ = ______ | 6 x ______ = ______ | Write out the fact series for the four times table, up to 4 x 12. | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | Mental multiplication | Subtopic N3.2 – Mental Strategies for Multiplication and Division | Objectives: | To recall multiplication facts up to 12 x 12 | To recall division facts up to divisors of 12 | Learning outcome: To recall mental multiplication and division facts | Keywords: | Multiply | Divide | Product | Definition | Characteristics | Examples | Non - Examples | Multiplication | Repeated addition of the same number. | O | ften represented by the \"×\" sign | . | Commutative | Distributive property: | Multiplication can be distributed over addition. For example, 3 × (2 + 4) is the same as (3 × 2) + (3 × 4), both equal 18 | If you have 3 groups of 4 apples, you can use multiplication to find the total number of apples by calculating 3 × 4, which equals 12. | Sarah has 12 cookies. She wants to share them equally among 4 friends. How many cookies will each friend get? This is a | division problem | . | Introduction – read and annotate: | In this subtopic, you'll develop strategies to become faster and more fluent with mental multiplication | and division. Being able to quickly work out answers in your head helps with everything from | estimating to solving more complex problems with confidence.",
+      "subtopicCode": "N3.2",
+      "questionRefs": [
+        "4",
+        "2"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 17,
+      "text": "17 | Independent Practice | a) Three times table | b) Seven times table | c) One times table | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | d) Nine times table | e) Twelve times table | f) Five times table | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | 1. Write out the fact series for the:",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 18,
+      "text": "g) Eight times table | h) Ten times table | i | ) Eleven times table | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | ______ x ______ = ______ | 18",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 19,
+      "text": "2. | Complete the following multiplication grids: | a) | b) | d) | e) | g) | h) | i | ) | j) | 19 | x | 2 | 5 | 10 | 3 | 4 | 6 | x | 3 | 4 | 7 | 2 | 6 | 8 | x | 6 | 1 | 9 | 5 | 7 | 8 | x | 8 | 3 | 7 | 7 | 5 | 8 | x | 12 | 4 | 10 | 9 | 3 | 1 | x | 11 | 7 | 9 | 1 | 10 | 2 | x | 11 | 7 | 9 | 5 | 8 | 12 | x | 12 | 8 | 6 | 5 | 8 | 12",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 20,
+      "text": "k) | l) | m) For every row or column being multiplied by 1, what did you notice? | n) For every row or column being multiplied by 0, what did you notice? | x | 7 | 0 | 9 | 5 | 1 | 11 | x | 3 | 12 | 1 | 4 | 8 | 0 | Steps | Example 4 - I do | Example 5 - We do | Example 6 - You do… | Work through the times table in descending order. Spot the pattern for multiplying by 1 and for multiplying by 0. | Complete the following ‘2 times’ facts: | 2 x 3 = ______ | 2 x 2 = ______ | 2 x 1 = ______ | 2 x 0 = ______ | Complete the following ‘7 times’ facts: | 7 x 3 = ______ | 7 x 2 = ______ | 7 x ______ = ______ | 7 x ______ = ______ | Complete the following ‘9 times’ facts: | 9 x 3 = ______ | 9 x 2 = ______ | 9 x ______ = ______ | 9 x ______ = ______ | Exploring multiplying by 1 and 0 | When multiplying any number by 1, the number stays __________________________________ . | When multiplying any number by 0, the answer will always be ______________________________ . | 20",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 21,
+      "text": "a) 7 x 1 | b) 76 x 1 | c) 765 x 1 | d) 567 x 1 | e) 76501 x 1 | f) 9 x 0 | g) 19 x 0 | h) 191 x 0 | i | ) 911 x 0 | j) 91919191 x 0 | Independent Practice | 3. | Calculate the following: | Mental multiplication practice and the commutative law | Example 7 - I do | Example 8 - We do | Example 9 - You do… | Complete the multiplication fact below: | Using the commutative law, write the other multiplication fact: | Complete the multiplication fact below: | Using the commutative law, write the other multiplication fact: | Complete the multiplication fact below: | Using the commutative law, write the other multiplication fact: | | | | | | | | | | | | | 3 7 | 8 4 | 5 9 | Independent Practice | a) | b) | c) | 21 | | | | | | | | | | | | | 4. | Complete the first multiplication fact and write the second multiplication fact using the commutative law | 5 6 | 8 7 | 4 7",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 22,
+      "text": "d) | e) | f) | g) | h) | i | ) | j) | k) | l) | j) | k) | l) | | | | | | | | | | | | | 3 6 | 7 8 | 4 7 | | | | | | | | | | | | | 11 3 | 12 9 | 9 8 | | | | | | | | | | | | | 4 11 | 5 3 | 10 6 | 22 | | | | | | | | | | | | | 0 12 | 9 1 | 9 7",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 23,
+      "text": "23 | Mental division | Steps | Example 10 - I do | Example 11 - We do | Example 12 - You do… | Identify how many times the divisor goes into the dividend. | Steps | Example 10 - I do | Example 11 - We do | Example 12 - You do… | Identify how many times the divisor goes into the dividend. | Independent Practice | a) | b) | c) | d) | = | = | = | = | e) | f) | g) | h) | = | = | = | = | i) | j) | k) | l) | = | = | = | = | a) | b) | c) | d) | e) | f) | g) | h) | i) | j) | k) | l) | 5 | . Answer the following division questions. | Definition | Characteristics | Examples | Non - Examples | Division | is the | arithmetical | process of dividing one number into another number. | Involves two numbers: dividend and divisor. | The result of division is called the quotient. | Can result in a whole number, a fraction, or a decimal, depending on the numbers involved. | Denoted by the symbol \"÷\" or the fraction bar \"⁄“ | Not commutative | Division | 10 ÷ 2 = 5 | 8 ÷ 4 = 2 | 21 ÷ 7 = 3 | 1.5 ÷ 0.5 = 3 | Addition & subtraction are not division operations. | Multiplication is the inverse of division but is a different operation. | Ratios and proportions are related concepts but are not division.",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 24,
+      "text": "m) | n) | o) | p) | = | = | 4 = | = | q) | r) | s) | t) | = | = | = | = | u) | v) | w) | x) | = | = | = | = | y) | z) | aa) | ab) | = | = | 5 = | = | ac) | ad) | ae) | af | ) | = | = | = | = | ag) | ah) | ai) | aj | ) | = | = | = | = | ak | ) | al) | am) | an) | = | = | 7 = | = | ao | ) | ap) | aq | ) | ar | ) | = | = | = | = | as) | at) | au) | av | ) | = | = | = | = | aw) | ax | ) | ay) | az | ) | = | = | 9 = | = | ba | ) | bb) | bc | ) | bd) | = | = | 9 = | = | be) | bf) | bg | ) | bh | ) | = | = | 10 = | = | bi) | bj | ) | bk) | bl) | = | 1 = | 11 = | = | bm) | bn) | bo | ) | bp) | = | 2 = | 12 = | = | bq | ) | br | ) | bs) | bt | ) | = | = | 1 = | = | m) | n) | o) | p) | q) | r) | s) | t) | u) | v) | w) | x) | y) | z) | aa) | ab) | ac) | ad) | ae) | af | ) | ag) | ah) | ai) | aj | ) | ak | ) | al) | am) | an) | ao | ) | ap) | aq | ) | ar | ) | as) | at) | au) | av | ) | aw) | ax | ) | ay) | az | ) | ba | ) | bb) | bc | ) | bd) | be) | bf) | bg | ) | bh | ) | bi) | bj | ) | bk) | bl) | bm) | bn) | bo | ) | bp) | bq | ) | br | ) | bs) | bt | ) | 24",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 25,
+      "text": "bu | ) For every division where the number was divided by itself, what did you notice? | bv | ) For every division where the divisor was 1, what did you notice? | Example 13 - I do | Example 14 - We do | Example 15 - You do… | Example 13 - I do | Example 14 - We do | Example 15 - You do… | Exploring dividing by 1 and the dividend itself | When dividing any number by 1, the number stays __________________________________ . | When dividing any number by itself, the answer will always be ______________________________ . | a) 7 ÷ 1 | b) 76 ÷ 1 | c) 765 ÷ 1 | d) 567 ÷ 1 | e) 76501 ÷1 | f) 9 ÷ 9 | g) 19 ÷ 19 | h) 191 ÷ 191 | i | ) 911 ÷ 911 | j) 91919 ÷ 91919 | Independent Practice | 6. | Calculate the following: | 25",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 26,
+      "text": "Example 16 - I do | Example 17 - We do | Example 18 - You do… | Write | the | number | | families | from the bar models given | | | | | | | | | a) | b) | c) | d) | Independent Practice. | 7. Write the | number | | families | from the bar models given | e) | f) | g) | h) | 26 | 10 | 14 | 20 | 60 | 36 | 6 | 4 | 45 | 45 | 64 | 28 | Number families with multiplication and division | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | = | | | | | | | | | | | | | | | | |",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 27,
+      "text": "i) | j) | k) | l) | m) | n) | o) | p) | q) | r) | s) | t) | 27 | 54 | 21 | 90 | 90 | 36 | 36 | 3 | 3 | 40 | 40 | 16 | 16 | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | = | | | = | | = | | = | | = |",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 28,
+      "text": "8. For each statement, decide whether it is always, sometimes or never true. | a) | When you multiply two numbers together, it doesn’t matter which order you do it in. | b) | Divide means ‘shared between’ | c) | There are more than ten positive integer multiplication sums that give the answer 6 | . | d) | When you divide one number by another, it doesn’t matter which order you do it in. | e) | Multiplying a number by zero doesn’t change the number. | f) | | You can undo a multiplication by dividing. | g) | a x b = b x a | h) | a x ( b x c) = (a x b) x c | i | ) | a ÷ b = b ÷ a | 28",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 29,
+      "text": "10. | 29 | 9. | 11.",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 30,
+      "text": "30 | 12. | Skills Check | Work out 12 multiplied by 4 | A. 48 B. 16 C. 3 D. 44 | 2. Calculate the value of 8 x 9 | A. 81 B. 72 C. 32 D. 71 | 3. Calculate 56 ÷ 7 | A. 7 B. 49 C. 63 D. 8 | ? ÷ 7 = 4 | A. 11 B. 28 C. 3 D. 1",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 31,
+      "text": "Steps | Calculate: | Calculate: | Calculate: | 1) Determine which way the digits move when we multiply by 10, 100, 1000… | 2) Work out how many places we need to move the digits | 3) Move the digits in the correct direction, by the number of places. | Steps | Calculate: | Calculate: | Calculate: | 1) Determine which way the digits move when we multiply by 10, 100, 1000… | 2) Work out how many places we need to move the digits | 3) Move the digits in the correct direction, by the number of places. | Example 1 | – | I do… | Example 3 – You do… | Subtopic N3.3 - | Multiply and divide integers and decimals by powers of 10 | | Objectives: | Multiply integers by powers of 10 | Multiply decimals by powers of 10 | Divide integers and decimals by powers of 10. | Multiply and Divide numbers involving powers of ten. | LEARNING OUTCOME: To | multiply and divide integers and decimals by powers of 10 | Keywords: | Multiply | Divide | Power | Integer | Decimal | Example 2 – We do… | Multiplying Integers by Powers of Ten | Hundred | Millions | Ten Millions | Millions | Hundred | Thousands | Ten Thousands | Thousands | Hundreds | Tens | ones | 31 | Definition | Characteristics | Examples | Non - Examples | Multiplication | Repeated addition of the same number. | O | ften represented by the \"×\" sign | . | Commutative | Distributive property: | Multiplication can be distributed over addition. For example, 3 × (2 + 4) is the same as (3 × 2) + (3 × 4), and both equal 18 | If you have 3 groups of 4 apples, you can use multiplication to find the total number of apples by calculating 3 × 4, which equals 12. | Sarah has 12 cookies. She wants to share them equally among 4 friends. How many cookies will each friend get? This is a | division problem | . | Introduction – read and annotate: | Multiplying and dividing by powers of 10 means working with numbers like 10, 100, 1,000, and so | on. Being able to do this helps you solve related calculations more easily. For example, if you know | that 3 × 4 = 12, then you can use that fact to work out 30 × 4 by | recognising | that 3 has been | multiplied by 10—so there's no need to do the full calculation again. When you multiply by a power | of 10, the digits move to the left, making the number bigger; when you divide by a power of 10, the | digits move to the right, making the number smaller.",
+      "subtopicCode": "N3.3",
+      "questionRefs": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 32,
+      "text": "Independent Practice | 1. Calculate the following: | a) | b) | c) | d) | e) | | | f) | g) | h) | i) | j) | | 2. Fill in the blanks. | a) | b) | c) | d) | | | e) | f) | g) | h) | | | k) | l) | m) | n) | o) | | 32 | Related Calculations | Steps: | Given that: | Work out: | Given that: | Work out: | Given that: | Work out: | Look at the calculation given, what has happened to each number in the calculation? | 2. What overall effect does this have on the calculation? Adjust your answer appropriately. | Steps: | Look at the calculation given, what has happened to each number in the calculation? | 2. What overall effect does this have on the calculation? Adjust your answer appropriately. | Example 4 - I do… | Example 6 – You do… | Example 5 – We do…",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 33,
+      "text": "3. i) Given that | work out: | a) | b) | c) | d) | e) | | | ii) Given that | work out: | f) | g) | h) | i) | j) | | iii) Given that | work out: | k) | l) | m) | n) | o) | | Independent Practice | 33 | Steps: | Calculate: | Calculate: | Calculate: | 1) Determine which way the digits move when we multiply by 10, 100, 1000… | 2) Work out how many places we need to move the digits | 3) Move the digits in the correct direction, by the number of places. | Steps: | Calculate: | Calculate: | Calculate: | 1) Determine which way the digits move when we multiply by 10, 100, 1000… | 2) Work out how many places we need to move the digits | 3) Move the digits in the correct direction, by the number of places. | Example 7 - I do… | Example 9 – You do… | Example 8 – We do… | Multiplying Decimals by Powers of Ten | Hundred | Thousands | Ten Thousands | Thousands | Hundreds | Tens | ones | Tenths | Hundredths | Thousandths",
+      "subtopicCode": null,
+      "questionRefs": [
+        "1",
+        "2",
+        "3"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 34,
+      "text": "Steps: | Calculate: | Calculate: | Calculate: | 1) Determine which way the digits move when we multiply by 10, 100, 1000… | 2) Work out how many places we need to move the digits | 3) Move the digits in the correct direction, by the number of places. | Steps: | Calculate: | Calculate: | Calculate: | 1) Determine which way the digits move when we multiply by 10, 100, 1000… | 2) Work out how many places we need to move the digits | 3) Move the digits in the correct direction, by the number of places. | Example 10 - I do… | Example 12 – You do… | Example 11 – We do… | 34 | Independent Practice | 4. Calculate the following: | a) | b) | c) | d) | e) | | | f) | g) | h) | i) | j) | | k) | l) | m) | n) | o) | | 5. Fill in the missing gaps in the table below, the first row has been done for you: | Number | 2.6 | 26 | 260 | 2600 | 26,000 | 260,000 | 12 | 256 | 33.8 | Number | 2.6 | 26 | 260 | 2600 | 26,000 | 260,000 | 12 | 256 | 33.8",
+      "subtopicCode": null,
+      "questionRefs": [
+        "1",
+        "2",
+        "3"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 35,
+      "text": "Number | 33.8 | 571 | 3495.5 | 4985.5 | 541.75 | 2.71 | 0.4 | Number | 33.8 | 571 | 3495.5 | 4985.5 | 541.75 | 2.71 | 0.4 | 35 | Steps: | Calculate: | Calculate: | Calculate: | 1) Determine which way the digits move when we divide by 10, 100, 1000… | 2) Work out how many places we need to move the digits | 3) Move the digits in the correct direction, by the number of places. | Steps: | Calculate: | Calculate: | Calculate: | 1) Determine which way the digits move when we divide by 10, 100, 1000… | 2) Work out how many places we need to move the digits | 3) Move the digits in the correct direction, by the number of places. | Example 13 - I do… | Example 15 – You do… | Example 14 – We do… | Divide integers and decimals by powers of ten | Example 16 - I do… | Example 18 – You do… | Example 17 – We do…",
+      "subtopicCode": null,
+      "questionRefs": [
+        "1",
+        "2",
+        "3"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 36,
+      "text": "Independent Practice | 6. Calculate the following: | a) | b) | c) | d) | e) | | | f) | g) | h) | i) | j) | | 7. Fill in the missing gaps in the table below, the first row has been done for you: | k) | l) | m) | n) | o) | | Number | 3710 | 371 | 37.1 | 0.371 | 0.0371 | 0.00371 | 68100 | 2650 | 7654 | 122.6 | 0.381 | 0.0327 | 0.0000058 | Number | 3710 | 371 | 37.1 | 0.371 | 0.0371 | 0.00371 | 68100 | 2650 | 7654 | 122.6 | 0.381 | 0.0327 | 0.0000058 | 36 | Mixed Practice | 8. Calculate the following: | a) | b) | c) | d) | e) | | | f) | g) | h) | i) | j) |",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 37,
+      "text": "k) | l) | m) | n) | o) | | 9. Calculate the following below: | a) | b) | c) | d) | | | e) | f) | f) | | | 37 | Steps: | Calculate: | Calculate: | Calculate: | 1) Look at the calculation given, what has happened to each number in the calculation? | Given that: | Calculate: | Given that: | Calculate: | Given that: | Calculate: | 2) What overall effect does this have on the calculation? Adjust your answer appropriately. | Steps: | Calculate: | Calculate: | Calculate: | 1) Look at the calculation given, what has happened to each number in the calculation? | 2) What overall effect does this have on the calculation? Adjust your answer appropriately. | Example 19 - I do… | Example 21 – You do… | Example 20 – We do… | Related Calculations involving decimals",
+      "subtopicCode": null,
+      "questionRefs": [
+        "1",
+        "2"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 38,
+      "text": "a) | b) | c) | d) | e) | f) | g) | h) | i) | a) | b) | c) | d) | e) | f) | g) | h) | i) | Independent Practice | 38 | 10. Complete each table of related calculations: | Skills Check | Calculate | a) 3.65 b) 365000 c) 36500 d) 0.00365 | Calculate | a) 4740 b) 47.400 c) 0.474 d) 0.0474 | Calculate | | a) 175600 b) 175.6000 c) 0.0001756 d) 0.1756 | Calculate | | a) 0.0235 b) 23.5 c) 23500 d) 2.35",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 39,
+      "text": "Steps | Work out the following multiplication. | Work out the following multiplication. | Work out the following multiplication. | 1) Multiply the single digit number by the ones column of the two digit. number | 2) Multiply the single digit number by the tens column of the two digit number. | 32 x 3 | 22 x 4 | 22 x 3 | Example 1 - I do… | Example 3 – You do… | 39 | Subtopic N | 3.4 – Multiplication (without carrying) | Objectives: | To be able to multiply by single digits | To be able to multiply three-digit numbers | To solve worded problems involving multiplication | LEARNING OUTCOME: To be able to use formal methods to multiply numbers (without carrying) | Keywords: | Multiply | Product | Integer | Digit | Definition | The | result | of multiplying two or more numbers or terms together. | Characteristics | Linked words include times, multiply and factor. | Multiplication does not always make numbers bigger. | Examples | | | | | | | Non – Examples | | | | | Product | Example 2 – We do… | Multiplying 2-digit numbers by a single digit | Introduction – read and annotate: | In this subtopic, you'll | practise | written multiplication methods that don’t require carrying, helping you | build accuracy and confidence with multiplying larger numbers. This is a key step before moving on to | more complex methods.",
+      "subtopicCode": null,
+      "questionRefs": [
+        "1",
+        "2"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 40,
+      "text": "40 | Independent Practice | 23 x 2 b) 34 x 2 c) 23 x 3 | d) 31 x 3 e) 33 x 3 f) 21 x 4 | g) 12 x 4 h) 21 x 3 i) 13 x 3 | g) 32 x 2 h) 33 x 2 i) 43 x 2 | Steps | Find the product of the following numbers. | Find the product of the following numbers. | Find the product of the following numbers. | Multiply each digit of the three digit number by the single digit, starting with the ones column. | 122 x 4 | 341 x 2 | 312 x 3 | Example 4 - I do… | Example 5 – We do… | Example 6 – You do… | Multiplying 3-digit numbers by a single digit | 1 | . Calculate:",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 41,
+      "text": "Independent Practice | 2. Calculate: | 241 x 2 b) 321 x 3 c) 122 x 4 | d) 201 x 3 e) 331 x 3 f) 102 x 4 | g) 143 x 2 h) 330 x 3 i) 221 x 4 | Steps | Find the product of the following numbers. | Find the product of the following numbers. | Find the product of the following numbers. | 1) Multiply the ones column of the second number by the ones and tens column of the first number | 2) Multiply the tens column of the second number by the ones and tens column of the first number | 14 x 22 | 12 x 42 | 21 x 23 | Example 7 - I do… | Example 8 – We do… | Example 9 – You do… | Multiplying 2-digit numbers by 2-digit numbers | 41",
+      "subtopicCode": null,
+      "questionRefs": [
+        "1",
+        "2"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 42,
+      "text": "3. Calculate: | 42 x 21 b) 31 x 12 c) 23 x 22 | Independent Practice | d) 24 x 21 e) 13 x 12 f) 32 x 22 | g) 34 x 21 h) 43 x 21 i) 43 x 22 | j) 34 x 12 k) 41 x 22 l) 31 x 22 | m) 13 x 22 n) 78 x 11 o) 52 x 11 | 42",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 43,
+      "text": "Independent Practice | 4. Find the product of the following numbers. | 423 x 21 b) 341 x 12 c) 243 x 22 | d) 312 x 32 e) 232 x 31 f) 213 x 33 | g) 122 x 43 h) 211 x 42 i) 121 x 44 | Steps | Find the product of the following numbers. | Find the product of the following numbers. | Find the product of the following numbers. | 1) Multiply the ones column of the second number by the ones, tens and hundreds column number of the first number | 2) Multiply the tens column of the second number by the ones, tens and hundreds column number of the first number | 131 x 32 | 213 x 23 | 121 x 42 | Multiplying 3-digit numbers by 2-digit numbers | Example 10 - I do… | Example 11 – We do… | Example 12 – You do… | 43",
+      "subtopicCode": null,
+      "questionRefs": [
+        "1",
+        "2"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 44,
+      "text": "44 | Worded problems involving column multiplication | James, a crane operator works on 4 hour shifts everyday. If he worked 122 days in a year, how many hours of work did he put in altogether? | Joy made 3 trips to the candy store. For every trip she made, she bought 31 packs of orange candies. How many packs of candies did Joy buy in total? | George visits a store to buy 3 Nintendo switch games. They are priced at £32 each. How much does he spend on his purchase? | Example 13 - I do… | Example 14 – We do… | Example 15 – You do… | A Ferris wheel completes a rotation in 43 seconds. How many seconds in all would it take to complete 121 rotations? | A small dairy farm produces 32 gallons of milk in a day. How many gallons of milk will it produce in 213 days? | The auditorium at Lion’s school has 22 rows in all. If each row consists of 332 seats, calculate the total capacity of the auditorium? | Example 16 - I do… | Example 17 – We do… | Example 18 – You do… | j) 412 x 22 k) 432 x 12 l) 403 x 11",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 45,
+      "text": "45 | Independent Practice | h) It takes an hour for a car manufacturing company to assemble 34 cars. How many cars can the company assemble in 210 hours? | i) A primary school are carpeting a classroom. The room is 21 square metre. The carpet is £322 per square metre. Calculate the cost of the carpet. | Clara and her friends take an average of 12 hours to mow a community lawn over a weekend. How many hours on an average will they take to mow 124 such lawns? | Jim goes to a movie with his dad and brother. Each movie ticket costs $23. How much in total does Jim pay for the tickets? | b) A rugby team brought 4 coaches of supporters to a cup match. Each coach held 121 supporter. How many supporters were brought to the match? | c) A cinema has 132 seats in each row. There are 3 rows. How many seats are there in total? | Eleanor goes to an ice hockey match. There were 12 blocks of seats with 431 seats in each block. How many seats were there altogether? | e) The garden of a house is 33 square metres. Jeremiah wants to cover the entire garden with grass. Grass costs £21 per square metre. How much will the grass cost? | f) Andy is doing a charity carwash. He charges £13 per car and washes 312 cars. How much money did he make? | 5. Work out the following:",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 46,
+      "text": "46 | 6. Find the missing digits for each calculation below: | | (a) | (d) | (e) | (f) | Skills Check | 1. Calculate: | 213 x 3 | 2. Calculate: | 122 x 24",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 47,
+      "text": "47 | Subtopic N | 3.5 – Multiplication (with carrying) | Objectives: | To be able to multiply numbers with carrying. | To solve worded problems involving multiplication | LEARNING OUTCOME: To be able to use formal methods to multiply numbers (with carrying) | Keywords: | Multiply | Product | Integer | Digit | Definition | The result of multiplying two or more numbers or terms together. | Characteristics | Linked words include times, multiply and factor. | Multiplication does not always make numbers bigger. | Examples | | | | | | | Non – Examples | | | | | Product | Steps | Work out | Find the value of | Evaluate | 1) Multiply the ones column of the second number by the ones and tens column of the first number. | 2) Multiply the tens column of the second number by the ones and tens column of the first number. | 47 x 24 | 71 x 24 | 38 x 15 | Example 1 - I do… | Example 2 – We do… | Example 3 – You do… | Multiplying two-digit numbers by two-digit numbers | Introduction – read and annotate: | You will have already learned the how to multiply using written methods in primary school, and now | we’re going to | practise | it again to make sure those skills are still strong. It’s important to be confident | with steps like carrying digits and using a placeholder zero when multiplying by the tens column. This | will help you get accurate answers and avoid small mistakes. We’re doing this now to prepare for | multiplying with decimals, where these same skills are just as important.",
+      "subtopicCode": null,
+      "questionRefs": [
+        "1",
+        "2"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 48,
+      "text": "48 | 1. Work out the following multiplications. | 27 x 16 b) 47 x 24 c) 53 x 33 | Independent Practice | d) 64 x 27 e) 85 x 42 f) 67 x 35 | g) 76 x 35 h) 76 x 53 | i | ) 67 x 53 | j) 57 x 63 k) 57 x 36 l) 75 x 36",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 49,
+      "text": "49 | m) 75 x 63 n) 95 x 63 o) 85 x 36 | Steps | Work out | Find the value of | Evaluate | 1) Multiply the ones column of the second number by the ones and tens column of the first number. | 2) Multiply the tens column of the second number by the ones and tens column of the first number. | 247 x 24 | 24 x 751 | 638 x 15 | Example 4 - I do… | Example 5 – We do… | Example 6 – You do… | Independent Practice | Multiplying numbers with 3 or more digits by a two-digit number | 2. Work out the following multiplications. | a) 325 x 15 b) 26 x 245 c) 323 x 37",
+      "subtopicCode": null,
+      "questionRefs": [
+        "1",
+        "2"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 50,
+      "text": "50 | | d) 16 x 502 e) 641 x 28 f) 15 x 425 | 300 x 15 h) 205 x 26 | i | ) 303 x 30 | | j) 16 x 106 k) 28 x 604 l) 14 x 105",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 51,
+      "text": "m) 1234 x 16 n) 4321 x 61 | o) 9999 x 19 p) 9999 x 91 | 51 | Steps | A football team brings 8 coaches of supporters to a cup match. | Each coach holds 53 passengers. | How many supporters are brought to the cup match? | In a lecture theatre there are 12 row of chairs, 37 chairs in each row. How many people can be seated in the lecture theatre? | A photo album contains 28 pages. Each page can hold 6 photos. How many photos can one album hold? | 1) Decide what you are | multipliying | . | 2) Carry out the multiplication. | Solving worded problems involving multiplication. | Example 7 - I do… | Example 8 – We do… | Example 9 – You do…",
+      "subtopicCode": null,
+      "questionRefs": [
+        "1",
+        "2"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 52,
+      "text": "52 | 52 | Independent Practice | 3. Solve the following problems. | a) A grocer has 37 packs of bananas, Each pack contains 7 bananas. How many bananas are there? | b) | Marbles are sold in packs of 25. A shop has 16 bags. How many marbles are there altogether? | c) | Envelopes are sold in packs of 14. A supplier has 107 packs. How many envelopes does the supplier have? | d) | A library has 105 shelves. Each shelf has 38 books. How many books are there in the library? | e) | 24 folders each has 56 sheets of paper inside them. How many sheets of paper are there altogether? | f) | There are 226 pencils in a packet. How many pencils are there in 12 such packets? | g) | It takes Laura 18 minutes to walk to St John’s School each day. She walked to school and back for 42 days. How many minutes did Laura | | spend walking | to | and | from | school in one week? | h) | A theatre has 46 rows. There are 42 seats in each row. During a show at the theatre, there are 50 empty seats. Work out how many people are watching the show.",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 53,
+      "text": "4. Each brick of the pyramid is calculated by finding the product of the two bricks below it. | | Find the value of each missing brick. | a) | d) | c) | b) | 53 | 5. Work out and choose | < | , > or = to make the statements correct: | 145 x 7 135 x 8 | 26 x 8 126.8 + 80.1 | 17 x 13 250 – 42.8 | 1005 x 7 seven thousand and five | 124 x 71 88 x 100 | 999 x 9 9 x 999",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 54,
+      "text": "| 6. Fill in the gaps in the following multiplications. | 4 | 3 | × | 9 7 2 | 7 | 4 | × | 5 4 8 | 9 | 9 | × | 4 3 1 1 | a) | b) | c) | × | 5 3 7 | d) | × | 6 3 4 | e) | × | 7 2 5 | f) | g) | h) | × | i | ) | × | 2 7 8 | 6 | 4 | 6 | 5 | 0 | 4 | 4 | × | 3 | 7 | 8 | 7 | 7 | 3 | 7 | 1 4 9 | 54 | Skills Check | Work out 28 x 3. | 2. Find the product of 128 and 3. | 3. Find the value of 47 x 23 | 4. | Timothy saves £34 a month. | Calculate how much money Timothy will save in half a year.",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 55,
+      "text": "For the following questions, use this number line to help you place the numbers in ascending order | Steps | Work out the area | Work out the area | Work out the area | 1) Make sure the units are the same | 2) Multiply the length by the width | 3) Include the units in your answer | Example 1 - I do… | Example 3 – You do… | 55 | Subtopic N | 3.6 – Area of Rectangles, Parallelograms, Triangles and Compound Shapes | Objectives: | To find the area of rectangles, parallelograms and triangles | To apply those skills to be able to solve problems involving compound shapes | LEARNING OUTCOME: To understand how to find the area of different shapes. | Keywords: | Area | Shape | Height | Base | Perpendicular | Example 2 – We do… | Calculating the area of rectangles and squares | 3cm | 12cm | 12cm | 3cm | 6cm | 8cm | 8cm | 6cm | 12cm | 12cm | 12cm | 12cm | 7cm | 5cm | 5cm | Definition | Characteristics | Examples | Non - Examples | The measure of space in two dimensions contained within a boundary (perimeter). | | The inside of a 2-D shape | | Usually measured using squares of length one unit (where a unit can be cm, metre, inch etc.) | Area | Area of a rectangle = length x width | Introduction – read and annotate: | Area is the amount of space a shape covers, and we measure it in square units like cm² or m². Finding | the area of squares and rectangles is an application of all the multiplying you've been practicing | because we work it out by multiplying the length by the width. Sometimes, you’ll be asked to find the | area of a shaded part, which might involve working out just a section of the shape. Being confident | with multiplication helps you solve these problems accurately.",
+      "subtopicCode": null,
+      "questionRefs": [
+        "1",
+        "2",
+        "3"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 56,
+      "text": "56 | Steps | Work out the area | Work out the area | Work out the area | 1) Make sure the units are the same | 2) Multiply the length by the width | 3) Include the units in your answer | Example 4 - I do… | Example 6 – You do… | Example 5 – We do… | 5.2cm | 7.1cm | 4.9cm | 4.8cm | 7.1cm | 5.2cm | Independent Practice | 1. Calculate the area of each shape. Remember to include units. | a) | b) | c) | d) | e) | f) | g) | h) | 2. The shapes below are rectangles. True or false? | a) | b) | True / False | True / False",
+      "subtopicCode": null,
+      "questionRefs": [
+        "1",
+        "2",
+        "3"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 57,
+      "text": "c) | d) | True / False | True / False | e) | f) | True / False | True / False | g) | h) | True / False | True / False | 57 | 3. Calculate the areas of the following squares. | a) | b)",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 58,
+      "text": "c) | d) | e) | f) | 8.5mm | 4. Shown below is a wooden picture frame. Work out the shaded area. | 5. The perimeter of a square is 28cm. Find the area of the square. | 6. Jess wants to lay some grass on her lawn (diagram below). Each square metre costs £23. How much will the grass cost? | 58",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 59,
+      "text": "7. | Mr Jenkins has a grass lawn that is 24m wide and 30m long. He cuts the grass at a rate of 9m | 2 | per minute. How long will it take Mr Jenkins to cut all the grass? | 8. | A rectangular room is 14m long and 8m wide. Jessica is going carpet the room with carpet that costs £17.50 per square metre. She has saved up £2000. Does she have enough money to pay for the carpet? You must show your working. | 59 | 9. Mrs Rodgers is tiling her bathroom wall. | The bathroom wall is 360cm long and 240cm high. | Each tile is 20cm by 20cm. | The tiles are sold in boxes of 6. | Each box costs £8. | How much will it cost Mrs Rodgers to tile her bathroom wall? | 10. Rory made a rectangular logo, 8cm long and 10cm wide. There are 5 identical white squares and the rest of the logo is shaded. Find the area that is shaded. | 10cm | 11. A football pitch is 110m long and has a perimeter of 360m. Find the area of the football pitch.",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 60,
+      "text": "60 | 12a) A rectangle is 3cm by 6cm. Six of the rectangles are used to make a larger rectangle. Work out the area of the larger rectangle. | 12b) Calculate the perimeter of the larger rectangle. | Area of a parallelogram | Steps | Work out the area | Work out the area | Work out the area | 1) Make sure all your units are the same | 2) Multiply the base by the perpendicular height | 3) Remember to add the units to your answer | Example 7 - I do… | Example 9 – You do… | Example 8 – We do… | Area of a parallelogram = base x perpendicular height | Independent Practice | 13. Find the area: | a) | b) | c) | d)",
+      "subtopicCode": null,
+      "questionRefs": [
+        "12a",
+        "12b",
+        "1",
+        "2",
+        "3"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 61,
+      "text": "61 | e) | f) | g) | h) | i | ) | j) | k) | l) | m) | n) | o) | p) | cm | cm | cm | cm | cm | cm | cm | cm | cm | cm | 14. The logo below is created by joining two congruent parallelograms. Calculate the area of the logo.",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 62,
+      "text": "15. The logo below is created by joining two congruent parallelograms. Calculate the area of the logo. | For the following questions, use this number line to help you place the numbers in ascending order | Steps | Work out the area | Work out the area | Work out the area | 1) Make sure all your units are the same. | 2) Multiply the base by the perpendicular height. | 3) Remember to add the units to your answer | Example 10 - I do… | Example 12 – You do… | Example 11 – We do… | Area of a triangle | Area of a triangle = (base x perpendicular height) ÷ 2 | Steps | Work out the area | Work out the area | Work out the area | 1) Make sure all your units are the same. | 2) Multiply the base by the perpendicular height. | 3) Remember to add the units to your answer | Example 13 - I do… | Example 15 – You do… | Example 14 – We do… | 16. The diagram shows a logo that is made up of 5 identical parallelograms. Find the area of one parallelogram. | 62",
+      "subtopicCode": null,
+      "questionRefs": [
+        "1",
+        "2",
+        "3"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 63,
+      "text": "63 | Independent Practice | a) | b) | c) | d) | 17. Calculate the area: | e) | f) | g) | h) | i | ) | j) | k) | l) | Find the area of a triangle with a base of 12cm and a perpendicular height of 9cm | Find the area of a triangle with base 9cm and perpendicular height 14cm | Find the area of a triangle with base 19cm and height of 7cm | m) | n) | o) | p) | 8.3km | 5.1m | 9m",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 64,
+      "text": "18. This shape is made from three congruent right-angled triangles. Find the total area of the shape. | 19. Shown below is a logo made from a square and two triangles. Calculate the area of the logo. | 20. Shown below is a triangular field. Each chicken requires 3m | 2 | . How many chickens can be kept in this field? | 21. Shown is a square garden with a triangular pond. Find the area of the garden that is grass. | 10 | 64",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 65,
+      "text": "65 | For the following questions, use this number line to help you place the numbers in ascending order | Steps | Find the area | Find the area | Find the area | 1) Split the shape into rectangles/ squares | 2) Work out the area of each shape | 3) Add the areas together | 3cm | Example 16 - I do… | Example 18 – You do… | Example 17 – We do… | Area of compound shapes (squares and rectangles only) | 8cm | 5cm | 6cm | 2cm | 4cm | 2cm | 3cm | 3cm | 1cm | 4cm | 7cm | 5cm | 10cm | 22. Shown is a triangular brick wall with a rectangular window. Find the area of the wall that is brick. | Independent Practice | a) | b) | c) | d) | 23. Calculate the area:",
+      "subtopicCode": null,
+      "questionRefs": [
+        "1",
+        "2",
+        "3"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 66,
+      "text": "e) | f) | g) | h) | i | ) | j) | k) | l) | m) | n) | o) | p) | Work out the shaded area: | Work out the shaded area: | Work out the shaded area: | 66",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 67,
+      "text": "a) | b) | c) | d) | e) | f) | g) | h) | Steps | Find the area | Find the area | Find the area | 1) Split the shape into shapes you can work out the area of | 2)Work out the area of each shape | 3) Add the areas together | Example 19 - I do… | Example 21 – You do… | Example 20 – We do… | Independent Practice | 24. Find the area of each shape. | Area of compound shapes (mixture of all previous shapes) | 67",
+      "subtopicCode": null,
+      "questionRefs": [
+        "1",
+        "2",
+        "3"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 68,
+      "text": "25. William is painting the side of his house. He has 8 litres of paint and each litre of paint covers 16m | 2 | . Does William have enough paint? | 26. The diagram represents the side view of a shed with a sloping roof. Calculate the area of the side view of the shed. | 68 | 27. Farmer Martin keeps chickens in the field below. Each chicken needs 3m | 2 | . What is the maximum number of chickens that he can keep? | 28. The diagram shows the plan of a field. The farmer sells the field for £3 per square metre. Work out the total amount of money the farmer should get. | 95",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 69,
+      "text": "69 | Skills Check | Calculate the area of the rectangle: | Calculate the area of the parallelogram: | Calculate the area of a parallelogram with a base of 1.2m and a height of 45cm. | Calculate the area of the triangle: | Calculate the area of the compound shape: | Calculate the area of the compound shape: | 48 | 3612 | 5.4 | 5.4 | 5400 | 5.4",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 70,
+      "text": "Steps | 1) Lay out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit. | Steps | 1) Lay out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit. | Example 1 – I do… | Example 3 – You do… | 70 | Subtopic | N3.7 - Short Division (without carrying) | Example 2 – We do… | Short division – without carrying | Objectives: | To use short division where carrying is not required. | To use short division to solve problems in context. | Keywords: | Divide | Share | Dividend | Divisor | LEARNING OUTCOME: To understand how to apply short division to solve problems. | Definition | Characteristics | Examples | Non - Examples | Splitting a number into equal parts. | Involves two numbers: dividend and divisor. | The result of division is called the quotient. | Division can result in a whole number, a fraction, or a decimal, depending on the numbers involved. | Division is denoted by the symbol \"÷\" or the fraction bar \"⁄\" | Division | 10 ÷ 2 = 5 | 8 ÷ 4 = 2 | 21 ÷ 7 = 3 | 1.5 ÷ 0.5 = 3 | Addition and subtraction are not division operations. | Multiplication is the inverse of division but is a different operation. | Ratios and proportions are related concepts but are not division. | Introduction – read and annotate: | In this subtopic, you'll focus on short division problems that don’t involve carrying or remainders, so | you can clearly understand the steps of the method. Mastering this will give you a strong foundation | for tackling more difficult division later on.",
+      "subtopicCode": null,
+      "questionRefs": [
+        "1",
+        "2"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 71,
+      "text": "Steps | Lay out the short division, making sure the divisor is on the outside. | Starting from the left, divide into each digit. | Steps | Lay out the short division, making sure the divisor is on the outside. | Starting from the left, divide into each digit. | Example 4 – I do… | Example 6 – You do… | Example 5 – We do… | 71 | Question 1 | a) | b) | c) | d) | e) | f) | g) | h) | | i) | Question 1 | Independent Practice | j) | k) | l) | m) | | n) | o)",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 72,
+      "text": "Question 1 continued | p) | q) | | r) | s) | | 3 | t) | | u) | v) | w) | | x) | y) | | z) | | aa) | | Question 2 | For the following questions, fill in the missing blanks. | a) | b) | c) | d) | e) | f) | g) | h) | i | ) | Question 1 continued | Question 2 | For the following questions, fill in the missing blanks. | a) | b) | c) | d) | e) | f) | g) | h) | i | ) | Independent Practice | 72 | 3 6 9 | 2 1 | 3 | 3 0 | | 1 | | 2 | 4 8 0 | 2 1 | 7 | 1 0 1 0 | 8 8 0 | 1 | | 0 | 6 | 2 1 0 1 1",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 73,
+      "text": "Question 3 | Question 4 | Question 5 | A toy costs £6. | Over a week, a shop makes £660 from selling the toy. | How many toys were sold? | A group of 3 friends take a journey in a taxi. | The total cost of the journey is £96. | The friends share the cost equally. | How much does each person pay? | A journey lasts 707 days. | How many weeks is this? | Question 6 | Question 7 | Question 8 | A school has 4 year groups and 884 students in total. | Each year group has an equal number of students. | How many students are in each year group? | Miss Jenkins has 26 bags of sweets. Each bag contains 34 sweets. | Miss Jenkins shares as many sweets as possible equally among her 4 classes. | How many sweets do each class get? | James hired a holiday cottage for 7 days for £840. | Ben hires the same cottage, at the same price per day, for 4 days. | How much will this cost Ben? | 73",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 74,
+      "text": "Skills Check | 74 | What number goes in the box? | A. 3 B. 1 C. 0 D. 9 | 3 6 9 6 | 2 3 2 0",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 75,
+      "text": "Subtopic | N3.8 - Short Division (with carrying) | Objectives: | To be able to use short division where carrying is required. | To be able to use short division to solve problems in context. | Keywords: | Divide | Share | Dividend | Divisor | 75 | Steps | 1) Set out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit, carrying where necessary. | Steps | 1) Set out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit, carrying where necessary. | Example 1 – I do… | Example 3 – You do… | Example 2 – We do… | Short division with carrying | LEARNING OUTCOME: To understand how to apply short division to solve problems. | Definition | Characteristics | Examples | Non - Examples | Splitting a number into equal parts. | Involves two numbers: dividend and divisor. | The result of division is called the quotient. | Division can result in a whole number, a fraction, or a decimal, depending on the numbers involved. | Division is denoted by the symbol \"÷\" or the fraction bar \"⁄\" | Division | 10 ÷ 2 = 5 | 8 ÷ 4 = 2 | 21 ÷ 7 = 3 | 1.5 ÷ 0.5 = 3 | Addition and subtraction are not division operations. | Multiplication is the inverse of division but is a different operation. | Ratios and proportions are related concepts but are not division. | Introduction – read and annotate: | In this subtopic, you’ll tackle short division problems that involve carrying. This will help you deepen | your understanding of place value and prepare you for more challenging division, including with | remainders or decimal answers.",
+      "subtopicCode": null,
+      "questionRefs": [
+        "1",
+        "2"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 76,
+      "text": "a) | 7 | b) | c) | d) | e) | f) | g) | h) | | i) | j) | k) | l) | m) | | n) | o) | Independent Practice | Steps | 1) Set out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit, carrying where necessary. | Steps | 1) Set out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit, carrying where necessary. | Example 4 – I do… | Example 6 – You do… | Example 5 – We do… | 76 | Question 1. Calculate: | p) | q) | | r)",
+      "subtopicCode": null,
+      "questionRefs": [
+        "1",
+        "2"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 77,
+      "text": "Question 6. | A school has 5-year groups and 835 students in total. | Each year group has an equal number of students. | How many students are in each year group? | Question 7. | Miss Jenkins has 18 bags of sweets. Each bag contains 30 sweets. | Miss Jenkins shares as many sweets as possible equally among her 9 classes. | How many sweets do each class get? | Question 8. | James hired a holiday cottage for 7 days for £406. | Ben hires the same cottage, at the same price per day, for 10 days. | How much will this cost Ben? | Question 3. | A toy costs £6. | Over a week, a shop makes £162 from selling the toy. | How many toys were sold? | Question 4. | A group of 3 friends take a journey in a taxi. | The total cost of the journey is £72. The friends share the cost equally. How much does each person pay? | Question 5. | A journey lasts 119 days. | How many weeks is this? | a) | b) | c) | d) | e) | f) | 77 | Question 2. For the following questions, fill in the blanks.",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 78,
+      "text": "Objectives: | To be able to recall the square numbers up to 15 squared | To be able to recall the cube numbers up to 10 cubed. | LEARNING OUTCOME: To understand square and cube numbers | Keywords: | - Square | - Cube | Definition | Characteristics | The process of creating a square number is called “squaring” and is shown using an index of 2 | Examples | Non - Examples | Square number | 4 (= 2 | 2 | ) 9 (= 3 | 2 | ) | | 100 (= 10 | 2 | ) | | 484 (=22 | 2 | ) | | 1 (= 1 | 2 | ) 10 000 (= 100 | 2 | ) | An integer multiplied by itself makes a square number | 2 ( | ≠ | 1 | 2 | ) | 10 1000 | | 5 | -4 | | Definition | Characteristics | The process of creating a cube number is called “cubing” and is shown using an index of 3 | Examples | Non - Examples | Cube number | 8 (= 2 | 3 | ) 27 (= 3 | 3 | ) 1000 (= 10 | 3 | ) | 10 648 (=22 | 3 | ) 1 (= 1 | 3 | ) 1 000 000 (= 100 | 3 | ) | An integer multiplied | by itself and then itself again | makes a cube number | 3 ( | ≠ | 1 | 3 | ) | 6 100 | 12 | -9 | | 3 | Example 1 - I do… | Index form and language | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | Five | 2 | nd | Five Squared | 3 | rd | | | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | Five | 2 | nd | Five Squared | 3 | rd | | 78 | Introduction: | Squares numbers and | and | cube numbers are ways of multiplying a number by itself a certain number of | times, creating what we call powers. When you square a number, you multiply it by itself. Cubing a | number means multiplying it by itself and then multiplying by itself again. Knowing how to work with | squares and cubes is an important skill, as it forms the foundation for understanding powers, | exponents and roots. | Subtopic N3.23 – Squares and Cubes",
+      "subtopicCode": "N3.23",
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 79,
+      "text": "Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | | Example 3 – You do… | Example 2 – We do… | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | Two | 2 | nd | Two Squared | 3 | rd | | | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | Two | 2 | nd | Two Squared | 3 | rd | | 79 | Independent Practice | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | | a) | b) | 1. Fill in the blanks",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 80,
+      "text": "Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | | d) | 80 | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | | c) | To be able to recall the square numbers up to 15 squared | Steps | Calculate | | Calculate | Calculate | Identify the base. This is the number we are multiplying. | Identify the index. This is how many times we multiply the base number by itself. | Steps | Identify the base. This is the number we are multiplying. | Identify the index. This is how many times we multiply the base number by itself. | Example 4 - I do… | Example 5 – We do… | a) | | b) | | c) | | d) | | Independent Practice | 2. | Without using a calculator | , calculate the value of: | Example 6 – You do… | e) | | f) | | g) | | h) |",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 81,
+      "text": "81 | To be able to recall the cube numbers up to 10 cubed | Steps | Calculate | | Calculate | | Calculate | | Identify the base. This is the number we are multiplying. | Identify the index. This is how many times we multiply the base number by itself. | Steps | Identify the base. This is the number we are multiplying. | Identify the index. This is how many times we multiply the base number by itself. | Example 7 - I do… | Example 9 – You do… | Example 8 – We do… | a) | | b) | | c) | | d) | | e) | | f) | | g) | | h) | | Independent Practice | 3. Calculate the value of: | Skills Check | Which calculation means | ? | | What is the value | of | ? | Which of these is not a square number? | Which of these is a cube number? | What is the value of | ? | Skills Check",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 82,
+      "text": "Steps | Calculate the following | Calculate the following | Calculate the following | 1) Determine which operations are in the question | 2) Determine the correct order to perform the calculation | Steps | Calculate the following | Calculate the following | Calculate the following | 1) Determine which operations are in the question | 2) Determine the correct order to perform the calculation | Example 1 - I do… | Example 3 – You do… | 82 | Example 2 – We do… | Order of operations with | / | only or | / - only | | Question | Answer | a) | b) | c) | Question | Answer | 1. Work out the answers to the following: | Independent Practice | When calculations have only addition and subtraction OR only multiplication and division, work from left to right. | Subtopic N3.9 – Order of Operations | Objectives: | To correctly apply order of operations with the four operations. | To correctly apply order of operations including indices and brackets. | To insert brackets into calculations to make them correct. | LEARNING OUTCOME: To understand and apply correct order of operations | Keywords: | Operation | Index | Power | Root | Definition | Characteristics | Examples | In the expression 3 + 4, the operation is addition, which combines 3 and 4 to give a sum of 7. | In the expression 12 ÷ 3, the operation is division, indicating that 12 is shared into 3 equal parts, resulting in 4 | Non - Examples | Operations in mathematics refer to the basic mathematical actions or processes used to perform calculations and solve problems. | Operation | + | 23 | - | | | | 4.76 | Introduction – read and annotate: | In this unit so far, you’ve built strong foundations using the four operations. Now, you’ll apply that knowledge to solve problems using the correct order of operations. The order of operations follows a specific sequence: brackets first, then multiplication and division (from left to right), followed by addition and subtraction (from left to right). Understanding and applying this order is essential for solving multi-step problems accurately.",
+      "subtopicCode": "N3.9",
+      "questionRefs": [
+        "1",
+        "2"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 83,
+      "text": "d) | e) | f) | g) | h) | i) | j) | Steps | Calculate the following | Calculate the following | Calculate the following | 1) Determine which operations are in the question. | 2) Determine the correct order to perform the calculation. | ( | and | | before | and | ). | Steps | Calculate the following | Calculate the following | Calculate the following | Example 4 - I do… | Example 6 – You do… | Example 5 – We do… | Independent Practice | Question | Answer | a) | b) | Question | Answer | 83 | 2. Work out the answers to the following: | Order of operations with | | d) | e) | f) | g) | h) | i) | j)",
+      "subtopicCode": null,
+      "questionRefs": [
+        "1",
+        "2"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 84,
+      "text": "Steps | Calculate the following | Calculate the following | Calculate the following | 1) Determine which operations are in the question. | 2) Determine the correct order to perform the calculation. | (powers, then | and | | then | and | ). | Steps | Calculate the following | Calculate the following | Calculate the following | Example 7 - I do… | Example 9 – You do… | Example 8 – We do… | Independent Practice | Question | Answer | 10 | Question | Answer | 3. Work out the answers to the following: | Order of operations | involving powers | 84",
+      "subtopicCode": null,
+      "questionRefs": [
+        "1",
+        "2"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 85,
+      "text": "Order of operations | involving brackets | Steps | Calculate: | Calculate: | Calculate: | 1) Determine which operations are in the question | 2) Determine the correct order to perform the calculation | (brackets, | then | powers and roots, then | and | | then | and | ). | Steps | Calculate: | Calculate: | Calculate: | Example 10 - I do… | Example 12 – You do… | Example 11 – We do… | Independent Practice | 4. Work out the answers to the following: | Question | Answer | a) | b) | Question | Answer | 85 | c) | d) 15 | | e) | f) | g) | h) | i) | 3 | j) | k) | l) | m)",
+      "subtopicCode": null,
+      "questionRefs": [
+        "1",
+        "2"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 86,
+      "text": "86 | Steps | Insert brackets to make the following calculation correct | Insert brackets to make the following calculation correct | Insert brackets to make the following calculation correct | 1) Determine the current order of operations. | 2) Insert brackets to change the order of operations. | Steps | Insert brackets to make the following calculation correct | Insert brackets to make the following calculation correct | Insert brackets to make the following calculation correct | 1) Determine the current order of operations. | 2) Insert brackets to change the order of operations. | Example 13 - I do… | Example 15 – You do… | Example 14 – We do… | Independent Practice | 5. | Insert brackets to make the following calculations correct | : | Inserting Brackets | a) | b) | c) | d) | e) | f) | g) | h) | i) | j) | k) | l) | m) | n)",
+      "subtopicCode": null,
+      "questionRefs": [
+        "1",
+        "2"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 87,
+      "text": "Skills Check | 87 | What is the answer to the following: | | A. 18 B. 48 C. 37 D. 7 | What is the answer to the following: | | A. 16 B. 31 C. 4 D. 121 | What is the answer to the following: | | A. 19 B. 18 C. 21 D. 14 | What is the answer to the following: | | A. 441 B. 9 C. 18 D. 42 | What is the answer to the following: | | A. 26 B. 90 C. 14 D. 2",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 88,
+      "text": "Steps | Write down the first five | multiples of 12 | Write down the first five | multiples of 7 | Write down the first five | multiples of 4 | 1) Consider the times table of the number. | 2) | Write down the first five numbers in the times table of the number. | 1 x 12 = 12 | 2 x 12 = 24 | 3 x 12 = 36 | 4 x 12 = 48 | 5 x 12 = 60 | Example 1 - I do… | Example 3 – You do… | Subtopic N3.10 – Multiples | Objectives: | List the multiple of any given integer. | Identify the multiples of a given integer in a list of numbers. | To identify common multiples of two or more numbers. | LEARNING OUTCOME: To understand and be able to list multiples of a number. | Keywords: | Multiple | Factors | Prime number | Prime factor | Definition | Characteristics | Examples | Non - Examples | A multiple is the result of multiplying a positive integer by another positive integer. | Often given as a list by multiplying the same number by 1, 2, 3, 4 etc. in turn. | Will always be greater than or equal to the starting number. | Multiples | Example 2 – We do… | Listing multiples | 88 | Multiples of 6 = | 1 x 6= 12, 2 x 6 = 12, 3 x 6 = 18, 4 x 6 = 24 etc. | Multiples of 19 = | 1 x 19 = 19, 2 x 19 = 38, 3 x 19 = 57 etc. | 3 is not a multiple of 6 | 2 is not a multiple of 4 or 6 or 8 etc. | 1 is not a multiple of any number except 1 | Introduction – read and annotate: | So far, you’ve been using multiplication to solve problems. Now, you’re going to learn about | multiples, which are the numbers you get when you count in times tables. For example, the multiples | of 4 are 4, 8, 12, 16, and so on. Understanding multiples will also help you later when you learn how | to find the lowest common multiple (LCM) of two or more numbers.",
+      "subtopicCode": "N3.10",
+      "questionRefs": [
+        "1",
+        "2"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 89,
+      "text": "89 | 1. Write down the first five multiples of the following numbers: | a) 5 | b) 3 | c) 10 | d) 9 | e) 11 | f) 20 | g) 50 | h) 35 | i | ) 100 | j) 1 | k) 15 | l) 25 | m) 24 | n) 22 | o) 62 | p) 74 | q) 105 | r) 98 | s) 123 | t) 321 | u) 642 | Independent Practice",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 90,
+      "text": "a) 2 | b) 3 | c) 4 | d) 5 | e) 8 | f) 10 | 2. List all the numbers between 40 and 60 (inclusive) that are multiples of: | Steps | List all the numbers between 20 and 50 (inclusive) that are | multiples of 7 | List all the numbers between 20 and 50 (inclusive) that are | multiples of 5 | List all the numbers between 20 and 50 (inclusive) that are | multiples of 6 | 1) Consider the times table of the number. | 2) | Write down all the multiples within the specified range. | Example 4- I do… | Example 5 – We do… | Example 6 – You do… | Identifying multiples that fit specific conditions | a) 6 | b) 7 | c) 9 | d) 11 | e) 18 | f) 37 | 3. List all the numbers between 15 and 35 (inclusive) that are multiples of: | 90 | Independent Practice",
+      "subtopicCode": null,
+      "questionRefs": [
+        "1",
+        "2"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 91,
+      "text": "4. Here is a list of numbers: | 12 15 17 20 22 25 27 30 32 35 39 40 | | From the list write down any numbers that are multiples of: | a) 2 | b) 5 | c) 4 | d) 10 | e) 8 | f) 16 | g) 15 | h) 25 | i | ) 1 | a) 2 | b) 3 | c) 5 | d) 4 | e) 10 | f) 11 | g) 6 | h) 12 | i | ) 7 | 5. Here is a list of numbers: | | 100 101 102 103 104 105 106 107 108 109 | | | From the list write down any numbers that are multiples of: | 91",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 92,
+      "text": "6. Answer the following questions: | Write down the fourth multiple of 5 | Write down the fourth multiple of 6 | Write down the twelfth multiple of 6 | Write down the eighth multiple of 6 | Write down the eighth multiple of 7 | Write down the eleventh multiple of 7 | Write down the eleventh multiple of 12 | Write down the twentieth multiple of 12 | Write down the twentieth multiple of 2 | Write down the forty-fifth multiple of 2 | 7. Answer the following questions: | Find the largest number below 48 that is a multiple of 7 | Find the smallest number above 48 that is a multiple of 7 | Find the smallest number above 200 that is a multiple of 6 | Find the largest number below 200 that is a multiple of 6 | 92 | 8 | . | True or false? | a) 3 is a multiple of 6 | True/ False | b) 6 is a multiple of 3 | True/ False | c) 9 is a multiple of 3 | True/ False | d) 9 is a multiple of 6 | True/ False | e) 18 is a multiple of 6 | True/ False | f) 18 is a multiple of 3 | True/ False",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 93,
+      "text": "93 | 9. A light flashes every 8 seconds. How many times will it flash in 3 minutes? | g) 18 is a multiple of 1 | True/ False | h) 18 is a multiple of 18 | True/ False | i | ) 18 is a multiple of 9 | True/ False | j) 9 is a multiple of 9 | True/ False | k) 7 is a multiple of 7 | True/ False | l) 17 is a multiple of 7 | True/ False | m) 27 is a multiple of 7 | True/ False | n) 37 is a multiple of 7 | True/ False | o) 36 is a multiple of 6 | True/ False | p) 36 is a multiple of 12 | True/ False | q) 36 is a multiple of 24 | True/ False | r) 6 is a multiple of 24 | True/ False | s) 24 is a multiple of 6 | True/ False | t) 24 is a multiple of 1 | True/ False | u) 1 is a multiple of 1 | True/ False | v) 1 is a multiple of 2 | True/ False | Skills Check | Sheila is listing the multiples of 7 in ascending order. | She starts with 7. What number should she write next? | | Which of these is not a multiple of 8? | 8 4 40 800",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 94,
+      "text": "94 | Objectives: | To understand the concept of a factor | To be able to recognise factors | To be able to apply the concept of factors in problem solving. | LEARNING OUTCOME: To understand and be able to list the factors of a number. | Keywords: | Factor | Multiply | Subtopic N3.11 – Factors | Steps | Write down all of the | factors of 12 | Write down all of the | factors of 7 | Write down all of the | factors of 24 | Starting with 1, list the pairs of factors that multiply to make the number. | Example 1 - I do… | Example 3 – You do… | Example 2 – We do… | Listing factors | Steps | Write down all of the | factors of 9 | Write down all of the | factors of 100 | Write down all of the | factors of 36 | Starting with 1, list the pairs of factors that multiply to make the number. | Example 4 - I do… | Example 6 – You do… | Example 5 – We do… | Fact: Square numbers have an _____________ number of factors. | Definition | Characteristics | Examples | Non - Examples | A factor is a positive integer that will divide exactly into a given positive integer. | Factors are normally identified in pairs. | The smallest factor of any number is 1. | The largest factor of any number is the number. | Factor | Factors of 8 = 1, 2, 4 and 8 | Factors of 9 = 1, 3 and 9 | 4 is not a factor of 2 | 2 is not a factor of 1 | 4 is not a factor of 18 | Factors of 20 = 1, 2, 4, 5, 10 and 20 | Introduction – read and annotate: | In this subtopic, you’re going to learn about factors, which are the numbers that divide exactly into | another number. For example, the factors of 12 are 1, 2, 3, 4, 6, and 12 because they all divide evenly | into 12. This topic leads on to calculating the highest common factor (HCF) of two or more numbers.",
+      "subtopicCode": "N3.11",
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 95,
+      "text": "95 | 1. Write down all of the factors of the following numbers: | a) 5 | b) 3 | c) 10 | d) 25 | e) 11 | f) 20 | g) 8 | h) 12 | i | ) 22 | j) 18 | k) 50 | l) 15 | m) 19 | n) 30 | o) 144 | p) 49 | q) 45 | r) 54 | s) 28 | t) 66 | u) 70 | Independent Practice",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 96,
+      "text": "96 | 2. True or false? | a) 6 is a factor of 3 | True/ False | b) 3 is a factor of 6 | True/ False | c) 3 is a factor of 9 | True/ False | d) 6 is a factor of 9 | True/ False | e) 6 is a factor of 18 | True/ False | f) 3 is a factor of 18 | True/ False | g) 1 is a factor of 18 | True/ False | h) 9 is a factor of 18 | True/ False | i | ) 18 is a factor of 9 | True/ False | j) 9 is a factor of 9 | True/ False | k) 7 is a factor of 7 | True/ False | l) 7 is a factor of 17 | True/ False | m) 7 is a factor of 27 | True/ False | n) 7 is a factor of 37 | True/ False | o) 6 is a factor of 36 | True/ False | p) 12 is a factor of 36 | True/ False | q) 24 is a factor of 36 | True/ False | r) 24 is a factor of 6 | True/ False | s) 6 is a factor of 24 | True/ False | t) 1 is a factor of 24 | True/ False | u) 1 is a factor of 1 | True/ False | v) 2 is a factor of 1 | True/ False | w) 10 has an odd number of factors | True/ False | x) 25 has an odd number of factors | True/ False | y) 36 has an odd number of factors | True/ False | z) 63 has an odd number of factors | True/ False | aa) 230 has an odd number of factors | True/ False | ab) 225 has an odd number of factors | True/ False",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 97,
+      "text": "97 | 3. Thinking about factors, which number is the odd one out in each set of values? | You must explain your answers. | a) 21 25 30 45 | b) 15 24 28 33 | c) 21 14 49 18 | d) 1 72 36 9 | e) 22 111 44 121 | 4. | a) Mary has 26 sweets and is able to share them evenly between her friends. Mary has more than 1 friend. Write down how many friends Mary could have. | b) | Hamna | is thinking of a number. She says, “My number is odd. It is a factor of 10” What could the number be? | c) | Jan writes down one multiple of 9 and two different factors of 40. Jan adds together her three numbers. Her answer is greater than 20 but less than 30. Find three numbers that Jan could have written down. | 4. Answer the following questions:",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 98,
+      "text": "98 | d) | Marta says odd square numbers have exactly three factors. Give one example where this is correct and another where this is not correct. In each case, write down the number and its factors | Correct: | Not correct: | e) Write three factors of 30 that are | not | factors of 15. | f) Jamil says that cube numbers have an odd number of factors. Is this statement always, sometimes or never true? You must explain your reasoning and give examples to support this. | 5. Here is a list of numbers: | 3 5 8 11 14 19 20 21 30 35 40 | | From the list write down any numbers that are factors of: | a) 30 | b) 15 | c) 60 | d) 80 | e) 100 | f) 120 | g) 196 | h) 10 | i | ) 2",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 99,
+      "text": "99 | 6. Answer the following questions: | a) In which box should you place 28? | b) In which box should you place 30? | c) In which box should you place 25? | d) In which box should you place 24? | e) In which box should you place 1? | f) In which box should you place 0? | 7. Fill in the blanks with either ‘definitely’, ‘possibly’ or ‘definitely not’: | a) If 35 is a factor of N, then 7 is ________________________ a factor of N. | b) If 3 and 7 are factors of N, then 21 is ________________________ a factor of N. | c) If 15 is a factor of a number, then 30 is ________________________ a factor of that number. | d) If 12 is a factor of a number, then 4 is ________________________ a factor of that number. | e) If 12 is a factor of a number, then 24 is ________________________ a factor of that number. | f) If 9 is a factor of N, then 3 is ________________________ a factor of N.",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 100,
+      "text": "100 | Skills Check | Which of the following is a factor of 60? | | A. 0 B. 15 C. 120 D. 180 | List all the factors of 12. | 12, 24, 36, 48,… B. 1, 2, 3, 5, 6 and 12 C. 2, 3, 4 and 6 D. 1, 2, 3, 4, 6 and 12 | 1, 2, 4, 8 are the only factors of: | 1 B. 8 C. 16 D. 64 | Which of the following numbers is a factor of 60 and a multiple of 6? | A. 3 B. 12 C. 20 D. 120",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 101,
+      "text": "Steps | Find the LCM of 3 and 7 | Find the LCM of 6 and 9 | Find the LCM of 5 and 8 | 1) List the first few multiples of each number. | 2) | Identify the multiples common to both lists, then circle the lowest common multiple. | Multiples of 3 | 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42… | Multiples of 7 | 7, 14, 21, 28, 35, 42, 49… | Example 1 - I do… | Example 3 – You do… | 101 | Subtopic N3.12 – Lowest Common Multiple | Objectives: | To understand what the LCM represents. | To find the LCM of two or more numbers. | To solve word problems using the concept of LCM | LEARNING OUTCOME: To find the lowest common multiple (LCM) of a group of numbers. | Keywords: | Multiples | Common Multiples | Lowest Common Multiples | Example 2 – We do… | Identifying the lowest common multiple of two numbers | Definition | Characteristics | Examples | Non - Examples | The smallest integer which is a multiple of two or more positive integers. | Will be greater than or equal to the largest of the numbers. | Often abbreviated to LCM | Appears in the times table of all given numbers | Lowest common multiple | LCM of 8 and 12 = 24 | LCM of 30 and 15 = 30 | LCM of 3 and 7 = 21 | LCM of 4, 5 and 6 = 60 | LCM of 4 and 6 ≠ 2 | LCM of 3 and 5 ≠ 1 | LCM of 4 and 8 ≠ 4 | Introduction: | The lowest common multiple (LCM) is the smallest number that two (or more) numbers both divide | into evenly. Think of it as the first number that both numbers \"share\" when you list their multiples. The | LCM is useful when you’re adding or subtracting fractions, scheduling events, or solving problems that | involve repeated cycles or patterns.",
+      "subtopicCode": "N3.12",
+      "questionRefs": [
+        "1",
+        "2"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 102,
+      "text": "102 | 1. | Find the lowest common multiple (LCM) of each of these pairs of numbers. | a) 5 and 6 | b) 2 and 7 | c) 3 and 8 | d) 4 and 10 | e) 9 and 4 | f) 6 and 7 | g) 25 and 35 | h) 16 and 24 | i | ) 20 and 28 | j) 12 and 1 | k) 12 and 2 | l) 12 and 3 | m) 12 and 4 | n) 12 and 5 | o) 12 and 6 | Independent Practice",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 103,
+      "text": "p) 12 and 7 | q) 12 and 8 | r) 12 and 9 | s) 12 and 10 | t) 12 and 11 | u) 12 and 12 | v) 12 and 14 | w) 12 and 16 | x) 12 and 17 | y) 12 and 40 | z) 12 and 50 | aa) 12 and 60 | 103 | a) 6 and 12 | b) 3 and 8 | c) 6 and 14 | d) 6 and 4 | e) 12 and 2 | f) 24 and 12 | 2. These sets of numbers have 24 as their LCM. True or False?",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 104,
+      "text": "3. Complete the following table: | 104 | 4. Answer the following questions: | a) Cara is buying nuts and bolts at a store. The store sells nuts in packs of 5 and bolts in packs of 10. If Cara wishes to buy the same number of nuts and bolts, what is the smallest number of nuts that she can buy? | b) A white light flashes every 28 seconds. A red light flashes every 7 seconds. They both flash at the same time. After how many seconds will they next both flash at the same time? | c) Buses to London leaves Norwich station every 30 minutes. Buses heading to Manchester leaves Norwich station every 20 minutes. At 10am a bus to London and a bus to Manchester both leave at the same time. Work out the next time that both buses leave at the same time.",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 105,
+      "text": "105 | d) A bus leaves Antrim Bus Station every 12 minutes. A train leaves Antrim Train Station every 18 minutes. At 8m a bus and a train leave the stations at the same time. | i | ) When is the next time that a bus and a train leave at the same time? | ii) Between 8am and 11am (inclusive), on how many occasions does a bus and a train leave at the same time? | e) Penny and Kenny have the same number of football cards. Penny has sorted her cards into piles of 10. Kenny has sorted his cards into piles of 18. Penny has less than 100 cards. How many football cards do they have? | f) The lowest common multiple of two numbers is 60. Only one of the numbers is a multiple of 4. Write down two possible numbers. | g) Jennifer says that the lowest common multiple of two consecutive numbers is equal to the product of the two numbers. By trying four different pairs of consecutive numbers, explore her theory",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 106,
+      "text": "106 | h) Miss Paisley is organising games for the children in her class. She is going to put the children into teams. If she puts the children into teams of 4, there will be 2 children left out. If she puts the children into teams of 5, there will be 3 children left out. Work out the smallest possible number of children in Miss Paisley's class. | Steps | Find the LCM of 2, 3 and 5 | Find the LCM of 5, 3 and 4 | Find the LCM of 6, 4 and 9 | 1) List the first few multiples of each number. | 2) | Identify the multiples common to all lists, then circle the lowest common multiple. | Multiples of 2 | 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30… | Multiples of 3 | 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33… | Multiples of 5 | 5, 10, 15, 20, 25, 30, 35… | Example 4 - I do… | Example 5 – We do… | Example 6 – You do… | Identifying the lowest common multiple of more than two numbers | 5. | Find the lowest common multiple (LCM) of each of these sets of numbers. | Independent Practice | a) 2, 4 and 5 | b) 2, 5 and 7 | c) 5, 6 and 9",
+      "subtopicCode": null,
+      "questionRefs": [
+        "1",
+        "2"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 107,
+      "text": "107 | d) 10, 12 and 15 | e) 12, 15 and 18 | f) 15, 20 and 25 | g) 4, 18 and 27 | h) 27, 36 and 90 | i | ) 35, 63 and 140 | j) 28, 56 and 77 | k) 2, 3, 4 and 5 | l) 1, 2, 3, 4, 5 and 6. | d) 3, 4 and 8 | 4, 6 and 12 | f) 8, 6 and 12 | 6. These sets of numbers have 24 as their LCM. True or False?",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 108,
+      "text": "108 | a) 2, 3 and 7 | b) 3, 4 and 7 | c) 2,6 and 7 | 7. These sets of numbers have 42 as their LCM. True or False? | 8. How can you tell that the lowest common multiple of: | a) 2,5 and 7 must be even? | b) two odd numbers must be odd? | c) an odd number and an even number must be even?",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 109,
+      "text": "109 | 9. Complete the following table:",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 110,
+      "text": "a) A red light flashes every 3 seconds. A yellow light flashes every 8 seconds. A green light flashes every 11 seconds They all flash at the same time. After how many seconds will they next all flash at the same time? | b) Light A flashes every 5 seconds. Light B flashes every 6 seconds. Light C flashes every 7 seconds. All three lights flash at the same time. Work out how long it will take for all three lights to flash at the same time again. | c) Robert, John and Paul start to run from the same point, in the same direction, around a circular track. If they take 126 seconds, 154 seconds and 198 seconds respectively to complete one round along the track, when will they next meet again at the starting point? | d) Three boys regularly visit the city centre in the morning. Paul goes every thirteen days, Peter goes every four days and Philip goes every two days. If they all visit the city on 1 | st | January 2023, how many more times in 2023 will they all be in the city centre on the same morning? | 110 | 10. Answer the following questions:",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 111,
+      "text": "a) The lowest common multiple of two numbers is the product of those two numbers. | b) The lowest common multiple of three numbers is the product of those three numbers. | c) The lowest common multiple of two numbers is greater than both of the numbers. | d) The lowest common multiple of three integer values will be an integer. | e) The lowest common multiple of two integers is smaller than both of the integers. | 111 | 11. Always, sometimes or never true? Give examples to support your answers.",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 112,
+      "text": "112 | Skills Check | Calculate the lowest common multiple of 8 and 12 | 24 B. 4 C. 36 D. 48 | A red light flashes every 10 seconds. A green light flashes every 15 seconds. They both just flashed. How long before they flash together again? | 5 seconds B. 15 seconds C. 30 seconds D. 150 seconds | What is the lowest common multiple of 3, 4 and 10? | 20 B. 30 C. 60 D. 120 | Three bells are set to ring out at intervals of 4 minutes, 6 minutes and 9 minutes respectively. If they all ring together now, after how many minutes will they ring together next? | 24 minutes B. 54 minutes C. 36 minutes D. 18 minutes",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 113,
+      "text": "113 | Objectives: | To understand the concept of highest common factor. | To be able to recognise common factors and identify the highest. | To be able to apply the concept of highest common factors in problem solving. | LEARNING OUTCOME: To understand and be able to list the common factors of a number, identifying the highest common factor | Keywords: | Factor | Highest Common Factor | Subtopic N3.13 – Highest Common Factor | Steps | Find the HCF of 10 and 15 | Find the HCF of 16 and 24 | Find the HCF of 12 and 18 | 1) List all the factors of each number. | 2) | Identify the factors common to both lists, then circle the highest common factor. | Factors of 10 | 1, 2, 5, 10 | Factors of 15 | 1, 3, 5, 15 | Example 1 - I do… | Example 3 – You do… | Example 2 – We do… | Calculating the highest common factor of two numbers | Definition | Characteristics | Examples | Non - Examples | The largest integer which is a factor of two or more given positive integers. | Will be less than or equal to the smallest of the given numbers. | Often abbreviated to HCF | Highest common factor | HCF of 8 and 12 = 4 | HCF of 30 and 15 = 15 | HCF of 4 and 15 = 1 | LCM of 4, 6 and 10 = 2 | HCF of 1 and 2 ≠ 2 | HCF of 4 and 8 ≠ 8 | HCF of 4 and 5 ≠ 20 | Introduction – Read and annotate: | The | highest common factor | (HCF), is the biggest number that can divide two (or more) numbers | evenly, with no remainder. Think of it as the largest number that both numbers \"share\" as a factor. The | HCF is useful for simplifying fractions, dividing things into equal parts, and finding the biggest group | that something can be split into evenly.",
+      "subtopicCode": "N3.13",
+      "questionRefs": [
+        "1",
+        "2"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 114,
+      "text": "114 | 1. Work out the highest common factor of the following pairs of numbers: | a) 4 and 14 | b) 6 and 14 | c) 6 and 9 | d) 9 and 21 | e) 6 and 15 | f) 10 and 17 | g) 30 and 45 | h) 40 and 60 | i | ) 28 and 63 | j) 24 and 36 | k) 16 and 28 | l) 18 and 45 | m) 150 and 200 | n) 12 and 54 | o) 90 and 270 | p) 39 and 65 | q) 12 and 1 | r) 12 and 2 | s) 12 and 3 | t) 12 and 4 | u) 12 and 5 | Independent Practice",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 115,
+      "text": "115 | v) 12 and 6 | w) 12 and 7 | x) 12 and 8 | y) 12 and 9 | z) 12 and 10 | aa) 12 and 11 | ab) 12 and 12 | ac) 12 and 13 | ad) 12 and 14 | ae) 12 and 15 | af | ) 12 and 16 | ag) 12 and 17 | ah) 12 and 18 | ai) 12 and 19 | aj | ) 12 and 20 | ak | ) 12 and 30 | al) 12 and 40 | am) 12 and 50 | an) 12 and 60 | t) 1 and 2 | u) 2 and 1 | Independent Practice",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 116,
+      "text": "116 | 2. Complete the table: | 3. The highest common factor of 30 and 75 is the square root of a number. What is the number?",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 117,
+      "text": "a) A PE teacher has to organise two year groups into netball teams, each separately. Year 7 has 70 students and Year 8 has 98 students. If each year group must be split equally into teams of all the same size, what is the largest team size she can use? | b) Alannah has two lengths of ribbon. One length of ribbon is 36cm long and the other length is 45cm long. Alannah wants to cut lengths of ribbon into shorter lengths that are of equal length. Alannah does not want any ribbon left over. What is the longest possible length for each of the shorter lengths of ribbon? | c) Helen thinks of two numbers. The highest common factor of her two numbers is 5. The lowest common multiple of her two numbers is a multiple of 12. Write down two possible numbers that Helen could be thinking of. | d) Lenny wants to cut identical squares, as big as he can, from a piece of paper measuring 168mm by 196mm. What is the length of each square? | 117 | 4. Answer the following questions:",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 118,
+      "text": "e) Olivia thinks of two numbers. The LCM of the two numbers is 36. The HCF of the two numbers is 3. Both numbers are less than 5. Write down two possible numbers that Olivia could be thinking of. | f) Niamh thinks of a number. The HCF of the two numbers is 8. The lowest common multiple of the two numbers is a multiple of 5. Write down two possible numbers Niamh could be thinking of. | g) Here are some properties of a number: | It is a common factor of 288 and 360. It is a common multiple of 4 and 6. It is larger than 25. | Find the two possible numbers with these properties. | h) Kenny is thinking of two numbers greater than 10. He says: ”The highest common factor (HCF) of my two numbers is 7. The lowest common multiple (LCM) of my two numbers is 84” Write down the two numbers that Kenny is thinking of. | 118",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 119,
+      "text": "i) Find two numbers between 100 and 150 that have a HCF of 22. | j) The highest common factor of 90 and x is 18. The lowest common multiple of 90 and x is 540. Find the value of x. | k) The highest common factor of x and 12 is 6. The lowest common multiple of x and 12 is 180. Find the value of x. | l) Sam has completed his maths homework. Can you spot any mistakes? | 119",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 120,
+      "text": "120 | Steps | Find the HCF of 12, 6 and 15 | Find the HCF of 27, 33 and 12 | Find the HCF of 30, 15 and 25 | 1) List all the factors of each number. | 2) | Identify the factors common to each list, then circle the highest common factor. | Factors of 12 | 1, 2, 3, 4, 6, 12 | Factors of 6 | 1, 2, 3, 6 | Factors of 15 | 1, 3, 5, 15 | Example 4 - I do… | Example 6 – You do… | Example 5 – We do… | Calculating the highest common factor of more than two numbers | 5. Work out the highest common factor of the following pairs of numbers: | Independent Practice | a) 8, 20 and 12 | b) 10, 25 and 13 | c) 12, 24 and 30 | d) 9, 36 and 45 | e) 100, 125 and 200 | f) 56, 42 and 98 | g) 80, 16 and 96 | h) 14, 49 and 7 | i | ) 4, 37 and 51",
+      "subtopicCode": null,
+      "questionRefs": [
+        "1",
+        "2"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 121,
+      "text": "121 | 6. Complete the table:",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 122,
+      "text": "a) Martin says that 6 is a common factor of 42, 36 and 50. Is he correct? | b) An aid effort shares food and drink equally to each person in a refugee camp. If the total ration for a day is 136 apples, 204 oat biscuits and 340 small bottles of water, how many refugees are there in the camp? | c) 249 blue smarties, 252 pink smarties and 210 yellow smarties are shared equally among some students with none left over. What is the largest possible number of students? | d) Three planks are to be cut into pieces of all the same size. The planks have lengths 84cm, 156cm and 180cm. What is the greatest possible length of each piece? | 122 | 7. Answer the following questions:",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 123,
+      "text": "123 | Identifying the skill – LCM and HCF mixed practice | a) | Rehan | likes collecting marbles. Swirler marbles come in packs of 15. Fish-eye Marbles come in packs of 25. | Rehan | wants the same number of Swirlers as Fish-eyes. What is the smallest number of each pack that | Rehan | can buy? | LCM / HCF | b) Sophie is organising a charity hot dog sale. There are 18 bread rolls in each packet. There are 15 hot dog rolls in each packet. Sophie buys exactly the same number of bread rolls as hot dogs. What is the smallest number of each packet that Sophie can buy? | LCM / HCF | c) | Two wires are 12 m and 16 m long. The wires are to be cut into pieces of equal length. Find the maximum length of each piece. | LCM / HCF | d) | Rita is going to make some cheeseburgers for a party. She buys some packets of cheese slices and some boxes of burgers. There are 20 cheese slices in each packet. There are 12 burgers in each box. Rita buys exactly the same number of cheese slices and burgers. a. How many packets of cheese slices and how many boxes of burgers does she buy? b. Rita wants to put one cheese slice and one burger into each bread roll. She wants to use all the cheese slices and all the burgers. How many bread rolls does Rita need? | LCM / HCF | 8. For each question, circle whether you need to find the highest common factor or the lowest common multiple. Once you have done this for all questions, go back through and work out the answers to the problems. :",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 124,
+      "text": "124 | e) Rachel has 24 red candies and Maya has 18 green candies. They want to arrange the candies in such a way that each row contains an equal number of candies and also each row should have only red candies or green candies. What is the greatest number of candies that can be arranged in each row? | LCM / HCF | f) | Egbert is making trail mix out of 18 bags of nuts and 9 bags of dried fruit. He wants each new portion of trail mix to be identical, containing the same combination of bags of nuts and bags of dried fruit, with no bags left over. What is the greatest number of portions of trail mix Egbert can make? | LCM / HCF | g) | Six friends are having dinner together in their local restaurant. The first eats there every day, the second eats there every other day, the third eats there every third day, the fourth eats there every fourth day, the fifth every fifth day and the sixth eats there every sixth day. They agree to have a party the next time they all eat together there. In how many days’ time is the party? | LCM / HCF | h) | Boxes that are 12 inches tall are being stacked next to boxes that are 18 inches tall. What is the shortest height at which the two stacks will be the same height? | LCM / HCF | i | ) | For a dinner party, Abraham is creating individual servings of starters. He has 9 carrot sticks and 18 celery sticks. If he wants each serving to be identical, with no food left over, what is the greatest number of servings Abraham can create? | LCM / HCF",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 125,
+      "text": "125 | Skills Check",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 126,
+      "text": "126 | Mixed Fluency | 1. Complete the multiplication grid: | 2. Work out the missing numbers: | 3. Answer the following division questions: | 4. Answer the following: | 5. Fill in the blanks using the word ‘factor’ or ‘multiple’. | 6. Calculate the area of the following shapes: | Method Selection | 72 | 8 | 168 | 132 | 68 | a) | b) | c) | d) | e) | f) | 4 x 2 + 3 | 5 x (3 + 4) – 9 | 3 + 2 | 2 | (3 + 1) | 2 | + 10 ÷ 2",
+      "subtopicCode": null,
+      "questionRefs": [
+        "4",
+        "1"
+      ],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 127,
+      "text": "127",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 128,
+      "text": "128 | Method Selection | Unfamiliar Contexts | 1. Place a number in each box to satisfy the conditions stated for each 3-digit number. | 2. A rectangle has a width of 3cm and a height of 2cm. Draw a second rectangle so that the two rectangles have a mean area of 13cm | 2 | and a median perimeter of 14cm. | 3. | Sausages are available in packs of 8. Buns are available in packs of 12. A caterer is instructed to barbecue enough hot dogs for 60 guests. Each guest consumes one hot dog (made up of one sausage and one bun). | The caterer buys an equal number of sausages and buns. Assuming all 60 guests have one hot dog each, what is the smallest number of hot dogs the caterer will have left over?",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 129,
+      "text": "129",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 130,
+      "text": "130 | SSDD | Method Selection | 48",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 131,
+      "text": "BIG PICTURE | How will my prior knowledge develop my understanding of this topic? | KS2 | The following topics from KS2 are the ‘building block’ knowledge for this topic: Recall multiplication and division facts; Use facts including multiplying by 0 and 1; Use place value to multiply and divide mentally; Area of rectangles. | Y7 | The following topics from earlier in the year are also ‘building block’ knowledge for this topic: N1.1 and N1.6 (Place Value); N2.4, N2.5, N2.6 and N2.7 (Formal methods for addition and subtraction of integers and decimals). | Learning Journey | Subtopics: | N3.1 to N3.3 | ↓ | Multiplication and division properties: | Fact families, mental strategies and by powers of 10. | Subtopics: | N3.23 & N3.9 | ↓ | Other applications of multiplication and division: | Squares and cubes, order of operations | Subtopics: | N3.4 to N3.6 | ↓ | Multiplication and applications: | multiplication, area of 2D shapes. | Subtopic: | N3.10 to N3.13 | Factors, multiples and primes: | HCF, LCM, systematic listing | Subtopics: | N3.7 to N3.8 | ↗ | Division and applications: | Written methods, with and without carrying. | Key knowledge | By the end of this topic you should know… | The properties of multiplication and division including formal methods and by powers of 10; Area is the space inside a 2D shape; The mean is a number that is the average of a set of numbers, found by the total sum of all of the numbers in a data set divided by the number of values in the set; The order of operations are a series of rules that tell us the sequence in which we should solve an expression with multiple operations; Factors are divisors of a number, leaving no remainder; Multiples are the numbers you get when you multiply a certain number by an integer. | By the end of this topic should be able to do… | Apply | formal methods | for multiplication and division of | integers | ; Calculate the | area | of | rectangles, parallelograms, triangles & compound shapes | ; Apply knowledge of addition and subtraction to | squares, cubes | and | order of operations | ; Understand | factors | and | multiples, | including | | HCF, LCM. | How will this knowledge develop my understanding of future topics? | Y7 | A good understanding of multiplication and division underpins the following Y7 topics: Negative Numbers (N4), Algebraic Manipulation (A1), FDP (N6). | Y8 | The key multiplication and division knowledge from this unit will feed into Developing Number Sense, Multiplication and Division of Fractions and Proportion, Ratio and Scale in Y8. Area is explored further in Y8 during: Circles and Trapezia; Surface Area. | Y9 | Your knowledge will develop further in Y9 during: Volume; Advanced Proportion and Rates of Change; Similarity and Enlargement. | 131",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    },
+    {
+      "slideNumber": 132,
+      "text": "Credits | This booklet has been developed by the Central Maths Team at Astrea Academy Trust and colleagues from the Astrea Mathematics departments at: | Astrea Academy Dearne | Astrea Academy Sheffield | Astrea Academy Woodfields | Cottenham Village College | Ernulf Academy | Longsands Academy | Netherwood Academy | St Ivo Academy | The booklet is for use across Astrea Academy Trust ONLY. This is a free resource and has not been produced or distributed for a commercial purpose. | We would like to acknowledge that the contents of this booklet have been taken from a range of online sources | , with free website and resource access. The link below is a website to give credit to the authors of these online materials. | www.padlet.com/sandersmaths/astreamaths | Websites were last accessed July 2025. All information is correct at the time of printing. | 132",
+      "subtopicCode": null,
+      "questionRefs": [],
+      "contentsEntries": []
+    }
+  ]
+}

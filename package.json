@@ -28,7 +28,9 @@
     "validate:explanations": "node scripts/validate-explanations.mjs",
     "validate:n13": "node scripts/validate-n13-content-integrity.mjs",
     "validate:explanations": "node scripts/validate-explanation-integrity.mjs",
-    "validate:qa": "npm run validate:items && npm run validate:n13 && npm run validate:explanations && npm test"
+    "validate:qa": "npm run validate:items && npm run validate:n13 && npm run validate:explanations && npm test",
+    "content:extract:unit1": "node scripts/extract-curriculum-pptx.mjs",
+    "content:report:unit1-gaps": "node scripts/report-curriculum-seeding-gaps.mjs"
   },
   "prisma": {
     "seed": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/seed.ts"
