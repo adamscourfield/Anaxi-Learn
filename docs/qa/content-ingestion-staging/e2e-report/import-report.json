@@ -1,0 +1,27 @@
+{
+  "generatedAt": "2026-03-11T13:40:45.475Z",
+  "input": "/Users/adamscourfield/Documents/Anaxi-Learn/Curriculum/Year 7/Unit 1 - Applications of Numeracy/(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+  "dryRun": true,
+  "filesProcessed": 1,
+  "summary": {
+    "imported": 253,
+    "review": 97,
+    "failed": 97,
+    "extractedQuestions": 350,
+    "unresolvedSegments": 100
+  },
+  "files": [
+    {
+      "file": "/Users/adamscourfield/Documents/Anaxi-Learn/Curriculum/Year 7/Unit 1 - Applications of Numeracy/(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+      "extractedQuestions": 350,
+      "unresolvedSegments": 100,
+      "published": {
+        "publishedCount": 253,
+        "stagedCount": 97,
+        "rejectedCount": 97,
+        "auditLogPath": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/qa/content-ingestion-staging/publish-audit-(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.json",
+        "stagingPath": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/qa/content-ingestion-staging/staged-(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.json"
+      }
+    }
+  ]
+}

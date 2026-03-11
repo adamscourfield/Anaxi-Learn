@@ -2,8 +2,8 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/features/auth/authOptions';
 import { redirect } from 'next/navigation';
 import { prisma } from '@/db/prisma';
+import { getItemContractIssues } from '@/features/content/questionContract';
 import { QuestionQaWorkbench } from '@/components/admin/QuestionQaWorkbench';
-import { buildQaItemView } from '@/features/items/questionQa.server';
 
 export default async function AdminContentKSMathsPage() {
   const session = await getServerSession(authOptions);
@@ -16,18 +16,7 @@ export default async function AdminContentKSMathsPage() {
 
   const importedItems = await prisma.item.findMany({
     where: {
-      OR: [
-        { subjectId: subject.id },
-        {
-          skills: {
-            some: {
-              skill: {
-                subjectId: subject.id,
-              },
-            },
-          },
-        },
-      ],
+      subjectId: subject.id,
     },
     include: {
       skills: {
@@ -35,29 +24,23 @@ export default async function AdminContentKSMathsPage() {
           skill: { select: { code: true } },
         },
       },
-      reviewNotes: {
-        include: {
-          author: { select: { name: true, email: true } },
-        },
-        orderBy: { createdAt: 'desc' },
-      },
     },
     orderBy: { question: 'asc' },
   });
 
-  const qaItems = importedItems.map(buildQaItemView);
-  const skillSet = Array.from(new Set(qaItems.flatMap((item) => item.skills))).sort();
-  const typeSet = Array.from(new Set(qaItems.map((item) => item.type))).sort();
-  const typeCounts = typeSet.map((type) => ({
-    type,
-    count: qaItems.filter((item) => item.type === type).length,
+  const qaItems = importedItems.map((item) => ({
+    id: item.id,
+    question: item.question,
+    type: item.type,
+    answer: item.answer,
+    options: item.options,
+    skills: item.skills.map((entry) => entry.skill.code),
+    issues: getItemContractIssues(item),
   }));
+
+  const skillSet = Array.from(new Set(qaItems.flatMap((item) => item.skills))).sort();
   const issueCount = qaItems.reduce((sum, item) => sum + item.issues.length, 0);
   const flaggedCount = qaItems.filter((item) => item.issues.length > 0).length;
-  const repairOpenCount = qaItems.reduce(
-    (sum, item) => sum + item.reviewNotes.filter((note) => note.status === 'OPEN').length,
-    0
-  );
 
   return (
     <main className="min-h-screen bg-gray-50 py-8">
@@ -74,7 +57,7 @@ export default async function AdminContentKSMathsPage() {
           </a>
         </div>
 
-        <section className="grid gap-4 md:grid-cols-5">
+        <section className="grid gap-4 md:grid-cols-4">
           <div className="rounded-xl border border-gray-200 bg-white p-4">
             <div className="text-xs text-gray-500">Questions loaded</div>
             <div className="mt-1 text-2xl font-bold text-gray-900">{qaItems.length}</div>
@@ -91,31 +74,16 @@ export default async function AdminContentKSMathsPage() {
             <div className="text-xs text-gray-500">Skills covered</div>
             <div className="mt-1 text-2xl font-bold text-gray-900">{skillSet.length}</div>
           </div>
-          <div className="rounded-xl border border-gray-200 bg-white p-4">
-            <div className="text-xs text-gray-500">Open repair notes</div>
-            <div className="mt-1 text-2xl font-bold text-indigo-600">{repairOpenCount}</div>
-          </div>
         </section>
 
         <section className="rounded-xl border border-blue-200 bg-blue-50 p-5 text-sm text-blue-900">
-          <p className="font-semibold">Use this page to test how the student actually answers the question.</p>
+          <p className="font-semibold">Future encoding rules now have to satisfy the same contract checks shown here.</p>
           <p className="mt-1">
-            Filter by answer mode or stored type, preview the student input, and check whether the stored answer can really be selected or typed.
+            Use this page to test whether the student-facing input mode matches the question, whether the correct answer can actually be entered, and whether grading matches the stored accepted answers.
           </p>
         </section>
 
-        <section className="rounded-xl border border-slate-200 bg-white p-5">
-          <h2 className="text-sm font-semibold text-slate-900">Stored Type Coverage</h2>
-          <div className="mt-4 flex flex-wrap gap-3">
-            {typeCounts.map(({ type, count }) => (
-              <div key={type} className="rounded-full border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-700">
-                {type}: <span className="font-semibold text-slate-900">{count}</span>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <QuestionQaWorkbench items={qaItems} availableSkills={skillSet} availableTypes={typeSet} />
+        <QuestionQaWorkbench items={qaItems} availableSkills={skillSet} />
       </div>
     </main>
   );

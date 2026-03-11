@@ -5,7 +5,7 @@
   "tier": "CORE",
   "answers": false,
   "slideCount": 182,
-  "questionSignalSlides": 56,
+  "questionSignalSlides": 126,
   "contentsEntries": [
     {
       "skillCode": "N3.3",
@@ -118,7 +118,7 @@
     },
     {
       "slideNumber": 3,
-      "text": "CONTENTS | | PAGE | SUBTOPIC N3.3 | Multiply and divide by powers of 10 | SUBTOPIC N3.14 | Converting metric units | SUBTOPIC N3.5 | Multiplication (with carrying) | SUBTOPIC N3.15 | Decimal multiplication (decimal and integer) | SUBTOPIC N3.16 | Decimal multiplication (decimal and decimal) | SUBTOPIC | N3.17 | Multiplying by 0.1 and 0.01 (CHALLENGE) | SUBTOPIC N3.6 | Area | SUBTOPIC N3.8 | Short division (carrying) | SUBTOPIC N3.18 | Short division (remainders) | SUBTOPIC N3.19 | Short division (decimals) | SUBTOPIC N3.20 | Dividing decimals (CHALLENGE) | SUBTOPIC N3.21 | Area (missing lengths) | SUBTOPIC N3.22 | The mean | SUBTOPIC N3.23 | Squares, cubes and roots | SUBTOPIC N3.9 | Order of operations | SUBTOPIC N3.10 | Multiples | SUBTOPIC N3.11 | Factors | SUBTOPIC N3.12 | Lowest common multiple | SUBTOPIC N3.13 | Highest common factor | SUBTOPIC N3.24 | Introduction to primes (CHALLENGE) | 3 | Start of subtopic: | Read the information in the Frayer model and/or introductory text. | I do (teacher led example). | We do (teacher and scholar led example). | You do | (usually involving a whiteboard check | ). | Independent | practice, including depth questions; celebrate your success! | End of subtopic: | | There will often be a | Skills Check | BOOKLET STRUCTURE",
+      "text": "CONTENTS | PAGE | SUBTOPIC N3.3 | Multiply and divide by powers of 10 | SUBTOPIC N3.14 | Converting metric units | SUBTOPIC N3.5 | Multiplication (with carrying) | SUBTOPIC N3.15 | Decimal multiplication (decimal and integer) | SUBTOPIC N3.16 | Decimal multiplication (decimal and decimal) | SUBTOPIC | N3.17 | Multiplying by 0.1 and 0.01 (CHALLENGE) | SUBTOPIC N3.6 | Area | SUBTOPIC N3.8 | Short division (carrying) | SUBTOPIC N3.18 | Short division (remainders) | SUBTOPIC N3.19 | Short division (decimals) | SUBTOPIC N3.20 | Dividing decimals (CHALLENGE) | SUBTOPIC N3.21 | Area (missing lengths) | SUBTOPIC N3.22 | The mean | SUBTOPIC N3.23 | Squares, cubes and roots | SUBTOPIC N3.9 | Order of operations | SUBTOPIC N3.10 | Multiples | SUBTOPIC N3.11 | Factors | SUBTOPIC N3.12 | Lowest common multiple | SUBTOPIC N3.13 | Highest common factor | SUBTOPIC N3.24 | Introduction to primes (CHALLENGE) | 3 | Start of subtopic: | Read the information in the Frayer model and/or introductory text. | I do (teacher led example). | We do (teacher and scholar led example). | You do | (usually involving a whiteboard check | ). | Independent | practice, including depth questions; celebrate your success! | End of subtopic: | There will often be a | Skills Check | BOOKLET STRUCTURE",
       "subtopicCode": "N3.3",
       "questionRefs": [],
       "contentsEntries": [
@@ -202,130 +202,148 @@
     },
     {
       "slideNumber": 4,
-      "text": "Steps | Calculate: | Calculate: | Calculate: | 1) Determine which way the digits move when we multiply by 10, 100, 1000… | 2) Work out how many places we need to move the digits | 3) Move the digits in the correct direction, by the number of places. | Steps | Calculate: | Calculate: | Calculate: | 1) Determine which way the digits move when we multiply by 10, 100, 1000… | 2) Work out how many places we need to move the digits | 3) Move the digits in the correct direction, by the number of places. | Example 1 | – | I do… | Example 3 – You do… | Subtopic N3.3 - | Multiply and divide integers and decimals by powers of 10 | | Objectives: | Multiply integers by powers of 10 | Multiply decimals by powers of 10 | Divide integers and decimals by powers of 10. | Multiply and Divide numbers involving powers of ten. | LEARNING OUTCOME: To | multiply and divide integers and decimals by powers of 10 | Keywords: | Multiply | Divide | Power | Integer | Decimal | Example 2 – We do… | Multiplying Integers by Powers of Ten | Hundred | Millions | Ten Millions | Millions | Hundred | Thousands | Ten Thousands | Thousands | Hundreds | Tens | ones | 4 | Definition | Characteristics | Examples | Non - Examples | Multiplication | Repeated addition of the same number. | O | ften represented by the \"×\" sign | . | Commutative | Distributive property: | Multiplication can be distributed over addition. For example, 3 × (2 + 4) is the same as (3 × 2) + (3 × 4), and both equal 18 | If you have 3 groups of 4 apples, you can use multiplication to find the total number of apples by calculating 3 × 4, which equals 12. | Sarah has 12 cookies. She wants to share them equally among 4 friends. How many cookies will each friend get? This is a | division problem | . | Introduction – read and annotate: | 1. | Multiplying and dividing by powers of 10 means working with numbers like 10, 100, 1,000, and so | on. Being able to do this helps you solve related calculations more easily. For example, if you know | that 3 × 4 = 12, then you can use that fact to work out 30 × 4 by | recognising | that 3 has been | multiplied by 10—so there's no need to do the full calculation again. When you multiply by a power | of 10, the digits move to the left, making the number bigger; when you divide by a power of 10, the | digits move to the right, making the number smaller.",
+      "text": "Steps | Calculate: | Calculate: | Calculate: | 1) Determine which way the digits move when we multiply by 10, 100, 1000… | 2) Work out how many places we need to move the digits | 3) Move the digits in the correct direction, by the number of places. | 71 ×10 821 ×10 0 641 ×1 00 0 45×10 000 19 ×10 78 ×10 0 763 ×1 00 0 1 3 ×10 000 676 ×10 182 ×10 0 58 ×1 00 0 2 45×10 000 Steps | Calculate: | Calculate: | Calculate: | 1) Determine which way the digits move when we multiply by 10, 100, 1000… | 2) Work out how many places we need to move the digits | 3) Move the digits in the correct direction, by the number of places. | Example 1 | – | I do… | Example 3 – You do… | Subtopic N3.3 - | Multiply and divide integers and decimals by powers of 10 | Objectives: | Multiply integers by powers of 10 | Multiply decimals by powers of 10 | Divide integers and decimals by powers of 10. | Multiply and Divide numbers involving powers of ten. | LEARNING OUTCOME: To | multiply and divide integers and decimals by powers of 10 | Keywords: | Multiply | Divide | Power | Integer | Decimal | Example 2 – We do… | Multiplying Integers by Powers of Ten | Hundred | Millions | Ten Millions | Millions | Hundred | Thousands | Ten Thousands | Thousands | Hundreds | Tens | ones | 4 | Definition | Characteristics | Examples | Non - Examples | Multiplication | Repeated addition of the same number. | O | ften represented by the \"×\" sign | . | Commutative | Distributive property: | Multiplication can be distributed over addition. For example, 3 × (2 + 4) is the same as (3 × 2) + (3 × 4), and both equal 18 | If you have 3 groups of 4 apples, you can use multiplication to find the total number of apples by calculating 3 × 4, which equals 12. | Sarah has 12 cookies. She wants to share them equally among 4 friends. How many cookies will each friend get? This is a | division problem | . | Introduction – read and annotate: | 1. | Multiplying and dividing by powers of 10 means working with numbers like 10, 100, 1,000, and so | on. Being able to do this helps you solve related calculations more easily. For example, if you know | that 3 × 4 = 12, then you can use that fact to work out 30 × 4 by | recognising | that 3 has been | multiplied by 10—so there's no need to do the full calculation again. When you multiply by a power | of 10, the digits move to the left, making the number bigger; when you divide by a power of 10, the | digits move to the right, making the number smaller.",
       "subtopicCode": "N3.3",
       "questionRefs": [
-        "1",
-        "2",
-        "3",
-        "4"
+        "Slide4-Q1",
+        "Slide4-Q2",
+        "Slide4-Q3",
+        "Slide4-Q1",
+        "Slide4-Q2",
+        "Slide4-Q3"
       ],
       "contentsEntries": []
     },
     {
       "slideNumber": 5,
-      "text": "Independent Practice | 1. Calculate the following: | a) | b) | c) | d) | e) | | | f) | g) | h) | i) | j) | | 2. Fill in the blanks. | a) | b) | c) | d) | | | e) | f) | g) | h) | | | k) | l) | m) | n) | o) | | 5 | Related Calculations | Steps: | Given that: | Work out: | Given that: | Work out: | Given that: | Work out: | Look at the calculation given, what has happened to each number in the calculation? | 2. What overall effect does this have on the calculation? Adjust your answer appropriately. | Steps: | Look at the calculation given, what has happened to each number in the calculation? | 2. What overall effect does this have on the calculation? Adjust your answer appropriately. | Example 4 - I do… | Example 6 – You do… | Example 5 – We do…",
+      "text": "Independent Practice | 1. Calculate the following: | a) | b) | c) | d) | e) | f) | g) | h) | i) | j) | 2. Fill in the blanks. | a) | b) | c) | d) | e) | f) | g) | h) | k) | l) | m) | n) | o) | 5 | Related Calculations | Steps: | Given that: | 3 × 4=12 Work out: | 30 × 4 30 × 40 300 × 4 120÷4 120÷40 Given that: | 24 × 71=1704 Work out: | 24 × 710 240 × 710 17040÷240 170,400÷71 1,704,000÷24 Given that: | 18 × 13=234 Work out: | 180 × 13 18 × 130 180 × 130 2340÷18 23400÷13 Look at the calculation given, what has happened to each number in the calculation? | 2. What overall effect does this have on the calculation? Adjust your answer appropriately. | Steps: | Look at the calculation given, what has happened to each number in the calculation? | 2. What overall effect does this have on the calculation? Adjust your answer appropriately. | Example 4 - I do… | Example 6 – You do… | Example 5 – We do…",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
     },
     {
       "slideNumber": 6,
-      "text": "3. i) Given that | work out: | a) | b) | c) | d) | e) | | | ii) Given that | work out: | f) | g) | h) | i) | j) | | iii) Given that | work out: | k) | l) | m) | n) | o) | | Independent Practice | 6 | Steps: | Calculate: | Calculate: | Calculate: | 1) Determine which way the digits move when we multiply by 10, 100, 1000… | 2) Work out how many places we need to move the digits | 3) Move the digits in the correct direction, by the number of places. | Steps: | Calculate: | Calculate: | Calculate: | 1) Determine which way the digits move when we multiply by 10, 100, 1000… | 2) Work out how many places we need to move the digits | 3) Move the digits in the correct direction, by the number of places. | Example 7 - I do… | Example 9 – You do… | Example 8 – We do… | Multiplying Decimals by Powers of Ten | Hundred | Thousands | Ten Thousands | Thousands | Hundreds | Tens | ones | Tenths | Hundredths | Thousandths",
+      "text": "3. i) Given that | work out: | a) | b) | c) | d) | e) | ii) Given that | work out: | f) | g) | h) | i) | j) | iii) Given that | work out: | k) | l) | m) | n) | o) | Independent Practice | 6 | Steps: | Calculate: | Calculate: | Calculate: | 1) Determine which way the digits move when we multiply by 10, 100, 1000… | 3.51 ×10 4.03 ×10 0 6.4 ×1 00 0 4 .2 ×10 000 5.14 ×10 8.02 ×10 0 1.4 ×1 00 0 5 .8 ×10 000 3.8 ×10 4.24 ×10 0 2.04 ×1 00 0 4 .05 ×10 000 2) Work out how many places we need to move the digits | 3) Move the digits in the correct direction, by the number of places. | Steps: | Calculate: | Calculate: | Calculate: | 1) Determine which way the digits move when we multiply by 10, 100, 1000… | 2) Work out how many places we need to move the digits | 3) Move the digits in the correct direction, by the number of places. | Example 7 - I do… | Example 9 – You do… | Example 8 – We do… | Multiplying Decimals by Powers of Ten | Hundred | Thousands | Ten Thousands | Thousands | Hundreds | Tens | ones | Tenths | Hundredths | Thousandths",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2",
-        "3"
+        "Slide6-Q1",
+        "Slide6-Q3",
+        "Slide6-Q1",
+        "Slide6-Q2",
+        "Slide6-Q3"
       ],
       "contentsEntries": []
     },
     {
       "slideNumber": 7,
-      "text": "Steps: | Calculate: | Calculate: | Calculate: | 1) Determine which way the digits move when we multiply by 10, 100, 1000… | 2) Work out how many places we need to move the digits | 3) Move the digits in the correct direction, by the number of places. | Steps: | Calculate: | Calculate: | Calculate: | 1) Determine which way the digits move when we multiply by 10, 100, 1000… | 2) Work out how many places we need to move the digits | 3) Move the digits in the correct direction, by the number of places. | Example 10 - I do… | Example 12 – You do… | Example 11 – We do… | 7 | Independent Practice | 4. Calculate the following: | a) | b) | c) | d) | e) | | | f) | g) | h) | i) | j) | | k) | l) | m) | n) | o) | | 5. Fill in the missing gaps in the table below, the first row has been done for you: | Number | 2.6 | 26 | 260 | 2600 | 26,000 | 260,000 | 12 | 256 | 33.8 | Number | 2.6 | 26 | 260 | 2600 | 26,000 | 260,000 | 12 | 256 | 33.8",
+      "text": "Steps: | Calculate: | Calculate: | Calculate: | 1) Determine which way the digits move when we multiply by 10, 100, 1000… | 0.51 ×10 0.03 ×10 0 0.12 ×1 00 0 0.405 ×10 000 0.2 ×10 0.35 ×10 0 0.3256 ×1 00 0 0.2 ×10 000 0.1 ×10 0.6 ×10 0 0.012 ×1 00 0 0.093 ×10 000 2) Work out how many places we need to move the digits | 3) Move the digits in the correct direction, by the number of places. | Steps: | Calculate: | Calculate: | Calculate: | 1) Determine which way the digits move when we multiply by 10, 100, 1000… | 2) Work out how many places we need to move the digits | 3) Move the digits in the correct direction, by the number of places. | Example 10 - I do… | Example 12 – You do… | Example 11 – We do… | 7 | Independent Practice | 4. Calculate the following: | a) | b) | c) | d) | e) | f) | g) | h) | i) | j) | k) | l) | m) | n) | o) | 5. Fill in the missing gaps in the table below, the first row has been done for you: | Number | ×10 ×100 ×1000 ×10000 ×100,000 2.6 | 26 | 260 | 2600 | 26,000 | 260,000 | 12 | 256 | 33.8 | Number | 2.6 | 26 | 260 | 2600 | 26,000 | 260,000 | 12 | 256 | 33.8",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2",
-        "3"
+        "Slide7-Q1",
+        "Slide7-Q3",
+        "Slide7-Q1",
+        "Slide7-Q2",
+        "Slide7-Q3"
       ],
       "contentsEntries": []
     },
     {
       "slideNumber": 8,
-      "text": "Number | 33.8 | 571 | 3495.5 | 4985.5 | 541.75 | 2.71 | 0.4 | Number | 33.8 | 571 | 3495.5 | 4985.5 | 541.75 | 2.71 | 0.4 | 8 | Steps: | Calculate: | Calculate: | Calculate: | 1) Determine which way the digits move when we divide by 10, 100, 1000… | 2) Work out how many places we need to move the digits | 3) Move the digits in the correct direction, by the number of places. | Steps: | Calculate: | Calculate: | Calculate: | 1) Determine which way the digits move when we divide by 10, 100, 1000… | 2) Work out how many places we need to move the digits | 3) Move the digits in the correct direction, by the number of places. | Example 13 - I do… | Example 15 – You do… | Example 14 – We do… | Divide integers and decimals by powers of ten | Example 16 - I do… | Example 18 – You do… | Example 17 – We do…",
+      "text": "Number | ×10 ×100 ×1000 ×10000 ×100,000 33.8 | 571 | 3495.5 | 4985.5 | 541.75 | 2.71 | 0.4 | Number | 33.8 | 571 | 3495.5 | 4985.5 | 541.75 | 2.71 | 0.4 | 8 | Steps: | Calculate: | Calculate: | Calculate: | 1) Determine which way the digits move when we divide by 10, 100, 1000… | 65÷ 10 403.6÷ 10 0 5622÷ 1 00 0 104. 4 2÷ 10 000 76.4÷ 10 185÷ 10 0 4002÷ 1 00 0 31.7 4 2÷ 10 000 96÷ 10 41.6÷ 10 0 11252÷ 1 00 0 3458.6÷ 10 000 2) Work out how many places we need to move the digits | 3) Move the digits in the correct direction, by the number of places. | 0.63÷100 0.002÷100 0 0.031÷100 0.0062÷100 0 0.185÷ 10 0 0.0001÷100 0 Steps: | Calculate: | Calculate: | Calculate: | 1) Determine which way the digits move when we divide by 10, 100, 1000… | 2) Work out how many places we need to move the digits | 3) Move the digits in the correct direction, by the number of places. | Example 13 - I do… | Example 15 – You do… | Example 14 – We do… | Divide integers and decimals by powers of ten | Example 16 - I do… | Example 18 – You do… | Example 17 – We do…",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2",
-        "3"
+        "Slide8-Q1",
+        "Slide8-Q3",
+        "Slide8-Q1",
+        "Slide8-Q2",
+        "Slide8-Q3"
       ],
       "contentsEntries": []
     },
     {
       "slideNumber": 9,
-      "text": "Independent Practice | 6. Calculate the following: | a) | b) | c) | d) | e) | | | f) | g) | h) | i) | j) | | 7. Fill in the missing gaps in the table below, the first row has been done for you: | k) | l) | m) | n) | o) | | Number | 3710 | 371 | 37.1 | 0.371 | 0.0371 | 0.00371 | 68100 | 2650 | 7654 | 122.6 | 0.381 | 0.0327 | 0.0000058 | Number | 3710 | 371 | 37.1 | 0.371 | 0.0371 | 0.00371 | 68100 | 2650 | 7654 | 122.6 | 0.381 | 0.0327 | 0.0000058 | 9 | Mixed Practice | 8. Calculate the following: | a) | b) | c) | d) | e) | | | f) | g) | h) | i) | j) |",
+      "text": "Independent Practice | 6. Calculate the following: | a) | b) | c) | d) | e) | f) | g) | h) | i) | j) | 7. Fill in the missing gaps in the table below, the first row has been done for you: | k) | l) | m) | n) | o) | Number | ÷10 ÷100 ÷1000 ÷10000 ÷100,000 3710 | 371 | 37.1 | 0.371 | 0.0371 | 0.00371 | 68100 | 2650 | 7654 | 122.6 | 0.381 | 0.0327 | 0.0000058 | Number | 3710 | 371 | 37.1 | 0.371 | 0.0371 | 0.00371 | 68100 | 2650 | 7654 | 122.6 | 0.381 | 0.0327 | 0.0000058 | 9 | Mixed Practice | 8. Calculate the following: | a) | b) | c) | d) | e) | f) | g) | h) | i) | j)",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
     },
     {
       "slideNumber": 10,
-      "text": "k) | l) | m) | n) | o) | | 9. Calculate the following below: | a) | b) | c) | d) | | | e) | f) | f) | | | 10 | Steps: | Calculate: | Calculate: | Calculate: | 1) Look at the calculation given, what has happened to each number in the calculation? | Given that: | Calculate: | Given that: | Calculate: | Given that: | Calculate: | 2) What overall effect does this have on the calculation? Adjust your answer appropriately. | Steps: | Calculate: | Calculate: | Calculate: | 1) Look at the calculation given, what has happened to each number in the calculation? | 2) What overall effect does this have on the calculation? Adjust your answer appropriately. | Example 19 - I do… | Example 21 – You do… | Example 20 – We do… | Related Calculations involving decimals",
+      "text": "k) | l) | m) | n) | o) | 9. Calculate the following below: | a) | b) | c) | d) | e) | f) | f) | 10 | Steps: | Calculate: | Calculate: | Calculate: | 1) Look at the calculation given, what has happened to each number in the calculation? | Given that: | Calculate: | Given that: | Calculate: | Given that: | Calculate: | 2) What overall effect does this have on the calculation? Adjust your answer appropriately. | Steps: | Calculate: | Calculate: | Calculate: | 1) Look at the calculation given, what has happened to each number in the calculation? | 2) What overall effect does this have on the calculation? Adjust your answer appropriately. | Example 19 - I do… | Example 21 – You do… | Example 20 – We do… | Related Calculations involving decimals",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2"
+        "Slide10-Q1",
+        "Slide10-Q2",
+        "Slide10-Q1",
+        "Slide10-Q2"
       ],
       "contentsEntries": []
     },
     {
       "slideNumber": 11,
-      "text": "a) | b) | c) | d) | e) | f) | g) | h) | i) | a) | b) | c) | d) | e) | f) | g) | h) | i) | Independent Practice | 11 | Multiplying and dividing numbers involving powers of ten | 10. Complete each table of related calculations: | Steps: | Calculate: | Calculate: | Calculate: | 1) Determine what value the power of ten represents. | 2) Work out how many places we need to move the digits and in which direction. | 3) Move the digits in the correct direction, by the number of places. | Steps: | Calculate: | Calculate: | Calculate: | 1) Determine what value the power of ten represents. | 2) Work out how many places we need to move the digits and in which direction. | 3) Move the digits in the correct direction, by the number of places. | Example 22 - I do… | Example 24 – You do… | Example 23 – We do…",
+      "text": "a) | b) | c) | 3 × 4=12 5 × 13=65 74 × 56=4144 0.3 × 4 0.5 × 13 7.4 × 56 3 × 0.4 0.05 × 13 0.74 × 5.6 0.3 × 0.4 0.5 × 1.3 7.4 × 560 d) | e) | f) | 25 × 15=375 96 × 19=1824 240 × 74=17,760 25 × 0.15 0.96 × 1.9 24 × 74 2.5 × 0.015 1824÷9.6 2.4 × 74 375÷150 1824÷1900 17,760÷0.74 g) | h) | i) | 256÷8=32 0.52 × 16=8.32 0.62 × 2.1=1.302 32 × 80 52 × 16 62 × 21 320 × 80 0.052 × 16 620 × 0.021 256÷8000 832÷1.6 1302÷620 a) | b) | c) | d) | e) | f) | g) | h) | i) | Independent Practice | 11 | Multiplying and dividing numbers involving powers of ten | 1 0 1 = 1 0 6 = 1 0 2 = 1 0 7 = 1 0 3 = 1 0 8 = 1 0 4 = 1 0 9 = 1 0 5 = 1 0 10 = 10. Complete each table of related calculations: | Steps: | Calculate: | Calculate: | Calculate: | 1) Determine what value the power of ten represents. | 3.41 × 10 3 74÷ 1 0 2 1.3 × 10 4 2) Work out how many places we need to move the digits and in which direction. | 3) Move the digits in the correct direction, by the number of places. | Steps: | Calculate: | Calculate: | Calculate: | 1) Determine what value the power of ten represents. | 2) Work out how many places we need to move the digits and in which direction. | 3) Move the digits in the correct direction, by the number of places. | Example 22 - I do… | Example 24 – You do… | Example 23 – We do…",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2",
-        "3"
+        "Slide11-Q1",
+        "Slide11-Q3",
+        "Slide11-Q1",
+        "Slide11-Q2",
+        "Slide11-Q3"
       ],
       "contentsEntries": []
     },
     {
       "slideNumber": 12,
-      "text": "12 | Independent Practice | 11. Calculate the following: | a) | b) | c) | d) | e) | | | f) | g) | h) | i) | j) | | 12. What should go in the blanks below? | Where appropriate, write your answers as powers of ten | a) | b) | c) | | | d) | e) | f) | | | f) | g) ____ | h) | | | k) | l) | m) | n) | o) | | Skills Check | Calculate | a) 3.65 b) 365000 c) 36500 d) 0.00365 | Calculate | a) 4740 b) 47.400 c) 0.474 d) 0.0474 | Calculate | | a) 175600 b) 175.6000 c) 0.0001756 d) 0.1756 | Calculate | | a) 0.0235 b) 23.5 c) 23500 d) 2.35",
+      "text": "12 | Independent Practice | 11. Calculate the following: | a) | b) | c) | d) | e) | f) | g) | h) | i) | j) | 12. What should go in the blanks below? | Where appropriate, write your answers as powers of ten | a) | b) | c) | d) | e) | f) | f) | g) ____ | h) | k) | l) | m) | n) | o) | Skills Check | Calculate | a) 3.65 b) 365000 c) 36500 d) 0.00365 | Calculate | a) 4740 b) 47.400 c) 0.474 d) 0.0474 | Calculate | a) 175600 b) 175.6000 c) 0.0001756 d) 0.1756 | Calculate | a) 0.0235 b) 23.5 c) 23500 d) 2.35",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
     },
     {
       "slideNumber": 13,
-      "text": "Subtopic N3.14 - Converting Metric Units | Objectives: | To convert between metric units of length involving multiplying | To convert between metric units of length involving dividing. | To convert between metric units of weight and capacity using multiplying | To convert between metric units of weight and capacity involving dividing | LEARNING OUTCOME: To be able to convert between metric units for length, mass and volume | Keywords: | Metric | Unit | Convert | Length | Definition | The metric system is an international decimal system of weights and measures, based on the metre for length and the kilogram for mass. | Characteristics | Me | tric units have base units for different types of measurements. | They are all based around powers of 10. | Some common base units include: | Length: Kilometre (km), Metre (m), Centimetre (cm), Millimetre (mm). | Mass: Kilogram (kg), Gram (g) | Volume: Litre (L), Centilitre (cl), Millilitre (ml) | Temperature: Celsius (°C) | The metric system is based on the power of 10. | Examples | Length: You could measure the length of a pencil in millimetres, centimetres or meters | | Mass: You could measure the mass of a book in grams or kilograms. | Volume | : You could measure the volume of water in millilitres, centilitres or litres. | Non – Examples | Imperial Units: | Length: Could be measured in feet and inches | Ma | ss: Could be measured in pounds or stones | Volume | : Could be measured in pints or gallons | . | Metric | Converting between metric units of length involving multiplying. | 13 | 1. Facts - Fill in the missing values: | a) 1 cm = ____ mm | b) 1 m = ______ cm | c) 1 km = _____ m | d) 1 m = ______ mm | | | | | | | | | | | Introduction – read and annotate:: | Metric units are standard units of measurement that are based on powers of ten. Metric conversions | help us change measurements like length, weight, or volume from one unit to another, such as | centimetres | to metres or grams to kilograms. This makes it easier to understand and compare sizes.",
+      "text": "Subtopic N3.14 - Converting Metric Units | Objectives: | To convert between metric units of length involving multiplying | To convert between metric units of length involving dividing. | To convert between metric units of weight and capacity using multiplying | To convert between metric units of weight and capacity involving dividing | LEARNING OUTCOME: To be able to convert between metric units for length, mass and volume | Keywords: | Metric | Unit | Convert | Length | Definition | The metric system is an international decimal system of weights and measures, based on the metre for length and the kilogram for mass. | Characteristics | Me | tric units have base units for different types of measurements. | They are all based around powers of 10. | Some common base units include: | Length: Kilometre (km), Metre (m), Centimetre (cm), Millimetre (mm). | Mass: Kilogram (kg), Gram (g) | Volume: Litre (L), Centilitre (cl), Millilitre (ml) | Temperature: Celsius (°C) | The metric system is based on the power of 10. | Examples | Length: You could measure the length of a pencil in millimetres, centimetres or meters | Mass: You could measure the mass of a book in grams or kilograms. | Volume | : You could measure the volume of water in millilitres, centilitres or litres. | Non – Examples | Imperial Units: | Length: Could be measured in feet and inches | Ma | ss: Could be measured in pounds or stones | Volume | : Could be measured in pints or gallons | . | Metric | Converting between metric units of length involving multiplying. | 13 | 1. Facts - Fill in the missing values: | a) 1 cm = ____ mm | b) 1 m = ______ cm | c) 1 km = _____ m | d) 1 m = ______ mm | 𝑘𝑚 | × | Introduction – read and annotate:: | Metric units are standard units of measurement that are based on powers of ten. Metric conversions | help us change measurements like length, weight, or volume from one unit to another, such as | centimetres | to metres or grams to kilograms. This makes it easier to understand and compare sizes.",
       "subtopicCode": "N3.14",
       "questionRefs": [],
       "contentsEntries": []
     },
     {
       "slideNumber": 14,
-      "text": "Example 1 – I do… | Example 2 – We do… | Example 3 – You do… | Steps | 1) Identify the correct length conversion. | 2) Multiply the amount by the required value | 3) Include the units of your answer. | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Example 1 – I do… | Example 2 – We do… | Example 3 – You do… | Steps | 1) Identify the correct length conversion. | 2) Multiply the amount by the required value | 3) Include the units of your answer. | 2. Convert the following units. Include the units in your answer. | a) | into | b) | into | c) | into | d) | into | e) | into | f) | into | g) | | into | h) | into | i) | into | j) | into | k) | into | l) | into | 2. Convert the following units. Include the units in your answer. | 14",
+      "text": "Example 1 – I do… | Example 2 – We do… | Example 3 – You do… | Steps | 1) Identify the correct length conversion. | 2) Multiply the amount by the required value | 3) Include the units of your answer. | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Example 1 – I do… | Example 2 – We do… | Example 3 – You do… | Steps | 1) Identify the correct length conversion. | 2) Multiply the amount by the required value | 3) Include the units of your answer. | 2. Convert the following units. Include the units in your answer. | a) | into | b) | into | c) | into | d) | into | e) | into | f) | into | g) | into | h) | into | i) | into | j) | into | k) | into | l) | into | 2. Convert the following units. Include the units in your answer. | 14",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2",
-        "3"
+        "Slide14-Q1",
+        "Slide14-Q2",
+        "Slide14-Q3",
+        "Slide14-Q1",
+        "Slide14-Q2",
+        "Slide14-Q3"
       ],
       "contentsEntries": []
     },
     {
       "slideNumber": 15,
-      "text": "3. Convert the following units. Include the units in your answer. | a) | into | b) | into | d) | into | e) | into | g) | | into | h) | into | j) | into | k) | into m | 4. Adam measures two lines. The first measures | , | the second line is | longer. | How long is the second line? Give your answer in | . | 5. Look at the line below: | What is the distance between A and C? Give your answer in | 3. Convert the following units. Include the units in your answer. | A | B | C | | | 15",
+      "text": "3. Convert the following units. Include the units in your answer. | a) | into | b) | into | d) | into | e) | into | g) | into | h) | into | j) | into | k) | into m | 4. Adam measures two lines. The first measures | , | the second line is | longer. | How long is the second line? Give your answer in | . | 5. Look at the line below: | What is the distance between A and C? Give your answer in | 3. Convert the following units. Include the units in your answer. | A | B | C | 5.2 𝑘𝑚 | 15",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
     },
     {
       "slideNumber": 16,
-      "text": "Example 4 – I do… | Example 5 – We do… | Example 6 – You do… | Steps | 1) Identify the correct length conversion. | 2) Divide the amount by the required value | 3) Include the units of your answer. | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Example 4 – I do… | Example 5 – We do… | Example 6 – You do… | Steps | 1) Identify the correct length conversion. | 2) Divide the amount by the required value | 3) Include the units of your answer. | 6. Convert the following units. Include the units in your answer. | a) | into | b) | into | c) | into | d) | into | e) | into | f) | into | g) | into | h) | into | i) | into | j) | into | k) | into | | l) | into | 6. Convert the following units. Include the units in your answer. | 16 | Converting between metric units of length involving dividing.",
+      "text": "Example 4 – I do… | Example 5 – We do… | Example 6 – You do… | Steps | 1) Identify the correct length conversion. | 2) Divide the amount by the required value | 3) Include the units of your answer. | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Example 4 – I do… | Example 5 – We do… | Example 6 – You do… | Steps | 1) Identify the correct length conversion. | 2) Divide the amount by the required value | 3) Include the units of your answer. | 6. Convert the following units. Include the units in your answer. | a) | into | b) | into | c) | into | d) | into | e) | into | f) | into | g) | into | h) | into | i) | into | j) | into | k) | into | l) | into | 6. Convert the following units. Include the units in your answer. | 16 | Converting between metric units of length involving dividing.",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2",
-        "3"
+        "Slide16-Q1",
+        "Slide16-Q2",
+        "Slide16-Q3",
+        "Slide16-Q1",
+        "Slide16-Q2",
+        "Slide16-Q3"
       ],
       "contentsEntries": []
     },
     {
       "slideNumber": 17,
-      "text": "Mixed Practice | 7. Complete the completion table below: | 100 | 200 | 300 | 400 | 450 | 550 | 575 | 8. Convert the following units. Include the units in your answer. | a) | into | b) | into | c) | into | d) | into | e) | into | f) | into | g) | into | h) | into | i) | into | j) | into | k) | into | l) | into | 7. Complete the completion table below: | 100 | 200 | 300 | 400 | 450 | 550 | 575 | 8. Convert the following units. Include the units in your answer. | 17",
+      "text": "Mixed Practice | 7. Complete the completion table below: | 𝒌𝒎 𝒎 𝒄𝒎 𝒎𝒎 100 | 200 | 300 | 400 | 450 | 550 | 575 | 8. Convert the following units. Include the units in your answer. | a) | into | b) | into | c) | into | d) | into | e) | into | f) | into | g) | into | h) | into | i) | into | j) | into | k) | into | l) | into | 7. Complete the completion table below: | 100 | 200 | 300 | 400 | 450 | 550 | 575 | 8. Convert the following units. Include the units in your answer. | 17",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
@@ -346,18 +364,21 @@
     },
     {
       "slideNumber": 20,
-      "text": "Example 7 – I do… | Example 8 – We do… | Example 9 – You do… | Steps | 1) Identify the correct conversion. | 2) Multiply the amount by the required value | 3) Include the units of your answer. | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Example 7 – I do… | Example 8 – We do… | Example 9 – You do… | Steps | 1) Identify the correct conversion. | 2) Multiply the amount by the required value | 3) Include the units of your answer. | 20 | Converting between metric units of weight and capacity involving multiplying. | 11. Facts - Fill in the missing values: | a) 1 kg = ________ g | b) 1 litre = __________ cl | c) 1 cl = ________ ml | d) 1 litre = _________ ml | | | | | | | | | | |",
+      "text": "Example 7 – I do… | Example 8 – We do… | Example 9 – You do… | Steps | 1) Identify the correct conversion. | 2) Multiply the amount by the required value | 3) Include the units of your answer. | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Example 7 – I do… | Example 8 – We do… | Example 9 – You do… | Steps | 1) Identify the correct conversion. | 2) Multiply the amount by the required value | 3) Include the units of your answer. | 20 | Converting between metric units of weight and capacity involving multiplying. | 11. Facts - Fill in the missing values: | a) 1 kg = ________ g | b) 1 litre = __________ cl | c) 1 cl = ________ ml | d) 1 litre = _________ ml | 𝑙𝑖𝑡𝑟𝑒𝑠 | × | ×",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2",
-        "3"
+        "Slide20-Q1",
+        "Slide20-Q2",
+        "Slide20-Q3",
+        "Slide20-Q1",
+        "Slide20-Q2",
+        "Slide20-Q3"
       ],
       "contentsEntries": []
     },
     {
       "slideNumber": 21,
-      "text": "12. Convert the following units. Include the units in your answer. | a) | into | b) | into | c) | into | d) | into | e) | into | f) | into | g) | into | h) | into | i) | into | j) | into | k) | into | l) | into | m) | into | n) | into | o) | into | p) | into | q) | into | r) | into | s) | into | t) | into | u) | into | v) | into | w) | | into | x) | into | 12. Convert the following units. Include the units in your answer. | 21",
+      "text": "12. Convert the following units. Include the units in your answer. | a) | into | b) | into | c) | into | d) | into | e) | into | f) | into | g) | into | h) | into | i) | into | j) | into | k) | into | l) | into | m) | into | n) | into | o) | into | p) | into | q) | into | r) | into | s) | into | t) | into | u) | into | v) | into | w) | into | x) | into | 12. Convert the following units. Include the units in your answer. | 21",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
@@ -374,33 +395,36 @@
       "text": "Example 10 – I do… | Example 11 – We do… | Example 12 – You do… | Steps | 1) Identify the correct length conversion. | 2) Divide the amount by the required value | 3) Include the units of your answer. | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Convert | into | Example 10 – I do… | Example 11 – We do… | Example 12 – You do… | Steps | 1) Identify the correct length conversion. | 2) Divide the amount by the required value | 3) Include the units of your answer. | 14. Convert the following units. Include the units in your answer. | a) | into | b) | into | c) | into | d) | into | e) | into | f) | into | g) | into | h) | into | i) | into | j) | into | k) | into | l) | into | 14. Convert the following units. Include the units in your answer. | 23 | Converting between metric units of weight and capacity involving dividing.",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2",
-        "3"
+        "Slide23-Q1",
+        "Slide23-Q2",
+        "Slide23-Q3",
+        "Slide23-Q1",
+        "Slide23-Q2",
+        "Slide23-Q3"
       ],
       "contentsEntries": []
     },
     {
       "slideNumber": 24,
-      "text": "24 | 15. Complete the completion table below | 7 | 50 | 2000 | 3000 | 14 | 146 | 1470 | 85 | 0.086 | 15. Complete the completion table below | 7 | 50 | 2000 | 3000 | 14 | 146 | 1470 | 85 | 0.086 | 16. Use the correct inequality symbol ( > , < , = ) to make each statement correct: | a) | b) | c) | d) | e) | f) | g) | h) | 16. Use the correct inequality symbol ( > , < , = ) to make each statement correct: | a) | b) | c) | d) | e) | f) | g) | h)",
+      "text": "24 | 15. Complete the completion table below | 𝒍𝒊𝒕𝒓𝒆𝒔 𝒄𝒍 𝒎𝒍 7 | 50 | 2000 | 3000 | 14 | 146 | 1470 | 85 | 0.086 | 15. Complete the completion table below | 7 | 50 | 2000 | 3000 | 14 | 146 | 1470 | 85 | 0.086 | 16. Use the correct inequality symbol ( > , < , = ) to make each statement correct: | a) | 7 𝑘𝑔 7500 𝑔 b) | 6520 𝑔 6.62 𝑘𝑔 c) | 7 𝑙 70 𝑐𝑙 d) | 7500 𝑚𝑙 7.5 𝑐𝑙 e) | 8.2 𝑙 8200 𝑚𝑙 f) | 2540 𝑚𝑙 2.5 𝑙 g) | 35000 𝑔 35 𝑘𝑔 h) | 72 𝑙 72,000 𝑚𝑙 16. Use the correct inequality symbol ( > , < , = ) to make each statement correct: | a) | b) | c) | d) | e) | f) | g) | h)",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
     },
     {
       "slideNumber": 25,
-      "text": "Skills Check | Convert | into | | b) | c) | | | d) | Convert | | into | b) | c) | d) | Convert | | into | b) | c) | d) | Convert | into | b) | c) | d) | Skills Check | a) James and Jack buy a 3000cl carton of orange juice. Each boy drinks 650ml of orange juice. How much orange juice is left? Give your answer in ml. | b) There are 1500cl of water in a bottle. There are 250 millilitres of water in another bottle. Work out the total amount of water in the two bottles, giving your answer in ml. | 17. Answer the following problems: | c) Robyn is filling a paddling pool up with 4000cl of cold water. She then adds 2500ml of hot water. How much water is in the paddling pool altogether? Give your answer in ml. | d) | Daanya | is mixing red and blue paint to make purple paint. She uses 70cl of red paint and 340ml of blue paint. How much purple paint does she make? Give your answer in ml. | 25",
+      "text": "Skills Check | Convert | into | b) | c) | d) | Convert | into | b) | c) | d) | Convert | into | b) | c) | d) | Convert | into | b) | c) | d) | Skills Check | a) James and Jack buy a 3000cl carton of orange juice. Each boy drinks 650ml of orange juice. How much orange juice is left? Give your answer in ml. | b) There are 1500cl of water in a bottle. There are 250 millilitres of water in another bottle. Work out the total amount of water in the two bottles, giving your answer in ml. | 17. Answer the following problems: | c) Robyn is filling a paddling pool up with 4000cl of cold water. She then adds 2500ml of hot water. How much water is in the paddling pool altogether? Give your answer in ml. | d) | Daanya | is mixing red and blue paint to make purple paint. She uses 70cl of red paint and 340ml of blue paint. How much purple paint does she make? Give your answer in ml. | 25",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
     },
     {
       "slideNumber": 26,
-      "text": "26 | Subtopic N | 3.5 – Multiplication (with carrying) | Objectives: | To be able to multiply numbers with carrying. | To solve worded problems involving multiplication | LEARNING OUTCOME: To be able to use formal methods to multiply numbers (with carrying) | Keywords: | Multiply | Product | Integer | Digit | Definition | The result of multiplying two or more numbers or terms together. | Characteristics | Linked words include times, multiply and factor. | Multiplication does not always make numbers bigger. | Examples | | | | | | | Non – Examples | | | | | Product | Steps | Work out | Find the value of | Evaluate | 1) Multiply the ones column of the second number by the ones and tens column of the first number. | 2) Multiply the tens column of the second number by the ones and tens column of the first number. | 47 x 24 | 71 x 24 | 38 x 15 | Example 1 - I do… | Example 2 – We do… | Example 3 – You do… | Multiplying two-digit numbers by two-digit numbers | Introduction – read and annotate: | You will have already learned the how to multiply using written methods in primary school, and now | we’re going to | practise | it again to make sure those skills are still strong. It’s important to be confident | with steps like carrying digits and using a placeholder zero when multiplying by the tens column. This | will help you get accurate answers and avoid small mistakes. We’re doing this now to prepare for | multiplying with decimals, where these same skills are just as important.",
+      "text": "26 | Subtopic N | 3.5 – Multiplication (with carrying) | Objectives: | To be able to multiply numbers with carrying. | To solve worded problems involving multiplication | LEARNING OUTCOME: To be able to use formal methods to multiply numbers (with carrying) | Keywords: | Multiply | Product | Integer | Digit | Definition | The result of multiplying two or more numbers or terms together. | Characteristics | Linked words include times, multiply and factor. | Multiplication does not always make numbers bigger. | Examples | Non – Examples | Product | Steps | Work out | Find the value of | Evaluate | 1) Multiply the ones column of the second number by the ones and tens column of the first number. | 2) Multiply the tens column of the second number by the ones and tens column of the first number. | 47 x 24 | 71 x 24 | 38 x 15 | Example 1 - I do… | Example 2 – We do… | Example 3 – You do… | Multiplying two-digit numbers by two-digit numbers | Introduction – read and annotate: | You will have already learned the how to multiply using written methods in primary school, and now | we’re going to | practise | it again to make sure those skills are still strong. It’s important to be confident | with steps like carrying digits and using a placeholder zero when multiplying by the tens column. This | will help you get accurate answers and avoid small mistakes. We’re doing this now to prepare for | multiplying with decimals, where these same skills are just as important.",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2"
+        "Slide26-Q1",
+        "Slide26-Q2"
       ],
       "contentsEntries": []
     },
@@ -416,14 +440,14 @@
       "text": "28 | m) 75 x 63 n) 95 x 63 o) 85 x 36 | Steps | Work out | Find the value of | Evaluate | 1) Multiply the ones column of the second number by the ones and tens column of the first number. | 2) Multiply the tens column of the second number by the ones and tens column of the first number. | 247 x 24 | 24 x 751 | 638 x 15 | Example 4 - I do… | Example 5 – We do… | Example 6 – You do… | Independent Practice | Multiplying numbers with 3 or more digits by a two-digit number | 2. Work out the following multiplications. | a) 325 x 15 b) 26 x 245 c) 323 x 37",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2"
+        "Slide28-Q1",
+        "Slide28-Q2"
       ],
       "contentsEntries": []
     },
     {
       "slideNumber": 29,
-      "text": "29 | | d) 16 x 502 e) 641 x 28 f) 15 x 425 | 300 x 15 h) 205 x 26 | i | ) 303 x 30 | | j) 16 x 106 k) 28 x 604 l) 14 x 105",
+      "text": "29 | d) 16 x 502 e) 641 x 28 f) 15 x 425 | 300 x 15 h) 205 x 26 | i | ) 303 x 30 | j) 16 x 106 k) 28 x 604 l) 14 x 105",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
@@ -433,21 +457,21 @@
       "text": "m) 1234 x 16 n) 4321 x 61 | o) 9999 x 19 p) 9999 x 91 | 30 | Steps | A football team brings 8 coaches of supporters to a cup match. | Each coach holds 53 passengers. | How many supporters are brought to the cup match? | In a lecture theatre there are 12 row of chairs, 37 chairs in each row. How many people can be seated in the lecture theatre? | A photo album contains 28 pages. Each page can hold 6 photos. How many photos can one album hold? | 1) Decide what you are | multipliying | . | 2) Carry out the multiplication. | Example 7 - I do… | Example 8 – We do… | Example 9 – You do… | Solving worded problems involving multiplication.",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2"
+        "Slide30-Q1",
+        "Slide30-Q2"
       ],
       "contentsEntries": []
     },
     {
       "slideNumber": 31,
-      "text": "31 | 31 | Independent Practice | 3. Solve the following problems. | a) A grocer has 37 packs of bananas, Each pack contains 7 bananas. How many bananas are there? | b) | Marbles are sold in packs of 25. A shop has 16 bags. How many marbles are there altogether? | c) | Envelopes are sold in packs of 14. A supplier has 107 packs. How many envelopes does the supplier have? | d) | A library has 105 shelves. Each shelf has 38 books. How many books are there in the library? | e) | 24 folders each has 56 sheets of paper inside them. How many sheets of paper are there altogether? | f) | There are 226 pencils in a packet. How many pencils are there in 12 such packets? | g) | It takes Laura 18 minutes to walk to St John’s School each day. She walked to school and back for 42 days. How many minutes did Laura | | spend walking | to | and | from | school in one week? | h) | A theatre has 46 rows. There are 42 seats in each row. During a show at the theatre, there are 50 empty seats. Work out how many people are watching the show.",
+      "text": "31 | 31 | Independent Practice | 3. Solve the following problems. | a) A grocer has 37 packs of bananas, Each pack contains 7 bananas. How many bananas are there? | b) | Marbles are sold in packs of 25. A shop has 16 bags. How many marbles are there altogether? | c) | Envelopes are sold in packs of 14. A supplier has 107 packs. How many envelopes does the supplier have? | d) | A library has 105 shelves. Each shelf has 38 books. How many books are there in the library? | e) | 24 folders each has 56 sheets of paper inside them. How many sheets of paper are there altogether? | f) | There are 226 pencils in a packet. How many pencils are there in 12 such packets? | g) | It takes Laura 18 minutes to walk to St John’s School each day. She walked to school and back for 42 days. How many minutes did Laura | spend walking | to | and | from | school in one week? | h) | A theatre has 46 rows. There are 42 seats in each row. During a show at the theatre, there are 50 empty seats. Work out how many people are watching the show.",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
     },
     {
       "slideNumber": 32,
-      "text": "4. Each brick of the pyramid is calculated by finding the product of the two bricks below it. | | Find the value of each missing brick. | a) | d) | c) | b) | 32 | 5. Work out and choose | < | , > or = to make the statements correct: | 145 x 7 135 x 8 | 26 x 8 126.8 + 80.1 | 17 x 13 250 – 42.8 | 1005 x 7 seven thousand and five | 124 x 71 88 x 100 | 999 x 9 9 x 999",
+      "text": "4. Each brick of the pyramid is calculated by finding the product of the two bricks below it. | Find the value of each missing brick. | a) | d) | c) | b) | 32 | 5. Work out and choose | < | , > or = to make the statements correct: | 145 x 7 135 x 8 | 26 x 8 126.8 + 80.1 | 17 x 13 250 – 42.8 | 1005 x 7 seven thousand and five | 124 x 71 88 x 100 | 999 x 9 9 x 999",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
@@ -461,12 +485,11 @@
     },
     {
       "slideNumber": 34,
-      "text": "Steps | 1) Multiply the numbers to make them integers | ( | etc.) | 2) Carry out the multiplication. | 3) Divide the answer by the amount you multiplied each number by. | Steps | Example 1 – I do… | Example 3 – You do… | 34 | Subtopic N3.15 - | Decimal Multiplication: Decimal by an Integer | Example 2 – We do… | Multiplying a decimal by a one-digit integer | Objectives: | To be able to use formal methods of multiplication. | To be able to apply formal methods of multiplication to decimals. | To be able to use the knowledge of multiplication to solve problems in context. | Keywords: | Multiply | Integer | Decimal | LEARNING OUTCOME: To understand how to multiply decimals by integers | Independent Practice | Question 1. Work out the following: | a) | b) | c) | Introduction – read and annotate: | When you multiply a decimal by an integer, it works just like multiplying whole numbers—you just | need to place the decimal point correctly. You will use your knowledge of multiplying by 10, 100, and | 1,000 to make the numbers easier to work with. Correct place value is key to getting accurate answers.",
+      "text": "Steps | 0.4 ×5 0.8 ×6 0.7 ×3 1) Multiply the numbers to make them integers | ( | etc.) | 2) Carry out the multiplication. | 3) Divide the answer by the amount you multiplied each number by. | 3.4 ×5 2.8 ×6 1.7 ×3 23.4 ×5 32.8 ×6 11.7 ×3 Steps | Example 1 – I do… | Example 3 – You do… | 34 | Subtopic N3.15 - | Decimal Multiplication: Decimal by an Integer | Example 2 – We do… | Multiplying a decimal by a one-digit integer | Objectives: | To be able to use formal methods of multiplication. | To be able to apply formal methods of multiplication to decimals. | To be able to use the knowledge of multiplication to solve problems in context. | Keywords: | Multiply | Integer | Decimal | LEARNING OUTCOME: To understand how to multiply decimals by integers | Independent Practice | Question 1. Work out the following: | a) | b) | c) | Introduction – read and annotate: | When you multiply a decimal by an integer, it works just like multiplying whole numbers—you just | need to place the decimal point correctly. You will use your knowledge of multiplying by 10, 100, and | 1,000 to make the numbers easier to work with. Correct place value is key to getting accurate answers.",
       "subtopicCode": "N3.15",
       "questionRefs": [
-        "1",
-        "2",
-        "3"
+        "Slide34-Q2",
+        "Slide34-Q3"
       ],
       "contentsEntries": []
     },
@@ -486,7 +509,7 @@
     },
     {
       "slideNumber": 37,
-      "text": "j) | k) | l) | m) | n) | o) | p) | q) | r) | 37 | Multiplying a decimal by an integer with two or more digits | Steps | Steps | Example 4 – I do… | Example 6 – You do… | Example 5– We do… | Independent Practice | Question 3. Work out the following: | a) | b) | c)",
+      "text": "j) | k) | l) | m) | n) | o) | p) | q) | r) | 37 | Multiplying a decimal by an integer with two or more digits | Steps | 2.4 ×31 3.8 ×24 1.7 ×13 Steps | Example 4 – I do… | Example 6 – You do… | Example 5– We do… | Independent Practice | Question 3. Work out the following: | a) | b) | c)",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
@@ -507,12 +530,11 @@
     },
     {
       "slideNumber": 40,
-      "text": "40 | Steps | 1) Multiply the numbers to make them integers | ( | etc.) | 2) Carry out the multiplication. | 3) Divide the answer by the amount you multiplied each number by | Steps | Subtopic N3.16 - | Decimal Multiplication: Decimal by a Decimal | Multiplying two ‘zero point’ decimals | Objectives: | To be able to use formal methods of multiplication. | To be able to apply formal methods of multiplication to decimals. | To be able to use the knowledge of multiplication to solve problems in context. | Keywords: | Multiply | Integer | Decimal | LEARNING OUTCOME: To understand how to multiply decimals by decimals | Example 1 – I do… | Example 3 – You do… | Example 2 – We do… | Introduction – read and annotate: | When you multiply a decimal by another decimal, it works just like multiplying whole numbers—you | just need to place the decimal point correctly. You will use your knowledge of multiplying by 10, 100, | and 1,000 to make the numbers easier to work with. Correct place value is key to getting accurate | answers.",
+      "text": "40 | Steps | 0.4 ×0.5 0.8 ×0.6 0.7 ×0.3 1) Multiply the numbers to make them integers | ( | etc.) | 2) Carry out the multiplication. | 3) Divide the answer by the amount you multiplied each number by | 0.04 ×0.5 0.08×0.6 0.07 ×0.3 0.04 ×0.05 0.08 ×0.06 0.07 ×0.03 Steps | Subtopic N3.16 - | Decimal Multiplication: Decimal by a Decimal | Multiplying two ‘zero point’ decimals | Objectives: | To be able to use formal methods of multiplication. | To be able to apply formal methods of multiplication to decimals. | To be able to use the knowledge of multiplication to solve problems in context. | Keywords: | Multiply | Integer | Decimal | LEARNING OUTCOME: To understand how to multiply decimals by decimals | Example 1 – I do… | Example 3 – You do… | Example 2 – We do… | Introduction – read and annotate: | When you multiply a decimal by another decimal, it works just like multiplying whole numbers—you | just need to place the decimal point correctly. You will use your knowledge of multiplying by 10, 100, | and 1,000 to make the numbers easier to work with. Correct place value is key to getting accurate | answers.",
       "subtopicCode": "N3.16",
       "questionRefs": [
-        "1",
-        "2",
-        "3"
+        "Slide40-Q2",
+        "Slide40-Q3"
       ],
       "contentsEntries": []
     },
@@ -525,11 +547,10 @@
     },
     {
       "slideNumber": 42,
-      "text": "v) | w) | x) | 42 | s) | t) | u) | Example 4 – I do… | Example 6 – You do… | Example 5 – We do… | Multiplying any two decimals | Steps | 1) Multiply the numbers to make them integers | ( | etc.) | 2) Carry out the multiplication | Divide the answer by the amount you multiplied each number by | Steps",
+      "text": "v) | w) | x) | 42 | s) | t) | u) | Example 4 – I do… | Example 6 – You do… | Example 5 – We do… | Multiplying any two decimals | Steps | 2.4 ×0.5 0.2×3.4 1.7 ×0.3 1) Multiply the numbers to make them integers | ( | etc.) | 2) Carry out the multiplication | Divide the answer by the amount you multiplied each number by | 2.4 ×3.5 3.4×7.2 1.7 ×2.3 21.4 ×3.5 3.24×7.2 1.17 ×2.3 Steps",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2"
+        "Slide42-Q2"
       ],
       "contentsEntries": []
     },
@@ -563,37 +584,40 @@
     },
     {
       "slideNumber": 47,
-      "text": "Subtopic N3.17 – | Multiplying by 0.1 and 0.01 (CHALLENGE) | | Steps | Calculate: | Calculate: | Calculate: | 1) Determine which way the digits move when we multiply by 10, 100, 1000… | 2) Work out how many places we need to move the digits. | 3) Move the digits in the correct direction, by the number of places. | Steps | Calculate: | Calculate: | Calculate: | 1) Determine which way the digits move when we multiply by 10, 100, 1000… | 2) Work out how many places we need to move the digits. | 3) Move the digits in the correct direction, by the number of places. | Example 1 - I do… | Example 3 – You do… | Objectives: | Multiply numbers by 0.1 and 0.01. | LEARNING OUTCOME: To | multiply numbers by 0.1 and 0.01 | Keywords: | Multiply | Divide | Integer | Decimal | Example 2 – We do… | Multiply numbers by 0.1 and 0.01. | Decimal | Place value | Fraction | 0.1 | One tenth | 0.01 | One hundredth | Decimal | Place value | Fraction | 0.1 | One tenth | 0.01 | One hundredth | 47 | Multiplying by 0.1 is the same as dividing by __________. | Multiplying by 0.01 is the same as dividing by __________. | Introduction – Read and Annotate: | When you multiply a number by | 0.1 | or | 0.01 | , the answer gets smaller because these decimals are | actually fractions of 10 and 100. For example, | 0.1 is the same as | , and | 0.01 is the same as | .. So | multiplying by | 0.1 | is the same as dividing by | 10 | , and multiplying by | 0.01 | is the same as dividing by | 100 | . | That’s why the digits move one or two places to the right—your number is getting 10 or 100 times | smaller. Knowing this helps you understand the pattern and place the decimal point correctly when | multiplying by small numbers. |",
+      "text": "Subtopic N3.17 – | Multiplying by 0.1 and 0.01 (CHALLENGE) | Steps | Calculate: | Calculate: | Calculate: | 1) Determine which way the digits move when we multiply by 10, 100, 1000… | 2) Work out how many places we need to move the digits. | 3) Move the digits in the correct direction, by the number of places. | 3.6×0.01 0.54×0.1 2.7×0.01 Steps | Calculate: | Calculate: | Calculate: | 1) Determine which way the digits move when we multiply by 10, 100, 1000… | 2) Work out how many places we need to move the digits. | 3) Move the digits in the correct direction, by the number of places. | Example 1 - I do… | Example 3 – You do… | Objectives: | Multiply numbers by 0.1 and 0.01. | LEARNING OUTCOME: To | multiply numbers by 0.1 and 0.01 | Keywords: | Multiply | Divide | Integer | Decimal | Example 2 – We do… | Multiply numbers by 0.1 and 0.01. | Decimal | Place value | Fraction | 0.1 | One tenth | 1 10 0.01 | One hundredth | 1 100 Decimal | Place value | Fraction | 0.1 | One tenth | 0.01 | One hundredth | 47 | Multiplying by 0.1 is the same as dividing by __________. | Multiplying by 0.01 is the same as dividing by __________. | Introduction – Read and Annotate: | When you multiply a number by | 0.1 | or | 0.01 | , the answer gets smaller because these decimals are | actually fractions of 10 and 100. For example, | 0.1 is the same as | , and | 0.01 is the same as | .. So | multiplying by | 0.1 | is the same as dividing by | 10 | , and multiplying by | 0.01 | is the same as dividing by | 100 | . | That’s why the digits move one or two places to the right—your number is getting 10 or 100 times | smaller. Knowing this helps you understand the pattern and place the decimal point correctly when | multiplying by small numbers.",
       "subtopicCode": "N3.17",
       "questionRefs": [
-        "1",
-        "2",
-        "3"
+        "Slide47-Q1",
+        "Slide47-Q2",
+        "Slide47-Q3",
+        "Slide47-Q1",
+        "Slide47-Q2",
+        "Slide47-Q3"
       ],
       "contentsEntries": []
     },
     {
       "slideNumber": 48,
-      "text": "Independent Practice | 1. Calculate the following: | a) | b) | c) | d) | e) | | | f) | g) | h) | | i | ) | j) | | k) | l) | m) | n) | o) | | 3. Put the results of these calculations in order, starting with the smallest | | | | | | | | | | | | | 2. Complete these statements using one of these symbols: | a) | | | b) | | | c) | | | d) | | | < | > | = | 48",
+      "text": "Independent Practice | 1. Calculate the following: | a) | b) | c) | d) | e) | f) | g) | h) | i | ) | j) | k) | l) | m) | n) | o) | 3. Put the results of these calculations in order, starting with the smallest | 2. Complete these statements using one of these symbols: | a) | b) | c) | d) | < | > | = | 48",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
     },
     {
       "slideNumber": 49,
-      "text": "Skills Check | 49 | Calculate: | a) 4250 b) 0.425 c) 4.25 d) 425 | 4. Emily completes her homework, for a question she has written this: | | 1700 | Emily is wrong. | What mistake has she made? | b) What should the answer be? | | Calculate: | a) 1600 b) 1.6 c) 16 d) 0.16",
+      "text": "Skills Check | 49 | Calculate: | a) 4250 b) 0.425 c) 4.25 d) 425 | 4. Emily completes her homework, for a question she has written this: | 1700 | Emily is wrong. | What mistake has she made? | b) What should the answer be? | Calculate: | a) 1600 b) 1.6 c) 16 d) 0.16",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
     },
     {
       "slideNumber": 50,
-      "text": "For the following questions, use this number line to help you place the numbers in ascending order | Steps | Work out the area | Work out the area | Work out the area | 1) Make sure the units are the same | 2) Multiply the length by the width | 3) Include the units in your answer | Example 1 - I do… | Example 3 – You do… | 50 | Subtopic N | 3.6 – Area of Rectangles, Parallelograms, Triangles and Compound Shapes | Objectives: | To find the area of rectangles, parallelograms and triangles | To apply those skills to be able to solve problems involving compound shapes | LEARNING OUTCOME: To understand how to find the area of different shapes. | Keywords: | Area | Shape | Height | Base | Perpendicular | Example 2 – We do… | Calculating the area of rectangles and squares | 3cm | 12cm | 12cm | 3cm | 6cm | 8cm | 8cm | 6cm | 12cm | 12cm | 12cm | 12cm | 7cm | 5cm | 5cm | Definition | Characteristics | Examples | Non - Examples | The measure of space in two dimensions contained within a boundary (perimeter). | | The inside of a 2-D shape | | Usually measured using squares of length one unit (where a unit can be cm, metre, inch etc.) | Area | Area of a rectangle = length x width | Introduction – read and annotate: | Area is the amount of space a shape covers, and we measure it in square units like cm² or m². Finding | the area of squares and rectangles is an application of all the multiplying you've been practicing | because we work it out by multiplying the length by the width. Sometimes, you’ll be asked to find the | area of a shaded part, which might involve working out just a section of the shape. Being confident | with multiplication helps you solve these problems accurately.",
+      "text": "For the following questions, use this number line to help you place the numbers in ascending order | Steps | Work out the area | Work out the area | Work out the area | 1) Make sure the units are the same | 2) Multiply the length by the width | 3) Include the units in your answer | Example 1 - I do… | Example 3 – You do… | 50 | Subtopic N | 3.6 – Area of Rectangles, Parallelograms, Triangles and Compound Shapes | Objectives: | To find the area of rectangles, parallelograms and triangles | To apply those skills to be able to solve problems involving compound shapes | LEARNING OUTCOME: To understand how to find the area of different shapes. | Keywords: | Area | Shape | Height | Base | Perpendicular | Example 2 – We do… | Calculating the area of rectangles and squares | 3cm | 12cm | 12cm | 3cm | 6cm | 8cm | 8cm | 6cm | 12cm | 12cm | 12cm | 12cm | 7cm | 5cm | 5cm | Definition | Characteristics | Examples | Non - Examples | The measure of space in two dimensions contained within a boundary (perimeter). | The inside of a 2-D shape | Usually measured using squares of length one unit (where a unit can be cm, metre, inch etc.) | Area | Area of a rectangle = length x width | Introduction – read and annotate: | Area is the amount of space a shape covers, and we measure it in square units like cm² or m². Finding | the area of squares and rectangles is an application of all the multiplying you've been practicing | because we work it out by multiplying the length by the width. Sometimes, you’ll be asked to find the | area of a shaded part, which might involve working out just a section of the shape. Being confident | with multiplication helps you solve these problems accurately.",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2",
-        "3"
+        "Slide50-Q1",
+        "Slide50-Q2",
+        "Slide50-Q3"
       ],
       "contentsEntries": []
     },
@@ -602,9 +626,9 @@
       "text": "51 | Steps | Work out the area | Work out the area | Work out the area | 1) Make sure the units are the same | 2) Multiply the length by the width | 3) Include the units in your answer | Example 4 - I do… | Example 6 – You do… | Example 5 – We do… | 5.2cm | 7.1cm | 4.9cm | 4.8cm | 7.1cm | 5.2cm | Independent Practice | 1. Calculate the area of each shape. Remember to include units. | a) | b) | c) | d) | e) | f) | g) | h) | 2. The shapes below are rectangles. True or false? | a) | b) | True / False | True / False",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2",
-        "3"
+        "Slide51-Q1",
+        "Slide51-Q2",
+        "Slide51-Q3"
       ],
       "contentsEntries": []
     },
@@ -634,11 +658,11 @@
       "text": "55 | 12a) A rectangle is 3cm by 6cm. Six of the rectangles are used to make a larger rectangle. Work out the area of the larger rectangle. | 12b) Calculate the perimeter of the larger rectangle. | Steps | Work out the area | Work out the area | Work out the area | 1) Make sure the units are the same | 2) Multiply the length by the width | 3) Include the units in your answer | Example 7 - I do… | Example 9 – You do… | Example 8 – We do… | 52m | 4750cm | 230mm | 30cm | 30cm | 230mm | Calculating the area of rectangles and squares with different units | Independent Practice | 13. Calculate the area of each shape. Remember to include units. | a) | b) | c) | d) | e) | f) | g) | h) | 300m | 7km | 300cm | 7km | 300mm | 7m | 300m | 7km | 3km",
       "subtopicCode": null,
       "questionRefs": [
-        "12a",
-        "12b",
-        "1",
-        "2",
-        "3"
+        "Slide55-Q12a",
+        "Slide55-Q12b",
+        "Slide55-Q1",
+        "Slide55-Q2",
+        "Slide55-Q3"
       ],
       "contentsEntries": []
     },
@@ -654,9 +678,9 @@
       "text": "Area of a parallelogram | Independent Practice | Steps | Work out the area | Work out the area | Work out the area | 1) Make sure all your units are the same | 2) Multiply the base by the perpendicular height | 3) Remember to add the units to your answer | Example 10 - I do… | Example 12 – You do… | 57 | Example 11 – We do… | 19. Find the area: | a) | b) | c) | d) | e) | f) | g) | h) | Area of a parallelogram = base x perpendicular height",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2",
-        "3"
+        "Slide57-Q1",
+        "Slide57-Q2",
+        "Slide57-Q3"
       ],
       "contentsEntries": []
     },
@@ -672,9 +696,12 @@
       "text": "For the following questions, use this number line to help you place the numbers in ascending order | Steps | Work out the area | Work out the area | Work out the area | 1) Make sure all your units are the same. | 2) Multiply the base by the perpendicular height. | 3) Remember to add the units to your answer | Example 13 - I do… | Example 15 – You do… | 59 | Example 14 – We do… | Steps | Work out the area | Work out the area | Work out the area | 1) Make sure all your units are the same. | 2) Multiply the base by the perpendicular height. | 3) Remember to add the units to your answer | Example 16 - I do… | Example 18 – You do… | Example 17 – We do… | Area of a triangle | Independent Practice | a) | b) | c) | d) | 23. Calculate the area: | 59 | Area of a triangle = (base x perpendicular height) ÷ 2",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2",
-        "3"
+        "Slide59-Q1",
+        "Slide59-Q2",
+        "Slide59-Q3",
+        "Slide59-Q1",
+        "Slide59-Q2",
+        "Slide59-Q3"
       ],
       "contentsEntries": []
     },
@@ -697,9 +724,9 @@
       "text": "For the following questions, use this number line to help you place the numbers in ascending order | Steps | Find the area | Find the area | Find the area | 1) Split the shape into rectangles/ squares | 2) Work out the area of each shape | 3) Add the areas together | 3cm | 29. ABCD and WXYZ are squares. Calculate the area of the shaded square WXYZ. | Example 19 - I do… | Example 21 – You do… | Example 20 – We do… | Area of compound shapes (squares and rectangles only) | 8cm | 5cm | 6cm | 2cm | 4cm | 2cm | 3cm | 3cm | 1cm | 4cm | 7cm | 5cm | 10cm | Independent Practice | a) | b) | c) | d) | 30. Calculate the area: | 62",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2",
-        "3"
+        "Slide62-Q1",
+        "Slide62-Q2",
+        "Slide62-Q3"
       ],
       "contentsEntries": []
     },
@@ -715,9 +742,9 @@
       "text": "a) | b) | c) | d) | e) | f) | g) | h) | Steps | Find the area | Find the area | Find the area | 1) Split the shape into shapes you can work out the area of | 2)Work out the area of each shape | 3) Add the areas together | Example 22 - I do… | Example 24 – You do… | Example 23 – We do… | Independent Practice | 31. Find the area of each shape. | Area of compound shapes (mixture of all previous shapes) | 64",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2",
-        "3"
+        "Slide64-Q1",
+        "Slide64-Q2",
+        "Slide64-Q3"
       ],
       "contentsEntries": []
     },
@@ -737,21 +764,23 @@
     },
     {
       "slideNumber": 67,
-      "text": "Subtopic | N3.8 - Short Division (with carrying) | Objectives: | To be able to use short division where carrying is required. | To be able to use short division to solve problems in context. | Keywords: | Divide | Share | Dividend | Divisor | 67 | Steps | 1) Set out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit, carrying where necessary. | Steps | 1) Set out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit, carrying where necessary. | Example 1 – I do… | Example 3 – You do… | Example 2 – We do… | Short division with carrying | LEARNING OUTCOME: To understand how to apply short division to solve problems. | Definition | Characteristics | Examples | Non - Examples | Splitting a number into equal parts. | Involves two numbers: dividend and divisor. | The result of division is called the quotient. | Division can result in a whole number, a fraction, or a decimal, depending on the numbers involved. | Division is denoted by the symbol \"÷\" or the fraction bar \"⁄\" | Division | 10 ÷ 2 = 5 | 8 ÷ 4 = 2 | 21 ÷ 7 = 3 | 1.5 ÷ 0.5 = 3 | Addition and subtraction are not division operations. | Multiplication is the inverse of division but is a different operation. | Ratios and proportions are related concepts but are not division. | Introduction – read and annotate: | You’ve already learned how to use short division in primary school, and now we’re revisiting it to | check that the method is secure—especially when it involves carrying. Being confident with division | is important, because it helps you with more complex topics coming up, like finding missing sides | when you're given the area and calculating the mean. Short division is a quick and efficient method, | but it only works well if you understand how to carry remainders correctly. This lesson will help you | refresh those skills and spot any gaps before moving on. |",
+      "text": "Subtopic | N3.8 - Short Division (with carrying) | Objectives: | To be able to use short division where carrying is required. | To be able to use short division to solve problems in context. | Keywords: | Divide | Share | Dividend | Divisor | 67 | Steps | 56 ÷4 456 ÷4 456 ÷3 1) Set out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit, carrying where necessary. | Steps | 1) Set out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit, carrying where necessary. | Example 1 – I do… | Example 3 – You do… | Example 2 – We do… | Short division with carrying | LEARNING OUTCOME: To understand how to apply short division to solve problems. | Definition | Characteristics | Examples | Non - Examples | Splitting a number into equal parts.​ | Involves two numbers: dividend and divisor. | The result of division is called the quotient. | Division can result in a whole number, a fraction, or a decimal, depending on the numbers involved. | Division is denoted by the symbol \"÷\" or the fraction bar \"⁄\" | Division | 10 ÷ 2 = 5 | 8 ÷ 4 = 2 | 21 ÷ 7 = 3 | 1.5 ÷ 0.5 = 3 | Addition and subtraction are not division operations. | Multiplication is the inverse of division but is a different operation. | Ratios and proportions are related concepts but are not division. | Introduction – read and annotate: | You’ve already learned how to use short division in primary school, and now we’re revisiting it to | check that the method is secure—especially when it involves carrying. Being confident with division | is important, because it helps you with more complex topics coming up, like finding missing sides | when you're given the area and calculating the mean. Short division is a quick and efficient method, | but it only works well if you understand how to carry remainders correctly. This lesson will help you | refresh those skills and spot any gaps before moving on.",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2"
+        "Slide67-Q2",
+        "Slide67-Q1",
+        "Slide67-Q2"
       ],
       "contentsEntries": []
     },
     {
       "slideNumber": 68,
-      "text": "a) | 7 | b) | c) | d) | e) | f) | g) | h) | | i) | j) | k) | l) | m) | | n) | o) | Independent Practice | Steps | 1) Set out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit, carrying where necessary. | Steps | 1) Set out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit, carrying where necessary. | Example 4 – I do… | Example 6 – You do… | Example 5 – We do… | 68 | Question 1. Calculate: | p) | q) | | r)",
+      "text": "a) | 7 | b) | c) | d) | e) | f) | g) | h) | i) | j) | k) | l) | m) | n) | o) | Independent Practice | Steps | 4575÷3 4576 ÷8 8976÷3 1) Set out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit, carrying where necessary. | Steps | 1) Set out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit, carrying where necessary. | Example 4 – I do… | Example 6 – You do… | Example 5 – We do… | 68 | Question 1. Calculate: | p) | q) | r)",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2"
+        "Slide68-Q2",
+        "Slide68-Q1",
+        "Slide68-Q2"
       ],
       "contentsEntries": []
     },
@@ -767,8 +796,8 @@
       "text": "9. Identify the scale and fill in the missing values on each number line. | 70 | b) | c) | Steps | Example 7 - I do… | 1) Calculate the difference between | 2 known numbers | on the number line. | 2) | Divide | this by the number of | intervals | between the numbers | Work out the intervals on the number line below | Example 8 - We do… | Work out the intervals on the number line below | Example 9 – You do… | Work out the intervals on the number line below | a) | d) | e) | f) | g) | h) | i) | j) | Independent Practice | Using division to work out the scale from a number line.",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2"
+        "Slide70-Q1",
+        "Slide70-Q2"
       ],
       "contentsEntries": []
     },
@@ -788,18 +817,20 @@
     },
     {
       "slideNumber": 73,
-      "text": "Subtopic | N3.18 - Short Division (remainders) | 73 | Steps | 1) Set out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit, carrying where necessary. | 3) Leave your answer as a remainder. | Steps | 1) Set out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit, carrying where necessary. | 3) Leave your answer as a remainder. | Example 1 – I do… | Example 3 – You do… | Example 2 – We do… | Short division with remainders | Objectives: | To use short division where there is a remainder. | To use short division to solve problems in context. | Keywords: | Divide | Share | Dividend | Divisor | LEARNING OUTCOME: To understand how to apply short division to solve problems. | Definition | Characteristics | Examples | Non - Examples | Splitting a number into equal parts. | Involves two numbers: dividend and divisor. | The result of division is called the quotient. | Division can result in a whole number, a fraction, or a decimal, depending on the numbers involved. | Division is denoted by the symbol \"÷\" or the fraction bar \"⁄\" | Division | 10 ÷ 2 = 5 | 8 ÷ 4 = 2 | 21 ÷ 7 = 3 | 1.5 ÷ 0.5 = 3 | Addition and subtraction are not division operations. | Multiplication is the inverse of division but is a different operation. | Ratios and proportions are related concepts but are not division. | Introduction – read and annotate: | Sometimes when you divide, the number doesn’t split exactly—and you’re left with a | remainder | . In | this lesson, you’ll learn how to write remainders properly and understand what they mean in | different contexts. This is an important step before moving on to decimal answers, because it helps | you decide whether to | stop with a remainder | , | round | , or | continue dividing | . Being confident with | remainders will also help you in problem-solving tasks where you need to interpret what the extra | amount actually represents.",
+      "text": "Subtopic | N3.18 - Short Division (remainders) | 73 | Steps | 49 ÷4 486 ÷4 965 ÷3 1) Set out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit, carrying where necessary. | 3) Leave your answer as a remainder. | 59 ÷4 686 ÷4 775 ÷3 Steps | 1) Set out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit, carrying where necessary. | 3) Leave your answer as a remainder. | Example 1 – I do… | Example 3 – You do… | Example 2 – We do… | Short division with remainders | Objectives: | To use short division where there is a remainder. | To use short division to solve problems in context. | Keywords: | Divide | Share | Dividend | Divisor | LEARNING OUTCOME: To understand how to apply short division to solve problems. | Definition | Characteristics | Examples | Non - Examples | Splitting a number into equal parts.​ | Involves two numbers: dividend and divisor. | The result of division is called the quotient. | Division can result in a whole number, a fraction, or a decimal, depending on the numbers involved. | Division is denoted by the symbol \"÷\" or the fraction bar \"⁄\" | Division | 10 ÷ 2 = 5 | 8 ÷ 4 = 2 | 21 ÷ 7 = 3 | 1.5 ÷ 0.5 = 3 | Addition and subtraction are not division operations. | Multiplication is the inverse of division but is a different operation. | Ratios and proportions are related concepts but are not division. | Introduction – read and annotate: | Sometimes when you divide, the number doesn’t split exactly—and you’re left with a | remainder | . In | this lesson, you’ll learn how to write remainders properly and understand what they mean in | different contexts. This is an important step before moving on to decimal answers, because it helps | you decide whether to | stop with a remainder | , | round | , or | continue dividing | . Being confident with | remainders will also help you in problem-solving tasks where you need to interpret what the extra | amount actually represents.",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2",
-        "3"
+        "Slide73-Q2",
+        "Slide73-Q3",
+        "Slide73-Q1",
+        "Slide73-Q2",
+        "Slide73-Q3"
       ],
       "contentsEntries": []
     },
     {
       "slideNumber": 74,
-      "text": "Question 2. For the following questions, fill in the missing blanks. | a) | b) | c) | a) | b) | c) | d) | 5 | e) | f) | g) | h) | | i) | Independent Practice | 74 | m) | | n) | o) | p) | q) | | r) | 7 | Question 1. For the following questions, leave your answers as a remainder. | j) | k) | l)",
+      "text": "Question 2. For the following questions, fill in the missing blanks. | a) | b) | c) | a) | b) | c) | d) | 5 | e) | f) | g) | h) | i) | Independent Practice | 74 | m) | n) | o) | p) | q) | r) | 7 | Question 1. For the following questions, leave your answers as a remainder. | j) | k) | l)",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
@@ -813,48 +844,55 @@
     },
     {
       "slideNumber": 76,
-      "text": "Subtopic | N3.19 - Short Division (decimal answers) | 76 | Objectives: | To use short division where the answer is a decimal. | To use short division to solve problems in context. | Keywords: | Divide | Share | Dividend | Divisor | LEARNING OUTCOME: To understand how to apply short division to solve problems. | Steps | 1) Set out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit, carrying where necessary. | 3) Where necessary, write additional zeros to continue carrying and give your answer as a decimal. | Steps | 1) Set out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit, carrying where necessary. | 3) Where necessary, write additional zeros to continue carrying and give your answer as a decimal. | Example 1 – I do… | Example 3 – You do… | Example 2 – We do… | Short division with decimal answers | Definition | Characteristics | Examples | Non - Examples | Splitting a number into equal parts. | Involves two numbers: dividend and divisor. | The result of division is called the quotient. | Division can result in a whole number, a fraction, or a decimal, depending on the numbers involved. | Division is denoted by the symbol \"÷\" or the fraction bar \"⁄\" | Division | 10 ÷ 2 = 5 | 8 ÷ 4 = 2 | 21 ÷ 7 = 3 | 1.5 ÷ 0.5 = 3 | Addition and subtraction are not division operations. | Multiplication is the inverse of division but is a different operation. | Ratios and proportions are related concepts but are not division. | Introduction – read and annotate: | Now that you’ve | practised | short division with carrying, it’s time to look at what happens when the | division doesn’t work out exactly and you get a | decimal answer | . Instead of stopping with a | remainder, you’ll learn how to continue the division into decimal places to get a more accurate | result. This is a key skill for real-life problems, like | working with money, measurements, or averages | , | where exact answers matter. It also builds the foundation for more advanced topics like ratio, | proportion, and algebra later on.",
+      "text": "Subtopic | N3.19 - Short Division (decimal answers) | 76 | Objectives: | To use short division where the answer is a decimal. | To use short division to solve problems in context. | Keywords: | Divide | Share | Dividend | Divisor | LEARNING OUTCOME: To understand how to apply short division to solve problems. | Steps | 49 ÷4 486 ÷4 965 ÷3 1) Set out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit, carrying where necessary. | 3) Where necessary, write additional zeros to continue carrying and give your answer as a decimal. | 59 ÷4 775 ÷3 686 ÷4 Steps | 1) Set out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit, carrying where necessary. | 3) Where necessary, write additional zeros to continue carrying and give your answer as a decimal. | Example 1 – I do… | Example 3 – You do… | Example 2 – We do… | Short division with decimal answers | Definition | Characteristics | Examples | Non - Examples | Splitting a number into equal parts.​ | Involves two numbers: dividend and divisor. | The result of division is called the quotient. | Division can result in a whole number, a fraction, or a decimal, depending on the numbers involved. | Division is denoted by the symbol \"÷\" or the fraction bar \"⁄\" | Division | 10 ÷ 2 = 5 | 8 ÷ 4 = 2 | 21 ÷ 7 = 3 | 1.5 ÷ 0.5 = 3 | Addition and subtraction are not division operations. | Multiplication is the inverse of division but is a different operation. | Ratios and proportions are related concepts but are not division. | Introduction – read and annotate: | Now that you’ve | practised | short division with carrying, it’s time to look at what happens when the | division doesn’t work out exactly and you get a | decimal answer | . Instead of stopping with a | remainder, you’ll learn how to continue the division into decimal places to get a more accurate | result. This is a key skill for real-life problems, like | working with money, measurements, or averages | , | where exact answers matter. It also builds the foundation for more advanced topics like ratio, | proportion, and algebra later on.",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2",
-        "3"
+        "Slide76-Q2",
+        "Slide76-Q3",
+        "Slide76-Q1",
+        "Slide76-Q2",
+        "Slide76-Q3"
       ],
       "contentsEntries": []
     },
     {
       "slideNumber": 77,
-      "text": "a) | b) | c) | d) | 5 | e) | f) | g) | h) | | i) | Independent Practice | 77 | Question 1. For the following questions, give your answers as a decimal. | j) | k) | l) | m) | | n) | o) | p) | q) | | r) | 7 | a) | b) | c) | … | Question 2. For the following questions, fill in the missing blanks.",
+      "text": "a) | b) | c) | d) | 5 | e) | f) | g) | h) | i) | Independent Practice | 77 | Question 1. For the following questions, give your answers as a decimal. | j) | k) | l) | m) | n) | o) | p) | q) | r) | 7 | a) | b) | c) | … | Question 2. For the following questions, fill in the missing blanks.",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
     },
     {
       "slideNumber": 78,
-      "text": "Question 6. For the following questions, give your answers as a decimal. | a) | 5 | b) | c) | d) | e) | | f) | g) | h) | 8 | i) | j) | k) | 16 | l) | Question 6. For the following questions, give your answers as a decimal. | Question 3. | A shop has a piece of ribbon that is 225m long. | They need to divide the ribbon into 8 equal pieces. | How long will each piece of ribbon be? | Question 4. | If a regular pentagon has a perimeter of 112cm. | What is the length of each side of the pentagon? | Question 5. | A coach is travelling from High Wycombe to Rome. | The distance is 1931km. | The driver wants split the journey equally over 6 days. | How far should he drive each day? | 78 | Example 4 – I do… | Example 6 – You do… | Example 5 – We do… | Steps | 1) Set out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit, carrying where necessary. | 3) Where necessary, write additional zeros to continue carrying and give your answer as a decimal. | Steps | 1) Set out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit, carrying where necessary. | 3) Where necessary, write additional zeros to continue carrying and give your answer as a decimal.",
+      "text": "Question 6. For the following questions, give your answers as a decimal. | a) | 5 | b) | c) | d) | e) | f) | g) | h) | 8 | i) | j) | k) | 16 | l) | Question 6. For the following questions, give your answers as a decimal. | Question 3. | A shop has a piece of ribbon that is 225m long. | They need to divide the ribbon into 8 equal pieces. | How long will each piece of ribbon be? | Question 4. | If a regular pentagon has a perimeter of 112cm. | What is the length of each side of the pentagon? | Question 5. | A coach is travelling from High Wycombe to Rome. | The distance is 1931km. | The driver wants split the journey equally over 6 days. | How far should he drive each day? | 78 | Example 4 – I do… | Example 6 – You do… | Example 5 – We do… | Steps | 3 ÷4 2 ÷7 5 ÷8 1) Set out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit, carrying where necessary. | 3) Where necessary, write additional zeros to continue carrying and give your answer as a decimal. | Steps | 1) Set out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit, carrying where necessary. | 3) Where necessary, write additional zeros to continue carrying and give your answer as a decimal.",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2",
-        "3"
+        "Slide78-Q2",
+        "Slide78-Q3",
+        "Slide78-Q1",
+        "Slide78-Q2",
+        "Slide78-Q3"
       ],
       "contentsEntries": []
     },
     {
       "slideNumber": 79,
-      "text": "79 | Skills Check | What is 804 divided by 4? | A. 210 B. 201 C. 21 D. 402 | What number goes in the box? | A. 3 B. 1 C. 0 D. 9 | 3 6 9 6 | 2 3 2 0 | Calculate the value of the following: | A. 506 B. 584 C. 666 D. 516.6 | | What number goes in the box? | A. 2 B. 0 C. 4 D. 5 | 1 5 6 6 | 4 6 | 2 | | 2 | 6 | 2 | 4 | Calculate | A. 2755 r 2 B. 2755.2 C. 2755 D. 2755 r 15 | | Each day, a farmer collects eggs in boxes of 6. One day he collects 172 eggs. How many eggs were in the final box? | A. 28 B. 6 C. 4 D. 29 | Calculate the following: | A. 31 B. 116 C. 23.25 D. 23.025 | | Calculate the following: | A. 0.83 B. 1.2 C. | D. | |",
+      "text": "79 | Skills Check | What is 804 divided by 4? | A. 210 B. 201 C. 21 D. 402 | What number goes in the box? | A. 3 B. 1 C. 0 D. 9 | 3 6 9 6 | 2 3 2 0 | Calculate the value of the following: | A. 506 B. 584 C. 666 D. 516.6 | What number goes in the box? | A. 2 B. 0 C. 4 D. 5 | 1 5 6 6 | 4 6 | 2 | 2 | 6 | 2 | 4 | Calculate | A. 2755 r 2 B. 2755.2 C. 2755 D. 2755 r 15 | Each day, a farmer collects eggs in boxes of 6. One day he collects 172 eggs. How many eggs were in the final box? | A. 28 B. 6 C. 4 D. 29 | Calculate the following: | A. 31 B. 116 C. 23.25 D. 23.025 | Calculate the following: | A. 0.83 B. 1.2 C. | D.",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
     },
     {
       "slideNumber": 80,
-      "text": "Subtopic N3.20 – Dividing Decimals (CHALLENGE) | Objectives | : | To be able to divide a decimal by an integer. | To be able to | divide an integer by a decimal. | To be able to | divide a decimal by another decimal. | LEARNING OUTCOME: | To be able to carry out division problems involving decimals | 80 | Steps | Calculate: | Calculate: | Calculate: | 1) Set out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit, carrying where necessary. | 3) Where necessary, write additional zeros to continue carrying and give your answer as a decimal. | Steps | Calculate: | Calculate: | Calculate: | 1) Set out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit, carrying where necessary. | 3) Where necessary, write additional zeros to continue carrying and give your answer as a decimal. | Example 1 – I do | Example 2 – We do | Example 3 – You do | Keywords: | Divide | Share | Dividend | Divisor | Dividing decimals by integers | Definition | Characteristics | Examples | Non - Examples | Splitting a number into equal parts. | Involves two numbers: dividend and divisor. | The result of division is called the quotient. | Division can result in a whole number, a fraction, or a decimal, depending on the numbers involved. | Division is denoted by the symbol \"÷\" or the fraction bar \"⁄\" | Division | 10 ÷ 2 = 5 | 8 ÷ 4 = 2 | 21 ÷ 7 = 3 | 1.5 ÷ 0.5 = 3 | Addition and subtraction are not division operations. | Multiplication is the inverse of division but is a different operation. | Ratios and proportions are related concepts but are not division. | Introduction – read and annotate: | Now that you're confident with whole number division and remainders, it's time to tackle dividing | with decimals—whether the decimal is in the number you're dividing (the dividend), the number | you're dividing by (the divisor), or both. You’ll learn how to adjust the numbers to make the division | easier, often by turning the divisor into a whole number. This builds on everything you've practiced | so far and is especially useful in real-life situations, like money calculations, unit conversions, and | scaling recipes. Mastering this skill will also prepare you for more complex | maths | topics, including | percentages, ratios, and algebra.",
+      "text": "Subtopic N3.20 – Dividing Decimals (CHALLENGE) | Objectives | : | To be able to divide a decimal by an integer. | To be able to | divide an integer by a decimal. | To be able to | divide a decimal by another decimal. | LEARNING OUTCOME: | To be able to carry out division problems involving decimals | 80 | Steps | Calculate: | Calculate: | Calculate: | 1) Set out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit, carrying where necessary. | 3) Where necessary, write additional zeros to continue carrying and give your answer as a decimal. | 0.6 6 ÷ 6 0.58 ÷ 2 0 .48 ÷ 3 Steps | Calculate: | Calculate: | Calculate: | 1) Set out the short division, making sure the divisor is on the outside. | 2) Starting from the left, divide into each digit, carrying where necessary. | 3) Where necessary, write additional zeros to continue carrying and give your answer as a decimal. | Example 1 – I do | Example 2 – We do | Example 3 – You do | Keywords: | Divide | Share | Dividend | Divisor | 2.22 ÷ 3 6.24 ÷ 6 12.6 ÷ 2 8.35 ÷ 4 3.2÷8 8.15 ÷ 2 Dividing decimals by integers | Definition | Characteristics | Examples | Non - Examples | Splitting a number into equal parts.​ | Involves two numbers: dividend and divisor. | The result of division is called the quotient. | Division can result in a whole number, a fraction, or a decimal, depending on the numbers involved. | Division is denoted by the symbol \"÷\" or the fraction bar \"⁄\" | Division | 10 ÷ 2 = 5 | 8 ÷ 4 = 2 | 21 ÷ 7 = 3 | 1.5 ÷ 0.5 = 3 | Addition and subtraction are not division operations. | Multiplication is the inverse of division but is a different operation. | Ratios and proportions are related concepts but are not division. | Introduction – read and annotate: | Now that you're confident with whole number division and remainders, it's time to tackle dividing | with decimals—whether the decimal is in the number you're dividing (the dividend), the number | you're dividing by (the divisor), or both. You’ll learn how to adjust the numbers to make the division | easier, often by turning the divisor into a whole number. This builds on everything you've practiced | so far and is especially useful in real-life situations, like money calculations, unit conversions, and | scaling recipes. Mastering this skill will also prepare you for more complex | maths | topics, including | percentages, ratios, and algebra.",
       "subtopicCode": "N3.20",
       "questionRefs": [
-        "1",
-        "2",
-        "3"
+        "Slide80-Q1",
+        "Slide80-Q2",
+        "Slide80-Q3",
+        "Slide80-Q1",
+        "Slide80-Q2",
+        "Slide80-Q3"
       ],
       "contentsEntries": []
     },
@@ -867,31 +905,29 @@
     },
     {
       "slideNumber": 82,
-      "text": "82 | Dividing integers by decimals | Steps | 1) Multiply both | numbers | by the same amount | ) | to make the second number an integer. | 2) Carry out the new division calculation. | Steps | Example 4 – I do | Example 5 – We do | Example 6 – You do | Independent Practice | Question 2. Calculate: | a) | b) | c) | d) | e) | f) | g) | h) | i) | j) | k) | l) 470 | Fact: | Dividing by 0.1 is the same as ___________________________________________ . | Steps | 1) Multiply both | numbers | by the same amount | ) | to make the second number an integer. | 2) Carry out the new division calculation. | Steps | Example 7 – I do | Example 8 – We do | Example 9 – You do",
+      "text": "82 | Dividing integers by decimals | Steps | 2÷0.1 8÷0.1 4÷0.1 1) Multiply both | numbers | by the same amount | ) | to make the second number an integer. | 2) Carry out the new division calculation. | Steps | Example 4 – I do | Example 5 – We do | Example 6 – You do | Independent Practice | Question 2. Calculate: | a) | b) | c) | d) | e) | f) | g) | h) | i) | j) | k) | l) 470 | Fact: | Dividing by 0.1 is the same as ___________________________________________ . | Steps | 2÷0. 5 8÷0. 5 4÷0. 5 1) Multiply both | numbers | by the same amount | ) | to make the second number an integer. | 2) Carry out the new division calculation. | 2÷0. 2 8÷0. 2 4÷0. 2 Steps | Example 7 – I do | Example 8 – We do | Example 9 – You do",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2"
+        "Slide82-Q2",
+        "Slide82-Q2"
       ],
       "contentsEntries": []
     },
     {
       "slideNumber": 83,
-      "text": "83 | Independent Practice | Question 3. Calculate: | a) | b) | c) | d) | e) | f) | g) | h) | Fact: | Dividing by 0.5 is the same as ___________________________________________ . | Fact: | Dividing by 0.2 is the same as ___________________________________________ . | Steps | 1) Multiply both | numbers | by the same amount | ) | to make the second number an integer. | 2) Carry out the new division calculation. | Steps | Example 10– I do | Example 11 – We do | Example 12 – You do | Independent Practice | a) | b) | c) | d) | e) | f) | g) | h) | i) | j) | k) | l) | Question 4. Calculate:",
+      "text": "83 | Independent Practice | Question 3. Calculate: | a) | b) | c) | d) | e) | f) | g) | h) | Fact: | Dividing by 0.5 is the same as ___________________________________________ . | Fact: | Dividing by 0.2 is the same as ___________________________________________ . | Steps | 3 ÷0. 0 1 8÷0. 02 9 ÷0. 03 1) Multiply both | numbers | by the same amount | ) | to make the second number an integer. | 2) Carry out the new division calculation. | 4 ÷0.001 12÷0.003 6÷0.002 Steps | Example 10– I do | Example 11 – We do | Example 12 – You do | Independent Practice | a) | b) | c) | d) | e) | f) | g) | h) | i) | j) | k) | l) | Question 4. Calculate:",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2"
+        "Slide83-Q2"
       ],
       "contentsEntries": []
     },
     {
       "slideNumber": 84,
-      "text": "84 | Dividing decimals by decimals | Steps | 1) Multiply both | numbers | by the same amount | ) | to make the second number an integer. | 2) Carry out the new division calculation. | Steps | Example 13 – I do | Example 14 – We do | Example 15 – You do | Independent Practice | Question 5. Calculate: | a) | b) | c) | d) | e) | f) | g) | h) | i) | j) | k) | l) | m) | n) | o) | p)",
+      "text": "84 | Dividing decimals by decimals | Steps | 2 .5 ÷0.5 1.8 ÷0. 0 6 1 . 2 ÷0.3 1) Multiply both | numbers | by the same amount | ) | to make the second number an integer. | 2) Carry out the new division calculation. | 0. 7 5÷2.5 4 .9 ÷0.16 0. 3 6 ÷1.5 Steps | Example 13 – I do | Example 14 – We do | Example 15 – You do | Independent Practice | Question 5. Calculate: | a) | b) | c) | d) | e) | f) | g) | h) | i) | j) | k) | l) | m) | n) | o) | p)",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2"
+        "Slide84-Q2"
       ],
       "contentsEntries": []
     },
@@ -911,10 +947,10 @@
     },
     {
       "slideNumber": 87,
-      "text": "Steps | 1) Divide the area by the length given. | Example 1 – I do… | Example 3 – You do… | 87 | Subtopic N3.21 - | Area: finding missing lengths given the area | Example 2 – We do… | Finding a missing length given the area of a rectangle | Objectives: | To use a given area to find the missing length of a rectangle. | To use a given area to find the missing length of a parallelogram. | To use a given area to find the missing length of a triangle. | To use a given area to find the missing length of a compound shape. | Keywords: | - Area | - Length | - Width | - Height | - Perpendicular | LEARNING OUTCOME: To understand how to use a given area to find missing lengths of various shapes | | Definition | Characteristics | Examples | Non - Examples | The measure of space in two dimensions contained within a boundary (perimeter). | | The inside of a 2-D shape | | Usually measured using squares of length one unit (where a unit can be cm, metre, inch etc.) | Area | Introduction – read and annotate: | So far in this booklet, you’ve explored multiplication and how it relates to calculating area. Now, you’re | going to use the division skills developed over the last few subtopics to find missing lengths when the | area is given. This process demonstrates how division can be used to work backwards from an area | measurement to determine a side length, reinforcing the connection between multiplication and | division in geometric contexts.",
+      "text": "Steps | 1) Divide the area by the length given. | Example 1 – I do… | Example 3 – You do… | 87 | Subtopic N3.21 - | Area: finding missing lengths given the area | Example 2 – We do… | Finding a missing length given the area of a rectangle | Objectives: | To use a given area to find the missing length of a rectangle. | To use a given area to find the missing length of a parallelogram. | To use a given area to find the missing length of a triangle. | To use a given area to find the missing length of a compound shape. | Keywords: | - Area | - Length | - Width | - Height | - Perpendicular | LEARNING OUTCOME: To understand how to use a given area to find missing lengths of various shapes | Definition | Characteristics | Examples | Non - Examples | The measure of space in two dimensions contained within a boundary (perimeter). | The inside of a 2-D shape | Usually measured using squares of length one unit (where a unit can be cm, metre, inch etc.) | Area | Introduction – read and annotate: | So far in this booklet, you’ve explored multiplication and how it relates to calculating area. Now, you’re | going to use the division skills developed over the last few subtopics to find missing lengths when the | area is given. This process demonstrates how division can be used to work backwards from an area | measurement to determine a side length, reinforcing the connection between multiplication and | division in geometric contexts.",
       "subtopicCode": "N3.21",
       "questionRefs": [
-        "1"
+        "Slide87-Q1"
       ],
       "contentsEntries": []
     },
@@ -934,20 +970,20 @@
     },
     {
       "slideNumber": 90,
-      "text": "90 | Steps | 1) Divide the area by the length given. | Example 4 – I do… | Example 6 – You do… | Example 5 – We do… | Finding a missing length given the area of a parallelogram | | a) | b) | c) | d) | e) | f) | Independent Practice | Question 10. For each of the following, calculate the length of the missing side, x. | Question 11. Fill in the blanks with values. | Base | Perpendicular Height | Area | 4 | 5 | 3 | 18 | 6 | 24 | 4 | 18 | 8 | 25",
+      "text": "90 | Steps | 1) Divide the area by the length given. | Example 4 – I do… | Example 6 – You do… | Example 5 – We do… | Finding a missing length given the area of a parallelogram | a) | b) | c) | d) | e) | f) | Independent Practice | Question 10. For each of the following, calculate the length of the missing side, x. | Question 11. Fill in the blanks with values. | Base | Perpendicular Height | Area | 4 | 5 | 3 | 18 | 6 | 24 | 4 | 18 | 8 | 25",
       "subtopicCode": null,
       "questionRefs": [
-        "1"
+        "Slide90-Q1"
       ],
       "contentsEntries": []
     },
     {
       "slideNumber": 91,
-      "text": "Question 12. | The diagram shows a right-angled triangle and a parallelogram. | The area of the parallelogram is four times the area of the triangle. | The perpendicular height of the parallelogram is | h | . | Find the value of | h | . | Question 13. | A shape is made from 4 congruent parallelograms. | The area of the shape is 792cm². | Find y | Finding a missing length given the area of a triangle | Steps | 1) Multiply the | area by 2. | 2) Divide by | either the | base or the perpendicular height, depending on what you are finding. | Example 7 – I do… | Example 9 – You do… | Example 8 – We do… | | 91",
+      "text": "Question 12. | The diagram shows a right-angled triangle and a parallelogram. | The area of the parallelogram is four times the area of the triangle. | The perpendicular height of the parallelogram is | h | . | Find the value of | h | . | Question 13. | A shape is made from 4 congruent parallelograms. | The area of the shape is 792cm². | Find y | Finding a missing length given the area of a triangle | Steps | 1) Multiply the | area by 2. | 2) Divide by | either the | base or the perpendicular height, depending on what you are finding. | Example 7 – I do… | Example 9 – You do… | Example 8 – We do… | 91",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2"
+        "Slide91-Q1",
+        "Slide91-Q2"
       ],
       "contentsEntries": []
     },
@@ -988,27 +1024,26 @@
     },
     {
       "slideNumber": 97,
-      "text": "97 | Subtopic N3.22 – | The Mean | Objectives: | To be able to find the mean from a list of numbers. | To be able to use the mean to find missing numbers. | To be able to solve problems where the mean changes. | LEARNING OUTCOME: To understand what the mean is and how to apply it to different contexts. | Keywords: | Average | Mean | Outlier | Introduction: | The \"mean\" is a way to find the average of a group of numbers. One way to think about it is as a | method for sharing things evenly. Imagine dividing a total amount equally among everyone—this is the | idea behind the mean. For example, if three friends have 8, 10, and 12 sweets, you’d add them | Together (8 + 10 + 12 = 30 sweets). Then, divide the total (30) by the number of friends (3). Everyone | would get 10 sweets if they shared equally, so the mean is 10. This idea works for numbers too, not | just sweets! The mean is useful because it gives a single value that represents the whole group, helping | us understand what is typical in a set of data. | Definition | Characteristics | Examples | Non - Examples | The average value of the data. | Can be found by sharing the total of all the numbers in the list equally between them. | Represents the point of balance if all the numbers from the list are placed on a number line | . | Affected by outliers. | Mean | Mean of 5, 4, 3, | ≠ | 5 + 4 + 3 ÷ 3 | We can think of the | mean | as redistributing things equally. | For example: | 5 people have different amounts of pizza: | We can redistribute them as follows, so they all have an equal share: | Now they have been redistributed equally, they have 3 slices each. Therefore, the mean is 3.",
+      "text": "97 | Subtopic N3.22 – | The Mean | Objectives: | To be able to find the mean from a list of numbers. | To be able to use the mean to find missing numbers. | To be able to solve problems where the mean changes. | LEARNING OUTCOME: To understand what the mean is and how to apply it to different contexts. | Keywords: | Average | Mean | Outlier | Introduction: | The \"mean\" is a way to find the average of a group of numbers. One way to think about it is as a | method for sharing things evenly. Imagine dividing a total amount equally among everyone—this is the | idea behind the mean. For example, if three friends have 8, 10, and 12 sweets, you’d add them | Together (8 + 10 + 12 = 30 sweets). Then, divide the total (30) by the number of friends (3). Everyone | would get 10 sweets if they shared equally, so the mean is 10. This idea works for numbers too, not | just sweets! The mean is useful because it gives a single value that represents the whole group, helping | us understand what is typical in a set of data. | Definition | Characteristics | Examples | Non - Examples | The average value of the data.​ | Can be found by sharing the total of all the numbers in the list equally between them. | Represents the point of balance if all the numbers from the list are placed on a number line | . | Affected by outliers. | Mean | Mean of 5, 4, 3, | ≠ | 5 + 4 + 3 ÷ 3 | We can think of the | mean | as redistributing things equally. | For example: | 5 people have different amounts of pizza: | We can redistribute them as follows, so they all have an equal share: | Now they have been redistributed equally, they have 3 slices each. Therefore, the mean is 3.",
       "subtopicCode": "N3.22",
-      "questionRefs": [
-        "30",
-        "3"
-      ],
+      "questionRefs": [],
       "contentsEntries": []
     },
     {
       "slideNumber": 98,
-      "text": "98 | For the following questions, find the mean of the list of numbers. | Steps | 1) Add the numbers together. | 2) Divide by the number of values in the list. | For the following questions, find the mean of the list of numbers. | Steps | 1) Add the numbers together. | 2) Divide by the number of values in the list. | Example 1 – I do… | Example 3 – You do… | Example 2 – We do… | Example 4 – I do… | Example 6 – You do… | Example 5 – We do… | Independent Practice | Question 1. Work out the mean from the following lists of data: | a) | b) | c) | d) | e) | f) | g) | h) | i) | i) | j) | k) | Finding the mean from a list of numbers",
+      "text": "98 | For the following questions, find the mean of the list of numbers. | Steps | 1) Add the numbers together. | 2) Divide by the number of values in the list. | 2, 4, 5, 6, 13 2.4, 4.7, 5.6, 7.3 3, 7, 11, 11 2, 4, 5, 6, 7 2.4, 4.7, 5.6, 9.3 3, 7, 11, 13 For the following questions, find the mean of the list of numbers. | Steps | 1) Add the numbers together. | 2) Divide by the number of values in the list. | Example 1 – I do… | Example 3 – You do… | Example 2 – We do… | Example 4 – I do… | Example 6 – You do… | Example 5 – We do… | Independent Practice | Question 1. Work out the mean from the following lists of data: | a) | b) | c) | d) | e) | f) | g) | h) | i) | i) | j) | k) | Finding the mean from a list of numbers",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2"
+        "Slide98-Q1",
+        "Slide98-Q2",
+        "Slide98-Q1",
+        "Slide98-Q2"
       ],
       "contentsEntries": []
     },
     {
       "slideNumber": 99,
-      "text": "99 | Question 2. | A basketball team plays 8 matches. | The number of points they score in each match are: | 62, 68, 67, 79, 82, 50, 74, 62 | Work out the mean number of points scored . | Question 3. | Mr Holland gives his class a test. The results are: | 34%, 44%, 75%, 21%, 98%, 86%, 71%, 76%, 63%, 55% | Work out the mean mark. | Question 4. | Five houses on a street are sold in 2016. They sell for: | £175,000 £184,000 £150,000 £201,000 £191,000 | Calculate the mean price. | | Question 5. | The length of nine caterpillars are listed below: | 9cm 4cm 8cm 10cm 7cm 5cm 13cm 10cm 6cm | Find the mean. | Question 6. | The amount of water in some containers are: | 2 litres, 330ml, 0.08 litres, 0.7 litres, 75ml, 5000ml, 0.215 litres | Work out the mean. Give your answer in litres. | Question 7. | Shown are the weights of 3 puppies. | Work out the mean weight.",
+      "text": "99 | Question 2. | A basketball team plays 8 matches. | The number of points they score in each match are: | 62, 68, 67, 79, 82, 50, 74, 62 | Work out the mean number of points scored . | Question 3. | Mr Holland gives his class a test. The results are: | 34%, 44%, 75%, 21%, 98%, 86%, 71%, 76%, 63%, 55% | Work out the mean mark. | Question 4. | Five houses on a street are sold in 2016. They sell for: | £175,000 £184,000 £150,000 £201,000 £191,000 | Calculate the mean price. | Question 5. | The length of nine caterpillars are listed below: | 9cm 4cm 8cm 10cm 7cm 5cm 13cm 10cm 6cm | Find the mean. | Question 6. | The amount of water in some containers are: | 2 litres, 330ml, 0.08 litres, 0.7 litres, 75ml, 5000ml, 0.215 litres | Work out the mean. Give your answer in litres. | Question 7. | Shown are the weights of 3 puppies. | Work out the mean weight.",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
@@ -1022,17 +1057,21 @@
     },
     {
       "slideNumber": 101,
-      "text": "101 | Steps | Mean = 6 | Mean = 6 | Mean = 6 | 1) Multiply the mean by the number of values. | 2) Subtract the given numbers in the list away from this total. | Steps | 1) Multiply the mean by the number of values. | 2) Subtract the given numbers in the list away from this total. | Example 7 – I do… | Example 9 – You do… | Example 8 – We do… | Depth: Using the mean to find missing numbers | Steps | Four numbers have a mean of 10. | Three of the numbers are 8, 15, 7. | What is the fourth number? | Five numbers have a mean of 10. | Four of the numbers are 8, 15, 7, 8. | What is the fifth number? | Six numbers have a mean of 10. | Five of the numbers are, 8, 15, 7, 8, 9. | What is the sixth number? | 1) Multiply the mean by the number of values. | 2) Subtract the given numbers in the list away from this total. | Example 10 – I do… | Example 12 – You do… | Example 11 – We do… | Independent Practice | a) | Mean = 4 | b) | Mean = 5 | c) | Mean = 5 | Question 10. Work out the missing number from the list. | d) | Mean = 10 | e) | Mean = 20 | f) | Mean = 20",
+      "text": "101 | Steps | 5, 1, 10, ? Mean = 6 | 5, 7, 4, 8, ? Mean = 6 | 6, 2, 11, ? Mean = 6 | 1) Multiply the mean by the number of values. | 2) Subtract the given numbers in the list away from this total. | Steps | 1) Multiply the mean by the number of values. | 2) Subtract the given numbers in the list away from this total. | Example 7 – I do… | Example 9 – You do… | Example 8 – We do… | Depth: Using the mean to find missing numbers | Steps | Four numbers have a mean of 10. | Three of the numbers are 8, 15, 7. | What is the fourth number? | Five numbers have a mean of 10. | Four of the numbers are 8, 15, 7, 8. | What is the fifth number? | Six numbers have a mean of 10. | Five of the numbers are, 8, 15, 7, 8, 9. | What is the sixth number? | 1) Multiply the mean by the number of values. | 2) Subtract the given numbers in the list away from this total. | Example 10 – I do… | Example 12 – You do… | Example 11 – We do… | Independent Practice | a) | Mean = 4 | b) | Mean = 5 | c) | Mean = 5 | Question 10. Work out the missing number from the list. | d) | Mean = 10 | e) | Mean = 20 | f) | Mean = 20",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2"
+        "Slide101-Q1",
+        "Slide101-Q2",
+        "Slide101-Q1",
+        "Slide101-Q2",
+        "Slide101-Q1",
+        "Slide101-Q2"
       ],
       "contentsEntries": []
     },
     {
       "slideNumber": 102,
-      "text": "102 | g) | Mean = 20 | h) | | Mean = 12.5 | i | ) | Mean = 9.4 | a) Four numbers have a mean of 22. | The first three are 20, 28 and 25. | What is the fourth number? | b) Four numbers have a mean of 2.2. | The first three are 2.0, 2.8, 2.5. | What is the fourth number? | c) Five numbers have a mean of 22. | The first four are 20, 28, 25, 17. | What is the fifth number? | d) Five numbers have a mean of 44. | The first four are 40, 56, 50 and 34. | What is the fifth score? | Question 11. Work out the missing number from the list. | e) Five numbers have a mean of 11. | The first four are 10, 14, 12, 9. | What is the fifth number? | f) Four numbers have a mean of 15. | The first three are 15, 15, 15. | What is the fourth number? | g) Four numbers have a mean of 15. | The first three are 20, 20, 20. | What is the fourth number? | h) Four numbers have a mean of 15. | The first three are 0, 30, 30. | What is the fourth number?",
+      "text": "102 | g) | Mean = 20 | h) | Mean = 12.5 | i | ) | Mean = 9.4 | a) Four numbers have a mean of 22. | The first three are 20, 28 and 25. | What is the fourth number? | b) Four numbers have a mean of 2.2. | The first three are 2.0, 2.8, 2.5. | What is the fourth number? | c) Five numbers have a mean of 22. | The first four are 20, 28, 25, 17. | What is the fifth number? | d) Five numbers have a mean of 44. | The first four are 40, 56, 50 and 34. | What is the fifth score? | Question 11. Work out the missing number from the list. | e) Five numbers have a mean of 11. | The first four are 10, 14, 12, 9. | What is the fifth number? | f) Four numbers have a mean of 15. | The first three are 15, 15, 15. | What is the fourth number? | g) Four numbers have a mean of 15. | The first three are 20, 20, 20. | What is the fourth number? | h) Four numbers have a mean of 15. | The first three are 0, 30, 30. | What is the fourth number?",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
@@ -1042,9 +1081,9 @@
       "text": "103 | Steps | The mean of 4 numbers is 6. Another number is added and the mean is now 5. What number was added? | The mean of 4 numbers is 10. Another number is added and the mean is now 8. What number was added? | The mean of 4 numbers is 8. Another number is added and the mean is now 7. What number was added? | 1) Multiply the new mean by the new number of values. | 2) Multiply the original mean by the original number of values. | 3) Subtract these. | Example 13 – I do… | Example 15 – You do… | Example 14 – We do… | Solving problems where the mean changes | Independent Practice | Question 12. | a) The mean of 3 numbers is 15. | Another number is added and the mean is now 12. | What number was added? | b) The mean of 9 numbers is 1.5. | Another number is added and the mean is now 1.6. | What number was added? | c) The mean of 5 numbers is 8. | Another number is added and the mean is now 6. | What number was added? | d) The mean of 5 numbers is 30. | A number is taken away. | The mean of the 4 remaining numbers is 25. | What number was taken away?",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2",
-        "3"
+        "Slide103-Q1",
+        "Slide103-Q2",
+        "Slide103-Q3"
       ],
       "contentsEntries": []
     },
@@ -1060,8 +1099,8 @@
       "text": "105 | Question 13. | Independent Practice | a) The mean age of 2 girls is 8. | Another girl joins, age 5. | What is the mean age of the 3 girls? | b) The mean number of goals scored by 3 players is 18. | Another player joins, having scored 6 goals. | What is the mean number of goals scored by the 4 players? | c) The mean heights of 24 men is 1.64m. | Another man has a height of 1.89m. | What is the mean height of the 25 boys? | d) The mean age of a team if 25 players is 26. | One of the players, age 20, is sold. | What is the mean age of the team now? | e) | The mean age of 3 students is 15 years old. | Another student joins the group, aged 16. | What is the mean age of the 4 students? | f) | The mean age of 4 students is 12 years old. | Another student joins the group, aged 16. | What is the mean age of the 5 students? | g) | Mark ran a mean distance of 13.2 km in five days. The next day Mark ran 20 km. Find the mean distance Mark ran in the six days. | h) | Pete has seven Shetland ponies. They have a mean height of 116cm. Pete buys an eighth pony. The height of this pony is 128cm. Find the mean height of all eight ponies. | Steps | The mean of 5 numbers is 8. The number 2 is added. What is the mean now? | The mean of 6 numbers is 5. The number 12 is added. What is the mean now? | The mean of 3 numbers is 8. The number 4 is added. What is the mean now? | 1) Multiply the mean by the number of values to get the total. | 2) Add on the new values. Divide by how many values there are now. | Example 16 – I do… | Example 18 – You do… | Example 17 – We do…",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2"
+        "Slide105-Q1",
+        "Slide105-Q2"
       ],
       "contentsEntries": []
     },
@@ -1088,148 +1127,152 @@
     },
     {
       "slideNumber": 109,
-      "text": "109 | l) | A class of 30 boys and girls sit a test. The mean mark for the 14 boys is 76% The mean mark for the whole class is 78% Work out the mean mark of the girls | m) | | 20 men, 10 women and 10 children are in a competition. The mean score for the women is 15.6. The mean score for the children is 9.2. Kevin says that the mean score for all 40 people is 11.2. Work out the mean score for the men. | n) Two parents have 3 daughters and 2 sons. | The mean age of the family is 18. | The mean age of the daughters is 13. | The mean age of the sons is 10. | The mother is 3 years younger than the father. | How old is the father? | o) Team A consists of 13 players with a mean age of 26. | Team B has 11 players with a mean of 28. | A player leaves Team A to join Team B. | The new mean of Team A is 26.5. | What is the new mean of Team B? | Skills Check | What is the mean of the set of scores? | 3, 4, 5, 6, 6, 8, 8, 8, 15 | 6 B) 7 C) 8 D) 9 | Amaal is 8, Brendan is 17, Cynthia is 11 and Darren is | years old. Their mean age is 13. | How old is Darren? | 9 B) 12 C) 13 D) 16 | The mean weight of six people is 60kg. One person leaves and the average weight of the remaining five people is 56kg. | What was the weight of the person who leaves? | 80kg B) 54kg C) 304kg D) 58kg | The mean of a set of 5 scores is 62. | What is the new mean after a score of 14 is added? | 38 B) 54 C) 62 D) 76 | Skills Check | What is the mean of the set of scores? | 3, 4, 5, 6, 6, 8, 8, 8, 15 | 6 B) 7 C) 8 D) 9 | The mean weight of six people is 60kg. One person leaves and the average weight of the remaining five people is 56kg. | What was the weight of the person who leaves? | 80kg B) 54kg C) 304kg D) 58kg | The mean of a set of 5 scores is 62. | What is the new mean after a score of 14 is added? | 38 B) 54 C) 62 D) 76",
+      "text": "109 | l) | A class of 30 boys and girls sit a test. The mean mark for the 14 boys is 76% The mean mark for the whole class is 78% Work out the mean mark of the girls | m) | 20 men, 10 women and 10 children are in a competition. The mean score for the women is 15.6. The mean score for the children is 9.2. Kevin says that the mean score for all 40 people is 11.2. Work out the mean score for the men. | n) Two parents have 3 daughters and 2 sons. | The mean age of the family is 18. | The mean age of the daughters is 13. | The mean age of the sons is 10. | The mother is 3 years younger than the father. | How old is the father? | o) Team A consists of 13 players with a mean age of 26. | Team B has 11 players with a mean of 28. | A player leaves Team A to join Team B. | The new mean of Team A is 26.5. | What is the new mean of Team B? | Skills Check | What is the mean of the set of scores? | 3, 4, 5, 6, 6, 8, 8, 8, 15 | 6 B) 7 C) 8 D) 9 | Amaal is 8, Brendan is 17, Cynthia is 11 and Darren is | years old. Their mean age is 13. | How old is Darren? | 9 B) 12 C) 13 D) 16 | The mean weight of six people is 60kg. One person leaves and the average weight of the remaining five people is 56kg. | What was the weight of the person who leaves? | 80kg B) 54kg C) 304kg D) 58kg | The mean of a set of 5 scores is 62. | What is the new mean after a score of 14 is added? | 38 B) 54 C) 62 D) 76 | Skills Check | What is the mean of the set of scores? | 3, 4, 5, 6, 6, 8, 8, 8, 15 | 6 B) 7 C) 8 D) 9 | The mean weight of six people is 60kg. One person leaves and the average weight of the remaining five people is 56kg. | What was the weight of the person who leaves? | 80kg B) 54kg C) 304kg D) 58kg | The mean of a set of 5 scores is 62. | What is the new mean after a score of 14 is added? | 38 B) 54 C) 62 D) 76",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
     },
     {
       "slideNumber": 110,
-      "text": "Objectives: | To be able to recall the square numbers up to 15 squared | To be able to recall the cube numbers up to 10 cubed. | LEARNING OUTCOME: To understand square and cube numbers | Keywords: | - Square | - Cube | Definition | Characteristics | The process of creating a square number is called “squaring” and is shown using an index of 2 | Examples | Non - Examples | Square number | 4 (= 2 | 2 | ) 9 (= 3 | 2 | ) | | 100 (= 10 | 2 | ) | | 484 (=22 | 2 | ) | | 1 (= 1 | 2 | ) 10 000 (= 100 | 2 | ) | An integer multiplied by itself makes a square number | 2 ( | ≠ | 1 | 2 | ) | 10 1000 | | 5 | -4 | | Definition | Characteristics | The process of creating a cube number is called “cubing” and is shown using an index of 3 | Examples | Non - Examples | Cube number | 8 (= 2 | 3 | ) 27 (= 3 | 3 | ) 1000 (= 10 | 3 | ) | 10 648 (=22 | 3 | ) 1 (= 1 | 3 | ) 1 000 000 (= 100 | 3 | ) | An integer multiplied | by itself and then itself again | makes a cube number | 3 ( | ≠ | 1 | 3 | ) | 6 100 | 12 | -9 | | 3 | Example 1 - I do… | Index form and language | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | Five | 2 | nd | Five Squared | 3 | rd | | | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | Five | 2 | nd | Five Squared | 3 | rd | | 110 | Introduction: | Squares numbers and | and | cube numbers are ways of multiplying a number by itself a certain number of | times, creating what we call powers. When you square a number, you multiply it by itself. Cubing a | number means multiplying it by itself and then multiplying by itself again. Knowing how to work with | squares and cubes is an important skill, as it forms the foundation for understanding powers, | exponents and roots. | Subtopic N3.23 – Squares, Cubes and Roots",
+      "text": "Objectives: | To be able to recall the square numbers up to 15 squared | To be able to recall the cube numbers up to 10 cubed. | LEARNING OUTCOME: To understand square and cube numbers | Keywords: | - Square | - Cube | Definition | Characteristics | The process of creating a square number is called “squaring” and is shown using an index of 2 | Examples | Non - Examples | Square number | 4 (= 2 | 2 | ) 9 (= 3 | 2 | ) | 100 (= 10 | 2 | ) | 484 (=22 | 2 | ) | 1 (= 1 | 2 | ) 10 000 (= 100 | 2 | ) | An integer multiplied by itself makes a square number | 2 ( | ≠ | 1 | 2 | ) | 10 1000 | 5 | -4 | Definition | Characteristics | The process of creating a cube number is called “cubing” and is shown using an index of 3 | Examples | Non - Examples | Cube number | 8 (= 2 | 3 | ) 27 (= 3 | 3 | ) 1000 (= 10 | 3 | ) | 10 648 (=22 | 3 | ) 1 (= 1 | 3 | ) 1 000 000 (= 100 | 3 | ) | An integer multiplied | by itself and then itself again | makes a cube number | 3 ( | ≠ | 1 | 3 | ) | 6 100 | 12 | -9 | 3 | Example 1 - I do… | Index form and language | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 5 1 5 1 Five | 5 5 2 | nd | 5 2 5 2 Five Squared | 5 ×5 3 | rd | 5 3 | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | Five | 2 | nd | Five Squared | 3 | rd | 110 | Introduction: | Squares numbers and | and | cube numbers are ways of multiplying a number by itself a certain number of | times, creating what we call powers. When you square a number, you multiply it by itself. Cubing a | number means multiplying it by itself and then multiplying by itself again. Knowing how to work with | squares and cubes is an important skill, as it forms the foundation for understanding powers, | exponents and roots. | Subtopic N3.23 – Squares, Cubes and Roots",
       "subtopicCode": "N3.23",
       "questionRefs": [],
       "contentsEntries": []
     },
     {
       "slideNumber": 111,
-      "text": "Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | | Example 3 – You do… | Example 2 – We do… | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | Two | 2 | nd | Two Squared | 3 | rd | | | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | Two | 2 | nd | Two Squared | 3 | rd | | 111 | Independent Practice | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | | a) | b) | 1. Fill in the blanks",
+      "text": "Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 4 1 4 1 2 | nd | 4 2 4 2 3 | rd | 4 3 Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | Example 3 – You do… | Example 2 – We do… | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 1 2 1 Two | 2 2 2 | nd | 2 2 2 2 Two Squared | 3 | rd | 2 3 | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | Two | 2 | nd | Two Squared | 3 | rd | 111 | Independent Practice | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 3 1 2 | nd | 3 2 3 | rd | 3 3 Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 1 1 2 | nd | 1 2 3 | rd | 1 3 Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | a) | b) | 1. Fill in the blanks",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
     },
     {
       "slideNumber": 112,
-      "text": "Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | | d) | 112 | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | | c) | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | | e) | f)",
+      "text": "Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 0 2 | nd | 0 3 | rd | 0 Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | d) | 112 | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 6 2 | nd | 6 3 | rd | 6 Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | c) | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 7 2 | nd | 7 3 | rd | 7 Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 8 2 | nd | 8 3 | rd | 8 Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | e) | f)",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
     },
     {
       "slideNumber": 113,
-      "text": "Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | | h) | 113 | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | | g) | To be able to recall the square numbers up to 15 squared | Steps | Calculate | | Calculate | Calculate | Identify the base. This is the number we are multiplying. | Identify the index. This is how many times we multiply the base number by itself. | Steps | Identify the base. This is the number we are multiplying. | Identify the index. This is how many times we multiply the base number by itself. | Example 4 - I do… | Example 5 – We do… | a) | | b) | | c) | | d) | | Independent Practice | 2. | Without using a calculator | , calculate the value of: | Example 6 – You do… | e) | | f) | | g) | | h) |",
+      "text": "Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 10 2 | nd | 10 3 | rd | 10 Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | h) | 113 | Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 9 2 | nd | 9 3 | rd | 9 Power | Base | Index | Index Form | Say | Calculation | Value | 1 | st | 2 | nd | 3 | rd | g) | To be able to recall the square numbers up to 15 squared | Steps | Calculate | Calculate | Calculate | Identify the base. This is the number we are multiplying. | Identify the index. This is how many times we multiply the base number by itself. | Steps | Identify the base. This is the number we are multiplying. | Identify the index. This is how many times we multiply the base number by itself. | Example 4 - I do… | Example 5 – We do… | a) | b) | c) | d) | Independent Practice | 2. | Without using a calculator | , calculate the value of: | Example 6 – You do… | e) | f) | g) | h)",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
     },
     {
       "slideNumber": 114,
-      "text": "i | ) The square of zero | j) Six squared | k)Twelve times twelve | l) | | m) | | n) | | o) 10 squared | p) | | q) | | r) | | s) | | | t) | | u) | | v) | | w) | | | x) | | 114 | y) | | z) | | aa) | | | ab) | | a) | | b) | | c) | | d) | | 3. Calculate the following. You may use a calculator. | Steps | Calculate | | Calculate | | Calculate | | Identify the base. This is the number we are multiplying. | Identify the index. This is how many times we multiply the base number by itself. | Steps | Identify the base. This is the number we are multiplying. | Identify the index. This is how many times we multiply the base number by itself. | Example 7 - I do… | Example 8 – We do… | Independent Practice | Example 9 – You do…",
+      "text": "i | ) The square of zero | j) Six squared | k)Twelve times twelve | l) | m) | n) | o) 10 squared | p) | q) | r) | s) | t) | u) | v) | w) | x) | 114 | y) | z) | aa) | ab) | a) | b) | c) | d) | 3. Calculate the following. You may use a calculator. | Steps | Calculate | Calculate | Calculate | Identify the base. This is the number we are multiplying. | Identify the index. This is how many times we multiply the base number by itself. | Steps | Identify the base. This is the number we are multiplying. | Identify the index. This is how many times we multiply the base number by itself. | Example 7 - I do… | Example 8 – We do… | Independent Practice | Example 9 – You do…",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
     },
     {
       "slideNumber": 115,
-      "text": "e) | | f) | | g) | | h) | | i) | | j) | | k) | | l) | | 115 | m) | | n) | - | | o) | | | p) | | To be able to recall the cube numbers up to 10 cubed | Steps | Calculate | | Calculate | | Calculate | | Identify the base. This is the number we are multiplying. | Identify the index. This is how many times we multiply the base number by itself. | Steps | Identify the base. This is the number we are multiplying. | Identify the index. This is how many times we multiply the base number by itself. | Example 10 - I do… | Example 12 – You do… | Example 11 – We do… | a) | | b) | | c) | | d) | | e) | | f) | | g) | | h) | | i) | | j) | | k) | | l) | | Independent Practice | 4. Calculate the value of:",
+      "text": "e) | f) | g) | h) | i) | j) | k) | l) | 115 | m) | n) | - | o) | p) | To be able to recall the cube numbers up to 10 cubed | Steps | Calculate | Calculate | Calculate | Identify the base. This is the number we are multiplying. | Identify the index. This is how many times we multiply the base number by itself. | Steps | Identify the base. This is the number we are multiplying. | Identify the index. This is how many times we multiply the base number by itself. | Example 10 - I do… | Example 12 – You do… | Example 11 – We do… | a) | b) | c) | d) | e) | f) | g) | h) | i) | j) | k) | l) | Independent Practice | 4. Calculate the value of:",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
     },
     {
       "slideNumber": 116,
-      "text": "116 | m) | | n) | | o) | | p) | | Skills Check | Which calculation means | ? | | What is the value | of | ? | Which of these is not a square number? | What is | ? | Which of these is a cube number? | What is the value of | ? | Skills Check | Mixed Practice | 5. Fill in the blanks: | 6. Circle the number that is in the wrong | place in the Venn diagram: | 7. Insert <, > or = to make the statement correct: | 8. 27, 64, 125, … are the 3 | rd | , 4 | th | and 5 | th | term from | what sequence of numbers? | a) | b)",
+      "text": "116 | m) | n) | o) | p) | Skills Check | Which calculation means | ? | A . 52 B . 5 ×2 C . 5 2 | What is the value | of | ? | A . 12 B . 62 C . 36 D . 3 Which of these is not a square number? | A . 9 B . 16 C . 36 D . 48 What is | ? | A . 9 B . 0.9 C . 0.6 D . 0.09 Which of these is a cube number? | A . 9 B . 16 C . 1 D . 4 What is the value of | ? | A . 9 B . 27 C . 1 D . 33 Skills Check | Mixed Practice | 5. Fill in the blanks: | 6. Circle the number that is in the wrong | place in the Venn diagram: | 7. Insert <, > or = to make the statement correct: | 8. 27, 64, 125, … are the 3 | rd | , 4 | th | and 5 | th | term from | what sequence of numbers? | a) | b)",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
     },
     {
       "slideNumber": 117,
-      "text": "Objectives: | To be able to recognise square roots as inverses of squares | To be able to recognise cube roots as inverses of cubes | Keywords: | - Square root | - Cube root | 117 | Introduction – Read and annotate: | Square roots and cube roots are the opposite, or inverse operations, of squaring and cubing. A square | root finds the original number that was squared, while a cube root finds the original number that was | cubed. Square and cube roots are especially important in algebra and geometry, where they help solve | equations involving areas, volumes and distances (Pythagoras’ Theorem). | Definition | Characteristics | The square root of a number is denoted by the symbol | . For example, | is equal to 3, because 3 x 3 = 9 | The square root of a positive number is a positive number. The square root of 0 is 0. There are no real square roots for negative numbers. | | Examples | Non - Examples | Square root | The square root of a number is a value that, when multiplied by itself, gives the original number. | = 4, because 4 x 4 = 16 | | = 1, because 1 x 1 = 1 | | = 0, because 0 x 0 = 0 | | | | | | | 3 | Calculating square roots up to | | Steps | Calculate | | Calculate | | Identify the value that, when multiplied by itself, gives the number being square rooted. | Steps | Identify the value that, when multiplied by itself, gives the number being square rooted. | Example 1 - I do… | Example 3 – You do… | Example 2 – We do… | a) | | b) | | c) | | d) | | f) | | g) | | h) | | i) | | 1. Calculate the following: | Independent Practice",
+      "text": "Objectives: | To be able to recognise square roots as inverses of squares | To be able to recognise cube roots as inverses of cubes | Keywords: | - Square root | - Cube root | 117 | Introduction – Read and annotate: | Square roots and cube roots are the opposite, or inverse operations, of squaring and cubing. A square | root finds the original number that was squared, while a cube root finds the original number that was | cubed. Square and cube roots are especially important in algebra and geometry, where they help solve | equations involving areas, volumes and distances (Pythagoras’ Theorem). | Definition | Characteristics | The square root of a number is denoted by the symbol | . For example, | is equal to 3, because 3 x 3 = 9 | The square root of a positive number is a positive number. The square root of 0 is 0. There are no real square roots for negative numbers. | Examples | Non - Examples | Square root | The square root of a number is a value that, when multiplied by itself, gives the original number. | = 4, because 4 x 4 = 16 | = 1, because 1 x 1 = 1 | = 0, because 0 x 0 = 0 | 3 | Calculating square roots up to | Steps | Calculate | Calculate 49 Calculate | Identify the value that, when multiplied by itself, gives the number being square rooted. | Steps | Identify the value that, when multiplied by itself, gives the number being square rooted. | Example 1 - I do… | Example 3 – You do… | Example 2 – We do… | a) | b) | c) | d) | f) | g) | h) | i) | 1. Calculate the following: | Independent Practice",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
     },
     {
       "slideNumber": 118,
-      "text": "118 | k) | | l) | | m) | | n) | | o) | | p | | q) | | r) | | Steps | Calculate | Calculate | If the numbers are square rooted separately, square root the numbers first then carry out the rest of the calculation. | If the numbers are within one square root, carry out the calculation within the root first and then square root. | Steps | Calculate | Calculate | If the numbers are square rooted separately, square root the numbers first then carry out the rest of the calculation. | If the numbers are within one square root, carry out the calculation within the root first and then square root. | Example 4 - I do… | Example 6 – You do… | Example 5 – We do… | a) | | b) | | c) | | d) | | e) | | f) | | g) | | h) | | i) | | j) | | k) | | l) | | m) | | n) | | o) | | p) | | Independent Practice | 2. Calculate the following:",
+      "text": "118 | k) | l) | m) | n) | o) | p | q) | r) | Steps | Calculate | Calculate Calculate | If the numbers are square rooted separately, square root the numbers first then carry out the rest of the calculation. | If the numbers are within one square root, carry out the calculation within the root first and then square root. | 9 + 16 9+16 36 + 64 36+64 25 + 144 25+144 Steps | Calculate | Calculate | If the numbers are square rooted separately, square root the numbers first then carry out the rest of the calculation. | If the numbers are within one square root, carry out the calculation within the root first and then square root. | Example 4 - I do… | Example 6 – You do… | Example 5 – We do… | a) | b) | c) | d) | e) | f) | g) | h) | i) | j) | k) | l) | m) | n) | o) | p) | Independent Practice | 2. Calculate the following:",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
     },
     {
       "slideNumber": 119,
-      "text": "e) | | f) | | | g) | | h) | | i) | | j) | | | k) | | l) | | m) | | n) | | | o) | | p) | | Steps | Calculate | Calculate | Square root the numerator. | Square root the denominator. | Steps | Square root the numerator. | Square root the denominator. | Example 7 - I do… | Example 9 – You do… | Example 8 – We do… | a) | | b) | | | c) | | d) | | Independent Practice | Calculating square roots up to | (involving fractions) | | 119 | 3. Calculate the following:",
+      "text": "e) | f) | g) | h) | i) | j) | k) | l) | m) | n) | o) | p) | Steps | Calculate | 25 16 Calculate 9 16 Calculate | 9 25 Square root the numerator. | Square root the denominator. | Steps | Square root the numerator. | Square root the denominator. | Example 7 - I do… | Example 9 – You do… | Example 8 – We do… | a) | b) | c) | d) | Independent Practice | Calculating square roots up to | (involving fractions) | 119 | 3. Calculate the following:",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
     },
     {
       "slideNumber": 120,
-      "text": "120 | Definition | Characteristics | The cube root of a number is denoted by the symbol | . For example, | is equal to 2, because 2 x 2 x 2 = 8. | The cube root of a positive number is a positive number. The cube root of 0 is 0. Unlike square roots, cube roots can be real numbers for both positive and negative numbers. | | Examples | Non - Examples | Cube root | The cube root of a number is a value that, when multiplied by itself and then by itself again, gives the original number. | = 3, because 3 x 3 x 3 = 27 | | = 1, because 1 x 1 x 1 = 1 | | = 0, because 0 x 0 x 0 = 0 | | | | | | | 3 | Steps | Calculate | | Calculate | | Identify the value that, when multiplied by itself then by itself again, gives the number being cube rooted. | Steps | Identify the value that, when multiplied by itself then by itself again, gives the number being cube rooted. | Example 10 - I do… | Example 12 – You do… | Example 11 – We do… | Calculating cube roots up to | | a) | | b) | | c) | | d) | | | Independent Practice | 8. Calculate the following: | e) | | f) | | g) | | h) | | | i) | | j) | | k) | | | l) | | | m) | | n) | | o) | | p) | | |",
+      "text": "120 | Definition | Characteristics | The cube root of a number is denoted by the symbol | . For example, | is equal to 2, because 2 x 2 x 2 = 8. | The cube root of a positive number is a positive number. The cube root of 0 is 0. Unlike square roots, cube roots can be real numbers for both positive and negative numbers. | Examples | Non - Examples | Cube root | The cube root of a number is a value that, when multiplied by itself and then by itself again, gives the original number. | = 3, because 3 x 3 x 3 = 27 | = 1, because 1 x 1 x 1 = 1 | = 0, because 0 x 0 x 0 = 0 | 3 | Steps | Calculate | Calculate 3 64 Calculate | Identify the value that, when multiplied by itself then by itself again, gives the number being cube rooted. | Steps | Identify the value that, when multiplied by itself then by itself again, gives the number being cube rooted. | Example 10 - I do… | Example 12 – You do… | Example 11 – We do… | Calculating cube roots up to | a) | b) | c) | d) | Independent Practice | 8. Calculate the following: | e) | f) | g) | h) | i) | j) | k) | l) | m) | n) | o) | p)",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
     },
     {
       "slideNumber": 121,
-      "text": "121 | Steps | Calculate | Calculate | Cube root the numerator. | Cube root the denominator | Steps | Cube root the numerator. | Cube root the denominator | Example 13 - I do… | Example 15 – You do… | Example 14 – We do… | Calculating cube roots up to | (involving fractions) | | a) | | b) | | c) | | d) | | | Independent Practice | 9. Calculate the following: | e) | | f) | | g) | | h) | | | i) | | l) | | j) | | k) | | Skills Check | ? | What is the value of | ? | Skills Check",
+      "text": "121 | Steps | Calculate | 3 125 64 Calculate 3 64 125 Calculate | 3 27 125 Cube root the numerator. | Cube root the denominator | Steps | Cube root the numerator. | Cube root the denominator | Example 13 - I do… | Example 15 – You do… | Example 14 – We do… | Calculating cube roots up to | (involving fractions) | a) | b) | c) | d) | Independent Practice | 9. Calculate the following: | e) | f) | g) | h) | i) | l) | j) | k) | Skills Check | 𝑤h𝑎𝑡 𝑖𝑠 𝑡h𝑒 𝑣𝑎𝑙𝑢𝑒 𝑜𝑓 9 ? | A . 3 B . 81 C . 18 D . 27 What is the value of | ? | A . 21 r 3 B . 4 C . 8 D . 192 Skills Check",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
     },
     {
       "slideNumber": 122,
-      "text": "Steps | Calculate the following | Calculate the following | Calculate the following | 1) Determine which operations are in the question | 2) Determine the correct order to perform the calculation | Steps | Calculate the following | Calculate the following | Calculate the following | 1) Determine which operations are in the question | 2) Determine the correct order to perform the calculation | Example 1 - I do… | Example 3 – You do… | 122 | Example 2 – We do… | Order of operations with | / | only or | / - only | | Question | Answer | a) | b) | c) | Question | Answer | 1. Work out the answers to the following: | Independent Practice | When calculations have only addition and subtraction OR only multiplication and division, work from left to right. | Subtopic N3.9 – Order of Operations | Objectives: | To correctly apply order of operations with the four operations. | To correctly apply order of operations including indices and brackets. | To insert brackets into calculations to make them correct. | LEARNING OUTCOME: To understand and apply correct order of operations | Keywords: | Operation | Index | Power | Root | Definition | Characteristics | Examples | In the expression 3 + 4, the operation is addition, which combines 3 and 4 to give a sum of 7. | In the expression 12 ÷ 3, the operation is division, indicating that 12 is shared into 3 equal parts, resulting in 4 | Non - Examples | Operations in mathematics refer to the basic mathematical actions or processes used to perform calculations and solve problems. | Operation | + | 23 | - | | | | 4.76 | Introduction – read and annotate: | In this unit so far, you’ve built strong foundations using the four operations. Now, you’ll apply that knowledge to solve problems using the correct order of operations. The order of operations follows a specific sequence: brackets first, then multiplication and division (from left to right), followed by addition and subtraction (from left to right). Understanding and applying this order is essential for solving multi-step problems accurately.",
+      "text": "Steps | Calculate the following | Calculate the following | Calculate the following | 1) Determine which operations are in the question | 2) Determine the correct order to perform the calculation | 6 ×3÷2 14−3+5 18÷6 ×2 Steps | Calculate the following | Calculate the following | Calculate the following | 1) Determine which operations are in the question | 2) Determine the correct order to perform the calculation | Example 1 - I do… | Example 3 – You do… | 122 | Example 2 – We do… | Order of operations with | / | only or | / - only | Question | Answer | a) | b) | c) | Question | Answer | 1. Work out the answers to the following: | Independent Practice | When calculations have only addition and subtraction OR only multiplication and division, work from left to right. | Subtopic N3.9 – Order of Operations | Objectives: | To correctly apply order of operations with the four operations. | To correctly apply order of operations including indices and brackets. | To insert brackets into calculations to make them correct. | LEARNING OUTCOME: To understand and apply correct order of operations | Keywords: | Operation | Index | Power | Root | Definition | Characteristics | Examples | In the expression 3 + 4, the operation is addition, which combines 3 and 4 to give a sum of 7. | In the expression 12 ÷ 3, the operation is division, indicating that 12 is shared into 3 equal parts, resulting in 4 | Non - Examples | Operations in mathematics refer to the basic mathematical actions or processes used to perform calculations and solve problems. | Operation | + | 23 | - | 4.76 | Introduction – read and annotate: | In this unit so far, you’ve built strong foundations using the four operations. Now, you’ll apply that knowledge to solve problems using the correct order of operations. The order of operations follows a specific sequence: brackets first, then multiplication and division (from left to right), followed by addition and subtraction (from left to right). Understanding and applying this order is essential for solving multi-step problems accurately.",
       "subtopicCode": "N3.9",
       "questionRefs": [
-        "1",
-        "2"
+        "Slide122-Q1",
+        "Slide122-Q2",
+        "Slide122-Q1",
+        "Slide122-Q2"
       ],
       "contentsEntries": []
     },
     {
       "slideNumber": 123,
-      "text": "d) | e) | f) | g) | h) | i) | j) | Steps | Calculate the following | Calculate the following | Calculate the following | 1) Determine which operations are in the question. | 2) Determine the correct order to perform the calculation. | ( | and | | before | and | ). | Steps | Calculate the following | Calculate the following | Calculate the following | Example 4 - I do… | Example 6 – You do… | Example 5 – We do… | Independent Practice | Question | Answer | a) | b) | Question | Answer | 123 | 2. Work out the answers to the following: | Order of operations with | | d) | e) | f) | g) | h) | i) | j)",
+      "text": "d) | e) | f) | g) | h) | i) | j) | Steps | Calculate the following | Calculate the following | Calculate the following | 1) Determine which operations are in the question. | 2) Determine the correct order to perform the calculation. | ( | and | before | and | ). | 6 +3×2 7+10 ÷5 18−6 ÷2 Steps | Calculate the following | Calculate the following | Calculate the following | Example 4 - I do… | Example 6 – You do… | Example 5 – We do… | Independent Practice | Question | Answer | a) | b) | Question | Answer | 123 | 2. Work out the answers to the following: | Order of operations with | d) | e) | f) | g) | h) | i) | j)",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2"
+        "Slide123-Q1",
+        "Slide123-Q2"
       ],
       "contentsEntries": []
     },
     {
       "slideNumber": 124,
-      "text": "Steps | Calculate the following | Calculate the following | Calculate the following | 1) Determine which operations are in the question. | 2) Determine the correct order to perform the calculation. | (powers and roots, then | and | | then | and | ). | Steps | Calculate the following | Calculate the following | Calculate the following | Example 7 - I do… | Example 9 – You do… | Example 8 – We do… | Independent Practice | Question | Answer | 10 | Question | Answer | 3. Work out the answers to the following: | Order of operations | involving powers and roots | 124",
+      "text": "Steps | Calculate the following | Calculate the following | Calculate the following | 1) Determine which operations are in the question. | 2) Determine the correct order to perform the calculation. | (powers and roots, then | and | then | and | ). | 6− 2 2 7 − 4 19+6 7+ 3 3 4 +12 3 27 + 4 2 8− 2 2 15 − 3 27 100 − 64 Steps | Calculate the following | Calculate the following | Calculate the following | Example 7 - I do… | Example 9 – You do… | Example 8 – We do… | Independent Practice | Question | Answer | 5− 2 2 7 + 3 2 9 2 +1 6 2 − 5 2 10 | 2+14 4 +3 3 2 × 5− 4 3 2 + 25 19−2 ×5 20− 2 2 × 3 2 2 × 3 −10 Question | Answer | 3. Work out the answers to the following: | Order of operations | involving powers and roots | 10 2 − 3 ×2 12+ 4 ×9 12 2 −9 × 4 124",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2"
+        "Slide124-Q1",
+        "Slide124-Q2"
       ],
       "contentsEntries": []
     },
     {
       "slideNumber": 125,
-      "text": "Order of operations | involving brackets | Steps | Calculate: | Calculate: | Calculate: | 1) Determine which operations are in the question | 2) Determine the correct order to perform the calculation | (brackets, | then | powers and roots, then | and | | then | and | ). | Steps | Calculate: | Calculate: | Calculate: | Example 10 - I do… | Example 12 – You do… | Example 11 – We do… | Independent Practice | 4. Work out the answers to the following: | Question | Answer | a) | b) | Question | Answer | 125 | c) | d) 15 | | e) | f) | g) | h) | i) | 3 | j) | k) | l) | m)",
+      "text": "Order of operations | involving brackets | Steps | Calculate: | Calculate: | Calculate: | 1) Determine which operations are in the question | 2) Determine the correct order to perform the calculation | (brackets, | then | powers and roots, then | and | then | and | ). | 4+3 2 3 × 10−2 4−1 3 20 −3 ×(2+4) 7−2 2 4+ 3 ×(1+5) Steps | Calculate: | Calculate: | Calculate: | Example 10 - I do… | Example 12 – You do… | Example 11 – We do… | Independent Practice | 4. Work out the answers to the following: | Question | Answer | a) | b) | Question | Answer | 125 | c) | d) 15 | e) | f) | g) | h) | i) | 3 | j) | k) | l) | m)",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2"
+        "Slide125-Q1",
+        "Slide125-Q2"
       ],
       "contentsEntries": []
     },
     {
       "slideNumber": 126,
-      "text": "126 | Steps | Insert brackets to make the following calculation correct | Insert brackets to make the following calculation correct | Insert brackets to make the following calculation correct | 1) Determine the current order of operations. | 2) Insert brackets to change the order of operations. | Steps | Insert brackets to make the following calculation correct | Insert brackets to make the following calculation correct | Insert brackets to make the following calculation correct | 1) Determine the current order of operations. | 2) Insert brackets to change the order of operations. | Example 13 - I do… | Example 15 – You do… | Example 14 – We do… | Independent Practice | 5. | Insert brackets to make the following calculations correct | : | Inserting Brackets | a) | b) | c) | d) | e) | f) | g) | h) | i) | j) | k) | l) | m) | n)",
+      "text": "126 | Steps | Insert brackets to make the following calculation correct | Insert brackets to make the following calculation correct | Insert brackets to make the following calculation correct | 1) Determine the current order of operations. | 2) Insert brackets to change the order of operations. | 10 ×2+6=80 5+2 ×3+1=13 5+5 ÷5=2 Steps | Insert brackets to make the following calculation correct | Insert brackets to make the following calculation correct | Insert brackets to make the following calculation correct | 1) Determine the current order of operations. | 2) Insert brackets to change the order of operations. | Example 13 - I do… | Example 15 – You do… | Example 14 – We do… | Independent Practice | 5. | Insert brackets to make the following calculations correct | : | Inserting Brackets | a) | b) | c) | d) | e) | f) | g) | h) | i) | j) | k) | l) | m) | n)",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2"
+        "Slide126-Q1",
+        "Slide126-Q2",
+        "Slide126-Q1",
+        "Slide126-Q2"
       ],
       "contentsEntries": []
     },
     {
       "slideNumber": 127,
-      "text": "Skills Check | 127 | What is the answer to the following: | | A. 18 B. 48 C. 37 D. 7 | What is the answer to the following: | | A. 16 B. 31 C. 4 D. 121 | What is the answer to the following: | | A. 19 B. 18 C. 21 D. 14 | What is the answer to the following: | | A. 441 B. 9 C. 18 D. 42 | What is the answer to the following: | | A. 26 B. 90 C. 14 D. 2",
+      "text": "Skills Check | 127 | What is the answer to the following: | A. 18 B. 48 C. 37 D. 7 | What is the answer to the following: | A. 16 B. 31 C. 4 D. 121 | What is the answer to the following: | A. 19 B. 18 C. 21 D. 14 | What is the answer to the following: | A. 441 B. 9 C. 18 D. 42 | What is the answer to the following: | A. 26 B. 90 C. 14 D. 2",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
@@ -1239,8 +1282,8 @@
       "text": "Steps | Write down the first five | multiples of 12 | Write down the first five | multiples of 7 | Write down the first five | multiples of 4 | 1) Consider the times table of the number. | 2) | Write down the first five numbers in the times table of the number. | 1 x 12 = 12 | 2 x 12 = 24 | 3 x 12 = 36 | 4 x 12 = 48 | 5 x 12 = 60 | Example 1 - I do… | Example 3 – You do… | Subtopic N3.10 – Multiples | Objectives: | List the multiple of any given integer. | Identify the multiples of a given integer in a list of numbers. | To identify common multiples of two or more numbers. | LEARNING OUTCOME: To understand and be able to list multiples of a number. | Keywords: | Multiple | Factors | Prime number | Prime factor | Definition | Characteristics | Examples | Non - Examples | A multiple is the result of multiplying a positive integer by another positive integer. | Often given as a list by multiplying the same number by 1, 2, 3, 4 etc. in turn. | Will always be greater than or equal to the starting number. | Multiples | Example 2 – We do… | Listing multiples | 128 | Multiples of 6 = | 1 x 6= 12, 2 x 6 = 12, 3 x 6 = 18, 4 x 6 = 24 etc. | Multiples of 19 = | 1 x 19 = 19, 2 x 19 = 38, 3 x 19 = 57 etc. | 3 is not a multiple of 6 | 2 is not a multiple of 4 or 6 or 8 etc. | 1 is not a multiple of any number except 1 | Introduction – read and annotate: | So far, you’ve been using multiplication to solve problems. Now, you’re going to learn about | multiples, which are the numbers you get when you count in times tables. For example, the multiples | of 4 are 4, 8, 12, 16, and so on. Understanding multiples will also help you later when you learn how | to find the lowest common multiple (LCM) of two or more numbers.",
       "subtopicCode": "N3.10",
       "questionRefs": [
-        "1",
-        "2"
+        "Slide128-Q1",
+        "Slide128-Q2"
       ],
       "contentsEntries": []
     },
@@ -1256,14 +1299,14 @@
       "text": "a) 2 | b) 3 | c) 4 | d) 5 | e) 8 | f) 10 | 2. List all the numbers between 40 and 60 (inclusive) that are multiples of: | Steps | List all the numbers between 20 and 50 (inclusive) that are | multiples of 7 | List all the numbers between 20 and 50 (inclusive) that are | multiples of 5 | List all the numbers between 20 and 50 (inclusive) that are | multiples of 6 | 1) Consider the times table of the number. | 2) | Write down all the multiples within the specified range. | Example 4- I do… | Example 5 – We do… | Example 6 – You do… | Identifying multiples that fit specific conditions | a) 6 | b) 7 | c) 9 | d) 11 | e) 18 | f) 37 | 3. List all the numbers between 15 and 35 (inclusive) that are multiples of: | 130 | Independent Practice",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2"
+        "Slide130-Q1",
+        "Slide130-Q2"
       ],
       "contentsEntries": []
     },
     {
       "slideNumber": 131,
-      "text": "4. Here is a list of numbers: | 12 15 17 20 22 25 27 30 32 35 39 40 | | From the list write down any numbers that are multiples of: | a) 2 | b) 5 | c) 4 | d) 10 | e) 8 | f) 16 | g) 15 | h) 25 | i | ) 1 | a) 2 | b) 3 | c) 5 | d) 4 | e) 10 | f) 11 | g) 6 | h) 12 | i | ) 7 | 5. Here is a list of numbers: | | 100 101 102 103 104 105 106 107 108 109 | | | From the list write down any numbers that are multiples of: | 131",
+      "text": "4. Here is a list of numbers: | 12 15 17 20 22 25 27 30 32 35 39 40 | From the list write down any numbers that are multiples of: | a) 2 | b) 5 | c) 4 | d) 10 | e) 8 | f) 16 | g) 15 | h) 25 | i | ) 1 | a) 2 | b) 3 | c) 5 | d) 4 | e) 10 | f) 11 | g) 6 | h) 12 | i | ) 7 | 5. Here is a list of numbers: | 100 101 102 103 104 105 106 107 108 109 | From the list write down any numbers that are multiples of: | 131",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
@@ -1277,7 +1320,7 @@
     },
     {
       "slideNumber": 133,
-      "text": "133 | 9. A light flashes every 8 seconds. How many times will it flash in 3 minutes? | g) 18 is a multiple of 1 | True/ False | h) 18 is a multiple of 18 | True/ False | i | ) 18 is a multiple of 9 | True/ False | j) 9 is a multiple of 9 | True/ False | k) 7 is a multiple of 7 | True/ False | l) 17 is a multiple of 7 | True/ False | m) 27 is a multiple of 7 | True/ False | n) 37 is a multiple of 7 | True/ False | o) 36 is a multiple of 6 | True/ False | p) 36 is a multiple of 12 | True/ False | q) 36 is a multiple of 24 | True/ False | r) 6 is a multiple of 24 | True/ False | s) 24 is a multiple of 6 | True/ False | t) 24 is a multiple of 1 | True/ False | u) 1 is a multiple of 1 | True/ False | v) 1 is a multiple of 2 | True/ False | Skills Check | Sheila is listing the multiples of 7 in ascending order. | She starts with 7. What number should she write next? | | Which of these is not a multiple of 8? | 8 4 40 800",
+      "text": "133 | 9. A light flashes every 8 seconds. How many times will it flash in 3 minutes? | g) 18 is a multiple of 1 | True/ False | h) 18 is a multiple of 18 | True/ False | i | ) 18 is a multiple of 9 | True/ False | j) 9 is a multiple of 9 | True/ False | k) 7 is a multiple of 7 | True/ False | l) 17 is a multiple of 7 | True/ False | m) 27 is a multiple of 7 | True/ False | n) 37 is a multiple of 7 | True/ False | o) 36 is a multiple of 6 | True/ False | p) 36 is a multiple of 12 | True/ False | q) 36 is a multiple of 24 | True/ False | r) 6 is a multiple of 24 | True/ False | s) 24 is a multiple of 6 | True/ False | t) 24 is a multiple of 1 | True/ False | u) 1 is a multiple of 1 | True/ False | v) 1 is a multiple of 2 | True/ False | Skills Check | Sheila is listing the multiples of 7 in ascending order. | She starts with 7. What number should she write next? | Which of these is not a multiple of 8? | 8 4 40 800",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
@@ -1312,7 +1355,7 @@
     },
     {
       "slideNumber": 138,
-      "text": "138 | d) | Marta says odd square numbers have exactly three factors. Give one example where this is correct and another where this is not correct. In each case, write down the number and its factors | Correct: | Not correct: | e) Write three factors of 30 that are | not | factors of 15. | f) Jamil says that cube numbers have an odd number of factors. Is this statement always, sometimes or never true? You must explain your reasoning and give examples to support this. | 5. Here is a list of numbers: | 3 5 8 11 14 19 20 21 30 35 40 | | From the list write down any numbers that are factors of: | a) 30 | b) 15 | c) 60 | d) 80 | e) 100 | f) 120 | g) 196 | h) 10 | i | ) 2",
+      "text": "138 | d) | Marta says odd square numbers have exactly three factors. Give one example where this is correct and another where this is not correct. In each case, write down the number and its factors | Correct: | Not correct: | e) Write three factors of 30 that are | not | factors of 15. | f) Jamil says that cube numbers have an odd number of factors. Is this statement always, sometimes or never true? You must explain your reasoning and give examples to support this. | 5. Here is a list of numbers: | 3 5 8 11 14 19 20 21 30 35 40 | From the list write down any numbers that are factors of: | a) 30 | b) 15 | c) 60 | d) 80 | e) 100 | f) 120 | g) 196 | h) 10 | i | ) 2",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
@@ -1326,7 +1369,7 @@
     },
     {
       "slideNumber": 140,
-      "text": "140 | Skills Check | Which of the following is a factor of 60? | | A. 0 B. 15 C. 120 D. 180 | List all the factors of 12. | 12, 24, 36, 48,… B. 1, 2, 3, 5, 6 and 12 C. 2, 3, 4 and 6 D. 1, 2, 3, 4, 6 and 12 | 1, 2, 4, 8 are the only factors of: | 1 B. 8 C. 16 D. 64 | Which of the following numbers is a factor of 60 and a multiple of 6? | A. 3 B. 12 C. 20 D. 120",
+      "text": "140 | Skills Check | Which of the following is a factor of 60? | A. 0 B. 15 C. 120 D. 180 | List all the factors of 12. | 12, 24, 36, 48,… B. 1, 2, 3, 5, 6 and 12 C. 2, 3, 4 and 6 D. 1, 2, 3, 4, 6 and 12 | 1, 2, 4, 8 are the only factors of: | 1 B. 8 C. 16 D. 64 | Which of the following numbers is a factor of 60 and a multiple of 6? | A. 3 B. 12 C. 20 D. 120",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []
@@ -1336,8 +1379,8 @@
       "text": "Steps | Find the LCM of 3 and 7 | Find the LCM of 6 and 9 | Find the LCM of 5 and 8 | 1) List the first few multiples of each number. | 2) | Identify the multiples common to both lists, then circle the lowest common multiple. | Multiples of 3 | 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42… | Multiples of 7 | 7, 14, 21, 28, 35, 42, 49… | Example 1 - I do… | Example 3 – You do… | 141 | Subtopic N3.12 – Lowest Common Multiple | Objectives: | To understand what the LCM represents. | To find the LCM of two or more numbers. | To solve word problems using the concept of LCM | LEARNING OUTCOME: To find the lowest common multiple (LCM) of a group of numbers. | Keywords: | Multiples | Common Multiples | Lowest Common Multiples | Example 2 – We do… | Identifying the lowest common multiple of two numbers | Definition | Characteristics | Examples | Non - Examples | The smallest integer which is a multiple of two or more positive integers. | Will be greater than or equal to the largest of the numbers. | Often abbreviated to LCM | Appears in the times table of all given numbers | Lowest common multiple | LCM of 8 and 12 = 24 | LCM of 30 and 15 = 30 | LCM of 3 and 7 = 21 | LCM of 4, 5 and 6 = 60 | LCM of 4 and 6 ≠ 2 | LCM of 3 and 5 ≠ 1 | LCM of 4 and 8 ≠ 4 | Introduction: | The lowest common multiple (LCM) is the smallest number that two (or more) numbers both divide | into evenly. Think of it as the first number that both numbers \"share\" when you list their multiples. The | LCM is useful when you’re adding or subtracting fractions, scheduling events, or solving problems that | involve repeated cycles or patterns.",
       "subtopicCode": "N3.12",
       "questionRefs": [
-        "1",
-        "2"
+        "Slide141-Q1",
+        "Slide141-Q2"
       ],
       "contentsEntries": []
     },
@@ -1374,8 +1417,8 @@
       "text": "146 | h) Miss Paisley is organising games for the children in her class. She is going to put the children into teams. If she puts the children into teams of 4, there will be 2 children left out. If she puts the children into teams of 5, there will be 3 children left out. Work out the smallest possible number of children in Miss Paisley's class. | Steps | Find the LCM of 2, 3 and 5 | Find the LCM of 5, 3 and 4 | Find the LCM of 6, 4 and 9 | 1) List the first few multiples of each number. | 2) | Identify the multiples common to all lists, then circle the lowest common multiple. | Multiples of 2 | 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30… | Multiples of 3 | 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33… | Multiples of 5 | 5, 10, 15, 20, 25, 30, 35… | Example 4 - I do… | Example 5 – We do… | Example 6 – You do… | Identifying the lowest common multiple of more than two numbers | 5. | Find the lowest common multiple (LCM) of each of these sets of numbers. | Independent Practice | a) 2, 4 and 5 | b) 2, 5 and 7 | c) 5, 6 and 9",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2"
+        "Slide146-Q1",
+        "Slide146-Q2"
       ],
       "contentsEntries": []
     },
@@ -1426,8 +1469,8 @@
       "text": "153 | Objectives: | To understand the concept of highest common factor. | To be able to recognise common factors and identify the highest. | To be able to apply the concept of highest common factors in problem solving. | LEARNING OUTCOME: To understand and be able to list the common factors of a number, identifying the highest common factor | Keywords: | Factor | Highest Common Factor | Subtopic N3.13 – Highest Common Factor | Steps | Find the HCF of 10 and 15 | Find the HCF of 16 and 24 | Find the HCF of 12 and 18 | 1) List all the factors of each number. | 2) | Identify the factors common to both lists, then circle the highest common factor. | Factors of 10 | 1, 2, 5, 10 | Factors of 15 | 1, 3, 5, 15 | Example 1 - I do… | Example 3 – You do… | Example 2 – We do… | Calculating the highest common factor of two numbers | Definition | Characteristics | Examples | Non - Examples | The largest integer which is a factor of two or more given positive integers. | Will be less than or equal to the smallest of the given numbers. | Often abbreviated to HCF | Highest common factor | HCF of 8 and 12 = 4 | HCF of 30 and 15 = 15 | HCF of 4 and 15 = 1 | LCM of 4, 6 and 10 = 2 | HCF of 1 and 2 ≠ 2 | HCF of 4 and 8 ≠ 8 | HCF of 4 and 5 ≠ 20 | Introduction – Read and annotate: | The | highest common factor | (HCF), is the biggest number that can divide two (or more) numbers | evenly, with no remainder. Think of it as the largest number that both numbers \"share\" as a factor. The | HCF is useful for simplifying fractions, dividing things into equal parts, and finding the biggest group | that something can be split into evenly.",
       "subtopicCode": "N3.13",
       "questionRefs": [
-        "1",
-        "2"
+        "Slide153-Q1",
+        "Slide153-Q2"
       ],
       "contentsEntries": []
     },
@@ -1478,8 +1521,8 @@
       "text": "160 | Steps | Find the HCF of 12, 6 and 15 | Find the HCF of 27, 33 and 12 | Find the HCF of 30, 15 and 25 | 1) List all the factors of each number. | 2) | Identify the factors common to each list, then circle the highest common factor. | Factors of 12 | 1, 2, 3, 4, 6, 12 | Factors of 6 | 1, 2, 3, 6 | Factors of 15 | 1, 3, 5, 15 | Example 4 - I do… | Example 6 – You do… | Example 5 – We do… | Calculating the highest common factor of more than two numbers | 5.Work out the highest common factor of the following pairs of numbers: | Independent Practice | a) 8, 20 and 12 | b) 10, 25 and 13 | c) 12, 24 and 30 | d) 9, 36 and 45 | e) 100, 125 and 200 | f) 56, 42 and 98 | g) 80, 16 and 96 | h) 14, 49 and 7 | i | ) 4, 37 and 51",
       "subtopicCode": null,
       "questionRefs": [
-        "1",
-        "2"
+        "Slide160-Q1",
+        "Slide160-Q2"
       ],
       "contentsEntries": []
     },
@@ -1523,7 +1566,7 @@
       "text": "166 | Objectives: | To be able to recognise prime numbers. | To be able to use prime numbers in problem solving. | To be able to write a number as a product of its prime factors | LEARNING OUTCOME: To be able to describe the properties of prime numbers and write numbers as a product of prime factors. | Keywords: | Prime | Factor | Product | Subtopic N3.24 – | Introduction to Primes | Definition | Characteristics | Examples | Non - Examples | A positive integer with precisely two distinct factors. | The factors of the number will be 1 and the number itself. | Prime Number | 2 3 5 | 7 11 13 17 | 19 23 29 | 31 37 41 43 | 1 4 6 | 9 15 25 27 | 72 63 81 -2 | 36 39 50 | Definition | Characteristics | Examples | Non - Examples | A positive integer with three or more factors. | 4 is the smallest composite number | 2 is the only even number that is not composite. | Composite Number | 4 6 8 | 9 10 12 14 | 15 16 18 | 0 1 2 | 3 5 7 11 | 13 17 19 | Introduction: | Prime numbers are special numbers greater than 1 that can only be divided evenly by 1 and | themselves. For example, 2, 3, 5, and 7 are prime numbers because they have no other factors. Every | whole number can be broken down into a product of prime numbers, called its prime factorisation. | This is like finding the building blocks of a number—it's a way to express any number using only primes. | Steps | List the factors of 24 | List the factors of 25 | List the factors 18 | 1) Starting with 1, list the pairs of factors that multiply to make the number. | Example 1 - I do… | Example 3 – You do… | Example 2 – We do… | Identifying prime and composite numbers",
       "subtopicCode": "N3.24",
       "questionRefs": [
-        "1"
+        "Slide166-Q1"
       ],
       "contentsEntries": []
     },
@@ -1532,7 +1575,7 @@
       "text": "167 | Steps | List the factors of 13 | List the factors of 23 | List the factors 17 | 1) Starting with 1, list the pairs of factors that multiply to make the number. | Example 4 - I do… | Example 6 – You do… | Example 5 – We do… | A prime number has exactly _________________________________________________________. | A composite number must have at least ___________________________________________________. | 24, 25 and 18 are composite numbers because they have ______________________________________. | 13, 23 and 17 are prime numbers because they have _________________________________________. | 1 is not a composite number or a prime number because _____________________________________. | It is not possible for a positive whole number to have ________ factors. | Independent Practice | 1. The following numbers are prime numbers. True or false? | a) 10 | True/ False | b) 9 | True/ False | c) 8 | True/ False | d) 7 | True/ False | e) 6 | True/ False | f) 5 | True/ False | g) 4 | True/ False | h) 3 | True/ False | i | ) 2 | True/ False | j) 1 | True/ False | k) 15 | True/ False | l) 17 | True/ False | m) 19 | True/ False | n) 21 | True/ False | o) 23 | True/ False | p) 27 | True/ False",
       "subtopicCode": null,
       "questionRefs": [
-        "1"
+        "Slide167-Q1"
       ],
       "contentsEntries": []
     },
@@ -1568,10 +1611,7 @@
       "slideNumber": 172,
       "text": "172 | Mixed Fluency | 1. Complete the multiplication grid: | 2. Work out the missing numbers: | 3. Answer the following division questions: | 4. Answer the following: | 5. Answer the following: | 6. Fill in the blanks using the word ‘factor’ or ‘multiple’. | 7. Convert the following measurements: | Method Selection | 72 | 8 | 168 | 132 | 68 | a) | b) | c) | d) | e) | f) | 4 x 2 + 3 | 5 x (3 + 4) – 9 | 3 + 2 | 2 | (3 + 1) | 2 | + 10 ÷ 2",
       "subtopicCode": null,
-      "questionRefs": [
-        "4",
-        "1"
-      ],
+      "questionRefs": [],
       "contentsEntries": []
     },
     {
@@ -1632,7 +1672,7 @@
     },
     {
       "slideNumber": 181,
-      "text": "BIG PICTURE | How will my prior knowledge develop my understanding of this topic? | KS2 | The following topics from KS2 are the ‘building block’ knowledge for this topic: Recall multiplication and division facts; Use facts including multiplying by 0 and 1; Use place value to multiply and divide mentally; Area of rectangles. | Y7 | The following topics from earlier in the year are also ‘building block’ knowledge for this topic: N1.1 and N1.6 (Place Value); N2.4, N2.5, N2.6 and N2.7 (Formal methods for addition and subtraction of integers and decimals). | Learning Journey | Subtopics: | N3.3 to N3.4 | ↓ | Metric units: | converting between measures involving multiplying and dividing by powers of 10 | Subtopics: | N3.17 to N3.19 | ↓ | Other applications of multiplication and division: | Mean, squares and cubes, order of operations | Subtopics: | N3.6 to N3.10 | ↓ | Multiplication and applications: | multiplication, area of 2D shapes | Subtopic: | N3.20 to N3.24 | Factors, multiples and primes: | HCF, LCM, systematic listing | Subtopics: | N3.12 to N3.16 | ↗ | Division and applications: | division | | of integers and decimals, finding missing lengths given the area | Key knowledge | By the end of this topic you should know… | The properties of multiplication and division including formal methods and by powers of 10; Area is the space inside a 2D shape; The mean is a number that is the average of a set of numbers, found by the total sum of all of the numbers in a data set divided by the number of values in the set; Square and square root are inverses, and cube and cube roots are inverses; The order of operations are a series of rules that tell us the sequence in which we should solve an expression with multiple operations; Factors are divisors of a number, leaving no remainder; Multiples are the numbers you get when you multiply a certain number by an integer; Prime numbers are whole numbers greater than 1 with only two factors. | By the end of this topic should be able to do… | Apply | formal methods | for multiplication and division of | integers | and | decimals | ; Calculate the | area | of | rectangles, parallelograms, triangles & compound shapes and use this to find missing side lengths | ; Apply knowledge of addition and subtraction to | mean, squares, cubes, roots | and | order of operations | ; Understand | factors | and | multiples, | including | | HCF, LCM and | prime | numbers. | How will this knowledge develop my understanding of future topics? | Y7 | A good understanding of multiplication and division underpins the following Y7 topics: Negative Numbers (N4), Algebraic Manipulation (A1), FDP (N6). | Y8 | The key multiplication and division knowledge from this unit will feed into Developing Number Sense, Multiplication and Division of Fractions and Proportion, Ratio and Scale in Y8. Area is explored further in Y8 during: Circles and Trapezia; Surface Area. | Y9 | Your knowledge will develop further in Y9 during: Volume; Advanced Proportion and Rates of Change; Similarity and Enlargement. | 181",
+      "text": "BIG PICTURE | How will my prior knowledge develop my understanding of this topic? | KS2 | The following topics from KS2 are the ‘building block’ knowledge for this topic: Recall multiplication and division facts; Use facts including multiplying by 0 and 1; Use place value to multiply and divide mentally; Area of rectangles. | Y7 | The following topics from earlier in the year are also ‘building block’ knowledge for this topic: N1.1 and N1.6 (Place Value); N2.4, N2.5, N2.6 and N2.7 (Formal methods for addition and subtraction of integers and decimals). | Learning Journey | Subtopics: | N3.3 to N3.4 | ↓ | Metric units: | converting between measures involving multiplying and dividing by powers of 10 | Subtopics: | N3.17 to N3.19 | ↓ | Other applications of multiplication and division: | Mean, squares and cubes, order of operations | Subtopics: | N3.6 to N3.10 | ↓ | Multiplication and applications: | multiplication, area of 2D shapes | Subtopic: | N3.20 to N3.24 | Factors, multiples and primes: | HCF, LCM, systematic listing | Subtopics: | N3.12 to N3.16 | ↗ | Division and applications: | division | of integers and decimals, finding missing lengths given the area | Key knowledge | By the end of this topic you should know… | The properties of multiplication and division including formal methods and by powers of 10; Area is the space inside a 2D shape; The mean is a number that is the average of a set of numbers, found by the total sum of all of the numbers in a data set divided by the number of values in the set; Square and square root are inverses, and cube and cube roots are inverses; The order of operations are a series of rules that tell us the sequence in which we should solve an expression with multiple operations; Factors are divisors of a number, leaving no remainder; Multiples are the numbers you get when you multiply a certain number by an integer; Prime numbers are whole numbers greater than 1 with only two factors. | By the end of this topic should be able to do… | Apply | formal methods | for multiplication and division of | integers | and | decimals | ; Calculate the | area | of | rectangles, parallelograms, triangles & compound shapes and use this to find missing side lengths | ; Apply knowledge of addition and subtraction to | mean, squares, cubes, roots | and | order of operations | ; Understand | factors | and | multiples, | including | HCF, LCM and | prime | numbers. | How will this knowledge develop my understanding of future topics? | Y7 | A good understanding of multiplication and division underpins the following Y7 topics: Negative Numbers (N4), Algebraic Manipulation (A1), FDP (N6). | Y8 | The key multiplication and division knowledge from this unit will feed into Developing Number Sense, Multiplication and Division of Fractions and Proportion, Ratio and Scale in Y8. Area is explored further in Y8 during: Circles and Trapezia; Surface Area. | Y9 | Your knowledge will develop further in Y9 during: Volume; Advanced Proportion and Rates of Change; Similarity and Enlargement. | 181",
       "subtopicCode": null,
       "questionRefs": [],
       "contentsEntries": []

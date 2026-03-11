@@ -30,7 +30,21 @@
       "required": ["stem", "format"],
       "properties": {
         "stem": { "type": "string" },
-        "format": { "type": "string", "enum": ["MCQ", "SHORT", "NUMERIC", "MULTI_STEP", "MATCH", "OTHER"] },
+        "format": {
+          "type": "string",
+          "enum": [
+            "TRUE_FALSE",
+            "SINGLE_CHOICE",
+            "SHORT_TEXT",
+            "NUMERIC",
+            "ORDER_SEQUENCE",
+            "MCQ",
+            "SHORT",
+            "MULTI_STEP",
+            "MATCH",
+            "OTHER"
+          ]
+        },
         "options": {
           "type": "array",
           "items": { "type": "string" }
@@ -176,5 +190,105 @@
         "quality_status": { "type": "string", "enum": ["DRAFT", "REVIEWED", "APPROVED"] }
       }
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "question": {
+            "properties": {
+              "format": { "enum": ["TRUE_FALSE"] }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "question": {
+            "required": ["options"],
+            "properties": {
+              "options": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "question": {
+            "properties": {
+              "format": { "enum": ["SINGLE_CHOICE", "MCQ"] }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "question": {
+            "required": ["options", "answer"],
+            "properties": {
+              "options": {
+                "type": "array",
+                "minItems": 2,
+                "uniqueItems": true
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "question": {
+            "properties": {
+              "format": { "enum": ["ORDER_SEQUENCE"] }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "question": {
+            "required": ["options", "answer"],
+            "properties": {
+              "options": {
+                "type": "array",
+                "minItems": 2,
+                "uniqueItems": true
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "question": {
+            "properties": {
+              "format": { "enum": ["SHORT_TEXT", "NUMERIC", "SHORT"] }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "marking": {
+            "properties": {
+              "accepted_answers": {
+                "type": "array",
+                "minItems": 1
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
 }

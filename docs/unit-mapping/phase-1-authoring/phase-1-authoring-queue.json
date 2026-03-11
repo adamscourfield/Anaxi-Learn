@@ -1,0 +1,691 @@
+[
+  {
+    "skillCode": "N1.1",
+    "sourceTitle": "Recognise the place value of any number in an integer up to one billion",
+    "appSkillName": "Recognise the place value of each digit in whole numbers up to millions",
+    "status": "REVIEW_AND_FIX",
+    "currentRealItems": 30,
+    "currentPlaceholderItems": 2,
+    "currentTypeCounts": {
+      "SHORT_NUMERIC": 10,
+      "SHORT_TEXT": 9,
+      "MCQ": 9,
+      "TRUE_FALSE": 2
+    },
+    "targetCounts": {
+      "onboarding": 4,
+      "learn": 10,
+      "reteach": 6,
+      "total": 20
+    },
+    "shortfall": 0,
+    "sampleQuestions": [
+      "What is the value of the digit 7 in 3,742,915?",
+      "In 504,081, what is the place value of digit 4?",
+      "Write 8,030,406 in expanded form.",
+      "Which number has digit 5 worth 50,000?",
+      "What is the value of 8 in 1,863,205?"
+    ],
+    "reviewPackFile": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/unit-mapping/curriculum-review-packs/n1-1.md",
+    "focusNotes": [
+      "Current DB still includes 2 placeholder item(s) for this skill."
+    ]
+  },
+  {
+    "skillCode": "N1.2",
+    "sourceTitle": "Write integers in words and figures",
+    "appSkillName": "Write integers in words and figures",
+    "status": "REVIEW_AND_FIX",
+    "currentRealItems": 29,
+    "currentPlaceholderItems": 2,
+    "currentTypeCounts": {
+      "SHORT_TEXT": 13,
+      "SHORT_NUMERIC": 13,
+      "MCQ": 3
+    },
+    "targetCounts": {
+      "onboarding": 4,
+      "learn": 10,
+      "reteach": 6,
+      "total": 20
+    },
+    "shortfall": 0,
+    "sampleQuestions": [
+      "Write 4,206 in words.",
+      "Write \"seven thousand and forty\" in figures.",
+      "Which is the correct figure for \"ninety thousand three hundred and five\"?",
+      "Write 13,050 in words.",
+      "Write \"two hundred and nine\" in figures."
+    ],
+    "reviewPackFile": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/unit-mapping/curriculum-review-packs/n1-2.md",
+    "focusNotes": [
+      "Current DB still includes 2 placeholder item(s) for this skill."
+    ]
+  },
+  {
+    "skillCode": "N1.3",
+    "sourceTitle": "N1.3",
+    "appSkillName": "Compare two numbers using =, ≠, <, >, ≤, ≥",
+    "status": "REVIEW_AND_FIX",
+    "currentRealItems": 136,
+    "currentPlaceholderItems": 2,
+    "currentTypeCounts": {
+      "TRUE_FALSE": 15,
+      "MCQ": 57,
+      "SHORT_TEXT": 43,
+      "SHORT_NUMERIC": 21
+    },
+    "targetCounts": {
+      "onboarding": 4,
+      "learn": 10,
+      "reteach": 6,
+      "total": 20
+    },
+    "shortfall": 0,
+    "sampleQuestions": [
+      "3 < 5",
+      "1 < 0",
+      "902 < 93",
+      "8106 > 8099",
+      "3751 < 3699"
+    ],
+    "reviewPackFile": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/unit-mapping/curriculum-review-packs/n1-3.md",
+    "focusNotes": [
+      "Use TRUE_FALSE for statement checks and SHORT_TEXT for symbol insertion. Avoid padded 4-option MCQ.",
+      "Current DB still includes 2 placeholder item(s) for this skill."
+    ]
+  },
+  {
+    "skillCode": "N1.4",
+    "sourceTitle": "Order a list of integers",
+    "appSkillName": "Use and interpret inequalities in context (incl number lines and statements)",
+    "status": "REVIEW_AND_FIX",
+    "currentRealItems": 30,
+    "currentPlaceholderItems": 2,
+    "currentTypeCounts": {
+      "SHORT_TEXT": 25,
+      "SHORT_NUMERIC": 3,
+      "TRUE_FALSE": 2
+    },
+    "targetCounts": {
+      "onboarding": 4,
+      "learn": 10,
+      "reteach": 6,
+      "total": 20
+    },
+    "shortfall": 0,
+    "sampleQuestions": [
+      "Order these integers in descending order: 872, 802, 870, 780, 827.",
+      "Order these integers in descending order: 542, 412, 585, 591, 572.",
+      "Which is the correct descending order for 333, 395, 299, 313, 329?",
+      "Order these integers in ascending order: 8, 5, 9, 10, 2.",
+      "Order these integers in ascending order: 11, 20, 9, 15, 14, 3."
+    ],
+    "reviewPackFile": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/unit-mapping/curriculum-review-packs/n1-4.md",
+    "focusNotes": [
+      "Use ORDER_SEQUENCE or structured short-entry, not standard MCQ.",
+      "Current DB still includes 2 placeholder item(s) for this skill."
+    ]
+  },
+  {
+    "skillCode": "N1.5",
+    "sourceTitle": "Finding the median from a set of numbers",
+    "appSkillName": "Find the median from a set of numbers (incl midpoint using a calculator)",
+    "status": "REVIEW_AND_FIX",
+    "currentRealItems": 30,
+    "currentPlaceholderItems": 2,
+    "currentTypeCounts": {
+      "MCQ": 30
+    },
+    "targetCounts": {
+      "onboarding": 4,
+      "learn": 10,
+      "reteach": 6,
+      "total": 20
+    },
+    "shortfall": 0,
+    "sampleQuestions": [
+      "Find the median of: 10, 12, 7",
+      "Find the median of: 28, 31, 9",
+      "Find the median of: 1003, 1001, 1002",
+      "Find the median of: 22, 18, 15, 7, 9",
+      "Find the median of: 19, 20, 1, 5, 7"
+    ],
+    "reviewPackFile": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/unit-mapping/curriculum-review-packs/n1-5.md",
+    "focusNotes": [
+      "Prefer SHORT_NUMERIC for core practice; MCQ only for onboarding checks or misconception probes.",
+      "Current DB still includes 2 placeholder item(s) for this skill."
+    ]
+  },
+  {
+    "skillCode": "N1.6",
+    "sourceTitle": "Decimal place value",
+    "appSkillName": "Decimal place value",
+    "status": "TOP_UP_AND_FIX",
+    "currentRealItems": 1,
+    "currentPlaceholderItems": 2,
+    "currentTypeCounts": {
+      "MCQ": 1
+    },
+    "targetCounts": {
+      "onboarding": 4,
+      "learn": 10,
+      "reteach": 6,
+      "total": 20
+    },
+    "shortfall": 19,
+    "sampleQuestions": [
+      "Which one of the following statements is correct?"
+    ],
+    "reviewPackFile": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/unit-mapping/curriculum-review-packs/n1-6.md",
+    "focusNotes": [
+      "Current DB still includes 2 placeholder item(s) for this skill."
+    ]
+  },
+  {
+    "skillCode": "N1.7",
+    "sourceTitle": "N1.7",
+    "appSkillName": "Compare decimals using =, ≠, <, >, ≤, ≥",
+    "status": "AUTHOR_FROM_SCRATCH",
+    "currentRealItems": 0,
+    "currentPlaceholderItems": 2,
+    "currentTypeCounts": {},
+    "targetCounts": {
+      "onboarding": 4,
+      "learn": 10,
+      "reteach": 6,
+      "total": 20
+    },
+    "shortfall": 20,
+    "sampleQuestions": [],
+    "reviewPackFile": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/unit-mapping/curriculum-review-packs/n1-7.md",
+    "focusNotes": [
+      "Use TRUE_FALSE for statement checks and SHORT_TEXT for symbol insertion. Avoid padded 4-option MCQ.",
+      "Current DB still includes 2 placeholder item(s) for this skill."
+    ]
+  },
+  {
+    "skillCode": "N1.8",
+    "sourceTitle": "Order a list of decimals",
+    "appSkillName": "Order a list of decimals",
+    "status": "AUTHOR_FROM_SCRATCH",
+    "currentRealItems": 0,
+    "currentPlaceholderItems": 2,
+    "currentTypeCounts": {},
+    "targetCounts": {
+      "onboarding": 4,
+      "learn": 10,
+      "reteach": 6,
+      "total": 20
+    },
+    "shortfall": 20,
+    "sampleQuestions": [],
+    "reviewPackFile": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/unit-mapping/curriculum-review-packs/n1-8.md",
+    "focusNotes": [
+      "Use ORDER_SEQUENCE or structured short-entry, not standard MCQ.",
+      "Current DB still includes 2 placeholder item(s) for this skill."
+    ]
+  },
+  {
+    "skillCode": "N1.9",
+    "sourceTitle": "Position integers on a number line",
+    "appSkillName": "Position integers on a number line",
+    "status": "TOP_UP_AND_FIX",
+    "currentRealItems": 17,
+    "currentPlaceholderItems": 2,
+    "currentTypeCounts": {
+      "TRUE_FALSE": 11,
+      "MCQ": 4,
+      "SHORT_TEXT": 2
+    },
+    "targetCounts": {
+      "onboarding": 4,
+      "learn": 10,
+      "reteach": 6,
+      "total": 20
+    },
+    "shortfall": 3,
+    "sampleQuestions": [
+      "3 < 5",
+      "1 < 0",
+      "902 < 93",
+      "8106 > 8099",
+      "3751 < 3699"
+    ],
+    "reviewPackFile": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/unit-mapping/curriculum-review-packs/n1-9.md",
+    "focusNotes": [
+      "Prefer number-line interaction or short-entry labels rather than generic MCQ.",
+      "Current DB still includes 2 placeholder item(s) for this skill."
+    ]
+  },
+  {
+    "skillCode": "N1.10",
+    "sourceTitle": "Rounding to the nearest 10, 100, 1000, integer",
+    "appSkillName": "Rounding to the nearest 10, 100, 1000, integer",
+    "status": "TOP_UP_AND_FIX",
+    "currentRealItems": 17,
+    "currentPlaceholderItems": 2,
+    "currentTypeCounts": {
+      "MCQ": 17
+    },
+    "targetCounts": {
+      "onboarding": 4,
+      "learn": 10,
+      "reteach": 6,
+      "total": 20
+    },
+    "shortfall": 3,
+    "sampleQuestions": [
+      "Round 384 to nearest 100.",
+      "Round 942 to nearest 10.",
+      "Round 7460.8 to nearest 1000.",
+      "Round 95.06 to nearest 100.",
+      "Round 10053 to nearest 1000."
+    ],
+    "reviewPackFile": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/unit-mapping/curriculum-review-packs/n1-10.md",
+    "focusNotes": [
+      "Prefer SHORT_NUMERIC for core practice; MCQ only for onboarding checks or misconception probes.",
+      "Current DB still includes 2 placeholder item(s) for this skill."
+    ]
+  },
+  {
+    "skillCode": "N1.11",
+    "sourceTitle": "Position decimals on a number line",
+    "appSkillName": "Position decimals on a number line (incl midpoint using a calculator)",
+    "status": "AUTHOR_FROM_SCRATCH",
+    "currentRealItems": 0,
+    "currentPlaceholderItems": 2,
+    "currentTypeCounts": {},
+    "targetCounts": {
+      "onboarding": 4,
+      "learn": 10,
+      "reteach": 6,
+      "total": 20
+    },
+    "shortfall": 20,
+    "sampleQuestions": [],
+    "reviewPackFile": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/unit-mapping/curriculum-review-packs/n1-11.md",
+    "focusNotes": [
+      "Prefer number-line interaction or short-entry labels rather than generic MCQ.",
+      "Current DB still includes 2 placeholder item(s) for this skill."
+    ]
+  },
+  {
+    "skillCode": "N1.12",
+    "sourceTitle": "Rounding to decimal places",
+    "appSkillName": "Rounding to decimal places",
+    "status": "TOP_UP_AND_FIX",
+    "currentRealItems": 13,
+    "currentPlaceholderItems": 2,
+    "currentTypeCounts": {
+      "MCQ": 13
+    },
+    "targetCounts": {
+      "onboarding": 4,
+      "learn": 10,
+      "reteach": 6,
+      "total": 20
+    },
+    "shortfall": 7,
+    "sampleQuestions": [
+      "Round 47.5 to nearest integer.",
+      "Round 525.94 to nearest integer.",
+      "Round 0.437 to nearest integer.",
+      "Round 7.2 to the nearest integer.",
+      "Round 1.9 to the nearest integer."
+    ],
+    "reviewPackFile": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/unit-mapping/curriculum-review-packs/n1-12.md",
+    "focusNotes": [
+      "Prefer SHORT_NUMERIC for core practice; MCQ only for onboarding checks or misconception probes.",
+      "Current DB still includes 2 placeholder item(s) for this skill."
+    ]
+  },
+  {
+    "skillCode": "N1.13",
+    "sourceTitle": "Position negatives on a number line",
+    "appSkillName": "Position negatives on a number line",
+    "status": "AUTHOR_FROM_SCRATCH",
+    "currentRealItems": 0,
+    "currentPlaceholderItems": 2,
+    "currentTypeCounts": {},
+    "targetCounts": {
+      "onboarding": 4,
+      "learn": 10,
+      "reteach": 6,
+      "total": 20
+    },
+    "shortfall": 20,
+    "sampleQuestions": [],
+    "reviewPackFile": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/unit-mapping/curriculum-review-packs/n1-13.md",
+    "focusNotes": [
+      "Prefer number-line interaction or short-entry labels rather than generic MCQ.",
+      "Current DB still includes 2 placeholder item(s) for this skill."
+    ]
+  },
+  {
+    "skillCode": "N1.14",
+    "sourceTitle": "Compare negatives using =, ≠, , ≤, ≥",
+    "appSkillName": "Compare negatives using =, ≠, <, >, ≤, ≥",
+    "status": "AUTHOR_FROM_SCRATCH",
+    "currentRealItems": 0,
+    "currentPlaceholderItems": 2,
+    "currentTypeCounts": {},
+    "targetCounts": {
+      "onboarding": 4,
+      "learn": 10,
+      "reteach": 6,
+      "total": 20
+    },
+    "shortfall": 20,
+    "sampleQuestions": [],
+    "reviewPackFile": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/unit-mapping/curriculum-review-packs/n1-14.md",
+    "focusNotes": [
+      "Use TRUE_FALSE for statement checks and SHORT_TEXT for symbol insertion. Avoid padded 4-option MCQ.",
+      "Current DB still includes 2 placeholder item(s) for this skill."
+    ]
+  },
+  {
+    "skillCode": "N1.15",
+    "sourceTitle": "Order any integers, negatives and decimals",
+    "appSkillName": "Order any integers, negatives and decimals",
+    "status": "AUTHOR_FROM_SCRATCH",
+    "currentRealItems": 0,
+    "currentPlaceholderItems": 2,
+    "currentTypeCounts": {},
+    "targetCounts": {
+      "onboarding": 4,
+      "learn": 10,
+      "reteach": 6,
+      "total": 20
+    },
+    "shortfall": 20,
+    "sampleQuestions": [],
+    "reviewPackFile": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/unit-mapping/curriculum-review-packs/n1-15.md",
+    "focusNotes": [
+      "Use ORDER_SEQUENCE or structured short-entry, not standard MCQ.",
+      "Current DB still includes 2 placeholder item(s) for this skill."
+    ]
+  },
+  {
+    "skillCode": "N2.1",
+    "sourceTitle": "Properties of addition and subtraction",
+    "appSkillName": null,
+    "status": "ADD_SKILL_AND_AUTHOR",
+    "currentRealItems": 0,
+    "currentPlaceholderItems": 0,
+    "currentTypeCounts": {},
+    "targetCounts": {
+      "onboarding": 4,
+      "learn": 12,
+      "reteach": 8,
+      "total": 24
+    },
+    "shortfall": 24,
+    "sampleQuestions": [],
+    "reviewPackFile": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/unit-mapping/curriculum-review-packs/n2-1.md",
+    "focusNotes": [
+      "Build concept checks plus worked-example-style reteach items before independent practice."
+    ]
+  },
+  {
+    "skillCode": "N2.2",
+    "sourceTitle": "Mental strategies for addition and subtraction",
+    "appSkillName": null,
+    "status": "ADD_SKILL_AND_AUTHOR",
+    "currentRealItems": 0,
+    "currentPlaceholderItems": 0,
+    "currentTypeCounts": {},
+    "targetCounts": {
+      "onboarding": 4,
+      "learn": 12,
+      "reteach": 8,
+      "total": 24
+    },
+    "shortfall": 24,
+    "sampleQuestions": [],
+    "reviewPackFile": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/unit-mapping/curriculum-review-packs/n2-2.md",
+    "focusNotes": [
+      "Build concept checks plus worked-example-style reteach items before independent practice."
+    ]
+  },
+  {
+    "skillCode": "N2.3",
+    "sourceTitle": "Use commutative and associative laws",
+    "appSkillName": "Use commutative and associative laws",
+    "status": "AUTHOR_FROM_SCRATCH",
+    "currentRealItems": 0,
+    "currentPlaceholderItems": 2,
+    "currentTypeCounts": {},
+    "targetCounts": {
+      "onboarding": 4,
+      "learn": 12,
+      "reteach": 8,
+      "total": 24
+    },
+    "shortfall": 24,
+    "sampleQuestions": [],
+    "reviewPackFile": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/unit-mapping/curriculum-review-packs/n2-3.md",
+    "focusNotes": [
+      "Build concept checks plus worked-example-style reteach items before independent practice.",
+      "Current DB still includes 2 placeholder item(s) for this skill."
+    ]
+  },
+  {
+    "skillCode": "N2.4",
+    "sourceTitle": "Use formal methods for addition of integers",
+    "appSkillName": null,
+    "status": "ADD_SKILL_AND_AUTHOR",
+    "currentRealItems": 0,
+    "currentPlaceholderItems": 0,
+    "currentTypeCounts": {},
+    "targetCounts": {
+      "onboarding": 4,
+      "learn": 12,
+      "reteach": 8,
+      "total": 24
+    },
+    "shortfall": 24,
+    "sampleQuestions": [],
+    "reviewPackFile": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/unit-mapping/curriculum-review-packs/n2-4.md",
+    "focusNotes": [
+      "Prefer SHORT_NUMERIC for core practice; MCQ only for onboarding checks or misconception probes."
+    ]
+  },
+  {
+    "skillCode": "N2.5",
+    "sourceTitle": "Use formal methods for addition of decimals",
+    "appSkillName": "Use formal methods for addition of decimals",
+    "status": "AUTHOR_FROM_SCRATCH",
+    "currentRealItems": 0,
+    "currentPlaceholderItems": 2,
+    "currentTypeCounts": {},
+    "targetCounts": {
+      "onboarding": 4,
+      "learn": 12,
+      "reteach": 8,
+      "total": 24
+    },
+    "shortfall": 24,
+    "sampleQuestions": [],
+    "reviewPackFile": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/unit-mapping/curriculum-review-packs/n2-5.md",
+    "focusNotes": [
+      "Prefer SHORT_NUMERIC for core practice; MCQ only for onboarding checks or misconception probes.",
+      "Current DB still includes 2 placeholder item(s) for this skill."
+    ]
+  },
+  {
+    "skillCode": "N2.6",
+    "sourceTitle": "Use formal methods for subtraction of integers",
+    "appSkillName": null,
+    "status": "ADD_SKILL_AND_AUTHOR",
+    "currentRealItems": 0,
+    "currentPlaceholderItems": 0,
+    "currentTypeCounts": {},
+    "targetCounts": {
+      "onboarding": 4,
+      "learn": 12,
+      "reteach": 8,
+      "total": 24
+    },
+    "shortfall": 24,
+    "sampleQuestions": [],
+    "reviewPackFile": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/unit-mapping/curriculum-review-packs/n2-6.md",
+    "focusNotes": [
+      "Prefer SHORT_NUMERIC for core practice; MCQ only for onboarding checks or misconception probes."
+    ]
+  },
+  {
+    "skillCode": "N2.7",
+    "sourceTitle": "Use formal methods for subtraction of decimals",
+    "appSkillName": "Use formal methods for subtraction of decimals; complement of a decimal (1 − p)",
+    "status": "AUTHOR_FROM_SCRATCH",
+    "currentRealItems": 0,
+    "currentPlaceholderItems": 2,
+    "currentTypeCounts": {},
+    "targetCounts": {
+      "onboarding": 4,
+      "learn": 12,
+      "reteach": 8,
+      "total": 24
+    },
+    "shortfall": 24,
+    "sampleQuestions": [],
+    "reviewPackFile": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/unit-mapping/curriculum-review-packs/n2-7.md",
+    "focusNotes": [
+      "Prefer SHORT_NUMERIC for core practice; MCQ only for onboarding checks or misconception probes.",
+      "Current DB still includes 2 placeholder item(s) for this skill."
+    ]
+  },
+  {
+    "skillCode": "N2.8",
+    "sourceTitle": "Money problems involving addition and subtraction",
+    "appSkillName": "Money problems involving addition and subtraction",
+    "status": "AUTHOR_FROM_SCRATCH",
+    "currentRealItems": 0,
+    "currentPlaceholderItems": 2,
+    "currentTypeCounts": {},
+    "targetCounts": {
+      "onboarding": 4,
+      "learn": 12,
+      "reteach": 8,
+      "total": 24
+    },
+    "shortfall": 24,
+    "sampleQuestions": [],
+    "reviewPackFile": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/unit-mapping/curriculum-review-packs/n2-8.md",
+    "focusNotes": [
+      "Use contextual stems carefully; keep reading load low in onboarding and reteach.",
+      "Current DB still includes 2 placeholder item(s) for this skill."
+    ]
+  },
+  {
+    "skillCode": "N2.9",
+    "sourceTitle": "Perimeter of irregular polygons",
+    "appSkillName": "Perimeter of irregular polygons",
+    "status": "AUTHOR_FROM_SCRATCH",
+    "currentRealItems": 0,
+    "currentPlaceholderItems": 2,
+    "currentTypeCounts": {},
+    "targetCounts": {
+      "onboarding": 4,
+      "learn": 12,
+      "reteach": 8,
+      "total": 24
+    },
+    "shortfall": 24,
+    "sampleQuestions": [],
+    "reviewPackFile": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/unit-mapping/curriculum-review-packs/n2-9.md",
+    "focusNotes": [
+      "Use contextual stems carefully; keep reading load low in onboarding and reteach.",
+      "Current DB still includes 2 placeholder item(s) for this skill."
+    ]
+  },
+  {
+    "skillCode": "N2.10",
+    "sourceTitle": "Perimeter of regular polygons",
+    "appSkillName": "Perimeter of regular polygons",
+    "status": "AUTHOR_FROM_SCRATCH",
+    "currentRealItems": 0,
+    "currentPlaceholderItems": 2,
+    "currentTypeCounts": {},
+    "targetCounts": {
+      "onboarding": 4,
+      "learn": 12,
+      "reteach": 8,
+      "total": 24
+    },
+    "shortfall": 24,
+    "sampleQuestions": [],
+    "reviewPackFile": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/unit-mapping/curriculum-review-packs/n2-10.md",
+    "focusNotes": [
+      "Use contextual stems carefully; keep reading load low in onboarding and reteach.",
+      "Current DB still includes 2 placeholder item(s) for this skill."
+    ]
+  },
+  {
+    "skillCode": "N2.11",
+    "sourceTitle": "Perimeter of rectangles and parallelograms",
+    "appSkillName": "Perimeter of rectangles and parallelograms",
+    "status": "AUTHOR_FROM_SCRATCH",
+    "currentRealItems": 0,
+    "currentPlaceholderItems": 2,
+    "currentTypeCounts": {},
+    "targetCounts": {
+      "onboarding": 4,
+      "learn": 12,
+      "reteach": 8,
+      "total": 24
+    },
+    "shortfall": 24,
+    "sampleQuestions": [],
+    "reviewPackFile": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/unit-mapping/curriculum-review-packs/n2-11.md",
+    "focusNotes": [
+      "Use contextual stems carefully; keep reading load low in onboarding and reteach.",
+      "Current DB still includes 2 placeholder item(s) for this skill."
+    ]
+  },
+  {
+    "skillCode": "N2.12",
+    "sourceTitle": "Perimeter of an isosceles triangle or an isosceles trapezium",
+    "appSkillName": "Perimeter of an isosceles triangle or an isosceles trapezium",
+    "status": "AUTHOR_FROM_SCRATCH",
+    "currentRealItems": 0,
+    "currentPlaceholderItems": 2,
+    "currentTypeCounts": {},
+    "targetCounts": {
+      "onboarding": 4,
+      "learn": 12,
+      "reteach": 8,
+      "total": 24
+    },
+    "shortfall": 24,
+    "sampleQuestions": [],
+    "reviewPackFile": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/unit-mapping/curriculum-review-packs/n2-12.md",
+    "focusNotes": [
+      "Use contextual stems carefully; keep reading load low in onboarding and reteach.",
+      "Current DB still includes 2 placeholder item(s) for this skill."
+    ]
+  },
+  {
+    "skillCode": "N2.13",
+    "sourceTitle": "Perimeter of a compound shape",
+    "appSkillName": "Perimeter of a compound shape",
+    "status": "AUTHOR_FROM_SCRATCH",
+    "currentRealItems": 0,
+    "currentPlaceholderItems": 2,
+    "currentTypeCounts": {},
+    "targetCounts": {
+      "onboarding": 4,
+      "learn": 12,
+      "reteach": 8,
+      "total": 24
+    },
+    "shortfall": 24,
+    "sampleQuestions": [],
+    "reviewPackFile": "/Users/adamscourfield/Documents/Anaxi-Learn/docs/unit-mapping/curriculum-review-packs/n2-13.md",
+    "focusNotes": [
+      "Use contextual stems carefully; keep reading load low in onboarding and reteach.",
+      "Current DB still includes 2 placeholder item(s) for this skill."
+    ]
+  }
+]

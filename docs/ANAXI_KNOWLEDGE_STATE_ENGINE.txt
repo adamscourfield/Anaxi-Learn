@@ -1,0 +1,745 @@
+ANAXI KNOWLEDGE STATE ENGINE
+VERSION 1 SPECIFICATION
+
+====================================================
+1. PURPOSE
+====================================================
+
+The Knowledge State Engine is the core decision-making layer of Anaxi Learn.
+
+Its purpose is to estimate the latent knowledge state of each student for each skill, using observable learning evidence.
+
+Observable evidence includes:
+- correctness
+- response time
+- hints used
+- explanations viewed
+- retries
+- delayed retrieval performance
+- transfer performance
+- mixed-practice performance
+
+Latent knowledge state includes:
+- mastery_probability
+- forgetting_rate
+- half_life_days
+- retrieval_strength
+- transfer_ability
+- confidence
+
+The engine updates these estimates after each interaction and uses them to decide:
+- what question to show next
+- whether to show an explanation
+- whether to schedule retrieval
+- whether to progress the student
+- whether to change the level of challenge
+- whether a skill is secure or fragile
+
+Core principle:
+The platform must not optimise for simple completion or correctness.
+The platform must optimise for durable learning.
+
+====================================================
+2. CORE STATE VARIABLES
+====================================================
+
+For each student and each skill, the platform stores a student_skill_state.
+
+Required variables:
+
+student_id
+skill_id
+mastery_probability
+forgetting_rate
+half_life_days
+retrieval_strength
+transfer_ability
+confidence
+last_attempt_at
+last_success_at
+last_review_at
+evidence_count
+created_at
+updated_at
+
+Definitions:
+
+mastery_probability
+Probability that the student can answer a standard item on this skill correctly right now under normal conditions.
+
+Range:
+0.00 to 1.00
+
+forgetting_rate
+Estimated rate at which knowledge of this skill decays without successful retrieval.
+
+Range:
+positive real number
+
+half_life_days
+Estimated number of days until the learned knowledge falls to 50 percent of current strength.
+
+Formula:
+half_life_days = ln(2) / forgetting_rate
+
+retrieval_strength
+How easily the student can independently retrieve the skill from memory.
+
+Range:
+0.00 to 1.00
+
+transfer_ability
+How well the student can apply the skill when the surface structure changes or the skill appears inside a mixed context.
+
+Range:
+0.00 to 1.00
+
+confidence
+How certain the system is that its estimates are accurate, given available evidence.
+
+Range:
+0.00 to 1.00
+
+evidence_count
+Number of meaningful observations used to estimate the current state.
+
+====================================================
+3. QUESTION AND EVIDENCE MODEL
+====================================================
+
+The engine must use more than right/wrong.
+Every attempt must generate a richer evidence object.
+
+Each question attempt should store at minimum:
+
+attempt_id
+student_id
+skill_id
+question_id
+timestamp
+correct
+response_time_ms
+hints_used
+explanation_id
+attempt_number
+question_difficulty
+question_type
+is_transfer_item
+is_mixed_item
+is_review_item
+support_level
+
+Definitions:
+
+question_difficulty
+Relative challenge level of the item for the target skill.
+
+question_type
+For example:
+- routine
+- fluency
+- retrieval
+- transfer
+- application
+- mixed
+- diagnostic
+
+is_transfer_item
+True if the question changes surface structure or requires flexible application.
+
+is_mixed_item
+True if the item appears in a mixed set rather than a blocked set.
+
+is_review_item
+True if this is a delayed retrieval attempt after time has passed.
+
+support_level
+How much support the student received.
+Example values:
+- independent
+- light_prompt
+- worked_example
+- scaffolded
+- full_explanation
+
+====================================================
+4. DEFAULT INITIAL PRIORS
+====================================================
+
+When a student first encounters a skill, initialise:
+
+mastery_probability = 0.35
+forgetting_rate = 0.12
+half_life_days = ln(2) / 0.12
+retrieval_strength = 0.30
+transfer_ability = 0.20
+confidence = 0.10
+evidence_count = 0
+
+These priors are deliberately modest.
+They should be overridden later by placement data, baseline diagnostics, or historical student patterns if available.
+
+====================================================
+5. EVIDENCE SIGNALS
+====================================================
+
+Each attempt should be converted into evidence signals.
+
+The engine should derive at least these signals:
+
+mastery_signal
+retrieval_signal
+transfer_signal
+forgetting_signal
+reliability_signal
+
+Interpretation:
+
+mastery_signal
+How strongly this attempt suggests the student can perform the skill.
+
+retrieval_signal
+How strongly this attempt suggests the student can retrieve the skill easily and independently.
+
+transfer_signal
+How strongly this attempt suggests the student can apply the skill in a changed or mixed context.
+
+forgetting_signal
+How strongly delayed performance suggests the knowledge is stable or fragile over time.
+
+reliability_signal
+How much weight the evidence deserves, based on item quality, independence, and context.
+
+====================================================
+6. ATTEMPT SCORING RULES
+====================================================
+
+The platform should convert attempt outcomes into weighted evidence.
+
+Example scoring guide:
+
+Case A
+Correct, fast, independent, no hints:
+mastery_signal = 0.95
+retrieval_signal = 0.95
+reliability_signal = 0.90
+
+Case B
+Correct, normal speed, independent:
+mastery_signal = 0.80
+retrieval_signal = 0.75
+reliability_signal = 0.80
+
+Case C
+Correct, slow, one hint:
+mastery_signal = 0.65
+retrieval_signal = 0.45
+reliability_signal = 0.65
+
+Case D
+Incorrect, then correct after explanation:
+mastery_signal = 0.50
+retrieval_signal = 0.30
+reliability_signal = 0.55
+
+Case E
+Incorrect, independent:
+mastery_signal = 0.15
+retrieval_signal = 0.10
+reliability_signal = 0.85
+
+Case F
+Correct on routine item but incorrect on transfer item:
+routine mastery may remain stable
+transfer_signal should fall materially
+
+Important rule:
+The system must not treat all correct answers as equally informative.
+
+====================================================
+7. UPDATE RULES
+====================================================
+
+7.1 Mastery update
+
+Mastery should update toward the current mastery signal.
+
+Formula:
+
+M_new = M_old + alpha * (mastery_signal - M_old)
+
+Where:
+M_old = current mastery_probability
+alpha = learning rate adjusted by confidence and reliability
+
+Recommended rule:
+alpha should be larger when confidence is low
+alpha should be smaller when confidence is high
+
+Example:
+low confidence -> alpha = 0.22
+medium confidence -> alpha = 0.14
+high confidence -> alpha = 0.08
+
+Final alpha can be scaled by reliability_signal.
+
+7.2 Retrieval update
+
+Retrieval should update toward the retrieval signal.
+
+Formula:
+
+RS_new = RS_old + delta * (retrieval_signal - RS_old)
+
+Recommended default:
+delta = 0.18 scaled by reliability_signal
+
+Retrieval should depend strongly on:
+- speed
+- independence
+- delayed success
+- low reliance on hints
+
+7.3 Transfer update
+
+Transfer must only be updated from transfer-relevant evidence.
+
+Formula:
+
+TA_new = TA_old + eta * (transfer_signal - TA_old)
+
+Recommended default:
+eta = 0.20 scaled by reliability_signal
+
+Transfer must not be inferred from routine blocked practice alone.
+
+7.4 Confidence update
+
+Confidence should rise when:
+- more observations are collected
+- evidence is consistent
+- evidence spans time
+- evidence includes independent performance
+
+Confidence should fall or stagnate when:
+- evidence is contradictory
+- evidence is mostly scaffolded
+- the sample size is too small
+
+Simple rule:
+
+C_new = min(1.0, C_old + beta * reliability_signal * consistency_factor)
+
+Recommended default:
+beta = 0.05 to 0.10
+
+7.5 Forgetting rate update
+
+Forgetting should update mainly from delayed review evidence.
+
+If delayed retrieval is weaker than expected:
+increase forgetting_rate
+
+If delayed retrieval is stronger than expected:
+decrease forgetting_rate
+
+Formula:
+
+lambda_new = lambda_old + gamma * (expected_retention - observed_retention)
+
+Where:
+lambda = forgetting_rate
+gamma = forgetting learning rate
+
+Recommended default:
+gamma = 0.04 to 0.08
+
+After update:
+half_life_days = ln(2) / max(forgetting_rate, 0.001)
+
+====================================================
+8. EXPECTED RETENTION MODEL
+====================================================
+
+Use a simple exponential decay model in Version 1.
+
+Retention model:
+
+retention(t) = S * exp(-lambda * t)
+
+Where:
+S = current estimated strength
+lambda = forgetting_rate
+t = time since last successful retrieval in days
+
+Version 1 simplification:
+Use mastery_probability or retrieval_strength as the current strength anchor.
+
+Observed delayed review performance should then be compared against model expectation.
+
+This does not need to be scientifically perfect in Version 1.
+It needs to be directionally useful and rank-order students and content sensibly.
+
+====================================================
+9. DECISION RULES
+====================================================
+
+The Knowledge State Engine must drive instructional decisions.
+
+9.1 If mastery is low
+Condition:
+mastery_probability < 0.50
+
+Action:
+- reduce question difficulty
+- provide more guided examples
+- increase scaffolding
+- show explanation sooner
+
+9.2 If mastery is moderate but retrieval is low
+Condition:
+mastery_probability >= 0.50
+and retrieval_strength < 0.50
+
+Action:
+- provide retrieval practice
+- use shorter independent recall prompts
+- repeat with less support
+- avoid declaring mastery yet
+
+9.3 If mastery is high but transfer is low
+Condition:
+mastery_probability >= 0.75
+and transfer_ability < 0.55
+
+Action:
+- introduce mixed items
+- introduce changed surface structure
+- use “why does this method work?” prompts
+- increase application tasks
+
+9.4 If forgetting rate is high
+Condition:
+forgetting_rate exceeds threshold
+or half_life_days below threshold
+
+Action:
+- schedule earlier retrieval
+- slow progression if necessary
+- revisit before full advancement
+
+9.5 If confidence is low
+Condition:
+confidence < 0.40
+
+Action:
+- ask more diagnostic questions
+- avoid strong progression decisions
+- avoid large jumps in difficulty
+
+====================================================
+10. PROGRESSION THRESHOLDS
+====================================================
+
+Do not define mastery as “five correct in a row”.
+
+Use state thresholds.
+
+Secure mastery:
+mastery_probability >= 0.85
+retrieval_strength >= 0.75
+transfer_ability >= 0.65
+confidence >= 0.70
+
+Durable mastery:
+secure mastery is true
+and half_life_days >= target_half_life
+and at least one delayed retrieval check is successful
+
+Suggested target_half_life:
+Start with 7 to 14 days for V1
+Increase later once the system is stable
+
+Fragile mastery:
+mastery_probability may be high
+but retrieval_strength low
+or forgetting_rate high
+or transfer_ability low
+
+Fragile mastery should trigger support, not automatic progression.
+
+====================================================
+11. REVIEW SCHEDULING RULES
+====================================================
+
+The scheduling engine should use half_life_days.
+
+Version 1 review heuristic:
+
+If half_life_days <= 2:
+schedule review in 1 day
+
+If half_life_days > 2 and <= 7:
+schedule review in 2 to 3 days
+
+If half_life_days > 7 and <= 21:
+schedule review in 5 to 7 days
+
+If half_life_days > 21:
+schedule review in 10 to 14 days
+
+Important rule:
+Schedule earlier if confidence is low.
+Schedule earlier if prior delayed retrieval failed.
+Schedule later only when evidence is strong and stable.
+
+====================================================
+12. EXPLANATION SWITCHING RULES
+====================================================
+
+Anaxi Learn should support multiple explanations per skill.
+
+Each explanation should have its own estimated performance profile:
+- learning_gain
+- impact on retrieval
+- impact on transfer
+- half_life contribution
+- instructional_time
+- DLE
+
+Switch explanation when:
+- student fails after current explanation
+- mastery improves but retrieval does not
+- routine success occurs but transfer remains low
+- explanation DLE is consistently inferior to alternatives
+
+Preferred explanation:
+Choose the explanation with the highest expected DLE for students of a similar profile.
+
+====================================================
+13. DLE INTEGRATION
+====================================================
+
+The Knowledge State Engine powers Durable Learning Efficiency.
+
+DLE formula:
+
+DLE = (LG * T_half) / H
+
+Where:
+LG should be estimated from gains in knowledge state, not just raw correctness.
+
+Recommended Version 1 LG calculation:
+LG = weighted change in mastery_probability
+optionally combined later with retrieval_strength and transfer_ability
+
+Example:
+LG = 0.6 * delta_mastery
+   + 0.25 * delta_retrieval
+   + 0.15 * delta_transfer
+
+T_half:
+Use half_life_days
+
+H:
+Use actual instructional time spent on explanation, examples, and practice
+
+====================================================
+14. DATABASE TABLES
+====================================================
+
+14.1 student_skill_state
+
+id
+student_id
+skill_id
+mastery_probability
+forgetting_rate
+half_life_days
+retrieval_strength
+transfer_ability
+confidence
+last_attempt_at
+last_success_at
+last_review_at
+evidence_count
+created_at
+updated_at
+
+14.2 question_attempts
+
+id
+student_id
+skill_id
+question_id
+timestamp
+correct
+response_time_ms
+hints_used
+explanation_id
+attempt_number
+question_difficulty
+question_type
+is_transfer_item
+is_mixed_item
+is_review_item
+support_level
+created_at
+
+14.3 skill_reviews
+
+id
+student_id
+skill_id
+scheduled_for
+completed_at
+success_score
+days_since_last_exposure
+created_at
+updated_at
+
+14.4 explanation_performance
+
+id
+explanation_id
+skill_id
+student_segment
+average_learning_gain
+average_half_life_days
+average_instruction_time
+DLE
+evidence_count
+created_at
+updated_at
+
+====================================================
+15. PSEUDOCODE
+====================================================
+
+def update_skill_state(state, attempt):
+    evidence = score_attempt(attempt, state)
+
+    alpha = mastery_learning_rate(state.confidence, evidence.reliability_signal)
+    delta = retrieval_learning_rate(evidence.reliability_signal)
+    eta   = transfer_learning_rate(evidence.reliability_signal)
+
+    state.mastery_probability = update_toward(
+        state.mastery_probability,
+        evidence.mastery_signal,
+        alpha
+    )
+
+    state.retrieval_strength = update_toward(
+        state.retrieval_strength,
+        evidence.retrieval_signal,
+        delta
+    )
+
+    if attempt.is_transfer_item:
+        state.transfer_ability = update_toward(
+            state.transfer_ability,
+            evidence.transfer_signal,
+            eta
+        )
+
+    if attempt.is_review_item:
+        state.forgetting_rate = update_forgetting_rate(
+            state.forgetting_rate,
+            evidence.expected_retention,
+            evidence.observed_retention
+        )
+        state.half_life_days = ln(2) / max(state.forgetting_rate, 0.001)
+        state.last_review_at = attempt.timestamp
+
+    state.confidence = update_confidence(
+        state.confidence,
+        evidence.reliability_signal,
+        evidence.consistency_factor,
+        state.evidence_count
+    )
+
+    state.evidence_count += 1
+    state.last_attempt_at = attempt.timestamp
+
+    if attempt.correct:
+        state.last_success_at = attempt.timestamp
+
+    return state
+
+====================================================
+16. DESIGN CONSTRAINTS
+====================================================
+
+The engine should be:
+- interpretable
+- auditable
+- easy to debug
+- computationally light
+- incrementally improvable
+
+Version 1 should not rely on opaque black-box machine learning.
+
+Version 1 should use:
+- explicit variables
+- explicit evidence signals
+- explicit update rules
+- explicit scheduling rules
+
+Once sufficient data exists, later versions may add:
+- Bayesian Knowledge Tracing
+- Item Response Theory calibration
+- student segmentation models
+- explanation routing models
+- policy optimisation
+
+====================================================
+17. VERSION 1 IMPLEMENTATION PRIORITIES
+====================================================
+
+Priority 1
+Create the database tables.
+
+Priority 2
+Create a scoring function that turns attempts into evidence signals.
+
+Priority 3
+Create the student_skill_state update function.
+
+Priority 4
+Create decision rules for next question, explanation, and review scheduling.
+
+Priority 5
+Expose state values in admin dashboards for debugging.
+
+Priority 6
+Compute DLE for explanations and question sequences.
+
+====================================================
+18. SUCCESS CRITERIA
+====================================================
+
+The Knowledge State Engine is successful if it allows the platform to:
+
+- distinguish weak performance from fragile performance
+- distinguish routine success from transferable understanding
+- identify knowledge that is likely to decay soon
+- schedule reviews earlier for fragile knowledge
+- route students to better explanations
+- reduce unnecessary question volume
+- improve durable learning efficiency across topics and cohorts
+
+====================================================
+19. CORE PHILOSOPHY
+====================================================
+
+Most learning systems ask:
+Did the student get it right?
+
+Anaxi Learn must ask:
+How strong is the knowledge?
+How retrievable is it?
+How transferable is it?
+How fast will it decay?
+How sure are we?
+
+This is the core intelligence of the platform.

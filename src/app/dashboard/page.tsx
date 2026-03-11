@@ -3,59 +3,37 @@ import { authOptions } from '@/features/auth/authOptions';
 import { redirect } from 'next/navigation';
 import { prisma } from '@/db/prisma';
 import Link from 'next/link';
-import { LearningPageShell } from '@/components/LearningPageShell';
-
-function getMasteryStyles(masteryPct: number) {
-  if (masteryPct >= 80) {
-    return {
-      text: 'text-emerald-700',
-      bar: 'bg-emerald-500',
-    };
-  }
-
-  if (masteryPct >= 50) {
-    return {
-      text: 'text-amber-700',
-      bar: 'bg-amber-500',
-    };
-  }
-
-  return {
-    text: 'text-rose-700',
-    bar: 'bg-rose-500',
-  };
-}
-
-function getUnitCode(skillCode: string): string {
-  const m = skillCode.match(/^([A-Z]\d+)\./i);
-  return m ? m[1].toUpperCase() : 'OTHER';
-}
-
-function getUnitSortKey(unitCode: string): number {
-  const m = unitCode.match(/^[A-Z](\d+)$/i);
-  return m ? Number(m[1]) : Number.MAX_SAFE_INTEGER;
-}
-
-function getStrandSortKey(strand: string): number {
-  if (/^PV$/i.test(strand)) return 1;
-  if (/^ADD$/i.test(strand)) return 2;
-  if (/^MUL$/i.test(strand)) return 3;
-  if (/^POW$/i.test(strand)) return 4;
-  if (/^FAC$/i.test(strand)) return 5;
-  if (/^PER$/i.test(strand)) return 6;
-  if (/^ARE$/i.test(strand)) return 7;
-  if (/^REP$/i.test(strand)) return 8;
-  if (/^ORD$/i.test(strand)) return 9;
-  if (/^LAW$/i.test(strand)) return 10;
-  if (/^STA$/i.test(strand)) return 11;
-  return 99;
-}
+import { hasCompletedOnboardingDiagnostic } from '@/features/learn/onboarding';
 
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
   if (!session?.user) redirect('/login');
 
   const userId = (session.user as { id: string }).id;
+  const role = (session.user as { role?: string }).role;
+
+  if (role === 'TEACHER') {
+    return (
+      <main className="min-h-screen bg-gray-50 py-8">
+        <div className="max-w-3xl mx-auto px-4">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h1 className="text-2xl font-bold text-gray-900">Teacher Dashboard</h1>
+              <p className="text-gray-500 mt-1">{session.user.name ?? session.user.email}</p>
+            </div>
+            <form action="/api/auth/signout" method="POST">
+              <button type="submit" className="text-sm text-gray-500 hover:text-gray-700 underline">
+                Sign out
+              </button>
+            </form>
+          </div>
+          <div className="rounded-xl border border-gray-200 bg-white p-6 text-gray-700">
+            Teacher accounts can sign in successfully. Student learning routes are hidden for this role.
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   const subjects = await prisma.subject.findMany({
     include: {
@@ -70,248 +48,147 @@ export default async function DashboardPage() {
   });
 
   const now = new Date();
+  const onboardingBySubject = new Map<string, boolean>();
+
+  for (const subject of subjects) {
+    onboardingBySubject.set(subject.id, await hasCompletedOnboardingDiagnostic(userId, subject.id));
+  }
 
   return (
-    <LearningPageShell
-      title="My Dashboard"
-      subtitle={<>Welcome back, {session.user.name ?? session.user.email}</>}
-      actions={
-        <form action="/api/auth/signout" method="POST">
-          <button
-            type="submit"
-            className="rounded-lg px-3 py-2 text-sm font-medium text-gray-500 underline decoration-gray-300 underline-offset-4 transition-colors hover:text-gray-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-          >
-            Sign out
-          </button>
-        </form>
-      }
-      maxWidthClassName="max-w-4xl"
-    >
-      <div className="space-y-6 sm:space-y-8">
-          {subjects.map((subject) => {
-            const sortedSkills = [...subject.skills].sort((a, b) => a.sortOrder - b.sortOrder);
-            const baseSkill = sortedSkills[0];
+    <main className="min-h-screen bg-gray-50 py-8">
+      <div className="max-w-3xl mx-auto px-4">
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900">My Dashboard</h1>
+            <p className="text-gray-500 mt-1">Welcome back, {session.user.name ?? session.user.email}</p>
+          </div>
+          <form action="/api/auth/signout" method="POST">
+            <button
+              type="submit"
+              className="text-sm text-gray-500 hover:text-gray-700 underline"
+            >
+              Sign out
+            </button>
+          </form>
+        </div>
 
-            if (!baseSkill) return null;
+        {subjects.map((subject) => {
+          const dueSkills = subject.skills.filter((skill) => {
+            const mastery = skill.masteries[0];
+            if (!mastery) return true;
+            if (!mastery.nextReviewAt) return true;
+            return mastery.nextReviewAt <= now;
+          });
 
-            const subtopicSkills = sortedSkills;
-
-            const dueSkills = subtopicSkills.filter((skill) => {
-              const mastery = skill.masteries[0];
-              if (!mastery) return true;
-              if (!mastery.nextReviewAt) return true;
-              return mastery.nextReviewAt <= now;
-            });
-
-            const aggregateMastery =
-              subtopicSkills.length > 0
-                ? Math.round(
-                    (subtopicSkills.reduce((sum, skill) => {
-                      const mastery = skill.masteries[0];
-                      return sum + (mastery ? mastery.mastery * 100 : 0);
-                    }, 0) /
-                      subtopicSkills.length)
-                  )
-                : 0;
-            const aggregateStyles = getMasteryStyles(aggregateMastery);
-
-            const unitGroups = Object.entries(
-              subtopicSkills.reduce(
-                (acc, skill) => {
-                  const unit = getUnitCode(skill.code);
-                  acc[unit] = acc[unit] ?? [];
-                  acc[unit].push(skill);
-                  return acc;
-                },
-                {} as Record<string, typeof subtopicSkills>
-              )
-            ).sort(([a], [b]) => getUnitSortKey(a) - getUnitSortKey(b));
-
-            return (
-              <section
-                key={subject.id}
-                className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:p-6"
-                aria-label={`${subject.title} learning section`}
-              >
-                <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
-                  <h2 className="text-lg font-semibold text-gray-900 sm:text-xl">{subject.title}</h2>
+          return (
+            <section key={subject.id} className="mb-8">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-semibold text-gray-800">{subject.title}</h2>
+                {onboardingBySubject.get(subject.id) ? (
                   <Link
                     href={`/learn/${subject.slug}`}
-                    className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                    className="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition-colors"
                   >
                     Start Learning
                   </Link>
-                </div>
-
-                {dueSkills.length > 0 && (
-                  <div className="mb-4 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2.5">
-                    <p className="text-sm font-medium text-amber-800">
-                      {dueSkills.length} skill{dueSkills.length !== 1 ? 's' : ''} due for review
-                    </p>
-                  </div>
+                ) : (
+                  <Link
+                    href={`/diagnostic/${subject.slug}`}
+                    className="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition-colors"
+                  >
+                    Start Onboarding
+                  </Link>
                 )}
+              </div>
 
-                <div className="space-y-3">
-                  <article className={`rounded-xl border bg-gray-50/50 p-4 transition-colors ${dueSkills.length > 0 ? 'border-amber-300' : 'border-gray-200'}`}>
-                    <div className="mb-2 flex items-center justify-between gap-3">
-                      <span className="font-medium text-gray-900">Basic Number</span>
-                      <span className={`text-sm font-semibold tabular-nums ${aggregateStyles.text}`}>{aggregateMastery}%</span>
+              {!onboardingBySubject.get(subject.id) ? (
+                <div className="rounded-xl border border-blue-200 bg-white p-6">
+                  <h3 className="text-lg font-semibold text-gray-900">Complete your onboarding quiz first</h3>
+                  <p className="mt-2 text-sm text-gray-600">
+                    This first quiz builds your starting level so we can choose the right work for you.
+                  </p>
+                  <Link
+                    href={`/diagnostic/${subject.slug}`}
+                    className="mt-4 inline-flex rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+                  >
+                    Start onboarding quiz
+                  </Link>
+                </div>
+              ) : (
+                <>
+
+                  {dueSkills.length > 0 && (
+                    <div className="mb-4 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+                      <p className="text-sm font-medium text-amber-800">
+                        {dueSkills.length} skill{dueSkills.length !== 1 ? 's' : ''} due for review
+                      </p>
                     </div>
-                    <div className="h-2 w-full overflow-hidden rounded-full bg-gray-200">
-                      <div className={`h-full rounded-full transition-all ${aggregateStyles.bar}`} style={{ width: `${aggregateMastery}%` }} />
-                    </div>
-                    <div className="mt-2 text-xs text-gray-500">{subtopicSkills.length} subtopic{subtopicSkills.length === 1 ? '' : 's'} • grouped by unit</div>
-                  </article>
+                  )}
 
-                  <div className="space-y-2">
-                    {unitGroups.map(([unitCode, skillsInUnit]) => {
-                      const unitDue = skillsInUnit.filter((skill) => {
-                        const mastery = skill.masteries[0];
-                        return !mastery?.nextReviewAt || mastery.nextReviewAt <= now;
-                      }).length;
-
-                      const unitMastery =
-                        skillsInUnit.length > 0
-                          ? Math.round(
-                              skillsInUnit.reduce((sum, skill) => {
-                                const mastery = skill.masteries[0];
-                                return sum + (mastery ? mastery.mastery * 100 : 0);
-                              }, 0) / skillsInUnit.length
-                            )
-                          : 0;
-
-                      const unitStyles = getMasteryStyles(unitMastery);
-
-                      const strandGroups = Object.entries(
-                        skillsInUnit.reduce(
-                          (acc, skill) => {
-                            const strand = (skill.strand || 'OTHER').toUpperCase();
-                            acc[strand] = acc[strand] ?? [];
-                            acc[strand].push(skill);
-                            return acc;
-                          },
-                          {} as Record<string, typeof skillsInUnit>
-                        )
-                      ).sort(([a], [b]) => getStrandSortKey(a) - getStrandSortKey(b));
+                  <div className="space-y-3">
+                    {subject.skills.map((skill) => {
+                      const mastery = skill.masteries[0];
+                      const masteryPct = mastery ? Math.round(mastery.mastery * 100) : 0;
+                      const isDue = !mastery?.nextReviewAt || mastery.nextReviewAt <= now;
 
                       return (
-                        <details key={unitCode} className="group rounded-lg border border-gray-200 bg-white open:border-blue-200" open={unitDue > 0}>
-                          <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-3 py-2.5">
-                            <div className="flex items-center gap-2">
-                              <span className="inline-block text-xs transition-transform group-open:rotate-90">▶</span>
-                              <span className="text-sm font-semibold text-gray-900">{unitCode}</span>
-                              <span className="text-xs text-gray-500">{skillsInUnit.length} subtopics</span>
-                            </div>
-                            <div className="flex items-center gap-3">
-                              {unitDue > 0 && <span className="rounded bg-amber-100 px-2 py-0.5 text-[11px] font-medium text-amber-800">{unitDue} due</span>}
-                              <span className={`text-xs font-semibold tabular-nums ${unitStyles.text}`}>{unitMastery}%</span>
-                            </div>
-                          </summary>
-
-                          <div className="border-t border-gray-100 px-3 py-3 space-y-3">
-                            {strandGroups.map(([strand, skillsInStrand]) => {
-                              const strandDue = skillsInStrand.filter((skill) => {
-                                const mastery = skill.masteries[0];
-                                return !mastery?.nextReviewAt || mastery.nextReviewAt <= now;
-                              }).length;
-
-                              const strandMastery =
-                                skillsInStrand.length > 0
-                                  ? Math.round(
-                                      skillsInStrand.reduce((sum, skill) => {
-                                        const mastery = skill.masteries[0];
-                                        return sum + (mastery ? mastery.mastery * 100 : 0);
-                                      }, 0) / skillsInStrand.length
-                                    )
-                                  : 0;
-
-                              const strandStyles = getMasteryStyles(strandMastery);
-
-                              return (
-                                <section key={`${unitCode}-${strand}`} className="rounded-md border border-gray-100 bg-gray-50/40 p-2.5">
-                                  <div className="mb-2 flex items-center justify-between gap-3">
-                                    <div className="flex items-center gap-2">
-                                      <span className="rounded bg-slate-100 px-2 py-0.5 text-[11px] font-semibold text-slate-700">{strand}</span>
-                                      <span className="text-xs text-gray-500">{skillsInStrand.length} subtopics</span>
-                                      {strandDue > 0 && <span className="rounded bg-amber-100 px-2 py-0.5 text-[11px] font-medium text-amber-800">{strandDue} due</span>}
-                                    </div>
-                                    <span className={`text-xs font-semibold tabular-nums ${strandStyles.text}`}>{strandMastery}%</span>
-                                  </div>
-
-                                  <div className="space-y-2 pl-3 sm:pl-4 border-l-2 border-gray-100">
-                                    {skillsInStrand.map((skill) => {
-                                      const mastery = skill.masteries[0];
-                                      const masteryPct = mastery ? Math.round(mastery.mastery * 100) : 0;
-                                      const isDue = !mastery?.nextReviewAt || mastery.nextReviewAt <= now;
-                                      const masteryStyles = getMasteryStyles(masteryPct);
-
-                                      return (
-                                        <article
-                                          key={skill.id}
-                                          className={`rounded-lg border bg-white p-3 transition-colors ${isDue ? 'border-amber-300' : 'border-gray-200'}`}
-                                        >
-                                          <div className="mb-2 flex items-center justify-between gap-3">
-                                            <span className="text-sm font-medium text-gray-900">{skill.code} · {skill.name}</span>
-                                            <span className={`text-xs font-semibold tabular-nums ${masteryStyles.text}`}>{masteryPct}%</span>
-                                          </div>
-                                          <div className="h-1.5 w-full overflow-hidden rounded-full bg-gray-200">
-                                            <div className={`h-full rounded-full transition-all ${masteryStyles.bar}`} style={{ width: `${masteryPct}%` }} />
-                                          </div>
-                                        </article>
-                                      );
-                                    })}
-                                  </div>
-                                </section>
-                              );
-                            })}
+                        <div
+                          key={skill.id}
+                          className={`p-4 bg-white rounded-lg border ${isDue ? 'border-amber-300' : 'border-gray-200'}`}
+                        >
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="font-medium text-gray-800">{skill.name}</span>
+                            <span className={`text-sm font-semibold ${masteryPct >= 80 ? 'text-green-600' : masteryPct >= 50 ? 'text-yellow-600' : 'text-red-500'}`}>
+                              {masteryPct}%
+                            </span>
                           </div>
-                        </details>
+                          <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                            <div
+                              className={`h-full rounded-full ${masteryPct >= 80 ? 'bg-green-500' : masteryPct >= 50 ? 'bg-yellow-500' : 'bg-red-400'}`}
+                              style={{ width: `${masteryPct}%` }}
+                            />
+                          </div>
+                          <div className="flex items-center justify-between mt-2">
+                            <span className="text-xs text-gray-400">
+                              {mastery?.lastPracticedAt
+                                ? `Last practiced ${new Date(mastery.lastPracticedAt).toLocaleDateString()}`
+                                : 'Not started'}
+                            </span>
+                            {mastery?.nextReviewAt && (
+                              <span className={`text-xs ${isDue ? 'text-amber-600 font-medium' : 'text-gray-400'}`}>
+                                {isDue ? 'Due now' : `Next: ${new Date(mastery.nextReviewAt).toLocaleDateString()}`}
+                              </span>
+                            )}
+                          </div>
+                        </div>
                       );
                     })}
                   </div>
-                </div>
-              </section>
-            );
-          })}
-        </div>
+                </>
+              )}
+            </section>
+          );
+        })}
 
         {subjects.length === 0 && (
-          <div className="rounded-2xl border border-dashed border-gray-300 bg-white px-6 py-14 text-center text-gray-500 shadow-sm">
-            <p className="text-base font-medium text-gray-700">No subjects available yet.</p>
-            <p className="mt-1 text-sm text-gray-500">Check back soon to start your first learning session.</p>
+          <div className="text-center py-16 text-gray-400">
+            <p>No subjects available yet.</p>
           </div>
         )}
 
-        {(() => {
-          const role = (session.user as { role?: 'STUDENT' | 'TEACHER' | 'ADMIN' }).role;
-          return role === 'TEACHER' || role === 'ADMIN';
-        })() && (
-          <section className="mt-8 rounded-2xl border border-indigo-200 bg-indigo-50 p-5 sm:p-6">
-            <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-indigo-800">Teaching Tools</h2>
-            <div className="flex flex-wrap gap-3">
+        {role === 'ADMIN' && (
+          <section className="mt-6 p-4 bg-purple-50 border border-purple-200 rounded-xl">
+            <h2 className="text-sm font-semibold text-purple-800 mb-3">Admin Tools</h2>
+            <div className="flex gap-3">
               <Link
-                href="/teacher/dashboard"
-                className="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
-              >
-                Teacher Dashboard
-              </Link>
-            </div>
-          </section>
-        )}
-
-        {(session.user as { role?: string }).role === 'ADMIN' && (
-          <section className="mt-8 rounded-2xl border border-purple-200 bg-purple-50 p-5 sm:p-6">
-            <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-purple-800">Admin Tools</h2>
-            <div className="flex flex-wrap gap-3">
-              <Link
-                href={`/admin/insight/${process.env.NEXT_PUBLIC_DEFAULT_SUBJECT_SLUG ?? 'ks3-maths'}`}
-                className="inline-flex items-center justify-center rounded-lg bg-purple-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-purple-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2"
+                href="/admin/insight/ks3-maths"
+                className="px-4 py-2 text-sm bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
               >
                 Insight Dashboard
               </Link>
               <Link
                 href="/admin/interventions"
-                className="inline-flex items-center justify-center rounded-lg border border-purple-300 bg-white px-4 py-2.5 text-sm font-semibold text-purple-700 transition-colors hover:bg-purple-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2"
+                className="px-4 py-2 text-sm bg-white text-purple-700 border border-purple-300 rounded-lg hover:bg-purple-50 transition-colors"
               >
                 Interventions
               </Link>
@@ -319,6 +196,6 @@ export default async function DashboardPage() {
           </section>
         )}
       </div>
-    </LearningPageShell>
+    </main>
   );
 }

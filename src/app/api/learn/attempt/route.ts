@@ -3,11 +3,9 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/features/auth/authOptions';
 import { prisma } from '@/db/prisma';
 import { z } from 'zod';
-import { gradeAttempt, getAnswerFormatHint } from '@/features/learn/gradeAttempt';
+import { getItemContent, gradeAttempt } from '@/features/learn/itemContent';
 import { emitEvent } from '@/features/telemetry/eventService';
 import { updateSkillMastery } from '@/features/mastery/updateMastery';
-import { consumeGuessingSafeguard, grantReward, maybeGrantDailyStreak } from '@/features/gamification/gamificationService';
-import { recordKnowledgeAttempt } from '@/features/knowledge-state/knowledgeStateService';
 
 const attemptSchema = z.object({
   itemId: z.string(),
@@ -15,28 +13,9 @@ const attemptSchema = z.object({
   subjectId: z.string(),
   answer: z.string(),
   isLast: z.boolean(),
-  questionIndex: z.number().int().nonnegative().optional(),
-  routeType: z.enum(['A', 'B', 'C']).optional(),
   totalItems: z.number(),
   previousResults: z.array(z.object({ itemId: z.string(), correct: z.boolean() })),
-  responseTimeMs: z.number().int().positive().optional(),
-  hintsUsed: z.number().int().min(0).optional(),
-  explanationId: z.string().optional(),
-  attemptNumber: z.number().int().positive().optional(),
-  questionDifficulty: z.number().min(0).max(1).optional(),
-  questionType: z.enum(['ROUTINE', 'FLUENCY', 'RETRIEVAL', 'TRANSFER', 'APPLICATION', 'MIXED', 'DIAGNOSTIC']).optional(),
-  supportLevel: z.enum(['INDEPENDENT', 'LIGHT_PROMPT', 'WORKED_EXAMPLE', 'SCAFFOLDED', 'FULL_EXPLANATION']).optional(),
-  isTransferItem: z.boolean().optional(),
-  isMixedItem: z.boolean().optional(),
 });
-
-async function safeSideEffect(label: string, fn: () => Promise<void>) {
-  try {
-    await fn();
-  } catch (error) {
-    console.error(`[learn/attempt] Side effect failed: ${label}`, error);
-  }
-}
 
 export async function POST(req: NextRequest) {
   const session = await getServerSession(authOptions);
@@ -52,264 +31,56 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Invalid input' }, { status: 400 });
   }
 
-  const {
-    itemId,
-    skillId,
-    subjectId,
-    answer,
-    isLast,
-    questionIndex,
-    routeType,
-    totalItems,
-    previousResults,
-    responseTimeMs,
-    hintsUsed,
-    explanationId,
-    attemptNumber,
-    questionDifficulty,
-    questionType,
-    supportLevel,
-    isTransferItem,
-    isMixedItem,
-  } = parsed.data;
+  const { itemId, skillId, subjectId, answer, isLast, totalItems, previousResults } = parsed.data;
 
   const item = await prisma.item.findUnique({ where: { id: itemId } });
   if (!item) {
     return NextResponse.json({ error: 'Item not found' }, { status: 404 });
   }
 
-  const correct = gradeAttempt(item.answer, answer);
-
-  const skillMastery = await prisma.skillMastery.findUnique({
-    where: { userId_skillId: { userId, skillId } },
-    select: { nextReviewAt: true },
-  });
-  const now = new Date();
-  const isDueReview = skillMastery?.nextReviewAt != null && skillMastery.nextReviewAt <= now;
-  const mode = isDueReview ? 'REVIEW' : 'PRACTICE';
-
-  const isShadowQuestion = typeof questionIndex === 'number' && totalItems >= 2 && questionIndex >= totalItems - 2;
+  const itemContent = getItemContent(item);
+  const correct = gradeAttempt(itemContent.acceptedAnswers, answer);
 
   const attempt = await prisma.attempt.create({
-    data: { userId, itemId, answer, correct, mode },
+    data: { userId, itemId, answer, correct },
   });
 
-  let recommendation:
-    | {
-        recommendation: unknown;
-        policyVersion: string;
-        state: {
-          masteryProbability: number;
-          retrievalStrength: number;
-          transferAbility: number;
-          forgettingRate: number;
-          confidence: number;
-        };
-        dle: {
-          value: number;
-          learningGain: number;
-          knowledgeStability: number;
-          instructionalTimeMs: number;
-          durabilityBand: 'AT_RISK' | 'DEVELOPING' | 'DURABLE';
-          version: 'v1';
-        };
-      }
-    | null = null;
-  try {
-    recommendation = await recordKnowledgeAttempt({
-      userId,
-      skillId,
-      itemId,
-      correct,
-      occurredAt: attempt.createdAt,
-      responseTimeMs,
-      hintsUsed,
-      explanationId,
-      attemptNumber,
-      questionDifficulty,
-      questionType,
-      supportLevel,
-      isTransferItem,
-      isMixedItem,
-      isReviewItem: mode === 'REVIEW',
-    });
-  } catch (error) {
-    console.error('[learn/attempt] Side effect failed: knowledge_attempt_recorded', error);
-  }
-
-  await safeSideEffect('attempt_submitted', async () => {
-    await emitEvent({
-      name: 'attempt_submitted',
-      actorUserId: userId,
-      studentUserId: userId,
-      subjectId,
-      skillId,
-      itemId,
-      payload: { itemId, answer, skillId, subjectId },
-    });
+  await emitEvent({
+    name: 'attempt_submitted',
+    actorUserId: userId,
+    studentUserId: userId,
+    subjectId,
+    skillId,
+    itemId,
+    payload: { itemId, answer, skillId, subjectId },
   });
 
-  await safeSideEffect('attempt_graded', async () => {
-    await emitEvent({
-      name: 'attempt_graded',
-      actorUserId: userId,
-      studentUserId: userId,
-      subjectId,
-      skillId,
-      itemId,
-      attemptId: attempt.id,
-      payload: { itemId, attemptId: attempt.id, correct, skillId, subjectId },
-    });
-  });
-
-  await safeSideEffect('question_answered', async () => {
-    await emitEvent({
-      name: 'question_answered',
-      actorUserId: userId,
-      studentUserId: userId,
-      subjectId,
-      skillId,
-      itemId,
-      attemptId: attempt.id,
-      payload: { itemId, skillId, subjectId, correct, mode },
-    });
-  });
-
-  const safeguard = await consumeGuessingSafeguard(userId, correct, attempt.createdAt);
-
-  await safeSideEffect('diagnostic_reward', async () => {
-    await grantReward(
-      userId,
-      subjectId,
-      isShadowQuestion && correct ? 'shadow_item_correct' : correct ? 'diagnostic_item_correct' : 'diagnostic_item_incorrect',
-      {
-        itemId,
-        skillId,
-        mode,
-        isShadowQuestion,
-        routeType,
-        xpMultiplier: safeguard.xpMultiplier,
-        safeguardPenaltyApplied: safeguard.penaltyApplied,
-        safeguardPenaltyRemaining: safeguard.penaltyRemaining,
-        rewardKey: `attempt:${attempt.id}:${isShadowQuestion && correct ? 'shadow_item_correct' : correct ? 'diagnostic_item_correct' : 'diagnostic_item_incorrect'}`,
-      }
-    );
-  });
-
-  const hadRecentIncorrect = await prisma.attempt.findFirst({
-    where: {
-      userId,
-      itemId,
-      correct: false,
-      createdAt: { lt: attempt.createdAt },
-    },
-    select: { id: true },
-  });
-
-  if (correct && hadRecentIncorrect) {
-    await safeSideEffect('retry_recovery_reward', async () => {
-      await grantReward(userId, subjectId, 'retry_recovery', {
-        itemId,
-        skillId,
-        mode,
-        rewardKey: `attempt:${attempt.id}:retry_recovery`,
-      });
-    });
-  }
-
-  await safeSideEffect('daily_streak', async () => {
-    await maybeGrantDailyStreak(userId, subjectId);
+  await emitEvent({
+    name: 'attempt_graded',
+    actorUserId: userId,
+    studentUserId: userId,
+    subjectId,
+    skillId,
+    itemId,
+    attemptId: attempt.id,
+    payload: { itemId, attemptId: attempt.id, correct, skillId, subjectId },
   });
 
   if (isLast) {
     const allResults = [...previousResults, { itemId, correct }];
     const correctCount = allResults.filter((r) => r.correct).length;
-    const accuracy = totalItems > 0 ? correctCount / totalItems : 0;
 
-    await safeSideEffect('route_completed_event', async () => {
-      await emitEvent({
-        name: 'route_completed',
-        actorUserId: userId,
-        studentUserId: userId,
-        subjectId,
-        skillId,
-        payload: { skillId, subjectId, totalItems, correctCount, accuracy, routeType: routeType ?? 'A' },
-      });
+    // Detect if this is a due review
+    const skillMastery = await prisma.skillMastery.findUnique({
+      where: { userId_skillId: { userId, skillId } },
+      select: { nextReviewAt: true },
     });
+    const now = new Date();
+    const isDueReview = skillMastery?.nextReviewAt != null && skillMastery.nextReviewAt <= now;
+    const mode = isDueReview ? 'REVIEW' : 'PRACTICE';
 
-    await safeSideEffect('route_completed_reward', async () => {
-      await grantReward(userId, subjectId, 'route_completed', {
-        skillId,
-        accuracy,
-        routeType: routeType ?? 'A',
-        rewardKey: `attempt:${attempt.id}:route_completed`,
-      });
-    });
-
-    const shadowPair = allResults.slice(-2);
-    if (shadowPair.length === 2) {
-      const shadowPassed = shadowPair.every((r) => r.correct);
-      await safeSideEffect('shadow_pair_event', async () => {
-        await emitEvent({
-          name: shadowPassed ? 'shadow_pair_passed' : 'shadow_pair_failed',
-          actorUserId: userId,
-          studentUserId: userId,
-          subjectId,
-          skillId,
-          payload: {
-            skillId,
-            subjectId,
-            routeType: routeType ?? 'A',
-            pairSize: 2,
-            correctCount: shadowPair.filter((r) => r.correct).length,
-          },
-        });
-      });
-
-      if (!shadowPassed && (routeType ?? 'A') === 'C') {
-        await safeSideEffect('intervention_flag_upsert', async () => {
-          await prisma.interventionFlag.upsert({
-            where: { userId_skillId: { userId, skillId } },
-            update: { isResolved: false, lastSeenAt: new Date(), reason: 'N1.1 route C shadow pair failed' },
-            create: { userId, subjectId, skillId, reason: 'N1.1 route C shadow pair failed' },
-          });
-        });
-
-        await safeSideEffect('intervention_flagged_event', async () => {
-          await emitEvent({
-            name: 'intervention_flagged',
-            actorUserId: userId,
-            studentUserId: userId,
-            subjectId,
-            skillId,
-            payload: { reason: 'N1.1 route C shadow pair failed', routeType: 'C' },
-          });
-        });
-      }
-    }
-
-    await safeSideEffect('update_skill_mastery', async () => {
-      await updateSkillMastery(userId, skillId, subjectId, correctCount, totalItems, mode);
-    });
+    await updateSkillMastery(userId, skillId, subjectId, correctCount, totalItems, mode);
   }
 
-  const nextQuestion = recommendation ? recommendation.recommendation : null;
-  const nextQuestionPolicyVersion = recommendation ? recommendation.policyVersion : null;
-
-  return NextResponse.json({
-    correct,
-    hint: !correct ? getAnswerFormatHint(item.type, item.question, item.options) : null,
-    nextQuestion,
-    nextQuestionPolicyVersion,
-    skillState: recommendation
-      ? {
-          masteryProbability: recommendation.state.masteryProbability,
-          retrievalStrength: recommendation.state.retrievalStrength,
-          transferAbility: recommendation.state.transferAbility,
-          forgettingRate: recommendation.state.forgettingRate,
-          confidence: recommendation.state.confidence,
-        }
-      : null,
-    dle: recommendation ? recommendation.dle : null,
-  });
+  return NextResponse.json({ correct });
 }

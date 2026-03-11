@@ -1,0 +1,4942 @@
+[
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-17"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "ONBOARDING",
+        "difficulty": "LOW",
+        "questionPurpose": "BASELINE_CHECK"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "True or false?:"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-17"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "ONBOARDING",
+        "difficulty": "LOW",
+        "questionPurpose": "BASELINE_CHECK"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "True or false?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-18"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "ONBOARDING",
+        "difficulty": "LOW",
+        "questionPurpose": "BASELINE_CHECK"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "True or false?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-18"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Which of the following is the same as 1 < 2?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-18"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "ONBOARDING",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "BASELINE_CHECK"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "True or false?: a = 8 satisfies the inequality a > 5. Circle the correct answer."
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-20"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "integer that makes each statement true?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-22"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "11. Which of the following is equivalent to 5 ≥ ?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-22"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "a) ? ≥ 5 b) ? > 5 c) ? ≤ 5 d) 5 ≤ ?",
+      "options": [
+        "? ≥ 5 b) ? > 5 c) ? ≤ 5 d) 5 ≤ ?"
+      ]
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-22"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "12. Which of the following says that the missing number, ?, is at least 7?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-23"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.55,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Complete the following using = or ≠"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-23"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "HIGH",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": false
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.55,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Complete the following using = or ≠ | Decide whether the two values are equal or not. | If they are equal, use the ‘=‘ sign. If they aren’t, use the ≠ sign | Example 16 - I do… | Example 18 – You do… | Example 17 – We do… | Two and | a half | million | 2 500 000 | 300 000 000 | Three billion | Six thousand and eighty | 68 000 | Understanding the ‘not equal to’ symbol to compare integers | 23 | = | ≠ | ≠ | Independent Practice | a)"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-24"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Here is an inequality: 3 > t. How could we say this in words?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-24"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "be true?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-24"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "In which of the following inequalities could d = 5?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-24"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Which of the following says that ? has a minimum value of 5?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-24"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "of the following statements is correct?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-30"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "HIGH",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": false
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.55,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Order the numbers from smallest to largest (ascending). | Identify the middle number. | Example 1 - I do…"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-30"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [
+          "UNORDERED_MEDIAN_ERROR"
+        ],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach",
+          "misconception:unordered_median_error"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.55,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Find the median of: | 7, 12, 11, 6, 2 | Example 2 – We do…"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-30"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [
+          "UNORDERED_MEDIAN_ERROR"
+        ],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach",
+          "misconception:unordered_median_error"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.55,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Find the median of: | 301, 44, 96, 88, 201 | Example 3 – You do…"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-32"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.55,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Find the midpoint of:"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-32"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "HIGH",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": false
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.55,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Find the midpoint of: | 1) Add the two numbers together. | 10 and 40 | 11 and 40 | 12 and 40 | 2) Divide by two to find the midpoint. | Independent Practice"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-32"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Find the midpoint of a pair of numbers",
+      "options": [
+        "5 and 9"
+      ],
+      "notes": [
+        "raw:Find the midpoint of a pair of numbers | a) 5 and 9"
+      ]
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-33"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "HIGH",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": false
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.55,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Order the numbers from smallest to largest (ascending). | Identify the middle number by finding the midpoint. | Example 1 - I do…"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-33"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [
+          "UNORDERED_MEDIAN_ERROR"
+        ],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach",
+          "misconception:unordered_median_error"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.55,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Find the median of: | 7, 12, 11, 6 | Example 2 – We do…"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-33"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [
+          "UNORDERED_MEDIAN_ERROR"
+        ],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach",
+          "misconception:unordered_median_error"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.55,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Find the median of: | 301, 44, 96, 88 | Example 3 – You do…"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-33"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "HIGH",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [
+          "UNORDERED_MEDIAN_ERROR"
+        ],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach",
+          "misconception:unordered_median_error"
+        ],
+        "isSpacedRetrievalEligible": false
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Find the median of: | 12, 18, 14, 1 | Independent Practice | Question ??. Find the median of the following sets of numbers:",
+      "options": [
+        "12, 8, 10, 17"
+      ],
+      "notes": [
+        "raw:Find the median of: | 12, 18, 14, 1 | Independent Practice | Question ??. Find the median of the following sets of numbers: | a) 12, 8, 10, 17"
+      ]
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-34"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "HIGH",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [
+          "UNORDERED_MEDIAN_ERROR"
+        ],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach",
+          "misconception:unordered_median_error"
+        ],
+        "isSpacedRetrievalEligible": false
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Complete the cards so that the median is 7: | Christopher has a twin brother aged 12 and two older brothers aged 18 and 14. Work out the median age of the four brothers. | Question ??. | Tamaya finds the median of this set of data: | She says the median is 2 because it is in the middle. Explain her mistake. | Question ??. | Skills Check"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-34"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Using the number line, what is the midpoint of 11 and 15?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-34"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "What is the midpoint of 13km and 22 km?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-34"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "The smallest number is 4, what is the largest?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-36"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [
+          "PLACE_VALUE_CONFUSION"
+        ],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach",
+          "misconception:place_value_confusion"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.55,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Write down the value of the underlined digit"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-37"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Question 3. What is the smallest number that can be made using all of the cards?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-38"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.55,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Write the decimal as a sum of fractions"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-38"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "HIGH",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": false
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.55,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Write the decimal as a sum of fractions | 1) Identify the place value of each digit. | 2) Re-write the value as a sum of each of its digits place value | 5.64 | 5 + | 0.643 | 7.392 7 + | Steps"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-38"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "HIGH",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": false
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Write the decimal as a sum of fractions | 1) Identify the place value of each digit. | 2) Re-write the value as a sum of each of its digits place value | Example 4 - I do… | Example 6 – You do… | Independent Practice | Example 5 – We do… | Question 3. Write the following decimals as a sum of fractions | Decimals as sums of fractions",
+      "options": [
+        "0.1"
+      ],
+      "notes": [
+        "raw:Write the decimal as a sum of fractions | 1) Identify the place value of each digit. | 2) Re-write the value as a sum of each of its digits place value | Example 4 - I do… | Example 6 – You do… | Independent Practice | Example 5 – We do… | Question 3. Write the following decimals as a sum of fractions | Decimals as sums of fractions | a) 0.1"
+      ]
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-38"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.55,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Write the sum of fractions in decimal form"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-38"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "HIGH",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": false
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.55,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Write the sum of fractions in decimal form | Re-write the value as a sum of each of its digits place value | 1+ 2 10 + 7 100 + 1 1000 1.271 | 1+ 4 10 + 8 1000 1.408 | 2+ 3 100 + 4 1000 1.034 | Steps"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-39"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [
+          "PLACE_VALUE_CONFUSION"
+        ],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach",
+          "misconception:place_value_confusion"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "What is the value of the underlined digit in this number?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-39"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.55,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Write the number nine hundredths in figures | 0.09 B. 0.9 | 0.009 D. 900"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-39"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "HIGH",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": false
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.55,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Write down the decimal as a sum of fractions | 1.408 | A. | B. | C. | D."
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-39"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare two numbers using =",
+        "objectiveId": "N1.3"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.3:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.55,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Write the sum of fractions as a decimal | 0.348 B. 1.348 | 0.0348 D. 0.843"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-40"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare decimals using =",
+        "objectiveId": "N1.7"
+      },
+      "pedagogical": {
+        "learningPhase": "ONBOARDING",
+        "difficulty": "LOW",
+        "questionPurpose": "BASELINE_CHECK"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.7:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "True or false?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-41"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare decimals using =",
+        "objectiveId": "N1.7"
+      },
+      "pedagogical": {
+        "learningPhase": "ONBOARDING",
+        "difficulty": "LOW",
+        "questionPurpose": "BASELINE_CHECK"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.7:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "True or false?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-42"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare decimals using =",
+        "objectiveId": "N1.7"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.7:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "integer that makes each statement true?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-43"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare decimals using =",
+        "objectiveId": "N1.7"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.7:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "integer that makes each statement true?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-46"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare decimals using =",
+        "objectiveId": "N1.7"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.7:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.55,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Complete the following using = or ≠"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-46"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare decimals using =",
+        "objectiveId": "N1.7"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "HIGH",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.7:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": false
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.55,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Complete the following using = or ≠ | Decide whether the two values are equal or not. | If they are equal, use the ‘=‘ sign. If they aren’t, use the ≠ sign | Example 16 - I do… | Example 18 – You do… | Example 17 – We do… | Independent Practice | Two hundred and six tenths | 200.06 | 3000.47 | Three thousand point four seven | Sixty-eight thousand point nine | 68 000.9 | 9. Complete these statements using the symbols = or | ≠ | Understanding the ‘not equal to’ symbol to compare decimals | ≠ | = | = | a)"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-46"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare decimals using =",
+        "objectiveId": "N1.7"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [
+          "SYMBOL_DIRECTION_CONFUSION"
+        ],
+        "reteachRouteCandidates": [
+          "N1.7:default-reteach",
+          "misconception:symbol_direction_confusion"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Which is the correct symbol to go on the line below?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-46"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare decimals using =",
+        "objectiveId": "N1.7"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.7:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "of the following statements is correct?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-56"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Rounding to the nearest 10",
+        "objectiveId": "N1.10"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "100"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.10:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "2) Is it closer to the 10 above or the 10 below?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: 100",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-58"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Rounding to the nearest 10",
+        "objectiveId": "N1.10"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "100"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.10:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Is it closer to the 100 above or the 100 below?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: 100",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-59"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Rounding to the nearest 10",
+        "objectiveId": "N1.10"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "100"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.10:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "a) Which of these could be the number?",
+      "options": [
+        "Which of these could be the number?"
+      ]
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: 100",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-60"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Rounding to the nearest 10",
+        "objectiveId": "N1.10"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "100"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.10:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Is it closer to the integer above or the integer below?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: 100",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-62"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Rounding to the nearest 10",
+        "objectiveId": "N1.10"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "100"
+        ],
+        "misconceptionTagsTarget": [
+          "OPERATION_CONFUSION"
+        ],
+        "reteachRouteCandidates": [
+          "N1.10:default-reteach",
+          "misconception:operation_confusion"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "a) What is the smallest amount of money that this could be?",
+      "options": [
+        "What is the smallest amount of money that this could be?"
+      ]
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: 100",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-62"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Rounding to the nearest 10",
+        "objectiveId": "N1.10"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "100"
+        ],
+        "misconceptionTagsTarget": [
+          "OPERATION_CONFUSION"
+        ],
+        "reteachRouteCandidates": [
+          "N1.10:default-reteach",
+          "misconception:operation_confusion"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "b) What is the largest amount of money that this could be?",
+      "options": [
+        "What is the largest amount of money that this could be?"
+      ]
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: 100",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-76"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "ONBOARDING",
+        "difficulty": "LOW",
+        "questionPurpose": "BASELINE_CHECK"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "True or false?:"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-77"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "ONBOARDING",
+        "difficulty": "LOW",
+        "questionPurpose": "BASELINE_CHECK"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "True or false?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-77"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Which of the following is the same as -2 < -1?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-77"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "ONBOARDING",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "BASELINE_CHECK"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "True or false?: a = -8 satisfies the inequality a < -5. Circle the correct answer."
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-77"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Do you agree with Joe, Jay, both of them or neither of them?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-79"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "integer that makes each statement true?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-81"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Which of the following is equivalent to -5 ≥ ?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-81"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "| a) ? ≥ -5 b) ? > -5 c) ? ≤ -5 d) -5 ≤ ?",
+      "options": [
+        "? ≥ -5 b) ? > -5 c) ? ≤ -5 d) -5 ≤ ?"
+      ]
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-81"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Which of the following says that the missing number, ?, is at least -7?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-82"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Which is greater, -5.2 or -5.5?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-82"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Which is smaller, -0.14 or -0.13?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-82"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Which is greater, -0.71 or -0.68?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-82"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Which is greater, -5.02 or -5.2?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-82"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Which is smaller, -0.706 or -0.73?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-82"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Which is greater, -0.071 or -0.06?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-83"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "ONBOARDING",
+        "difficulty": "LOW",
+        "questionPurpose": "BASELINE_CHECK"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "True or false?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-84"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "integer that makes each statement true?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-85"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "integer that makes each statement true?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-85"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.55,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Complete the following using = or ≠"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-85"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "HIGH",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": false
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.55,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Complete the following using = or ≠ | Decide whether the two values are equal or not. | If they are equal, use the ‘=‘ sign. If they aren’t, use the ≠ sign | Example 28 - I do… | Example 30 – You do… | Example 29 – We do… | Negative two hundred and six tenths | -200.06 | - 3 000 000 | Negative three million | Negative six thousand eight hundred and nine tenths | -68 000.9 | Understanding the ‘not equal to’ symbol to compare negative numbers | a)"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-86"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Here is an inequality: -3 > t. How could we say this in words?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-86"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [
+          "SYMBOL_DIRECTION_CONFUSION"
+        ],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach",
+          "misconception:symbol_direction_confusion"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Which is the correct symbol to go on the line below?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-86"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "HIGH",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [
+          "SYMBOL_DIRECTION_CONFUSION"
+        ],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach",
+          "misconception:symbol_direction_confusion"
+        ],
+        "isSpacedRetrievalEligible": false
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.55,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Write the correct symbol on the line below | -4.5 | < | -4.4 | Which | one"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-86"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "of the following statements is correct?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-92"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "HIGH",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [
+          "UNORDERED_MEDIAN_ERROR"
+        ],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach",
+          "misconception:unordered_median_error"
+        ],
+        "isSpacedRetrievalEligible": false
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.55,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Write the value of the 4 in each of these numbers: | 34601 | 3.46 | 43.6 | 3.64 | 14.63 | f) Now find the median of the five numbers above."
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-92"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.55,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Write these numbers in words: | 5.7 | 5.006 | 3.02"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-92"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "HIGH",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [
+          "UNORDERED_MEDIAN_ERROR"
+        ],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach",
+          "misconception:unordered_median_error"
+        ],
+        "isSpacedRetrievalEligible": false
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.55,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Complete each of the following scales: | Unfamiliar Contexts | Hannah is recording the number of letters in each word in an article. These are the first ten lengths. | 3 4 5 6 2 4 3 7 3 6 | The 11th word has 4 letters. Tick the correct box to describe how the median will be affected. | The median will decrease The median will remain the same The median will increase | Here are six number cards."
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-92"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Using all the numbers, what is the smallest number you can make which would round to 1.2?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-93"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "On which day was the lowest temperature recorded?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-93"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "HIGH",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [
+          "PLACE_VALUE_CONFUSION"
+        ],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach",
+          "misconception:place_value_confusion"
+        ],
+        "isSpacedRetrievalEligible": false
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "In each of the following, how many times the size of 4 tenths is the value of the underlined digit?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-94"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "How many different statements can you make?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-95"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "How will my prior knowledge develop my understanding of this topic?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-95"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "HIGH",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [
+          "UNORDERED_MEDIAN_ERROR"
+        ],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach",
+          "misconception:unordered_median_error"
+        ],
+        "isSpacedRetrievalEligible": false
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.55,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Order and compare numbers beyond 1000; use <, > and = signs; Count forwards and backwards with positive and negative whole numbers, including through zero. | Learning Journey | Subtopics: | N1.1 to N1.4 | ↓ | Integer place value: | words and figures, positioning on a number line and comparing and ordering | Subtopics: | N1.9 to N1.12 | ↓ | Rounding: | number lines and rounding to the | nearest 10, 100, 1000, integer and to decimal places and significant figures | Subtopic: | N1.5 | ↓ | Midpoint and median | Subtopics: | N1.13 to N1.15 | ↓ | Negative place value: | positioning on a number line, comparing and ordering | Subtopics: | N1.6 to N1.8 | ↗ | Decimal place value: | positioning on a number line, comparing and ordering | Key knowledge | By the end of this topic you should know… | The place value of integers, decimals and negatives; The median of a list of numbers is the middle value when the numbers are ordered; Very large or very small numbers can be written in standard form to make them easier to read. | By the end of this topic should be able to do… | Position, compare and order | integers | , | decimals | and | negatives | ; | Round | numbers to any given degree of accuracy; Calculate the | median | from a list of numbers; Write numbers in | standard form"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-95"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "How will this knowledge develop my understanding of future topics?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-105"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "HIGH",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": false
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Write both addition facts from this bar model | 5 + 6 = 11 | 6 + 5 = 11 | 11 – 6 = 5 | 11 – 5 = 6",
+      "options": [
+        "6 – 11 = 5"
+      ],
+      "notes": [
+        "raw:Write both addition facts from this bar model | 5 + 6 = 11 | 6 + 5 = 11 | 11 – 6 = 5 | 11 – 5 = 6 | b) 6 – 11 = 5"
+      ]
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-108"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "What addition is being shown on the number line?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-109"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "2. What calculation is being shown on the number line?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-110"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "HIGH",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": false
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.55,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Write the big number and the commutative addition facts | Use the addition facts to fill in the bar model | Addition | Fact | Bar Model | 4 | 3 | 3 | 4 | Example 10 - We do…"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-110"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "HIGH",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": false
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.55,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "Write the big number and the commutative addition facts | Use the addition facts to fill in the bar model | Example 11 – You do… | Addition | Fact | Bar Model | 5 | 6 | 5 | 6"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-116"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "What calculation is being shown on the number line?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-116"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "MEDIUM",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "5. What calculation is being shown on the number line?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "PPTX",
+        "sourceFile": "(PART A) N1-3 Secondary Ready - Applications of Numeracy (FOUNDATION Not Meeting Expected Standard) - Answers.pptx",
+        "slideOrPageRef": "slide-125"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "PV",
+        "subtopic": "Compare negatives using =",
+        "objectiveId": "N1.14"
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "≠"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [
+          "N1.14:default-reteach"
+        ],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_EXACT",
+        "correctAnswer": ""
+      },
+      "quality": {
+        "extractionConfidence": 0.8,
+        "mappingConfidence": 1,
+        "needsHumanReview": false,
+        "status": "VALIDATED",
+        "version": 1
+      },
+      "stem": "What is the missing number?"
+    },
+    "issues": [
+      {
+        "code": "unknown_answer_modes",
+        "message": "Unknown answer modes: ≠",
+        "severity": "error"
+      }
+    ]
+  }
+]

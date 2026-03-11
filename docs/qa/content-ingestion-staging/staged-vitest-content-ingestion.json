@@ -1,0 +1,64 @@
+[
+  {
+    "question": {
+      "provenance": {
+        "sourceType": "DOCX",
+        "sourceFile": "bad.docx",
+        "slideOrPageRef": "page-1"
+      },
+      "curriculum": {
+        "subject": "ks3-maths",
+        "yearBand": "Y7",
+        "strand": "Number",
+        "subtopic": "Unknown",
+        "objectiveId": null
+      },
+      "pedagogical": {
+        "learningPhase": "LEARN",
+        "difficulty": "LOW",
+        "questionPurpose": "CORE_PRACTICE"
+      },
+      "adaptive": {
+        "answerModeAllowed": [
+          "NUMERIC"
+        ],
+        "answerModeBlocked": [
+          "SINGLE_CHOICE"
+        ],
+        "misconceptionTagsTarget": [],
+        "reteachRouteCandidates": [],
+        "isSpacedRetrievalEligible": true
+      },
+      "marking": {
+        "markingMethod": "AUTO_NUMERIC_TOLERANCE",
+        "correctAnswer": "",
+        "tolerance": 0
+      },
+      "quality": {
+        "extractionConfidence": 0.2,
+        "mappingConfidence": 0.36,
+        "needsHumanReview": true,
+        "status": "REVIEW",
+        "version": 1
+      },
+      "stem": "Explain your method."
+    },
+    "issues": [
+      {
+        "code": "unknown_objective",
+        "message": "Objective (missing) does not exist in the objective map.",
+        "severity": "error"
+      },
+      {
+        "code": "missing_objective_id",
+        "message": "Objective mapping is missing.",
+        "severity": "error"
+      },
+      {
+        "code": "low_mapping_confidence",
+        "message": "Mapping confidence is below the review threshold.",
+        "severity": "error"
+      }
+    ]
+  }
+]

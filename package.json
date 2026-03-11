@@ -3,17 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "predev": "npm run db:generate",
     "dev": "next dev",
-    "prebuild": "npm run db:generate",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings=0",
+    "lint": "next lint",
     "test": "vitest run",
     "test:watch": "vitest",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
-    "db:seed": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/seed.ts && npm run db:ensure:routes:n14-n15",
+    "db:seed": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/seed.ts",
     "db:import:unit1-first25": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/import-unit1-first25.ts",
     "db:import:unit1-next25": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/import-unit1-next25.ts",
     "db:import:unit1-n14": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/import-unit1-n14.ts",
@@ -30,7 +28,10 @@
     "validate:explanations": "node scripts/validate-explanation-integrity.mjs",
     "validate:qa": "npm run validate:items && npm run validate:n13 && npm run validate:explanation-steps && npm run validate:explanations && npm test",
     "content:extract:unit1": "node scripts/extract-curriculum-pptx.mjs",
-    "content:report:unit1-gaps": "node scripts/report-curriculum-seeding-gaps.mjs"
+    "content:report:unit1-gaps": "node scripts/report-curriculum-seeding-gaps.mjs",
+    "content:build:unit1-packs": "node scripts/build-curriculum-review-packs.mjs",
+    "content:build:phase1-queue": "node scripts/build-phase1-authoring-queue.mjs",
+    "content:build:phase1-briefs": "node scripts/build-phase1-author-briefs.mjs"
   },
   "prisma": {
     "seed": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/seed.ts && ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/ensure-routes-n14-n15.ts"

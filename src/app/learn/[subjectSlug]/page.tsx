@@ -4,12 +4,7 @@ import { redirect } from 'next/navigation';
 import { prisma } from '@/db/prisma';
 import { LearnSession } from '@/features/learn/LearnSession';
 import { isSkillUnlocked } from '@/features/learn/prerequisites';
-import { getUserGamificationSummary } from '@/features/gamification/gamificationService';
-import { selectExplanationRoute } from '@/features/diagnostic/routeAssignment';
-import { emitEvent } from '@/features/telemetry/eventService';
-import { getReteachPlanForSkill } from '@/features/learn/reteachService';
-import { isRoutedSkill } from '@/features/config/learningConfig';
-import { inferItemPurpose, isLearnCandidate, isShadowCandidate } from '@/features/items/itemPurpose';
+import { hasCompletedOnboardingDiagnostic } from '@/features/learn/onboarding';
 
 const QUESTIONS_PER_SESSION = 3;
 
@@ -22,8 +17,7 @@ export default async function LearnPage({ params }: Props) {
   const session = await getServerSession(authOptions);
   if (!session?.user) redirect('/login');
 
-  const user = session.user as { id: string; role?: string };
-  const userId = user.id;
+  const userId = (session.user as { id: string }).id;
 
   const subject = await prisma.subject.findUnique({
     where: { slug: subjectSlug },
@@ -38,17 +32,8 @@ export default async function LearnPage({ params }: Props) {
   });
 
   if (!subject) redirect('/dashboard');
-
-  if ((user.role ?? 'STUDENT') === 'STUDENT') {
-    const baselineCompleted = await prisma.baselineSession.findFirst({
-      where: { userId, subjectId: subject.id, status: 'COMPLETED' },
-      select: { id: true },
-    });
-
-    if (!baselineCompleted) {
-      redirect(`/baseline/${subjectSlug}`);
-    }
-  }
+  const onboardingComplete = await hasCompletedOnboardingDiagnostic(userId, subject.id);
+  if (!onboardingComplete) redirect(`/diagnostic/${subjectSlug}`);
 
   const skillIds = subject.skills.map((s) => s.id);
 
@@ -69,7 +54,7 @@ export default async function LearnPage({ params }: Props) {
   );
 
   const unlockedSkills = subject.skills.filter((s) =>
-    isSkillUnlocked(s.id, prereqEdges, masteryMap) && isRoutedSkill(s.code)
+    isSkillUnlocked(s.id, prereqEdges, masteryMap)
   );
 
   if (unlockedSkills.length === 0) redirect('/dashboard');
@@ -96,102 +81,32 @@ export default async function LearnPage({ params }: Props) {
 
   if (!targetSkill) redirect('/dashboard');
 
-  const routeDecision = await selectExplanationRoute(
-    userId,
-    subject.id,
-    targetSkill.id,
-    targetSkill.code
-  );
-
   const itemSkills = await prisma.itemSkill.findMany({
     where: { skillId: targetSkill.id },
-    include: { item: true },
-  });
-
-  const allItems = itemSkills.map((entry) => entry.item);
-  const shuffledPool = [...allItems].sort(() => Math.random() - 0.5);
-  const learnItems = shuffledPool.filter((item) =>
-    isLearnCandidate({
-      question: item.question,
-      type: item.type,
-      options: item.options,
-      answer: item.answer,
-    })
-  );
-  const routeShadowItems = shuffledPool.filter((item) =>
-    isShadowCandidate(
-      {
-        question: item.question,
-        type: item.type,
-        options: item.options,
-        answer: item.answer,
+    include: {
+      item: {
+        include: {
+          attempts: {
+            where: { userId },
+            orderBy: { createdAt: 'desc' },
+            take: 1,
+          },
+        },
       },
-      routeDecision.routeType
-    )
-  );
-  const otherNonOnboarding = shuffledPool.filter((item) => inferItemPurpose(item).purpose !== 'ONBOARDING');
-
-  const selected: typeof allItems = [];
-  const selectedIds = new Set<string>();
-
-  function takeFrom(pool: typeof allItems, maxToAdd: number) {
-    let added = 0;
-    for (const item of pool) {
-      if (selected.length >= QUESTIONS_PER_SESSION || added >= maxToAdd) return;
-      if (selectedIds.has(item.id)) continue;
-      selected.push(item);
-      selectedIds.add(item.id);
-      added += 1;
-    }
-  }
-
-  if (isRoutedSkill(targetSkill.code) && routeShadowItems.length >= 2) {
-    takeFrom(learnItems, 1);
-    takeFrom(routeShadowItems, QUESTIONS_PER_SESSION);
-  } else {
-    takeFrom(learnItems, QUESTIONS_PER_SESSION);
-  }
-
-  takeFrom(otherNonOnboarding, QUESTIONS_PER_SESSION);
-  takeFrom(shuffledPool, QUESTIONS_PER_SESSION);
-
-  const items = selected.slice(0, QUESTIONS_PER_SESSION);
-  const gamification = await getUserGamificationSummary(userId);
-
-  await emitEvent({
-    name: 'explanation_route_assigned',
-    actorUserId: userId,
-    studentUserId: userId,
-    subjectId: subject.id,
-    skillId: targetSkill.id,
-    payload: {
-      skillId: targetSkill.id,
-      skillCode: targetSkill.code,
-      routeType: routeDecision.routeType,
-      reason: routeDecision.reason,
-      source: routeDecision.source,
-      interventionRecommended: routeDecision.interventionRecommended ?? false,
-      secureFastPass: routeDecision.secureFastPass ?? false,
-      transferSignalPositive: routeDecision.transferSignalPositive ?? false,
     },
   });
 
-  if (routeDecision.interventionRecommended) {
-    await emitEvent({
-      name: 'intervention_flagged',
-      actorUserId: userId,
-      studentUserId: userId,
-      subjectId: subject.id,
-      skillId: targetSkill.id,
-      payload: {
-        skillId: targetSkill.id,
-        skillCode: targetSkill.code,
-        reason: 'Fallback chain exhausted after repeated shadow failures',
-      },
-    });
-  }
-
-  const reteachPlan = await getReteachPlanForSkill(targetSkill.id, routeDecision.routeType);
+  const items = itemSkills
+    .map((record) => record.item)
+    .sort((a, b) => {
+      const aAttempt = a.attempts[0]?.createdAt?.getTime() ?? 0;
+      const bAttempt = b.attempts[0]?.createdAt?.getTime() ?? 0;
+      if (a.attempts.length === 0 && b.attempts.length > 0) return -1;
+      if (b.attempts.length === 0 && a.attempts.length > 0) return 1;
+      return aAttempt - bAttempt;
+    })
+    .slice(0, QUESTIONS_PER_SESSION)
+    .map(({ attempts, ...item }) => item);
 
   return (
     <LearnSession
@@ -199,9 +114,6 @@ export default async function LearnPage({ params }: Props) {
       skill={targetSkill}
       items={items}
       userId={userId}
-      gamification={gamification}
-      routeType={routeDecision.routeType}
-      reteachPlan={reteachPlan}
     />
   );
 }

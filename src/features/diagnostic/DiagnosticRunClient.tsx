@@ -1,13 +1,13 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { parseAnswerType, parseItemOptions, stripStudentQuestionLabel } from '@/features/items/itemMeta';
+import { getItemContent, ItemInteractionType } from '@/features/learn/itemContent';
 
 interface Props {
   subject: { id: string; title: string; slug: string };
   skill: { id: string; code: string; name: string; strand: string };
-  item: { id: string; question: string; options: unknown; type?: string; answer?: string };
+  item: { id: string; question: string; options: unknown; answer: string; type: string };
   sessionId: string;
   itemsSeen: number;
   maxItems: number;
@@ -17,146 +17,139 @@ interface Props {
 export function DiagnosticRunClient({ subject, skill, item, sessionId, itemsSeen, maxItems, subjectSlug }: Props) {
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [feedbackFlash, setFeedbackFlash] = useState<'correct' | 'incorrect' | null>(null);
   const router = useRouter();
-  const answerType = useMemo(
-    () => parseAnswerType(item.type, item.question, item.options, item.answer),
-    [item.type, item.question, item.options, item.answer]
-  );
-  const parsedOptions = useMemo(() => parseItemOptions(item.options), [item.options]);
-  const questionText = useMemo(() => stripStudentQuestionLabel(item.question), [item.question]);
+  const itemContent = getItemContent(item);
 
-  async function submitAnswer() {
-    if (!selectedAnswer.trim() || submitting) return;
-    setSubmitting(true);
-    setError(null);
-
-    try {
-      const res = await fetch(`/api/diagnostic/${subjectSlug}/submit`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          sessionId,
-          itemId: item.id,
-          skillId: skill.id,
-          subjectId: subject.id,
-          skillCode: skill.code,
-          strand: skill.strand,
-          answer: selectedAnswer,
-        }),
-      });
-
-      if (!res.ok) throw new Error('Could not save your answer. Tap Next again.');
-
-      const data = (await res.json()) as { correct?: boolean; hint?: string | null };
-      const wasCorrect = data.correct === true;
-      if (!wasCorrect && data.hint) setError(data.hint);
-      setFeedbackFlash(wasCorrect ? 'correct' : 'incorrect');
-      await new Promise((resolve) => setTimeout(resolve, wasCorrect ? 180 : 240));
-      setFeedbackFlash(null);
-
-      router.refresh();
-      router.push(`/diagnostic/${subjectSlug}/run`);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Could not save your answer. Tap Next again.');
-    } finally {
-      setSubmitting(false);
+  function toggleOrderedChoice(choice: string) {
+    const currentOrder = selectedAnswer ? selectedAnswer.split(' | ') : [];
+    if (currentOrder.includes(choice)) {
+      setSelectedAnswer(currentOrder.filter((entry) => entry !== choice).join(' | '));
+      return;
     }
+
+    setSelectedAnswer([...currentOrder, choice].join(' | '));
   }
 
-  return (
-    <main className="anx-shell flex items-center justify-center">
-      <div className="anx-panel w-full max-w-2xl space-y-6 p-7 sm:p-8">
-        <div className="flex items-center justify-between">
-          <p className="text-sm text-slate-500">Diagnostic question</p>
-          <div className="flex items-center gap-3">
-            <span className="rounded-full border border-slate-200 bg-slate-50 px-2 py-1 text-xs font-semibold text-slate-700">AX live</span>
-            <span className="text-sm text-slate-500">
-              {itemsSeen + 1} / {maxItems}
-            </span>
-          </div>
-        </div>
+  function renderAnswerInput(type: ItemInteractionType) {
+    if (type === 'SHORT_TEXT') {
+      return (
+        <input
+          value={selectedAnswer}
+          onChange={(e) => setSelectedAnswer(e.target.value)}
+          className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 text-gray-700 focus:border-blue-500 focus:outline-none"
+          placeholder="Type your answer"
+        />
+      );
+    }
 
-        <div className="anx-progress-track">
-          <div className="anx-progress-bar" style={{ width: `${((itemsSeen + 1) / maxItems) * 100}%` }} />
-        </div>
-
-        <div className={`rounded-2xl border-2 border-blue-100 bg-white px-5 py-6 sm:px-6 sm:py-7 ${feedbackFlash === 'correct' ? 'anx-pulse-correct' : ''} ${feedbackFlash === 'incorrect' ? 'anx-shake-incorrect' : ''}`}>
-          <h2 className="text-2xl font-bold leading-tight text-slate-900 sm:text-3xl">{questionText}</h2>
-        </div>
-
-        <div className="space-y-3">
-          {answerType === 'MCQ' ? (
-            parsedOptions.choices.length === 0 ? (
-              <p className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800">
-                This question has no options yet.
-              </p>
+    if (type === 'ORDER') {
+      const currentOrder = selectedAnswer ? selectedAnswer.split(' | ') : [];
+      return (
+        <div className="space-y-4">
+          <div className="flex flex-wrap gap-2 min-h-12 rounded-lg border border-dashed border-blue-200 bg-blue-50/60 p-3">
+            {currentOrder.length > 0 ? (
+              currentOrder.map((choice) => (
+                <button
+                  key={choice}
+                  onClick={() => toggleOrderedChoice(choice)}
+                  className="rounded-full bg-blue-600 px-3 py-1 text-sm font-medium text-white"
+                >
+                  {choice}
+                </button>
+              ))
             ) : (
-              parsedOptions.choices.map((option, i) => (
+              <span className="text-sm text-blue-700">Tap the choices below in the correct order.</span>
+            )}
+          </div>
+          <div className="space-y-3">
+            {itemContent.choices.map((option, i) => {
+              const isSelected = currentOrder.includes(option);
+              return (
                 <button
                   key={i}
-                  onClick={() => {
-                    setSelectedAnswer(option);
-                    setError(null);
-                  }}
-                  className={`anx-option py-4 text-base font-semibold transition-transform active:scale-[0.99] ${selectedAnswer === option ? 'anx-option-selected' : ''}`}
+                  onClick={() => toggleOrderedChoice(option)}
+                  className={`w-full text-left px-4 py-3 rounded-lg border-2 transition-colors ${
+                    isSelected
+                      ? 'border-blue-500 bg-blue-50 text-blue-800'
+                      : 'border-gray-200 hover:border-gray-300 text-gray-700'
+                  }`}
                 >
                   {option}
                 </button>
-              ))
-            )
-          ) : answerType === 'TRUE_FALSE' ? (
-            <div className="space-y-2">
-              <div className="grid grid-cols-2 gap-2">
-                <button
-                  onClick={() => {
-                    setSelectedAnswer('true');
-                    setError(null);
-                  }}
-                  className={`anx-option py-3 text-base font-semibold ${selectedAnswer === 'true' ? 'anx-option-selected' : ''}`}
-                >
-                  True
-                </button>
-                <button
-                  onClick={() => {
-                    setSelectedAnswer('false');
-                    setError(null);
-                  }}
-                  className={`anx-option py-3 text-base font-semibold ${selectedAnswer === 'false' ? 'anx-option-selected' : ''}`}
-                >
-                  False
-                </button>
-              </div>
-              <p className="text-xs text-slate-600">Tap True or False.</p>
-            </div>
-          ) : (
-            <div className="space-y-2">
-              <input
-                type="text"
-                value={selectedAnswer}
-                onChange={(e) => {
-                  setSelectedAnswer(e.target.value);
-                  setError(null);
-                }}
-                placeholder={answerType === 'SHORT_NUMERIC' ? 'Enter a number' : 'Type your answer'}
-                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none ring-0 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500"
-              />
-              {answerType === 'SHORT_TEXT' && <p className="text-xs text-slate-600">Use clear words. Commas and “and” are both okay.</p>}
-            </div>
-          )}
+              );
+            })}
+          </div>
         </div>
+      );
+    }
 
-        {error && <p className="text-sm text-rose-600">{error}</p>}
-        {feedbackFlash === 'correct' && <p className="text-sm font-semibold text-emerald-600">+AX</p>}
-        {feedbackFlash === 'incorrect' && <p className="text-sm text-amber-600">Good try — keep going.</p>}
+    return (
+      <div className="space-y-3">
+        {itemContent.choices.map((option, i) => (
+          <button
+            key={i}
+            onClick={() => setSelectedAnswer(option)}
+            className={`w-full text-left px-4 py-3 rounded-lg border-2 transition-colors ${
+              selectedAnswer === option
+                ? 'border-blue-500 bg-blue-50 text-blue-800'
+                : 'border-gray-200 hover:border-gray-300 text-gray-700'
+            }`}
+          >
+            {option}
+          </button>
+        ))}
+      </div>
+    );
+  }
 
+  async function submitAnswer() {
+    if (!selectedAnswer || submitting) return;
+    setSubmitting(true);
+
+    await fetch(`/api/diagnostic/${subjectSlug}/submit`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        sessionId,
+        itemId: item.id,
+        skillId: skill.id,
+        subjectId: subject.id,
+        skillCode: skill.code,
+        strand: skill.strand,
+        answer: selectedAnswer,
+      }),
+    });
+
+    // Refresh to get next item (server will decide to continue or complete)
+    router.refresh();
+    router.push(`/diagnostic/${subjectSlug}/run`);
+  }
+
+  return (
+    <main className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+      <div className="max-w-lg w-full bg-white rounded-xl border border-gray-200 p-8 space-y-6">
+        <div className="flex items-center justify-between">
+          <p className="text-sm text-gray-500">
+            Diagnostic · <span className="font-medium">{skill.strand}</span>
+          </p>
+          <span className="text-sm text-gray-400">
+            {itemsSeen + 1} / {maxItems} max
+          </span>
+        </div>
+        <div className="w-full h-1.5 bg-gray-100 rounded-full">
+          <div
+            className="h-full bg-blue-500 rounded-full transition-all"
+            style={{ width: `${((itemsSeen + 1) / maxItems) * 100}%` }}
+          />
+        </div>
+        <h2 className="text-lg font-semibold text-gray-900">{item.question}</h2>
+        {renderAnswerInput(itemContent.type)}
         <button
           onClick={submitAnswer}
-          disabled={!selectedAnswer.trim() || submitting || (answerType === 'MCQ' && parsedOptions.choices.length === 0)}
-          className="anx-btn-primary w-full"
+          disabled={!selectedAnswer || submitting}
+          className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 font-medium transition-colors"
         >
-          {submitting ? 'Saving…' : 'Next question'}
+          {submitting ? 'Submitting…' : 'Next'}
         </button>
       </div>
     </main>
