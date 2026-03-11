@@ -3,6 +3,7 @@ import { authOptions } from '@/features/auth/authOptions';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { prisma } from '@/db/prisma';
+import { LearningPageShell } from '@/components/LearningPageShell';
 
 type EventPayload = Record<string, unknown>;
 
@@ -109,14 +110,14 @@ export default async function TeacherDashboardPage({ searchParams }: Props) {
 
   if (!teacherProfile) {
     return (
-      <main className="min-h-screen bg-gray-50 py-10 sm:py-12">
-        <div className="mx-auto w-full max-w-5xl px-4 sm:px-6">
-          <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">Teacher Dashboard</h1>
-          <div className="mt-6 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
-            No teacher profile linked yet. Add a TeacherProfile row mapped to your Observe teacher id.
-          </div>
+      <LearningPageShell
+        title="Teacher Dashboard"
+        subtitle={`Observe-linked analytics for ${user.name ?? user.email}`}
+      >
+        <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+          No teacher profile linked yet. Add a TeacherProfile row mapped to your Observe teacher id.
         </div>
-      </main>
+      </LearningPageShell>
     );
   }
 
@@ -170,12 +171,12 @@ export default async function TeacherDashboardPage({ searchParams }: Props) {
   const now = new Date();
 
   return (
-    <main className="min-h-screen bg-gray-50 py-10 sm:py-12">
-      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
-        <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">Teacher Dashboard</h1>
-        <p className="mt-1 text-sm text-gray-600">Observe-linked analytics for {user.name ?? user.email}</p>
-
-        <div className="mt-4 rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-700">
+    <LearningPageShell
+      title="Teacher Dashboard"
+      subtitle={`Observe-linked analytics for ${user.name ?? user.email}`}
+      maxWidthClassName="max-w-6xl"
+      meta={
+        <>
           <p><span className="font-semibold">Observe Teacher ID:</span> {teacherProfile.externalTeacherId}</p>
           <p><span className="font-semibold">Observe School ID:</span> {teacherProfile.externalSchoolId ?? '—'}</p>
           <p><span className="font-semibold">Time window:</span> last {days} days</p>
@@ -183,9 +184,10 @@ export default async function TeacherDashboardPage({ searchParams }: Props) {
           <p className="mt-2 rounded-md border border-sky-200 bg-sky-50 px-2 py-1 text-xs text-sky-900">
             <span className="font-semibold">DLE momentum note:</span> {MOMENTUM_HELP}
           </p>
-        </div>
-
-        <div className="mt-4 flex flex-wrap gap-2 text-xs">
+        </>
+      }
+    >
+      <div className="flex flex-wrap gap-2 text-xs">
           {[7, 30, 90].map((d) => (
             <Link
               key={d}
@@ -381,7 +383,6 @@ export default async function TeacherDashboardPage({ searchParams }: Props) {
             );
           })}
         </div>
-      </div>
-    </main>
+    </LearningPageShell>
   );
 }
