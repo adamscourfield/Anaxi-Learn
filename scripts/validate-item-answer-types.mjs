@@ -113,7 +113,14 @@ async function main() {
     }
 
     if (displayQuestion !== item.question.trim()) {
-      warnings.push(`${label} contains internal label prefixes in question text`);
+      const message = `${label} contains internal label prefixes in question text`;
+      if (applyFixes) {
+        fixes.push(
+          prisma.item.update({ where: { id: item.id }, data: { question: displayQuestion } })
+        );
+      } else {
+        warnings.push(message);
+      }
     }
 
     if (inferred === 'TRUE_FALSE' && declared !== 'TRUE_FALSE' && declared !== 'BOOLEAN' && declared !== 'TF') {
@@ -153,7 +160,7 @@ async function main() {
 
   if (applyFixes && fixes.length > 0) {
     await prisma.$transaction(fixes);
-    console.log(`🛠️ Applied ${fixes.length} type fix(es) to TRUE_FALSE items`);
+    console.log(`🛠️ Applied ${fixes.length} item fix(es)`);
   }
 
   if (warnings.length > 0) {

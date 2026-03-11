@@ -58,6 +58,9 @@ function answerLooksNumeric(answer: string): boolean {
 
 function inferPurpose(question: string, explicitRole: QuestionRole, explicitRoute: 'A' | 'B' | 'C' | null): ItemPurpose {
   if (explicitRole === 'shadow' || explicitRoute) return 'RETEACH_SHADOW';
+  if (explicitRole === 'anchor' || explicitRole === 'misconception' || explicitRole === 'prerequisite_probe') {
+    return 'ONBOARDING';
+  }
   if (SHADOW_LABEL_RE.test(question)) return 'RETEACH_SHADOW';
   if (DIAGNOSTIC_LABEL_RE.test(question) || PLACEHOLDER_RE.test(question)) return 'ONBOARDING';
   return 'LEARN';
