@@ -13,7 +13,7 @@
     "test:watch": "vitest",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
-    "db:seed": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/seed.ts",
+    "db:seed": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/seed.ts && npm run db:ensure:routes:n14-n15",
     "db:import:unit1-first25": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/import-unit1-first25.ts",
     "db:import:unit1-next25": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/import-unit1-next25.ts",
     "db:import:unit1-n14": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/import-unit1-n14.ts",
