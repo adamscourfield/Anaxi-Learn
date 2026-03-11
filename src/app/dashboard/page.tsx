@@ -3,6 +3,7 @@ import { authOptions } from '@/features/auth/authOptions';
 import { redirect } from 'next/navigation';
 import { prisma } from '@/db/prisma';
 import Link from 'next/link';
+import { LearningPageShell } from '@/components/LearningPageShell';
 
 function getMasteryStyles(masteryPct: number) {
   if (masteryPct >= 80) {
@@ -71,24 +72,22 @@ export default async function DashboardPage() {
   const now = new Date();
 
   return (
-    <main className="min-h-screen bg-gray-50 py-10 sm:py-12">
-      <div className="mx-auto w-full max-w-4xl px-4 sm:px-6">
-        <header className="mb-8 flex flex-wrap items-start justify-between gap-4 sm:mb-10">
-          <div>
-            <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">My Dashboard</h1>
-            <p className="mt-1 text-sm text-gray-600 sm:text-base">Welcome back, {session.user.name ?? session.user.email}</p>
-          </div>
-          <form action="/api/auth/signout" method="POST">
-            <button
-              type="submit"
-              className="rounded-lg px-3 py-2 text-sm font-medium text-gray-500 underline decoration-gray-300 underline-offset-4 transition-colors hover:text-gray-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-            >
-              Sign out
-            </button>
-          </form>
-        </header>
-
-        <div className="space-y-6 sm:space-y-8">
+    <LearningPageShell
+      title="My Dashboard"
+      subtitle={<>Welcome back, {session.user.name ?? session.user.email}</>}
+      actions={
+        <form action="/api/auth/signout" method="POST">
+          <button
+            type="submit"
+            className="rounded-lg px-3 py-2 text-sm font-medium text-gray-500 underline decoration-gray-300 underline-offset-4 transition-colors hover:text-gray-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+          >
+            Sign out
+          </button>
+        </form>
+      }
+      maxWidthClassName="max-w-4xl"
+    >
+      <div className="space-y-6 sm:space-y-8">
           {subjects.map((subject) => {
             const sortedSkills = [...subject.skills].sort((a, b) => a.sortOrder - b.sortOrder);
             const baseSkill = sortedSkills[0];
@@ -320,6 +319,6 @@ export default async function DashboardPage() {
           </section>
         )}
       </div>
-    </main>
+    </LearningPageShell>
   );
 }
