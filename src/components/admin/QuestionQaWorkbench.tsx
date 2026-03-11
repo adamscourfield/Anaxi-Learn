@@ -53,10 +53,14 @@ export function QuestionQaWorkbench({ items, availableSkills }: Props) {
 
   useEffect(() => {
     setLocalItems(items);
-    if (!selectedId) {
-      setSelectedId(items[0]?.id ?? '');
-    }
-  }, [items, selectedId]);
+    setSelectedId((currentSelectedId) => {
+      if (currentSelectedId && items.some((item) => item.id === currentSelectedId)) {
+        return currentSelectedId;
+      }
+
+      return items[0]?.id ?? '';
+    });
+  }, [items]);
 
   const filteredItems = useMemo(
     () =>
