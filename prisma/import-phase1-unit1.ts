@@ -20,6 +20,11 @@ const PACK_FILES = [
   'docs/unit-mapping/review-pack-phase1-n2-9-to-n2-13.jsonl',
 ] as const;
 
+const SLIDE_MEDIA_MANIFEST_PATH = path.resolve(
+  process.cwd(),
+  'docs/unit-mapping/curriculum-extracts/phase1-slide-media-manifest.json'
+);
+
 const PHASE1_SKILL_META: Record<string, { name: string; strand: string; sortOrder: number }> = {
   'N1.1': { name: 'Recognise the place value of each digit in whole numbers up to millions', strand: 'PV', sortOrder: 5 },
   'N1.2': { name: 'Write integers in words and figures', strand: 'PV', sortOrder: 7 },
@@ -57,6 +62,18 @@ type Phase1Row = MappingRow & {
   };
 };
 
+interface SlideMediaManifest {
+  slides: Array<{
+    sourceFile: string;
+    slideNumber: number;
+    media: Array<{
+      src: string;
+      alt: string;
+      caption?: string;
+    }>;
+  }>;
+}
+
 function unique<T>(values: T[]): T[] {
   return [...new Set(values)];
 }
@@ -68,6 +85,22 @@ function roleFromNotes(notes: string | undefined): 'anchor' | 'practice' {
 
 function toSlug(code: string): string {
   return code.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+}
+
+function parseSlideNumber(questionRef: string): number | null {
+  const match = questionRef.match(/^Slide(\d+)/i);
+  return match ? Number(match[1]) : null;
+}
+
+function loadSlideMediaIndex(): Map<string, SlideMediaManifest['slides'][number]['media']> {
+  if (!fs.existsSync(SLIDE_MEDIA_MANIFEST_PATH)) {
+    return new Map();
+  }
+
+  const manifest = JSON.parse(fs.readFileSync(SLIDE_MEDIA_MANIFEST_PATH, 'utf8')) as SlideMediaManifest;
+  return new Map(
+    (manifest.slides ?? []).map((entry) => [`${entry.sourceFile}::${entry.slideNumber}`, entry.media])
+  );
 }
 
 async function ensureSkill(subjectId: string, code: string) {
@@ -93,6 +126,7 @@ async function ensureSkill(subjectId: string, code: string) {
 }
 
 async function main() {
+  const slideMediaIndex = loadSlideMediaIndex();
   const subject = await prisma.subject.findUnique({ where: { slug: 'ks3-maths' } });
   if (!subject) {
     throw new Error('Subject ks3-maths not found. Run db:seed first.');
@@ -134,10 +168,21 @@ async function main() {
       }
 
       const questionText = `[${row.source.question_ref}] ${row.question.stem}`;
+      const slideNumber = parseSlideNumber(row.source.question_ref);
+      const media =
+        row.source.source_file && slideNumber
+          ? slideMediaIndex.get(`${row.source.source_file}::${slideNumber}`) ?? []
+          : [];
       const options = {
         ...derived.options,
+        ...(media.length > 0 ? { media } : {}),
         meta: {
           question_role: roleFromNotes(raw.variation?.notes),
+          source: {
+            question_ref: row.source.question_ref,
+            source_file: row.source.source_file ?? null,
+            slide_number: slideNumber,
+          },
         },
       };
 

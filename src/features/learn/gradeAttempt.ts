@@ -1,1 +1,1 @@
-export { gradeAttempt, normalizeAnswer } from './itemContent';
+export { gradeAttempt, normalizeAnswer, getAnswerFormatHint } from './itemContent';

@@ -14,6 +14,7 @@ type RawOptions =
   | {
       choices?: unknown;
       acceptedAnswers?: unknown;
+      media?: unknown;
     }
   | null
   | undefined;
@@ -136,7 +137,7 @@ export function getAnswerFormatHint(type: string, question: string, options?: un
     case 'SHORT_NUMERIC':
       return 'Enter digits only, without extra words.';
     case 'ORDER':
-      return 'Enter the values in the correct order.';
+      return 'Drag the values into the correct order.';
     case 'SHORT_TEXT':
       return 'Type a short answer using words or symbols only as needed.';
     default:

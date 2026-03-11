@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { OrderedMagnetInput } from '@/components/learn/OrderedMagnetInput';
+import { ItemVisualPanel } from '@/components/learn/ItemVisualPanel';
 import { getItemContent, ItemInteractionType } from './itemContent';
 import { sanitizeStudentCopy } from './studentCopy';
 
@@ -51,16 +53,6 @@ export function LearnSession({ subject, skill, items, userId }: Props) {
   const currentItemContent = currentItem ? getItemContent(currentItem) : null;
   const options = currentItemContent?.choices ?? [];
 
-  function toggleOrderedChoice(choice: string) {
-    const currentOrder = selectedAnswer ? selectedAnswer.split(' | ') : [];
-    if (currentOrder.includes(choice)) {
-      setSelectedAnswer(currentOrder.filter((entry) => entry !== choice).join(' | '));
-      return;
-    }
-
-    setSelectedAnswer([...currentOrder, choice].join(' | '));
-  }
-
   function renderAnswerInput(type: ItemInteractionType) {
     if (type === 'SHORT_TEXT' || type === 'SHORT_NUMERIC') {
       return (
@@ -80,43 +72,14 @@ export function LearnSession({ subject, skill, items, userId }: Props) {
     }
 
     if (type === 'ORDER') {
-      const currentOrder = selectedAnswer ? selectedAnswer.split(' | ') : [];
       return (
-        <div className="space-y-4">
-          <div className="flex flex-wrap gap-2 min-h-12 rounded-lg border border-dashed border-blue-200 bg-blue-50/60 p-3">
-            {currentOrder.length > 0 ? (
-              currentOrder.map((choice) => (
-                <button
-                  key={choice}
-                  onClick={() => toggleOrderedChoice(choice)}
-                  className="rounded-full bg-blue-600 px-3 py-1 text-sm font-medium text-white"
-                >
-                  {choice}
-                </button>
-              ))
-            ) : (
-              <span className="text-sm text-blue-700">Tap the choices below in the correct order.</span>
-            )}
-          </div>
-          <div className="space-y-3">
-            {options.map((option, i) => {
-              const isSelected = currentOrder.includes(option);
-              return (
-                <button
-                  key={i}
-                  onClick={() => toggleOrderedChoice(option)}
-                  className={`w-full text-left px-4 py-3 rounded-lg border-2 transition-colors ${
-                    isSelected
-                      ? 'border-blue-500 bg-blue-50 text-blue-800'
-                      : 'border-gray-200 hover:border-gray-300 text-gray-700'
-                  }`}
-                >
-                  {option}
-                </button>
-              );
-            })}
-          </div>
-        </div>
+        <OrderedMagnetInput
+          choices={options}
+          value={selectedAnswer}
+          onChange={setSelectedAnswer}
+          emptyPrompt="Drag the fridge magnets here in the right order."
+          helperText="You can drag to reorder, or tap a magnet to add it."
+        />
       );
     }
 
@@ -231,6 +194,7 @@ export function LearnSession({ subject, skill, items, userId }: Props) {
               style={{ width: `${((currentIndex + 1) / items.length) * 100}%` }}
             />
           </div>
+          <ItemVisualPanel item={currentItem} primarySkillCode={skill.code} />
           <h2 className="text-lg font-semibold text-gray-900">{currentItem.question}</h2>
           {currentItemContent && renderAnswerInput(currentItemContent.type)}
           <button

@@ -75,4 +75,31 @@ describe('LearnSession short entry rendering', () => {
     fireEvent.change(input, { target: { value: 'one hundred and five' } });
     expect(submit).toHaveProperty('disabled', false);
   });
+
+  it('renders ORDER items as fridge magnets', () => {
+    render(
+      <LearnSession
+        {...baseProps}
+        items={[
+          {
+            id: 'item-order',
+            question: 'Order from smallest to largest: 3, 1, 2',
+            options: { choices: ['3', '1', '2'] },
+            answer: '1 | 2 | 3',
+            type: 'ORDER',
+          },
+        ]}
+      />
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: /start session/i }));
+
+    expect(screen.getByText(/arrange the fridge magnets into the correct order/i)).toBeTruthy();
+
+    const submit = screen.getByRole('button', { name: /^finish$/i });
+    expect(submit).toHaveProperty('disabled', true);
+
+    fireEvent.click(screen.getByRole('button', { name: /^3$/i }));
+    expect(submit).toHaveProperty('disabled', false);
+  });
 });

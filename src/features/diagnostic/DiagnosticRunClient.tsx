@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { OrderedMagnetInput } from '@/components/learn/OrderedMagnetInput';
+import { ItemVisualPanel } from '@/components/learn/ItemVisualPanel';
 import { getItemContent, ItemInteractionType } from '@/features/learn/itemContent';
 
 interface Props {
@@ -20,66 +22,28 @@ export function DiagnosticRunClient({ subject, skill, item, sessionId, itemsSeen
   const router = useRouter();
   const itemContent = getItemContent(item);
 
-  function toggleOrderedChoice(choice: string) {
-    const currentOrder = selectedAnswer ? selectedAnswer.split(' | ') : [];
-    if (currentOrder.includes(choice)) {
-      setSelectedAnswer(currentOrder.filter((entry) => entry !== choice).join(' | '));
-      return;
-    }
-
-    setSelectedAnswer([...currentOrder, choice].join(' | '));
-  }
-
   function renderAnswerInput(type: ItemInteractionType) {
-    if (type === 'SHORT_TEXT') {
+    if (type === 'SHORT_TEXT' || type === 'SHORT_NUMERIC') {
       return (
         <input
           value={selectedAnswer}
           onChange={(e) => setSelectedAnswer(e.target.value)}
+          inputMode={type === 'SHORT_NUMERIC' ? 'decimal' : 'text'}
           className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 text-gray-700 focus:border-blue-500 focus:outline-none"
-          placeholder="Type your answer"
+          placeholder={type === 'SHORT_NUMERIC' ? 'Enter a number' : 'Type your answer'}
         />
       );
     }
 
     if (type === 'ORDER') {
-      const currentOrder = selectedAnswer ? selectedAnswer.split(' | ') : [];
       return (
-        <div className="space-y-4">
-          <div className="flex flex-wrap gap-2 min-h-12 rounded-lg border border-dashed border-blue-200 bg-blue-50/60 p-3">
-            {currentOrder.length > 0 ? (
-              currentOrder.map((choice) => (
-                <button
-                  key={choice}
-                  onClick={() => toggleOrderedChoice(choice)}
-                  className="rounded-full bg-blue-600 px-3 py-1 text-sm font-medium text-white"
-                >
-                  {choice}
-                </button>
-              ))
-            ) : (
-              <span className="text-sm text-blue-700">Tap the choices below in the correct order.</span>
-            )}
-          </div>
-          <div className="space-y-3">
-            {itemContent.choices.map((option, i) => {
-              const isSelected = currentOrder.includes(option);
-              return (
-                <button
-                  key={i}
-                  onClick={() => toggleOrderedChoice(option)}
-                  className={`w-full text-left px-4 py-3 rounded-lg border-2 transition-colors ${
-                    isSelected
-                      ? 'border-blue-500 bg-blue-50 text-blue-800'
-                      : 'border-gray-200 hover:border-gray-300 text-gray-700'
-                  }`}
-                >
-                  {option}
-                </button>
-              );
-            })}
-          </div>
-        </div>
+        <OrderedMagnetInput
+          choices={itemContent.choices}
+          value={selectedAnswer}
+          onChange={setSelectedAnswer}
+          emptyPrompt="Drag the fridge magnets here in the right order."
+          helperText="You can drag to reorder, or tap a magnet to add it."
+        />
       );
     }
 
@@ -142,6 +106,7 @@ export function DiagnosticRunClient({ subject, skill, item, sessionId, itemsSeen
             style={{ width: `${((itemsSeen + 1) / maxItems) * 100}%` }}
           />
         </div>
+        <ItemVisualPanel item={item} primarySkillCode={skill.code} />
         <h2 className="text-lg font-semibold text-gray-900">{item.question}</h2>
         {renderAnswerInput(itemContent.type)}
         <button

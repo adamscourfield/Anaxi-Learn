@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
+import { OrderedMagnetInput } from '@/components/learn/OrderedMagnetInput';
+import { ItemVisualPanel } from '@/components/learn/ItemVisualPanel';
 import { getItemContent, gradeAttempt, normalizeAnswer, type ItemInteractionType } from '@/features/learn/itemContent';
 
 type ReviewCategory =
@@ -107,7 +109,7 @@ export function QuestionQaWorkbench({ items, availableSkills, availableTypes = [
         TRUE_FALSE: 'True / False buttons',
         SHORT_TEXT: 'Typed short answer',
         SHORT_NUMERIC: 'Typed numeric answer',
-        ORDER: 'Tap-to-order sequence',
+        ORDER: 'Drag-and-drop fridge magnets',
       } satisfies Record<ItemInteractionType, string>)[itemContent.type]
     : null;
 
@@ -181,16 +183,6 @@ export function QuestionQaWorkbench({ items, availableSkills, availableTypes = [
       }
     : null;
 
-  function toggleOrderedChoice(choice: string) {
-    const currentOrder = draftAnswer ? draftAnswer.split(' | ') : [];
-    if (currentOrder.includes(choice)) {
-      setDraftAnswer(currentOrder.filter((entry) => entry !== choice).join(' | '));
-      return;
-    }
-
-    setDraftAnswer([...currentOrder, choice].join(' | '));
-  }
-
   function renderInput(type: ItemInteractionType) {
     if (!itemContent) return null;
 
@@ -207,42 +199,14 @@ export function QuestionQaWorkbench({ items, availableSkills, availableTypes = [
     }
 
     if (type === 'ORDER') {
-      const currentOrder = draftAnswer ? draftAnswer.split(' | ') : [];
       return (
-        <div className="space-y-4">
-          <div className="min-h-12 rounded-lg border border-dashed border-blue-200 bg-blue-50 p-3">
-            {currentOrder.length > 0 ? (
-              <div className="flex flex-wrap gap-2">
-                {currentOrder.map((choice) => (
-                  <button
-                    key={choice}
-                    onClick={() => toggleOrderedChoice(choice)}
-                    className="rounded-full bg-blue-600 px-3 py-1 text-sm text-white"
-                  >
-                    {choice}
-                  </button>
-                ))}
-              </div>
-            ) : (
-              <span className="text-sm text-blue-700">Tap values below in the order a student should enter them.</span>
-            )}
-          </div>
-          <div className="space-y-2">
-            {itemContent.choices.map((choice) => (
-              <button
-                key={choice}
-                onClick={() => toggleOrderedChoice(choice)}
-                className={`block w-full rounded-lg border px-4 py-3 text-left text-sm ${
-                  currentOrder.includes(choice)
-                    ? 'border-blue-500 bg-blue-50 text-blue-900'
-                    : 'border-gray-200 bg-white text-gray-700'
-                }`}
-              >
-                {choice}
-              </button>
-            ))}
-          </div>
-        </div>
+        <OrderedMagnetInput
+          choices={itemContent.choices}
+          value={draftAnswer}
+          onChange={setDraftAnswer}
+          emptyPrompt="Drag the fridge magnets here in the order a student should build."
+          helperText="Use drag and drop to mirror the learner experience."
+        />
       );
     }
 
@@ -422,6 +386,9 @@ export function QuestionQaWorkbench({ items, availableSkills, availableTypes = [
           {currentItem.displayQuestion !== currentItem.question && (
             <p className="mt-2 text-xs text-gray-500">Stored stem: {currentItem.question}</p>
           )}
+          <div className="mt-6">
+            <ItemVisualPanel item={currentItem} primarySkillCode={currentItem.primarySkillCode} />
+          </div>
 
           <div className="mt-6 rounded-xl border border-gray-200 bg-gray-50 p-4">
             <h3 className="text-sm font-semibold text-gray-900">Student Preview</h3>

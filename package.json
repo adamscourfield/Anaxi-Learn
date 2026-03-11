@@ -29,6 +29,7 @@
     "validate:explanations": "node scripts/validate-explanation-integrity.mjs",
     "validate:qa": "npm run validate:items && npm run validate:n13 && npm run validate:explanation-steps && npm run validate:explanations && npm test",
     "content:extract:unit1": "node scripts/extract-curriculum-pptx.mjs",
+    "content:extract:slide-media": "node scripts/extract-curriculum-slide-media.mjs",
     "content:report:unit1-gaps": "node scripts/report-curriculum-seeding-gaps.mjs",
     "content:build:unit1-packs": "node scripts/build-curriculum-review-packs.mjs",
     "content:build:phase1-queue": "node scripts/build-phase1-authoring-queue.mjs",
