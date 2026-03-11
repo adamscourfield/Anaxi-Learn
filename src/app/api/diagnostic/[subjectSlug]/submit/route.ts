@@ -3,14 +3,9 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/features/auth/authOptions';
 import { prisma } from '@/db/prisma';
 import { z } from 'zod';
-import { gradeAttempt, getAnswerFormatHint } from '@/features/learn/gradeAttempt';
+import { getItemContent, gradeAttempt } from '@/features/learn/itemContent';
 import { emitEvent } from '@/features/telemetry/eventService';
-import { persistRouteRecommendation, updatePayloadAfterAttempt, type RouteRecommendation } from '@/features/diagnostic/diagnosticService';
-import { parseItemOptions } from '@/features/items/itemMeta';
-import { decideN1Route } from '@/features/diagnostic/n1Routing';
-import { consumeGuessingSafeguard, grantReward } from '@/features/gamification/gamificationService';
-import { inferN11MisconceptionTag } from '@/features/diagnostic/misconceptions';
-import { isRoutedSkill } from '@/features/config/learningConfig';
+import { updatePayloadAfterAttempt } from '@/features/diagnostic/diagnosticService';
 
 const submitSchema = z.object({
   sessionId: z.string(),
@@ -41,50 +36,20 @@ export async function POST(req: NextRequest) {
   const item = await prisma.item.findUnique({ where: { id: itemId } });
   if (!item) return NextResponse.json({ error: 'Item not found' }, { status: 404 });
 
-  const correct = gradeAttempt(item.answer, answer);
-  const parsedOptions = parseItemOptions(item.options);
-
-  const inferredTag = inferN11MisconceptionTag(
-    skillCode,
-    answer,
-    parsedOptions.choices,
-    correct,
-    (item as { misconceptionMap?: Record<string, 'm1' | 'm2' | 'm3' | 'm4'> }).misconceptionMap
-  );
-  const misconceptionTag = inferredTag ?? parsedOptions.meta.misconceptionTag ?? undefined;
+  const itemContent = getItemContent(item);
+  const correct = gradeAttempt(itemContent.acceptedAnswers, answer);
 
   const attempt = await prisma.attempt.create({
     data: { userId, itemId, answer, correct, sessionId, mode: 'DIAGNOSTIC' },
   });
 
   const currentPayload = diagSession.payload as unknown as Parameters<typeof updatePayloadAfterAttempt>[0];
-  const updatedPayload = updatePayloadAfterAttempt(currentPayload, skillCode, strand, correct, {
-    misconceptionTag,
-    isTransfer: parsedOptions.meta.questionRole === 'transfer' || parsedOptions.meta.transferLevel !== 'none',
-  });
-
-  let routeDecision: RouteRecommendation | undefined;
-
-  if (isRoutedSkill(skillCode)) {
-    const est = updatedPayload.estimates[skillCode];
-    const signals = updatedPayload.skillSignals?.[skillCode];
-    if (est) {
-      routeDecision = decideN1Route({
-        total: est.total,
-        correct: est.correct,
-        transferCorrect: signals?.transferCorrect ?? false,
-        misconceptionCounts: (signals?.misconceptionCounts ?? {}) as {
-          pv_m1_place_vs_value?: number;
-          pv_m2_zero_shift?: number;
-          pv_m3_reading_direction?: number;
-          pv_m4_separator_noise?: number;
-        },
-      });
-
-      const persisted = persistRouteRecommendation(updatedPayload, skillCode, routeDecision);
-      updatedPayload.routeRecommendations = persisted.routeRecommendations;
-    }
-  }
+  const updatedPayload = updatePayloadAfterAttempt(
+    currentPayload,
+    skillCode,
+    strand,
+    correct
+  );
 
   await prisma.diagnosticSession.update({
     where: { id: sessionId },
@@ -98,17 +63,7 @@ export async function POST(req: NextRequest) {
     subjectId,
     skillId,
     itemId,
-    payload: {
-      itemId,
-      answer,
-      skillId,
-      skillCode,
-      strand,
-      subjectId,
-      mode: 'DIAGNOSTIC',
-      diagnosticSessionId: sessionId,
-      misconceptionTag,
-    },
+    payload: { itemId, answer, skillId, skillCode, strand, subjectId, mode: 'DIAGNOSTIC', diagnosticSessionId: sessionId },
   });
 
   await emitEvent({
@@ -119,65 +74,8 @@ export async function POST(req: NextRequest) {
     skillId,
     itemId,
     attemptId: attempt.id,
-    payload: {
-      itemId,
-      attemptId: attempt.id,
-      correct,
-      skillId,
-      skillCode,
-      strand,
-      subjectId,
-      mode: 'DIAGNOSTIC',
-      diagnosticSessionId: sessionId,
-      misconceptionTag,
-    },
+    payload: { itemId, attemptId: attempt.id, correct, skillId, skillCode, strand, subjectId, mode: 'DIAGNOSTIC', diagnosticSessionId: sessionId },
   });
 
-  await emitEvent({
-    name: 'question_answered',
-    actorUserId: userId,
-    studentUserId: userId,
-    subjectId,
-    skillId,
-    itemId,
-    attemptId: attempt.id,
-    payload: { itemId, skillId, subjectId, correct, mode: 'DIAGNOSTIC' },
-  });
-
-  const safeguard = await consumeGuessingSafeguard(userId, correct, attempt.createdAt);
-
-  await grantReward(userId, subjectId, correct ? 'diagnostic_item_correct' : 'diagnostic_item_incorrect', {
-    itemId,
-    skillId,
-    mode: 'DIAGNOSTIC',
-    xpMultiplier: safeguard.xpMultiplier,
-    safeguardPenaltyApplied: safeguard.penaltyApplied,
-    safeguardPenaltyRemaining: safeguard.penaltyRemaining,
-    rewardKey: `attempt:${attempt.id}:${correct ? 'diagnostic_item_correct' : 'diagnostic_item_incorrect'}`,
-  });
-
-  if (routeDecision) {
-    await emitEvent({
-      name: 'diagnostic_route_recommended',
-      actorUserId: userId,
-      studentUserId: userId,
-      subjectId,
-      skillId,
-      itemId,
-      attemptId: attempt.id,
-      payload: {
-        skillCode,
-        status: routeDecision.status,
-        route: routeDecision.route ?? null,
-        reason: routeDecision.reason,
-        diagnosticSessionId: sessionId,
-      },
-    });
-  }
-
-  return NextResponse.json({
-    correct,
-    hint: !correct ? getAnswerFormatHint(item.type, item.question, item.options) : null,
-    routeRecommendation: routeDecision ?? null,
-  });
+  return NextResponse.json({ correct });
 }

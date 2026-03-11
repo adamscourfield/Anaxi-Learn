@@ -95,14 +95,13 @@ export default async function DiagnosticCompletePage({ params, searchParams }: P
           </p>
         </div>
         <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg text-sm text-blue-800">
-          Your personalised learning path is now ready. The system will prioritise the skills
-          you need most.
+          Your starting level is now ready. We&apos;ll use it to choose the right next questions for you.
         </div>
         <Link
           href={`/learn/${subjectSlug}`}
           className="block w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium transition-colors"
         >
-          Start Learning
+          Continue to learning
         </Link>
       </div>
     </main>

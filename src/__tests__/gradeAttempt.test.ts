@@ -1,21 +1,41 @@
 import { describe, it, expect } from 'vitest';
-import { gradeAttempt } from '@/features/learn/gradeAttempt';
+import { getItemContent, gradeAttempt, normalizeAnswer } from '@/features/learn/itemContent';
 
 describe('gradeAttempt', () => {
   it('returns true for correct answer', () => {
-    expect(gradeAttempt('Paris', 'Paris')).toBe(true);
+    expect(gradeAttempt(['Paris'], 'Paris')).toBe(true);
   });
 
   it('returns false for incorrect answer', () => {
-    expect(gradeAttempt('Paris', 'London')).toBe(false);
+    expect(gradeAttempt(['Paris'], 'London')).toBe(false);
   });
 
   it('is case-insensitive', () => {
-    expect(gradeAttempt('Paris', 'paris')).toBe(true);
+    expect(gradeAttempt(['Paris'], 'paris')).toBe(true);
   });
 
   it('trims whitespace', () => {
-    expect(gradeAttempt('Paris', '  Paris  ')).toBe(true);
+    expect(gradeAttempt(['Paris'], '  Paris  ')).toBe(true);
+  });
+
+  it('accepts equivalent numeric formats', () => {
+    expect(gradeAttempt(['1000'], '1,000')).toBe(true);
+  });
+
+  it('accepts alternate marked answers from item metadata', () => {
+    const item = getItemContent({
+      type: 'SHORT_TEXT',
+      answer: 't is less than 3',
+      options: {
+        acceptedAnswers: ['t is less than 3', '3 is greater than t'],
+      },
+    });
+
+    expect(gradeAttempt(item.acceptedAnswers, '3 is greater than t')).toBe(true);
+  });
+
+  it('normalizes ordered answers consistently', () => {
+    expect(normalizeAnswer('2°C, 7°C, 8°C')).toBe(normalizeAnswer('2°C | 7°C | 8°C'));
   });
 
   it('accepts comma variations in numeric-text answers', () => {

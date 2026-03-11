@@ -18,7 +18,7 @@ export default withAuth(
       if (!token) {
         return NextResponse.redirect(new URL('/login', req.url));
       }
-      if (token.role !== 'STUDENT' && token.role !== 'ADMIN') {
+      if (token.role !== 'STUDENT' && token.role !== 'ADMIN' && token.role !== 'TEACHER') {
         return NextResponse.redirect(new URL('/login', req.url));
       }
     }

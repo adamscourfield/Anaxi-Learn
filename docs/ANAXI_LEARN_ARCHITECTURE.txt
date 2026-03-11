@@ -1,0 +1,183 @@
+ANAXI LEARN AGENT PACK
+
+----------------------------------------------------
+ANAXI LEARN MANIFESTO
+----------------------------------------------------
+
+Purpose
+Anaxi Learn exists to maximise durable knowledge creation for students.
+
+Traditional learning platforms optimise for:
+- completion
+- correctness
+- time on task
+
+Anaxi Learn optimises for:
+Durable Learning Efficiency (DLE)
+
+Definition:
+The amount of knowledge gained multiplied by how long it lasts divided by the instructional time invested.
+
+DLE = (Learning Gain × Knowledge Half-Life) / Instructional Time
+
+Goal
+Produce the most stable knowledge with the least instructional time.
+
+This means:
+- faster mastery
+- longer retention
+- fewer unnecessary questions
+- optimised explanations
+
+Agents operating in this system should always prioritise decisions that maximise DLE.
+
+----------------------------------------------------
+DURABLE LEARNING EFFICIENCY
+----------------------------------------------------
+
+Formula
+
+DLE = (LG × T_half) / H
+
+Variables
+
+LG = Learning Gain  
+Increase in mastery probability after instruction.
+
+T_half = Knowledge Half-Life  
+Time until learned knowledge decays to 50% of its learned strength.
+
+H = Instructional Time  
+Total instructional time invested.
+
+Interpretation
+
+Durable learning produced per hour of instruction.
+
+----------------------------------------------------
+MASTERY ENGINE SPECIFICATION
+----------------------------------------------------
+
+The mastery engine updates the student knowledge state after each attempt.
+
+Student Skill State
+
+mastery_score  
+decay_rate  
+half_life  
+last_reviewed  
+
+Update Logic
+
+1. Student answers question
+2. Update mastery probability
+3. Update decay estimate
+4. Recalculate half-life
+5. Schedule next review
+
+Pseudo Logic
+
+observe(question_attempt)
+
+update_mastery(student, skill)
+
+estimate_decay(student, skill)
+
+T_half = ln(2) / decay_rate
+
+schedule_review(student, skill, T_half)
+
+----------------------------------------------------
+EXPLANATION OPTIMISATION
+----------------------------------------------------
+
+Each explanation is evaluated using Durable Learning Efficiency.
+
+Process
+
+1. Student fails question
+2. Explanation A presented
+3. Student attempts again
+4. System measures learning gain
+5. System measures retention over time
+
+Explanation Score
+
+DLE_explanation = (LG × T_half) / H
+
+The system compares explanations and promotes the explanation with the highest DLE.
+
+----------------------------------------------------
+DATABASE STRUCTURE
+----------------------------------------------------
+
+Students
+student_id
+
+Skills
+skill_id
+topic
+subtopic
+
+Questions
+question_id
+skill_id
+difficulty
+discrimination_score
+
+Explanations
+explanation_id
+skill_id
+type
+content
+
+Attempts
+attempt_id
+student_id
+question_id
+timestamp
+correct
+response_time
+
+Mastery
+student_id
+skill_id
+mastery_score
+decay_rate
+half_life
+last_reviewed
+
+ExplanationPerformance
+explanation_id
+learning_gain
+half_life
+instruction_time
+DLE
+
+----------------------------------------------------
+AGENT INSTRUCTIONS
+----------------------------------------------------
+
+Agents working on this repository must optimise for Durable Learning Efficiency (DLE).
+
+Key Responsibilities
+
+Design explanations that maximise durable learning.
+
+Design question sequences that increase mastery quickly while producing long half-life retention.
+
+Monitor system data and identify:
+
+low DLE explanations  
+inefficient question sequences  
+skills with rapid decay  
+
+Prioritise improvements that:
+
+increase learning gain  
+increase knowledge half-life  
+reduce instructional time  
+
+Primary optimisation target
+
+Maximise Durable Learning Efficiency across the learning system.

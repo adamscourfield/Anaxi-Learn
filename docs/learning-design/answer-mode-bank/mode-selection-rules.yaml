@@ -1,98 +1,28 @@
-version: 1.0.0
-updatedAt: 2026-03-11
-purpose: >
-  Rule engine for selecting answer modes by objective, learning phase,
-  student state, and retention intent.
-
-global:
-  max_modes_per_question: 1
-  recommendation_count: 3
-  avoid_repeating_same_mode_over_last_items: 2
-  confidence_thresholds:
-    low: 0.5
-    medium: 0.75
-  forgetting_schedule_days: [1, 3, 7, 21]
-
-weights:
-  phase_match: 0.30
-  misconception_fit: 0.25
-  retention_strength: 0.15
-  accessibility_fit: 0.10
-  variety_bonus: 0.10
-  cognitive_demand_fit: 0.10
-
-phase_defaults:
-  introduce:
-    preferred_modes: [M07, M12, M13, M14]
-    avoid_modes: [M18]
-    target_cognitive_demand: [low, medium]
-  practice:
-    preferred_modes: [M01, M04, M05, M11]
-    avoid_modes: []
-    target_cognitive_demand: [medium]
-  secure:
-    preferred_modes: [M08, M09, M16, M18]
-    avoid_modes: []
-    target_cognitive_demand: [medium, high]
-  retain:
-    preferred_modes: [M20, M11, M09]
-    avoid_modes: []
-    target_cognitive_demand: [medium]
-
-misconception_to_modes:
-  operation_sign_error: [M01, M05, M11]
-  place_value_error: [M01, M13, M11]
-  non_equivalent_forms: [M02, M12, M11]
-  distribution_errors: [M03, M05, M11]
-  balancing_error: [M04, M05, M11]
-  directionality_error: [M13, M11]
-  scale_error: [M14, M12, M11]
-  overgeneralisation: [M10, M15, M09]
-  unit_confusion: [M17, M11, M16]
-  method_overreliance: [M16, M15, M18]
-
-accessibility_rules:
-  if_reading_load_high_and_student_literacy_flag_true:
-    deprioritize_modes: [M09, M17, M18]
-    prioritize_modes: [M01, M05, M12, M13, M14]
-  if_visual_impairment_flag_true:
-    deprioritize_modes: [M13, M14]
-    prioritize_modes: [M01, M03, M04, M05]
-
-selection_algorithm:
-  - step: "Load objective row from curriculum-objective-map.csv"
-  - step: "Take phase mode set for current learning phase"
-  - step: "Intersect with answer-mode-bank best_for_topics"
-  - step: "Apply misconception_to_modes boost if active misconception tags exist"
-  - step: "Apply accessibility_rules"
-  - step: "Apply variety penalty if mode used in last N items"
-  - step: "Score candidates using weights and select top 3"
-  - step: "Serve top mode unless teacher override is set"
-
-teacher_overrides:
-  allow_force_mode: true
-  allow_ban_mode: true
-  allow_phase_override: true
-
-analytics:
-  log_fields:
-    - student_id
-    - objective_id
-    - phase
-    - chosen_mode
-    - recommended_modes
-    - confidence_before
-    - score
-    - misconception_tags
-    - response_time_ms
-    - outcome_correct
-  success_metrics:
-    - first_pass_accuracy
-    - error_recurrence_7d
-    - retention_21d
-    - overconfidence_gap
-
-qa_checks:
-  - "Every objective must map at least 2 modes per phase"
-  - "No objective should use >60% MCQ-led modes across a full cycle"
-  - "Retain phase must include M20 in at least 70% of objective mappings"
+version: 1
+principles:
+  - Pick the simplest mode that matches the actual student task.
+  - Do not force four-option MCQ when the task is direct entry, ordering, or binary judgement.
+  - Prefer NUMERIC for arithmetic and measurement outcomes where the final response is a single value.
+  - Prefer SHORT_TEXT for words, symbols, explanations, or rewritten statements.
+  - Prefer ORDER_SEQUENCE for ranking, sorting, and sequencing prompts.
+phase_bias:
+  ONBOARDING:
+    preferred: [TRUE_FALSE, SINGLE_CHOICE, NUMERIC]
+  LEARN:
+    preferred: [NUMERIC, SHORT_TEXT, ORDER_SEQUENCE, SINGLE_CHOICE]
+  RETEACH:
+    preferred: [SHORT_TEXT, NUMERIC, TRUE_FALSE]
+  RETAIN:
+    preferred: [TRUE_FALSE, SINGLE_CHOICE, NUMERIC]
+blocking_rules:
+  - if_stem_matches: "(?i)coldest to warmest|smallest to largest|descending order|ascending order|order these"
+    block: [SINGLE_CHOICE, TRUE_FALSE]
+    prefer: [ORDER_SEQUENCE]
+  - if_stem_matches: "(?i)true or false"
+    block: [ORDER_SEQUENCE]
+    prefer: [TRUE_FALSE]
+  - if_stem_matches: "(?i)calculate|find the perimeter|find the median|how much|what is the value"
+    block: [SINGLE_CHOICE]
+    prefer: [NUMERIC]
+  - if_stem_matches: "(?i)write .* in words|place the correct symbol|rewrite"
+    prefer: [SHORT_TEXT]

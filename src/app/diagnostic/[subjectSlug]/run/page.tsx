@@ -4,7 +4,6 @@ import { redirect, notFound } from 'next/navigation';
 import { prisma } from '@/db/prisma';
 import { initPayload, shouldStopEarly, selectNextSkill } from '@/features/diagnostic/diagnosticService';
 import { DiagnosticRunClient } from '@/features/diagnostic/DiagnosticRunClient';
-import { LEARNING_CONFIG, isRoutedSkill } from '@/features/config/learningConfig';
 
 interface Props {
   params: Promise<{ subjectSlug: string }>;
@@ -12,6 +11,7 @@ interface Props {
 
 export default async function DiagnosticRunPage({ params }: Props) {
   const { subjectSlug } = await params;
+  if (subjectSlug !== 'ks3-maths') notFound();
 
   const session = await getServerSession(authOptions);
   if (!session?.user) redirect('/login');
@@ -47,10 +47,10 @@ export default async function DiagnosticRunPage({ params }: Props) {
     redirect(`/diagnostic/${subjectSlug}/complete?sessionId=${diagSession.id}`);
   }
 
-  // Select next skill - configurable diagnostic strands
+  // Select next skill - use core diagnostic strands
+  const diagnosticStrands = ['PV', 'ADD', 'MUL', 'FAC', 'FDP'];
   const availableSkills = subject.skills
-    .filter((s) => LEARNING_CONFIG.diagnosticStrands.includes(s.strand.toUpperCase()))
-    .filter((s) => isRoutedSkill(s.code))
+    .filter((s) => diagnosticStrands.includes(s.strand))
     .map((s) => ({ id: s.id, code: s.code, strand: s.strand }));
 
   const nextSkill = selectNextSkill(availableSkills, payload);
@@ -72,21 +72,7 @@ export default async function DiagnosticRunPage({ params }: Props) {
     .map((is) => is.item)
     .filter((item) => !seenItemIds.has(item.id));
 
-  const preferred = availableItems.filter((item) => {
-    if (item.question.startsWith('[')) return false;
-    if (nextSkill.code === 'N1.1') return item.question.startsWith('N1.1 DQ');
-    if (nextSkill.code === 'N1.2') return item.question.startsWith('N1.2 DQ');
-    if (nextSkill.code === 'N1.3') return item.question.startsWith('N1.3 DQ');
-    return true;
-  });
-
-  const pickRandom = <T,>(arr: T[]): T | undefined => (arr.length ? arr[Math.floor(Math.random() * arr.length)] : undefined);
-
-  const nextItem =
-    pickRandom(preferred) ??
-    pickRandom(availableItems.filter((candidate) => !candidate.question.startsWith('['))) ??
-    pickRandom(availableItems) ??
-    fullSkill.items[0]?.item;
+  const nextItem = availableItems[0] ?? fullSkill.items[0]?.item;
 
   if (!nextItem) {
     redirect(`/diagnostic/${subjectSlug}/complete?sessionId=${diagSession.id}`);
@@ -96,12 +82,7 @@ export default async function DiagnosticRunPage({ params }: Props) {
     <DiagnosticRunClient
       subject={{ id: subject.id, title: subject.title, slug: subject.slug }}
       skill={{ id: nextSkill.id, code: nextSkill.code, name: fullSkill.name, strand: nextSkill.strand }}
-      item={{
-        id: nextItem.id,
-        question: nextItem.question,
-        options: nextItem.options,
-        type: nextItem.type,
-      }}
+      item={{ id: nextItem.id, question: nextItem.question, options: nextItem.options, answer: nextItem.answer, type: nextItem.type }}
       sessionId={diagSession.id}
       itemsSeen={diagSession.itemsSeen}
       maxItems={diagSession.maxItems}
