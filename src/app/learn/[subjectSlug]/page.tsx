@@ -9,6 +9,7 @@ import { selectExplanationRoute } from '@/features/diagnostic/routeAssignment';
 import { emitEvent } from '@/features/telemetry/eventService';
 import { getReteachPlanForSkill } from '@/features/learn/reteachService';
 import { isRoutedSkill } from '@/features/config/learningConfig';
+import { inferItemPurpose, isLearnCandidate, isShadowCandidate } from '@/features/items/itemPurpose';
 
 const QUESTIONS_PER_SESSION = 3;
 
@@ -95,26 +96,67 @@ export default async function LearnPage({ params }: Props) {
 
   if (!targetSkill) redirect('/dashboard');
 
-  const itemSkills = await prisma.itemSkill.findMany({
-    where: { skillId: targetSkill.id },
-    include: { item: true },
-  });
-
-  const realItems = itemSkills
-    .map((is) => is.item)
-    .filter((item) => !item.question.startsWith('['));
-
-  const pool = realItems.length > 0 ? realItems : itemSkills.map((is) => is.item);
-  const shuffledPool = [...pool].sort(() => Math.random() - 0.5);
-  const items = shuffledPool.slice(0, QUESTIONS_PER_SESSION);
-  const gamification = await getUserGamificationSummary(userId);
-
   const routeDecision = await selectExplanationRoute(
     userId,
     subject.id,
     targetSkill.id,
     targetSkill.code
   );
+
+  const itemSkills = await prisma.itemSkill.findMany({
+    where: { skillId: targetSkill.id },
+    include: { item: true },
+  });
+
+  const allItems = itemSkills.map((entry) => entry.item);
+  const shuffledPool = [...allItems].sort(() => Math.random() - 0.5);
+  const learnItems = shuffledPool.filter((item) =>
+    isLearnCandidate({
+      question: item.question,
+      type: item.type,
+      options: item.options,
+      answer: item.answer,
+    })
+  );
+  const routeShadowItems = shuffledPool.filter((item) =>
+    isShadowCandidate(
+      {
+        question: item.question,
+        type: item.type,
+        options: item.options,
+        answer: item.answer,
+      },
+      routeDecision.routeType
+    )
+  );
+  const otherNonOnboarding = shuffledPool.filter((item) => inferItemPurpose(item).purpose !== 'ONBOARDING');
+
+  const selected: typeof allItems = [];
+  const selectedIds = new Set<string>();
+
+  function takeFrom(pool: typeof allItems, maxToAdd: number) {
+    let added = 0;
+    for (const item of pool) {
+      if (selected.length >= QUESTIONS_PER_SESSION || added >= maxToAdd) return;
+      if (selectedIds.has(item.id)) continue;
+      selected.push(item);
+      selectedIds.add(item.id);
+      added += 1;
+    }
+  }
+
+  if (isRoutedSkill(targetSkill.code) && routeShadowItems.length >= 2) {
+    takeFrom(learnItems, 1);
+    takeFrom(routeShadowItems, QUESTIONS_PER_SESSION);
+  } else {
+    takeFrom(learnItems, QUESTIONS_PER_SESSION);
+  }
+
+  takeFrom(otherNonOnboarding, QUESTIONS_PER_SESSION);
+  takeFrom(shuffledPool, QUESTIONS_PER_SESSION);
+
+  const items = selected.slice(0, QUESTIONS_PER_SESSION);
+  const gamification = await getUserGamificationSummary(userId);
 
   await emitEvent({
     name: 'explanation_route_assigned',
