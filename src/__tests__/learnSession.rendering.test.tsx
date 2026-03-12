@@ -41,12 +41,12 @@ describe('LearnSession rendering', () => {
       />
     );
 
-    fireEvent.click(screen.getByRole('button', { name: /start key questions/i }));
+    fireEvent.click(screen.getByRole('button', { name: /start next skill/i }));
 
     expect(screen.getByRole('button', { name: '11' })).toBeTruthy();
     expect(screen.getByRole('button', { name: '12' })).toBeTruthy();
 
-    const submit = screen.getByRole('button', { name: /finish session/i });
+    const submit = screen.getByRole('button', { name: /finish for now/i });
     expect(submit).toHaveProperty('disabled', true);
 
     fireEvent.click(screen.getByRole('button', { name: '12' }));
@@ -69,9 +69,9 @@ describe('LearnSession rendering', () => {
       />
     );
 
-    fireEvent.click(screen.getByRole('button', { name: /start key questions/i }));
+    fireEvent.click(screen.getByRole('button', { name: /start next skill/i }));
 
     expect(screen.getByText(/this question has no options yet/i)).toBeTruthy();
-    expect(screen.getByRole('button', { name: /finish session/i })).toHaveProperty('disabled', true);
+    expect(screen.getByRole('button', { name: /finish for now/i })).toHaveProperty('disabled', true);
   });
 });

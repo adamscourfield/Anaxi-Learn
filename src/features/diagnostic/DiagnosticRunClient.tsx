@@ -93,9 +93,10 @@ export function DiagnosticRunClient({ subject, skill, item, sessionId, itemsSeen
     <main className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
       <div className="max-w-lg w-full bg-white rounded-xl border border-gray-200 p-8 space-y-6">
         <div className="flex items-center justify-between">
-          <p className="text-sm text-gray-500">
-            Diagnostic · <span className="font-medium">{skill.strand}</span>
-          </p>
+          <div>
+            <p className="text-sm text-gray-500">One question at a time</p>
+            <p className="text-xs text-gray-400">Just try your best — this helps us choose the right starting point.</p>
+          </div>
           <span className="text-sm text-gray-400">
             {itemsSeen + 1} / {maxItems} max
           </span>
@@ -108,13 +109,22 @@ export function DiagnosticRunClient({ subject, skill, item, sessionId, itemsSeen
         </div>
         <ItemVisualPanel item={item} primarySkillCode={skill.code} />
         <h2 className="text-lg font-semibold text-gray-900">{item.question}</h2>
+        <p className="text-sm text-gray-500">
+          {itemContent.type === 'SHORT_NUMERIC'
+            ? 'Type your answer as a number.'
+            : itemContent.type === 'SHORT_TEXT'
+              ? 'Type your answer clearly.'
+              : itemContent.type === 'ORDER'
+                ? 'Put the answers in the right order.'
+                : 'Choose one answer.'}
+        </p>
         {renderAnswerInput(itemContent.type)}
         <button
           onClick={submitAnswer}
           disabled={!selectedAnswer || submitting}
           className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 font-medium transition-colors"
         >
-          {submitting ? 'Submitting…' : 'Next'}
+          {submitting ? 'Checking…' : 'Check and continue'}
         </button>
       </div>
     </main>

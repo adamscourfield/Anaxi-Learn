@@ -83,13 +83,18 @@ export default async function DashboardPage() {
           return (
             <section key={subject.id} className="mb-8">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-semibold text-gray-800">{subject.title}</h2>
+                <div>
+                  <h2 className="text-xl font-semibold text-gray-800">{subject.title}</h2>
+                  {onboardingBySubject.get(subject.id) && (
+                    <p className="mt-1 text-sm text-gray-500">We will pick the best next skill for you.</p>
+                  )}
+                </div>
                 {onboardingBySubject.get(subject.id) ? (
                   <Link
                     href={`/learn/${subject.slug}`}
                     className="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition-colors"
                   >
-                    Start Learning
+                    Start next skill
                   </Link>
                 ) : (
                   <Link

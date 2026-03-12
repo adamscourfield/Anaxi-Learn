@@ -88,20 +88,19 @@ export default async function DiagnosticCompletePage({ params, searchParams }: P
     <main className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
       <div className="max-w-lg w-full bg-white rounded-xl border border-gray-200 p-8 space-y-6 text-center">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Diagnostic Complete!</h1>
+          <h1 className="text-2xl font-bold text-gray-900">You&apos;re ready to begin</h1>
           <p className="text-gray-500 mt-2">
-            We&apos;ve assessed {diagSession.itemsSeen} question{diagSession.itemsSeen !== 1 ? 's' : ''} and
-            initialised your skill mastery profile.
+            You answered {diagSession.itemsSeen} question{diagSession.itemsSeen !== 1 ? 's' : ''}. We now know where to start and will choose the next skill for you.
           </p>
         </div>
         <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg text-sm text-blue-800">
-          Your starting level is now ready. We&apos;ll use it to choose the right next questions for you.
+          Your first learning steps are ready. You do not need to choose the next skill yourself.
         </div>
         <Link
           href={`/learn/${subjectSlug}`}
           className="block w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium transition-colors"
         >
-          Continue to learning
+          Go to your next skill
         </Link>
       </div>
     </main>

@@ -85,19 +85,25 @@ export function LearnSession({ subject, skill, items, userId }: Props) {
 
     return (
       <div className="space-y-3">
-        {options.map((option, i) => (
-          <button
-            key={i}
-            onClick={() => setSelectedAnswer(option)}
-            className={`w-full text-left px-4 py-3 rounded-lg border-2 transition-colors ${
-              selectedAnswer === option
-                ? 'border-blue-500 bg-blue-50 text-blue-800'
-                : 'border-gray-200 hover:border-gray-300 text-gray-700'
-            }`}
-          >
-            {option}
-          </button>
-        ))}
+        {options.length === 0 ? (
+          <p className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800">
+            This question has no options yet.
+          </p>
+        ) : (
+          options.map((option, i) => (
+            <button
+              key={i}
+              onClick={() => setSelectedAnswer(option)}
+              className={`w-full text-left px-4 py-3 rounded-lg border-2 transition-colors ${
+                selectedAnswer === option
+                  ? 'border-blue-500 bg-blue-50 text-blue-800'
+                  : 'border-gray-200 hover:border-gray-300 text-gray-700'
+              }`}
+            >
+              {option}
+            </button>
+          ))
+        )}
       </div>
     );
   }
@@ -159,7 +165,7 @@ export function LearnSession({ subject, skill, items, userId }: Props) {
               onClick={() => setPhase('session')}
               className="flex-1 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium transition-colors"
             >
-              Start Session ({items.length} questions)
+              Start next skill ({items.length} questions)
             </button>
             <button
               onClick={() => router.push('/dashboard')}
@@ -178,15 +184,21 @@ export function LearnSession({ subject, skill, items, userId }: Props) {
       <main className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
         <div className="max-w-lg w-full bg-white rounded-xl border border-gray-200 p-8 space-y-6">
           <div className="flex items-center justify-between">
-            <p className="text-sm text-gray-500">
-              {skill.name}
-              {SHOW_DEBUG && (
-                <span className="ml-2 text-xs text-gray-400">[{skill.code}]</span>
-              )}
-            </p>
-            <span className="text-sm text-gray-400">
-              {currentIndex + 1} / {items.length}
-            </span>
+            <div>
+              <p className="text-sm text-gray-500">One question at a time</p>
+              <p className="text-xs text-gray-400">Each question is a fresh start.</p>
+            </div>
+            <div className="text-right">
+              <p className="text-sm text-gray-500">
+                {skill.name}
+                {SHOW_DEBUG && (
+                  <span className="ml-2 text-xs text-gray-400">[{skill.code}]</span>
+                )}
+              </p>
+              <span className="text-sm text-gray-400">
+                {currentIndex + 1} / {items.length}
+              </span>
+            </div>
           </div>
           <div className="w-full h-1.5 bg-gray-100 rounded-full">
             <div
@@ -196,13 +208,24 @@ export function LearnSession({ subject, skill, items, userId }: Props) {
           </div>
           <ItemVisualPanel item={currentItem} primarySkillCode={skill.code} />
           <h2 className="text-lg font-semibold text-gray-900">{currentItem.question}</h2>
+          {currentItemContent && (
+            <p className="text-sm text-gray-500">
+              {currentItemContent.type === 'SHORT_NUMERIC'
+                ? 'Type your answer as a number.'
+                : currentItemContent.type === 'SHORT_TEXT'
+                  ? 'Type your answer clearly.'
+                  : currentItemContent.type === 'ORDER'
+                    ? 'Put the answers in the right order.'
+                    : 'Choose one answer.'}
+            </p>
+          )}
           {currentItemContent && renderAnswerInput(currentItemContent.type)}
           <button
             onClick={submitAnswer}
             disabled={!selectedAnswer || submitting}
             className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 font-medium transition-colors"
           >
-            {submitting ? 'Submitting…' : currentIndex < items.length - 1 ? 'Next' : 'Finish'}
+            {submitting ? 'Checking…' : currentIndex < items.length - 1 ? 'Check and continue' : 'Finish for now'}
           </button>
         </div>
       </main>
@@ -216,7 +239,8 @@ export function LearnSession({ subject, skill, items, userId }: Props) {
     return (
       <main className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
         <div className="max-w-lg w-full bg-white rounded-xl border border-gray-200 p-8 space-y-6 text-center">
-          <h1 className="text-2xl font-bold text-gray-900">Session Complete!</h1>
+          <h1 className="text-2xl font-bold text-gray-900">Session complete</h1>
+          <p className="text-sm text-gray-500">You have finished this set. We will use this to choose what should happen next.</p>
           <div className="py-4">
             <span className={`text-5xl font-bold ${masteryPct >= 80 ? 'text-green-600' : masteryPct >= 50 ? 'text-yellow-500' : 'text-red-500'}`}>
               {masteryPct}%
@@ -224,6 +248,7 @@ export function LearnSession({ subject, skill, items, userId }: Props) {
             <p className="text-gray-500 mt-2">
               {correctCount} out of {results.length} correct
             </p>
+            <p className="mt-2 text-sm text-gray-500">One question does not decide everything. Your next step will be based on the whole session.</p>
           </div>
           <div className="space-y-2">
             {results.map((r, i) => (
@@ -240,7 +265,7 @@ export function LearnSession({ subject, skill, items, userId }: Props) {
               onClick={() => router.push(`/learn/${subject.slug}`)}
               className="flex-1 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
             >
-              Practice Again
+              Try this skill again
             </button>
             <button
               onClick={() => router.push('/dashboard')}

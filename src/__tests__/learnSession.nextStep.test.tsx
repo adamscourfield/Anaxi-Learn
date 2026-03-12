@@ -48,12 +48,12 @@ describe('LearnSession clear next-step UX', () => {
     );
 
     // Intro always offers a clear next step.
-    expect(screen.getByRole('button', { name: /start key questions/i })).toBeTruthy();
+    expect(screen.getByRole('button', { name: /start next skill/i })).toBeTruthy();
 
-    fireEvent.click(screen.getByRole('button', { name: /start key questions/i }));
+    fireEvent.click(screen.getByRole('button', { name: /start next skill/i }));
 
     // Session step is explicit.
-    const finish = screen.getByRole('button', { name: /finish session/i });
+    const finish = screen.getByRole('button', { name: /finish for now/i });
     expect(finish).toHaveProperty('disabled', true);
 
     fireEvent.click(screen.getByRole('button', { name: '4' }));
@@ -66,7 +66,7 @@ describe('LearnSession clear next-step UX', () => {
     });
 
     // Results always provide clear next actions.
-    expect(screen.getByRole('button', { name: /practice again/i })).toBeTruthy();
+    expect(screen.getByRole('button', { name: /try this skill again/i })).toBeTruthy();
     expect(screen.getByRole('button', { name: /dashboard/i })).toBeTruthy();
   });
 });

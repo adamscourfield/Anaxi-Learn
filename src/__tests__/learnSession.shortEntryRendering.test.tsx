@@ -35,12 +35,12 @@ describe('LearnSession short entry rendering', () => {
       />
     );
 
-    fireEvent.click(screen.getByRole('button', { name: /start session/i }));
+    fireEvent.click(screen.getByRole('button', { name: /start next skill/i }));
 
     const input = screen.getByPlaceholderText(/enter a number/i);
     expect(input).toBeTruthy();
 
-    const submit = screen.getByRole('button', { name: /^finish$/i });
+    const submit = screen.getByRole('button', { name: /^finish for now$/i });
     expect(submit).toHaveProperty('disabled', true);
 
     fireEvent.change(input, { target: { value: '7' } });
@@ -63,13 +63,13 @@ describe('LearnSession short entry rendering', () => {
       />
     );
 
-    fireEvent.click(screen.getByRole('button', { name: /start session/i }));
+    fireEvent.click(screen.getByRole('button', { name: /start next skill/i }));
 
     const input = screen.getByPlaceholderText(/type your answer/i);
     expect(input).toBeTruthy();
     expect(screen.getByText(/use clear words\. commas and “and” are both okay\./i)).toBeTruthy();
 
-    const submit = screen.getByRole('button', { name: /^finish$/i });
+    const submit = screen.getByRole('button', { name: /^finish for now$/i });
     expect(submit).toHaveProperty('disabled', true);
 
     fireEvent.change(input, { target: { value: 'one hundred and five' } });
@@ -92,11 +92,11 @@ describe('LearnSession short entry rendering', () => {
       />
     );
 
-    fireEvent.click(screen.getByRole('button', { name: /start session/i }));
+    fireEvent.click(screen.getByRole('button', { name: /start next skill/i }));
 
     expect(screen.getByText(/arrange the fridge magnets into the correct order/i)).toBeTruthy();
 
-    const submit = screen.getByRole('button', { name: /^finish$/i });
+    const submit = screen.getByRole('button', { name: /^finish for now$/i });
     expect(submit).toHaveProperty('disabled', true);
 
     fireEvent.click(screen.getByRole('button', { name: /^3$/i }));
