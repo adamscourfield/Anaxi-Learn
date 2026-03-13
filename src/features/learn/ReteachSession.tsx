@@ -179,8 +179,8 @@ export function ReteachSession({ subjectId, skillId, routeType, assignedPathId, 
             onChange={(e) => setGuided(e.target.value)}
             placeholder="Type your answer"
           />
-          {!guidedOk && guided.length > 0 && <p className="mt-2 text-sm text-rose-600">Nearly there — check each place value and try again.</p>}
-          {guidedOk && <p className="mt-2 text-sm text-emerald-600">Brilliant! You got it ✅</p>}
+          {!guidedOk && guided.length > 0 && <p className="mt-2 text-sm text-rose-600">Nearly there — check it carefully and try again.</p>}
+          {guidedOk && <p className="mt-2 text-sm text-emerald-600">Yes — that&apos;s right ✅</p>}
           <button
             className="anx-btn-primary mt-3 w-full py-3 text-base"
             onClick={async () => {
@@ -242,7 +242,7 @@ export function ReteachSession({ subjectId, skillId, routeType, assignedPathId, 
       <div className="space-y-5">
         <div className={`rounded-2xl border border-slate-200 bg-white p-6 ${feedback === 'correct' ? 'anx-pulse-correct' : ''} ${feedback === 'incorrect' ? 'anx-shake-incorrect' : ''}`}>
           <p className="text-sm uppercase tracking-wide text-slate-500">Step {stepIndex + 1} of {plan.steps.length}</p>
-          <p className="mt-3 text-lg font-bold text-slate-900">Checkpoint</p>
+          <p className="mt-3 text-lg font-bold text-slate-900">Check what you know</p>
           <p className="mt-1 text-base text-slate-700">{step.checkpointQuestion}</p>
           <div className="mt-3 space-y-2">
             {step.checkpointOptions.map((option) => (
@@ -254,12 +254,12 @@ export function ReteachSession({ subjectId, skillId, routeType, assignedPathId, 
           <button onClick={checkStep} className="anx-btn-primary mt-4 w-full py-3 text-base" disabled={!canCheck}>
             Check answer
           </button>
-          {!selected && <p className="mt-2 text-sm text-slate-600">Choose one answer to begin.</p>}
+          {!selected && <p className="mt-2 text-sm text-slate-600">Pick one answer to start.</p>}
           {selected && interactionRequired && !interactionStatus.completed && (
-            <p className="mt-2 text-sm text-amber-700">First complete the visual task above, then check your answer.</p>
+            <p className="mt-2 text-sm text-amber-700">Finish the task above first, then check your answer.</p>
           )}
-          {feedback === 'incorrect' && <p className="mt-2 text-sm text-rose-600">Good try — check the idea again and have another go.</p>}
-          {feedback === 'correct' && <p className="mt-2 text-sm text-emerald-600">Nice one — you are ready for the next step.</p>}
+          {feedback === 'incorrect' && <p className="mt-2 text-sm text-rose-600">Good try — have another go.</p>}
+          {feedback === 'correct' && <p className="mt-2 text-sm text-emerald-600">Yes — let&apos;s keep going.</p>}
           {altShown[stepIndex] && (
             <div className="mt-3 rounded-lg border border-blue-200 bg-blue-50 p-3 text-sm text-blue-900">
               <p className="font-semibold">Helpful hint</p>
@@ -285,10 +285,10 @@ export function ReteachSession({ subjectId, skillId, routeType, assignedPathId, 
           onClick={() => setStage('checkpoint')}
           disabled={interactionRequired && !interactionStatus.completed}
         >
-          Go to checkpoint
+          Go to check
         </button>
         {interactionRequired && !interactionStatus.completed && (
-          <p className="mt-2 text-sm text-slate-600">Complete the visual task to unlock the next challenge.</p>
+          <p className="mt-2 text-sm text-slate-600">Finish the task to unlock the next part.</p>
         )}
       </div>
     </div>

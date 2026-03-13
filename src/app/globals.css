@@ -70,7 +70,7 @@
 
   /* ── Surfaces ──────────────────────────────────── */
   .anx-panel {
-    @apply rounded-2xl border bg-white/98 backdrop-blur-sm;
+    @apply rounded-2xl border bg-white/[0.98] backdrop-blur-sm;
     border-color: var(--anx-border);
     box-shadow: var(--anx-shadow-lg);
   }

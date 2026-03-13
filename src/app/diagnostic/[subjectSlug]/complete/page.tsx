@@ -23,7 +23,6 @@ export default async function DiagnosticCompletePage({ params, searchParams }: P
   const subject = await prisma.subject.findUnique({ where: { slug: subjectSlug } });
   if (!subject) notFound();
 
-  // Find session to complete
   const diagSession = sessionId
     ? await prisma.diagnosticSession.findUnique({ where: { id: sessionId } })
     : await prisma.diagnosticSession.findFirst({
@@ -34,14 +33,12 @@ export default async function DiagnosticCompletePage({ params, searchParams }: P
     redirect(`/learn/${subjectSlug}`);
   }
 
-  // Mark as completed if not already
   if (diagSession.status === 'IN_PROGRESS') {
     await prisma.diagnosticSession.update({
       where: { id: diagSession.id },
       data: { status: 'COMPLETED', completedAt: new Date() },
     });
 
-    // Write initial SkillMastery rows from estimates
     const payload = diagSession.payload as {
       estimates: Record<string, { skillCode: string; strand: string; correct: number; total: number; masteryEstimate: number }>;
       strandCounts: Record<string, number>;
@@ -85,25 +82,22 @@ export default async function DiagnosticCompletePage({ params, searchParams }: P
   }
 
   return (
-    <main className="anx-shell flex items-center justify-center">
-      <div className="anx-panel w-full max-w-lg space-y-6 p-8 sm:p-10 text-center">
+    <main className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+      <div className="max-w-lg w-full bg-white rounded-xl border border-gray-200 p-8 space-y-6 text-center">
         <div>
-          <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full" style={{ background: 'var(--anx-success-soft)' }}>
-            <span className="text-2xl" style={{ color: 'var(--anx-success)' }}>{'\u2713'}</span>
-          </div>
-          <h1 className="text-2xl font-bold tracking-tight" style={{ color: 'var(--anx-text)' }}>You&apos;re ready to begin</h1>
-          <p className="mt-2 text-sm" style={{ color: 'var(--anx-text-muted)' }}>
-            You answered {diagSession.itemsSeen} question{diagSession.itemsSeen !== 1 ? 's' : ''}. We now know where to start and will choose the next skill for you.
+          <h1 className="text-2xl font-bold text-gray-900">You&apos;re ready to start</h1>
+          <p className="text-gray-500 mt-2">
+            You answered {diagSession.itemsSeen} question{diagSession.itemsSeen !== 1 ? 's' : ''}. We now know a good place to begin.
           </p>
         </div>
-        <div className="rounded-xl border px-4 py-4 text-sm" style={{ borderColor: 'var(--anx-border-subtle)', background: 'var(--anx-primary-soft)', color: 'var(--anx-primary)' }}>
-          Your first learning steps are ready. You do not need to choose the next skill yourself.
+        <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg text-sm text-blue-800">
+          Your first step is ready. We will guide you to the next skill.
         </div>
         <Link
           href={`/learn/${subjectSlug}`}
-          className="anx-btn-primary block w-full py-3.5 text-center text-base"
+          className="block w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium transition-colors"
         >
-          See my first skill
+          Go to my next skill
         </Link>
       </div>
     </main>

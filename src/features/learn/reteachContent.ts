@@ -32,18 +32,18 @@ export interface ReteachPlan {
 
 const plans: Record<RouteType, ReteachPlan> = {
   A: {
-    misconceptionSummary: 'You may be mixing up place-value columns.',
-    workedExample: 'Example: 3,540 has 3 thousands, 5 hundreds, 4 tens, 0 ones. So 3,540 is bigger than 3,450.',
+    misconceptionSummary: 'You may be mixing up the place-value columns.',
+    workedExample: 'Example: 3,540 has 3 thousands, 5 hundreds, 4 tens and 0 ones. So 3,540 is bigger than 3,450.',
     guidedPrompt: 'In 6,204, what is the value of 2?',
     guidedAnswer: '200',
     steps: [
       {
         title: 'Step 1: Name each place',
         explanation: 'Read left to right: thousands, hundreds, tens, ones.',
-        checkpointQuestion: 'In 4,381, what digit is in hundreds?',
+        checkpointQuestion: 'In 4,381, which digit is in the hundreds place?',
         checkpointOptions: ['3', '8', '4', '1'],
         checkpointAnswer: '3',
-        alternativeHint: 'Find the hundreds place first. Then read that digit.',
+        alternativeHint: 'Find the hundreds place first. Then read the digit in that place.',
       },
       {
         title: 'Step 2: Start on the left',
@@ -51,15 +51,15 @@ const plans: Record<RouteType, ReteachPlan> = {
         checkpointQuestion: 'Which number is bigger?',
         checkpointOptions: ['5,203', '5,123', 'They are equal', 'Not sure'],
         checkpointAnswer: '5,203',
-        alternativeHint: 'Both have 5 thousands. Next check hundreds: 2 hundreds is more than 1 hundred.',
+        alternativeHint: 'Both have 5 thousands. Next check the hundreds: 2 hundreds is more than 1 hundred.',
       },
       {
-        title: 'Step 3: Check middle places',
+        title: 'Step 3: Check the middle places',
         explanation: 'Tens and hundreds can look similar. Say the place name out loud.',
-        checkpointQuestion: 'In 7,460, what does 6 mean?',
+        checkpointQuestion: 'In 7,460, what is the value of 6?',
         checkpointOptions: ['6', '60', '600', '6000'],
         checkpointAnswer: '60',
-        alternativeHint: 'The 6 is in tens, so it means 60.',
+        alternativeHint: 'The 6 is in the tens place, so it means 60.',
       },
     ],
   },
@@ -70,20 +70,20 @@ const plans: Record<RouteType, ReteachPlan> = {
     guidedAnswer: '8,370',
     steps: [
       {
-        title: 'Step 1: Start with biggest place',
+        title: 'Step 1: Start with the biggest place',
         explanation: 'Keep each digit in its place-value column.',
         checkpointQuestion: 'Which place do you check first?',
         checkpointOptions: ['Ones', 'Tens', 'Hundreds', 'Thousands'],
         checkpointAnswer: 'Thousands',
-        alternativeHint: 'Always start on the left with the biggest place.',
+        alternativeHint: 'Start on the left with the biggest place.',
       },
       {
-        title: 'Step 2: Find first change',
+        title: 'Step 2: Find the first change',
         explanation: 'Move left to right. Stop at the first place that changes.',
         checkpointQuestion: 'In 4,125 and 4,175, where do they first change?',
         checkpointOptions: ['Thousands', 'Hundreds', 'Tens', 'Ones'],
         checkpointAnswer: 'Tens',
-        alternativeHint: 'Thousands and hundreds are the same. Tens are 2 and 7.',
+        alternativeHint: 'Thousands and hundreds are the same. The tens are 2 and 7.',
       },
       {
         title: 'Step 3: Decide',
@@ -91,12 +91,12 @@ const plans: Record<RouteType, ReteachPlan> = {
         checkpointQuestion: 'Which number is bigger?',
         checkpointOptions: ['9,041', '9,401', 'They are equal', 'Not sure'],
         checkpointAnswer: '9,401',
-        alternativeHint: 'In hundreds, 4 is bigger than 0, so 9,401 is bigger.',
+        alternativeHint: 'In the hundreds place, 4 is bigger than 0, so 9,401 is bigger.',
       },
     ],
   },
   C: {
-    misconceptionSummary: 'You may be focusing too much on smaller places.',
+    misconceptionSummary: 'You may be looking too much at the smaller places.',
     workedExample: 'Example: 1,090 is bigger than 1,009 because 9 tens is more than 9 ones.',
     guidedPrompt: 'In 5,072, is the 7 worth 7 or 70?',
     guidedAnswer: '70',
@@ -104,7 +104,7 @@ const plans: Record<RouteType, ReteachPlan> = {
       {
         title: 'Step 1: Bigger places matter more',
         explanation: 'A change in tens is bigger than a change in ones.',
-        checkpointQuestion: 'Which one is bigger?',
+        checkpointQuestion: 'Which is bigger?',
         checkpointOptions: ['+1 one', '+1 ten', 'They are equal', 'Not sure'],
         checkpointAnswer: '+1 ten',
         alternativeHint: '1 ten = 10 ones.',
@@ -112,10 +112,10 @@ const plans: Record<RouteType, ReteachPlan> = {
       {
         title: 'Step 2: Same digit, new value',
         explanation: 'A digit changes value when it moves place.',
-        checkpointQuestion: 'In 3,604, what does 6 mean?',
+        checkpointQuestion: 'In 3,604, what is the value of 6?',
         checkpointOptions: ['6', '60', '600', '6000'],
         checkpointAnswer: '600',
-        alternativeHint: 'The 6 is in hundreds, so it means 600.',
+        alternativeHint: 'The 6 is in the hundreds place, so it means 600.',
       },
       {
         title: 'Step 3: Compare close pairs',
@@ -123,7 +123,7 @@ const plans: Record<RouteType, ReteachPlan> = {
         checkpointQuestion: 'Which number is bigger?',
         checkpointOptions: ['6,090', '6,009', 'They are equal', 'Not sure'],
         checkpointAnswer: '6,090',
-        alternativeHint: 'Check tens: 9 tens is more than 0 tens.',
+        alternativeHint: 'Check the tens: 9 tens is more than 0 tens.',
       },
     ],
   },
