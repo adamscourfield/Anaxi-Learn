@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation';
 import { prisma } from '@/db/prisma';
 import Link from 'next/link';
 import { hasCompletedOnboardingDiagnostic } from '@/features/learn/onboarding';
+import { selectNextSkill } from '@/features/learn/nextSkill';
 
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
@@ -39,6 +40,7 @@ export default async function DashboardPage() {
     include: {
       skills: {
         include: {
+          prerequisites: true,
           masteries: {
             where: { userId },
           },
@@ -79,6 +81,30 @@ export default async function DashboardPage() {
             if (!mastery.nextReviewAt) return true;
             return mastery.nextReviewAt <= now;
           });
+          const nextSkill = selectNextSkill(
+            subject.skills,
+            subject.skills
+              .map((skill) => {
+                const mastery = skill.masteries[0];
+                if (!mastery) return null;
+                return {
+                  skillId: skill.id,
+                  mastery: mastery.mastery,
+                  confirmedCount: mastery.confirmedCount,
+                  nextReviewAt: mastery.nextReviewAt,
+                };
+              })
+              .filter((mastery): mastery is {
+                skillId: string;
+                mastery: number;
+                confirmedCount: number;
+                nextReviewAt: Date | null;
+              } => mastery !== null),
+            now
+          );
+          const nextSkillMastery = nextSkill ? nextSkill.masteries[0] : null;
+          const nextSkillStarted = Boolean(nextSkillMastery?.lastPracticedAt);
+          const nextSkillIsDue = !nextSkillMastery?.nextReviewAt || nextSkillMastery.nextReviewAt <= now;
 
           return (
             <section key={subject.id} className="mb-8">
@@ -86,7 +112,7 @@ export default async function DashboardPage() {
                 <div>
                   <h2 className="text-xl font-semibold text-gray-800">{subject.title}</h2>
                   {onboardingBySubject.get(subject.id) && (
-                    <p className="mt-1 text-sm text-gray-500">We will pick the best next skill for you.</p>
+                    <p className="mt-1 text-sm text-gray-500">We will pick your next small step for you.</p>
                   )}
                 </div>
                 {onboardingBySubject.get(subject.id) ? (
@@ -121,6 +147,36 @@ export default async function DashboardPage() {
                 </div>
               ) : (
                 <>
+                  {nextSkill && (
+                    <div className="mb-4 rounded-xl border border-blue-200 bg-gradient-to-br from-blue-50 to-white p-5">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-blue-700">Your next skill</p>
+                      <div className="mt-2 flex items-start justify-between gap-4">
+                        <div>
+                          <h3 className="text-lg font-semibold text-gray-900">{nextSkill.name}</h3>
+                          <p className="mt-1 text-sm text-gray-600">
+                            {nextSkillStarted
+                              ? nextSkillIsDue
+                                ? 'This one is ready now, so we will bring it back in a short practice set.'
+                                : 'This is the next skill we will bring back for another short, manageable practice set.'
+                              : 'This is the next new skill we will introduce, one small step at a time.'}
+                          </p>
+                        </div>
+                        <Link
+                          href={`/learn/${subject.slug}`}
+                          className="shrink-0 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+                        >
+                          {nextSkillStarted ? 'Continue skill' : 'Start skill'}
+                        </Link>
+                      </div>
+                      <div className="mt-3 rounded-lg bg-white/80 px-3 py-3 text-sm text-gray-700 ring-1 ring-blue-100">
+                        <p className="font-medium text-gray-900">What happens next</p>
+                        <p className="mt-1">
+                          You will answer a short set of questions. Then we will decide whether to keep practising this skill,
+                          bring it back again later, or move you on when you are ready.
+                        </p>
+                      </div>
+                    </div>
+                  )}
 
                   {dueSkills.length > 0 && (
                     <div className="mb-4 p-3 bg-amber-50 border border-amber-200 rounded-lg">

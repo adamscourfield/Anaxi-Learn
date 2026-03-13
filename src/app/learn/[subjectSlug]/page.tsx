@@ -3,8 +3,8 @@ import { authOptions } from '@/features/auth/authOptions';
 import { redirect } from 'next/navigation';
 import { prisma } from '@/db/prisma';
 import { LearnSession } from '@/features/learn/LearnSession';
-import { isSkillUnlocked } from '@/features/learn/prerequisites';
 import { hasCompletedOnboardingDiagnostic } from '@/features/learn/onboarding';
+import { selectNextSkill } from '@/features/learn/nextSkill';
 
 const QUESTIONS_PER_SESSION = 3;
 
@@ -41,43 +41,7 @@ export default async function LearnPage({ params }: Props) {
     where: { userId, skillId: { in: skillIds } },
   });
 
-  const now = new Date();
-  const masteryMap = new Map(
-    masteries.map((m) => [
-      m.skillId,
-      { skillId: m.skillId, mastery: m.mastery, confirmedCount: m.confirmedCount, nextReviewAt: m.nextReviewAt },
-    ])
-  );
-
-  const prereqEdges = subject.skills.flatMap((s) =>
-    s.prerequisites.map((p) => ({ skillId: s.id, prereqId: p.prereqId }))
-  );
-
-  const unlockedSkills = subject.skills.filter((s) =>
-    isSkillUnlocked(s.id, prereqEdges, masteryMap)
-  );
-
-  if (unlockedSkills.length === 0) redirect('/dashboard');
-
-  // Prefer skills due for review; among those pick lowest mastery
-  let targetSkill = unlockedSkills.find((s) => {
-    const m = masteryMap.get(s.id);
-    return !m || !m.nextReviewAt;
-  });
-
-  if (!targetSkill) {
-    const dueSkills = unlockedSkills.filter((s) => {
-      const m = masteryMap.get(s.id);
-      return m?.nextReviewAt && m.nextReviewAt <= now;
-    });
-    const pool = dueSkills.length > 0 ? dueSkills : unlockedSkills;
-    const sorted = [...pool].sort((a, b) => {
-      const ma = masteryMap.get(a.id)?.mastery ?? 0;
-      const mb = masteryMap.get(b.id)?.mastery ?? 0;
-      return ma - mb;
-    });
-    targetSkill = sorted[0];
-  }
+  const targetSkill = selectNextSkill(subject.skills, masteries, new Date());
 
   if (!targetSkill) redirect('/dashboard');
 

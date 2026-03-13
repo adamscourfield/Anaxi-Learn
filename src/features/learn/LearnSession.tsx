@@ -160,6 +160,10 @@ export function LearnSession({ subject, skill, items, userId }: Props) {
           {sanitizeStudentCopy(skill.description) && !sanitizeStudentCopy(skill.intro) && (
             <p className="text-gray-600">{sanitizeStudentCopy(skill.description)}</p>
           )}
+          <div className="rounded-lg border border-blue-100 bg-blue-50 px-4 py-3 text-sm text-blue-900">
+            <p className="font-medium">What happens next</p>
+            <p className="mt-1">You will do a short set of {items.length} questions. After that, we will either keep practising this skill, bring it back later, or move you on when you are ready.</p>
+          </div>
           <div className="flex gap-3">
             <button
               onClick={() => setPhase('session')}
@@ -235,21 +239,40 @@ export function LearnSession({ subject, skill, items, userId }: Props) {
   if (phase === 'results') {
     const correctCount = results.filter((r) => r.correct).length;
     const masteryPct = Math.round((correctCount / results.length) * 100);
+    const outcomeTone = masteryPct >= 80 ? 'green' : masteryPct >= 50 ? 'amber' : 'blue';
 
     return (
       <main className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-        <div className="max-w-lg w-full bg-white rounded-xl border border-gray-200 p-8 space-y-6 text-center">
-          <h1 className="text-2xl font-bold text-gray-900">Session complete</h1>
-          <p className="text-sm text-gray-500">You have finished this set. We will use this to choose what should happen next.</p>
-          <div className="py-4">
-            <span className={`text-5xl font-bold ${masteryPct >= 80 ? 'text-green-600' : masteryPct >= 50 ? 'text-yellow-500' : 'text-red-500'}`}>
+        <div className="max-w-lg w-full bg-white rounded-xl border border-gray-200 p-8 space-y-6">
+          <div className={`rounded-xl border px-5 py-4 ${outcomeTone === 'green' ? 'border-green-200 bg-green-50' : outcomeTone === 'amber' ? 'border-amber-200 bg-amber-50' : 'border-blue-200 bg-blue-50'}`}>
+            <p className={`text-sm font-semibold ${outcomeTone === 'green' ? 'text-green-700' : outcomeTone === 'amber' ? 'text-amber-700' : 'text-blue-700'}`}>
+              Session complete
+            </p>
+            <h1 className="mt-1 text-2xl font-bold text-gray-900">Nice work — this set is finished.</h1>
+            <p className="mt-2 text-sm text-gray-700">
+              We have enough from this short session to choose the next step. You do not have to get everything right in one go.
+            </p>
+          </div>
+
+          <div className="text-center py-1">
+            <span className={`text-5xl font-bold ${masteryPct >= 80 ? 'text-green-600' : masteryPct >= 50 ? 'text-yellow-500' : 'text-blue-600'}`}>
               {masteryPct}%
             </span>
             <p className="text-gray-500 mt-2">
               {correctCount} out of {results.length} correct
             </p>
-            <p className="mt-2 text-sm text-gray-500">One question does not decide everything. Your next step will be based on the whole session.</p>
           </div>
+
+          <div className="rounded-xl border border-gray-200 bg-gray-50 p-4">
+            <p className="text-sm font-semibold text-gray-900">What happens next</p>
+            <p className="mt-2 text-sm text-gray-700">
+              We will use this whole session to decide whether you should practise this skill again soon, come back to it later, or move on to the next skill when you are ready.
+            </p>
+            <p className="mt-2 text-sm text-gray-600">
+              If this one still feels tricky, that is okay. The next session will stay short and focused.
+            </p>
+          </div>
+
           <div className="space-y-2">
             {results.map((r, i) => (
               <div key={r.itemId} className="flex items-center gap-3 text-sm">
@@ -265,13 +288,13 @@ export function LearnSession({ subject, skill, items, userId }: Props) {
               onClick={() => router.push(`/learn/${subject.slug}`)}
               className="flex-1 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
             >
-              Try this skill again
+              Keep going
             </button>
             <button
               onClick={() => router.push('/dashboard')}
               className="flex-1 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
             >
-              Dashboard
+              Back to dashboard
             </button>
           </div>
         </div>
