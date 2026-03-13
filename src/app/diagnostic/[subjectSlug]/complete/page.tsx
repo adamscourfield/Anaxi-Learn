@@ -85,20 +85,23 @@ export default async function DiagnosticCompletePage({ params, searchParams }: P
   }
 
   return (
-    <main className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-      <div className="max-w-lg w-full bg-white rounded-xl border border-gray-200 p-8 space-y-6 text-center">
+    <main className="anx-shell flex items-center justify-center">
+      <div className="anx-panel w-full max-w-lg space-y-6 p-8 sm:p-10 text-center">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">You&apos;re ready to begin</h1>
-          <p className="text-gray-500 mt-2">
+          <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full" style={{ background: 'var(--anx-success-soft)' }}>
+            <span className="text-2xl" style={{ color: 'var(--anx-success)' }}>{'\u2713'}</span>
+          </div>
+          <h1 className="text-2xl font-bold tracking-tight" style={{ color: 'var(--anx-text)' }}>You&apos;re ready to begin</h1>
+          <p className="mt-2 text-sm" style={{ color: 'var(--anx-text-muted)' }}>
             You answered {diagSession.itemsSeen} question{diagSession.itemsSeen !== 1 ? 's' : ''}. We now know where to start and will choose the next skill for you.
           </p>
         </div>
-        <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg text-sm text-blue-800">
+        <div className="rounded-xl border px-4 py-4 text-sm" style={{ borderColor: 'var(--anx-border-subtle)', background: 'var(--anx-primary-soft)', color: 'var(--anx-primary)' }}>
           Your first learning steps are ready. You do not need to choose the next skill yourself.
         </div>
         <Link
           href={`/learn/${subjectSlug}`}
-          className="block w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium transition-colors"
+          className="anx-btn-primary block w-full py-3.5 text-center text-base"
         >
           Go to your next skill
         </Link>

@@ -14,20 +14,20 @@ export default async function DashboardPage() {
 
   if (role === 'TEACHER') {
     return (
-      <main className="min-h-screen bg-gray-50 py-8">
-        <div className="max-w-3xl mx-auto px-4">
+      <main className="anx-shell">
+        <div className="mx-auto max-w-3xl">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">Teacher Dashboard</h1>
-              <p className="text-gray-500 mt-1">{session.user.name ?? session.user.email}</p>
+              <h1 className="text-2xl font-bold tracking-tight" style={{ color: 'var(--anx-text)' }}>Teacher Dashboard</h1>
+              <p className="mt-1 text-sm" style={{ color: 'var(--anx-text-muted)' }}>{session.user.name ?? session.user.email}</p>
             </div>
             <form action="/api/auth/signout" method="POST">
-              <button type="submit" className="text-sm text-gray-500 hover:text-gray-700 underline">
+              <button type="submit" className="anx-btn-ghost text-sm">
                 Sign out
               </button>
             </form>
           </div>
-          <div className="rounded-xl border border-gray-200 bg-white p-6 text-gray-700">
+          <div className="anx-card p-6" style={{ color: 'var(--anx-text-secondary)' }}>
             Teacher accounts can sign in successfully. Student learning routes are hidden for this role.
           </div>
         </div>
@@ -55,22 +55,21 @@ export default async function DashboardPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-3xl mx-auto px-4">
-        <div className="flex items-center justify-between mb-8">
+    <main className="anx-shell">
+      <div className="mx-auto max-w-3xl">
+        <header className="flex items-center justify-between mb-10">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">My Dashboard</h1>
-            <p className="text-gray-500 mt-1">Welcome back, {session.user.name ?? session.user.email}</p>
+            <h1 className="text-2xl font-bold tracking-tight" style={{ color: 'var(--anx-text)' }}>My Dashboard</h1>
+            <p className="mt-1 text-sm" style={{ color: 'var(--anx-text-muted)' }}>
+              Welcome back, {session.user.name ?? session.user.email}
+            </p>
           </div>
           <form action="/api/auth/signout" method="POST">
-            <button
-              type="submit"
-              className="text-sm text-gray-500 hover:text-gray-700 underline"
-            >
+            <button type="submit" className="anx-btn-ghost text-sm">
               Sign out
             </button>
           </form>
-        </div>
+        </header>
 
         {subjects.map((subject) => {
           const dueSkills = subject.skills.filter((skill) => {
@@ -81,25 +80,25 @@ export default async function DashboardPage() {
           });
 
           return (
-            <section key={subject.id} className="mb-8">
-              <div className="flex items-center justify-between mb-4">
+            <section key={subject.id} className="mb-10">
+              <div className="flex items-center justify-between mb-5">
                 <div>
-                  <h2 className="text-xl font-semibold text-gray-800">{subject.title}</h2>
+                  <h2 className="text-lg font-semibold tracking-tight" style={{ color: 'var(--anx-text)' }}>{subject.title}</h2>
                   {onboardingBySubject.get(subject.id) && (
-                    <p className="mt-1 text-sm text-gray-500">We will pick the best next skill for you.</p>
+                    <p className="mt-1 text-sm" style={{ color: 'var(--anx-text-muted)' }}>We will pick the best next skill for you.</p>
                   )}
                 </div>
                 {onboardingBySubject.get(subject.id) ? (
                   <Link
                     href={`/learn/${subject.slug}`}
-                    className="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition-colors"
+                    className="anx-btn-primary px-5 py-2.5 text-sm"
                   >
                     Start next skill
                   </Link>
                 ) : (
                   <Link
                     href={`/diagnostic/${subject.slug}`}
-                    className="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition-colors"
+                    className="anx-btn-primary px-5 py-2.5 text-sm"
                   >
                     Start Onboarding
                   </Link>
@@ -107,24 +106,23 @@ export default async function DashboardPage() {
               </div>
 
               {!onboardingBySubject.get(subject.id) ? (
-                <div className="rounded-xl border border-blue-200 bg-white p-6">
-                  <h3 className="text-lg font-semibold text-gray-900">Complete your onboarding quiz first</h3>
-                  <p className="mt-2 text-sm text-gray-600">
+                <div className="anx-panel p-6 space-y-4">
+                  <h3 className="text-base font-semibold" style={{ color: 'var(--anx-text)' }}>Complete your onboarding quiz first</h3>
+                  <p className="text-sm" style={{ color: 'var(--anx-text-muted)' }}>
                     This first quiz builds your starting level so we can choose the right work for you.
                   </p>
                   <Link
                     href={`/diagnostic/${subject.slug}`}
-                    className="mt-4 inline-flex rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+                    className="anx-btn-primary text-sm"
                   >
                     Start onboarding quiz
                   </Link>
                 </div>
               ) : (
                 <>
-
                   {dueSkills.length > 0 && (
-                    <div className="mb-4 p-3 bg-amber-50 border border-amber-200 rounded-lg">
-                      <p className="text-sm font-medium text-amber-800">
+                    <div className="mb-4 rounded-xl border px-4 py-3" style={{ borderColor: '#fbbf24', background: 'var(--anx-warning-soft)' }}>
+                      <p className="text-sm font-medium" style={{ color: '#92400e' }}>
                         {dueSkills.length} skill{dueSkills.length !== 1 ? 's' : ''} due for review
                       </p>
                     </div>
@@ -139,28 +137,31 @@ export default async function DashboardPage() {
                       return (
                         <div
                           key={skill.id}
-                          className={`p-4 bg-white rounded-lg border ${isDue ? 'border-amber-300' : 'border-gray-200'}`}
+                          className={`anx-card p-4 ${isDue ? '!border-amber-300' : ''}`}
                         >
-                          <div className="flex items-center justify-between mb-2">
-                            <span className="font-medium text-gray-800">{skill.name}</span>
-                            <span className={`text-sm font-semibold ${masteryPct >= 80 ? 'text-green-600' : masteryPct >= 50 ? 'text-yellow-600' : 'text-red-500'}`}>
+                          <div className="flex items-center justify-between mb-2.5">
+                            <span className="text-sm font-semibold" style={{ color: 'var(--anx-text)' }}>{skill.name}</span>
+                            <span className={`anx-badge ${masteryPct >= 80 ? 'anx-badge-green' : masteryPct >= 50 ? 'anx-badge-amber' : 'anx-badge-red'}`}>
                               {masteryPct}%
                             </span>
                           </div>
-                          <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                          <div className="anx-mastery-track">
                             <div
-                              className={`h-full rounded-full ${masteryPct >= 80 ? 'bg-green-500' : masteryPct >= 50 ? 'bg-yellow-500' : 'bg-red-400'}`}
-                              style={{ width: `${masteryPct}%` }}
+                              className="h-full rounded-full transition-all duration-500"
+                              style={{
+                                width: `${masteryPct}%`,
+                                background: masteryPct >= 80 ? 'var(--anx-success)' : masteryPct >= 50 ? 'var(--anx-warning)' : 'var(--anx-danger)',
+                              }}
                             />
                           </div>
-                          <div className="flex items-center justify-between mt-2">
-                            <span className="text-xs text-gray-400">
+                          <div className="flex items-center justify-between mt-2.5">
+                            <span className="text-xs" style={{ color: 'var(--anx-text-faint)' }}>
                               {mastery?.lastPracticedAt
                                 ? `Last practiced ${new Date(mastery.lastPracticedAt).toLocaleDateString()}`
                                 : 'Not started'}
                             </span>
                             {mastery?.nextReviewAt && (
-                              <span className={`text-xs ${isDue ? 'text-amber-600 font-medium' : 'text-gray-400'}`}>
+                              <span className={`text-xs font-medium ${isDue ? 'text-amber-600' : ''}`} style={isDue ? {} : { color: 'var(--anx-text-faint)' }}>
                                 {isDue ? 'Due now' : `Next: ${new Date(mastery.nextReviewAt).toLocaleDateString()}`}
                               </span>
                             )}
@@ -176,24 +177,26 @@ export default async function DashboardPage() {
         })}
 
         {subjects.length === 0 && (
-          <div className="text-center py-16 text-gray-400">
+          <div className="anx-card py-16 text-center" style={{ color: 'var(--anx-text-faint)' }}>
             <p>No subjects available yet.</p>
           </div>
         )}
 
         {role === 'ADMIN' && (
-          <section className="mt-6 p-4 bg-purple-50 border border-purple-200 rounded-xl">
-            <h2 className="text-sm font-semibold text-purple-800 mb-3">Admin Tools</h2>
+          <section className="mt-8 rounded-xl border p-5" style={{ borderColor: '#c4b5fd', background: 'rgba(139, 92, 246, 0.06)' }}>
+            <p className="anx-section-label mb-3" style={{ color: '#6d28d9' }}>Admin Tools</p>
             <div className="flex gap-3">
               <Link
                 href="/admin/insight/ks3-maths"
-                className="px-4 py-2 text-sm bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+                className="anx-btn-primary text-sm"
+                style={{ background: 'linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%)' }}
               >
                 Insight Dashboard
               </Link>
               <Link
                 href="/admin/interventions"
-                className="px-4 py-2 text-sm bg-white text-purple-700 border border-purple-300 rounded-lg hover:bg-purple-50 transition-colors"
+                className="anx-btn-secondary text-sm"
+                style={{ borderColor: '#c4b5fd', color: '#6d28d9' }}
               >
                 Interventions
               </Link>

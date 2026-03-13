@@ -181,7 +181,7 @@ export default async function TeacherDashboardPage({ searchParams }: Props) {
           <p><span className="font-semibold">Observe School ID:</span> {teacherProfile.externalSchoolId ?? '—'}</p>
           <p><span className="font-semibold">Time window:</span> last {days} days</p>
           <p><span className="font-semibold">Subtopic filter:</span> {subtopicFilter || 'All'}</p>
-          <p className="mt-2 rounded-md border border-sky-200 bg-sky-50 px-2 py-1 text-xs text-sky-900">
+          <p className="mt-2 rounded-lg border px-3 py-1.5 text-xs" style={{ borderColor: 'var(--anx-border)', background: 'var(--anx-primary-soft)', color: 'var(--anx-primary)' }}>
             <span className="font-semibold">DLE momentum note:</span> {MOMENTUM_HELP}
           </p>
         </>
@@ -192,7 +192,7 @@ export default async function TeacherDashboardPage({ searchParams }: Props) {
             <Link
               key={d}
               href={`/teacher/dashboard?days=${d}${subtopicFilter ? `&subtopic=${encodeURIComponent(subtopicFilter)}` : ''}`}
-              className={`rounded-md border px-3 py-1 ${days === d ? 'border-indigo-300 bg-indigo-100 text-indigo-800' : 'border-slate-300 bg-white text-slate-700'}`}
+              className={`rounded-xl border px-3.5 py-1.5 font-medium transition-all ${days === d ? 'border-[var(--anx-primary)] bg-[var(--anx-primary-soft)] text-[var(--anx-primary)]' : 'border-[var(--anx-border)] bg-white text-[var(--anx-text-secondary)]'}`}
             >
               {d}d
             </Link>
@@ -319,28 +319,28 @@ export default async function TeacherDashboardPage({ searchParams }: Props) {
             const requiringAction = studentRows.filter((s) => s.needsAction);
 
             return (
-              <section key={cls.id} className="rounded-2xl border border-slate-200 bg-white p-5">
+              <section key={cls.id} className="anx-panel p-6">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <div>
-                    <h2 className="text-lg font-semibold text-slate-900">{cls.name}</h2>
-                    <p className="text-xs text-slate-500">
+                    <h2 className="text-lg font-semibold" style={{ color: 'var(--anx-text)' }}>{cls.name}</h2>
+                    <p className="text-xs" style={{ color: 'var(--anx-text-muted)' }}>
                       {cls.yearGroup ?? '—'} · {cls.subjectSlug ?? '—'} · Observe class id: {cls.externalClassId}
                     </p>
                   </div>
                 </div>
 
                 <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                  <div className="rounded-lg border border-slate-200 bg-slate-50 p-3"><p className="text-xs text-slate-500">Students</p><p className="text-xl font-bold text-slate-900">{classStudents.length}</p></div>
-                  <div className="rounded-lg border border-slate-200 bg-slate-50 p-3"><p className="text-xs text-slate-500">Average mastery</p><p className="text-xl font-bold text-slate-900">{avgMastery}%</p></div>
-                  <div className="rounded-lg border border-slate-200 bg-slate-50 p-3"><p className="text-xs text-slate-500">Stable learners</p><p className="text-xl font-bold text-slate-900">{stableCount}</p></div>
-                  <div className="rounded-lg border border-slate-200 bg-slate-50 p-3"><p className="text-xs text-slate-500">Review due</p><p className="text-xl font-bold text-slate-900">{reviewDueCount}</p></div>
+                  <div className="anx-stat"><p className="anx-stat-label">Students</p><p className="anx-stat-value">{classStudents.length}</p></div>
+                  <div className="anx-stat"><p className="anx-stat-label">Average mastery</p><p className="anx-stat-value">{avgMastery}%</p></div>
+                  <div className="anx-stat"><p className="anx-stat-label">Stable learners</p><p className="anx-stat-value">{stableCount}</p></div>
+                  <div className="anx-stat"><p className="anx-stat-label">Review due</p><p className="anx-stat-value">{reviewDueCount}</p></div>
                 </div>
 
                 <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-                  <div className="rounded-lg border border-indigo-200 bg-indigo-50 p-3"><p className="text-xs text-indigo-700">Question events</p><p className="text-lg font-semibold text-indigo-900">{questionEvents.length}</p></div>
-                  <div className="rounded-lg border border-indigo-200 bg-indigo-50 p-3"><p className="text-xs text-indigo-700">Checkpoint accuracy</p><p className="text-lg font-semibold text-indigo-900">{pct(checkpointCorrect, stepAttemptEvents.length)}</p></div>
-                  <div className="rounded-lg border border-indigo-200 bg-indigo-50 p-3"><p className="text-xs text-indigo-700">Interaction rule pass</p><p className="text-lg font-semibold text-indigo-900">{pct(rulePassed, interactionEvalEvents.length)}</p></div>
-                  <div className="rounded-lg border border-indigo-200 bg-indigo-50 p-3"><p className="text-xs text-indigo-700">Strong routes (≥80%)</p><p className="text-lg font-semibold text-indigo-900">{pct(routeStrong, routeEvents.length)}</p></div>
+                  <div className="rounded-xl border border-[var(--anx-border)] bg-[var(--anx-primary-soft)] p-3"><p className="anx-stat-label text-[var(--anx-primary)]">Question events</p><p className="text-lg font-semibold text-[var(--anx-text)]">{questionEvents.length}</p></div>
+                  <div className="rounded-xl border border-[var(--anx-border)] bg-[var(--anx-primary-soft)] p-3"><p className="anx-stat-label text-[var(--anx-primary)]">Checkpoint accuracy</p><p className="text-lg font-semibold text-[var(--anx-text)]">{pct(checkpointCorrect, stepAttemptEvents.length)}</p></div>
+                  <div className="rounded-xl border border-[var(--anx-border)] bg-[var(--anx-primary-soft)] p-3"><p className="anx-stat-label text-[var(--anx-primary)]">Interaction rule pass</p><p className="text-lg font-semibold text-[var(--anx-text)]">{pct(rulePassed, interactionEvalEvents.length)}</p></div>
+                  <div className="rounded-xl border border-[var(--anx-border)] bg-[var(--anx-primary-soft)] p-3"><p className="anx-stat-label text-[var(--anx-primary)]">Strong routes (≥80%)</p><p className="text-lg font-semibold text-[var(--anx-text)]">{pct(routeStrong, routeEvents.length)}</p></div>
                   <div className="rounded-lg border border-rose-200 bg-rose-50 p-3"><p className="text-xs text-rose-700">Wrong first-difference</p><p className="text-lg font-semibold text-rose-900">{wrongFirstDiff}</p></div>
                 </div>
 
@@ -352,23 +352,23 @@ export default async function TeacherDashboardPage({ searchParams }: Props) {
                   <div className="rounded-lg border border-cyan-200 bg-cyan-50 p-3"><p className="text-xs text-cyan-700">Avg instructional time</p><p className="text-lg font-semibold text-cyan-900">{classAvgInstructionalTimeMs != null ? `${Math.round(classAvgInstructionalTimeMs / 1000)}s` : '—'}</p></div>
                 </div>
 
-                <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-3">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-amber-800">Students requiring action</p>
-                  <p className="mt-1 text-sm text-amber-900">
+                <div className="mt-4 rounded-xl border px-4 py-3" style={{ borderColor: '#fbbf24', background: 'var(--anx-warning-soft)' }}>
+                  <p className="anx-section-label" style={{ color: '#92400e' }}>Students requiring action</p>
+                  <p className="mt-1.5 text-sm" style={{ color: '#78350f' }}>
                     {requiringAction.length === 0
                       ? 'No high-priority students in this filter window.'
                       : requiringAction.map((s) => `${s.name} (${s.riskLevel})`).join(', ')}
                   </p>
                 </div>
 
-                <div className="mt-4 rounded-lg border border-slate-200">
-                  <div className="border-b border-slate-200 bg-slate-50 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-slate-600">Student drilldown (actionable)</div>
+                <div className="mt-4 overflow-hidden rounded-xl border" style={{ borderColor: 'var(--anx-border)' }}>
+                  <div className="border-b px-4 py-2.5 anx-section-label" style={{ borderColor: 'var(--anx-border-subtle)', background: 'var(--anx-surface-soft)' }}>Student drilldown (actionable)</div>
                   <div className="overflow-x-auto">
                     <table className="w-full text-sm">
-                      <thead className="bg-white text-xs text-slate-500">
+                      <thead className="bg-white text-xs" style={{ color: 'var(--anx-text-muted)' }}>
                         <tr><th className="px-3 py-2 text-left">Student</th><th className="px-3 py-2 text-left">Observe ID</th><th className="px-3 py-2 text-left">Risk</th><th className="px-3 py-2 text-left">DLE</th><th className="px-3 py-2 text-left">Durability</th><th className="px-3 py-2 text-left">Trend</th><th className="px-3 py-2 text-left">Mastery</th><th className="px-3 py-2 text-left">Questions</th><th className="px-3 py-2 text-left">Checkpoint</th><th className="px-3 py-2 text-left">Interaction pass</th><th className="px-3 py-2 text-left">Wrong first-diff</th><th className="px-3 py-2 text-left">Interventions</th></tr>
                       </thead>
-                      <tbody className="divide-y divide-slate-100">
+                      <tbody className="divide-y" style={{ borderColor: 'var(--anx-border-subtle)' }}>
                         {studentRows.map((row) => (
                           <tr key={row.id} className={row.needsAction ? 'bg-amber-50/60' : ''}>
                             <td className="px-3 py-2 text-slate-800">{row.name}</td><td className="px-3 py-2 font-mono text-xs text-slate-600">{row.observeStudentId}</td><td className="px-3 py-2"><span className={`rounded px-2 py-0.5 text-xs font-semibold ${row.riskLevel === 'RED' ? 'bg-rose-100 text-rose-800' : row.riskLevel === 'AMBER' ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800'}`}>{row.riskLevel} ({row.riskScore})</span></td><td className="px-3 py-2 font-mono text-xs">{row.studentAvgDle != null ? row.studentAvgDle.toFixed(2) : '—'}</td><td className="px-3 py-2"><span className={`rounded px-2 py-0.5 text-xs font-semibold ${row.studentDurability === 'AT_RISK' ? 'bg-rose-100 text-rose-800' : row.studentDurability === 'DEVELOPING' ? 'bg-amber-100 text-amber-800' : row.studentDurability === 'DURABLE' ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-100 text-slate-600'}`}>{row.studentDurability ?? '—'}</span></td><td className="px-3 py-2 text-xs text-sky-800">{trendBadge(row.studentTrend)}</td><td className="px-3 py-2">{row.masteryAvg}%</td><td className="px-3 py-2">{row.questionCount}</td><td className="px-3 py-2">{row.checkpointRate}</td><td className="px-3 py-2">{row.interactionPassRate}</td><td className="px-3 py-2 text-rose-700">{row.wrongFirstDiff}</td><td className="px-3 py-2">{row.interventions}</td>
