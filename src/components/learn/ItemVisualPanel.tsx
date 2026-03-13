@@ -16,16 +16,16 @@ export function ItemVisualPanel({ item, primarySkillCode }: Props) {
   return (
     <section className="space-y-3">
       <div>
-        <h3 className="text-sm font-semibold text-gray-900">Maths model</h3>
-        <p className="text-xs text-gray-500">This visual is rendered from structured question data, not a slide image.</p>
+        <h3 className="text-sm font-semibold" style={{ color: 'var(--anx-text)' }}>Maths model</h3>
+        <p className="text-xs" style={{ color: 'var(--anx-text-muted)' }}>This visual is rendered from structured question data, not a slide image.</p>
       </div>
       <div className="grid gap-4">
         {visuals.map((visual, index) => (
-          <figure key={`${visual.type}-${index}`} className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
-            <div className="bg-slate-50 p-4">
+          <figure key={`${visual.type}-${index}`} className="overflow-hidden rounded-2xl border shadow-sm" style={{ borderColor: 'var(--anx-border)' }}>
+            <div className="p-4" style={{ background: 'var(--anx-surface-soft)' }}>
               <MathsVisualRenderer visual={visual} />
             </div>
-            <figcaption className="border-t border-gray-100 px-4 py-3 text-xs text-gray-600">
+            <figcaption className="border-t px-4 py-3 text-xs" style={{ borderColor: 'var(--anx-border-subtle)', color: 'var(--anx-text-muted)' }}>
               {visual.caption ?? visual.altText}
             </figcaption>
           </figure>

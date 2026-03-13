@@ -265,6 +265,116 @@
     background: rgba(61, 99, 255, 0.06);
   }
 
+  /* ── Tables ───────────────────────────────────── */
+  .anx-table-wrapper {
+    @apply overflow-hidden rounded-xl border;
+    border-color: var(--anx-border);
+  }
+
+  .anx-table {
+    @apply w-full text-sm;
+  }
+
+  .anx-table thead {
+    border-bottom: 1px solid var(--anx-border-subtle);
+    background: var(--anx-surface-soft);
+  }
+
+  .anx-table th {
+    @apply px-4 py-3 text-left text-xs font-medium;
+    color: var(--anx-text-muted);
+  }
+
+  .anx-table tbody {
+    @apply divide-y;
+    border-color: var(--anx-border-subtle);
+  }
+
+  .anx-table td {
+    @apply px-4 py-3;
+    color: var(--anx-text-secondary);
+  }
+
+  .anx-table tbody tr:hover {
+    background: var(--anx-surface-soft);
+  }
+
+  /* ── Select inputs ──────────────────────────────── */
+  .anx-select {
+    @apply w-full rounded-xl border bg-white px-3 py-2 text-sm transition-all duration-150;
+    border-color: var(--anx-border);
+    color: var(--anx-text);
+  }
+
+  .anx-select:focus {
+    border-color: var(--anx-primary);
+    box-shadow: 0 0 0 3px var(--anx-primary-glow);
+    outline: none;
+  }
+
+  /* ── Textarea ───────────────────────────────────── */
+  .anx-textarea {
+    @apply w-full rounded-xl border bg-white px-3 py-2 text-sm transition-all duration-150;
+    border-color: var(--anx-border);
+    color: var(--anx-text);
+  }
+
+  .anx-textarea::placeholder {
+    color: var(--anx-text-faint);
+  }
+
+  .anx-textarea:focus {
+    border-color: var(--anx-primary);
+    box-shadow: 0 0 0 3px var(--anx-primary-glow);
+    outline: none;
+  }
+
+  /* ── Alert boxes ────────────────────────────────── */
+  .anx-alert {
+    @apply rounded-xl border px-4 py-3 text-sm;
+  }
+
+  .anx-alert-warning {
+    border-color: var(--anx-warning);
+    background: var(--anx-warning-soft);
+    color: #92400e;
+  }
+
+  .anx-alert-danger {
+    border-color: var(--anx-danger);
+    background: var(--anx-danger-soft);
+    color: #dc2626;
+  }
+
+  .anx-alert-success {
+    border-color: var(--anx-success);
+    background: var(--anx-success-soft);
+    color: #059669;
+  }
+
+  .anx-alert-info {
+    border-color: var(--anx-primary);
+    background: var(--anx-primary-soft);
+    color: var(--anx-primary);
+  }
+
+  /* ── Admin link ─────────────────────────────────── */
+  .anx-link {
+    @apply text-sm font-medium transition-colors;
+    color: var(--anx-primary);
+  }
+
+  .anx-link:hover {
+    color: var(--anx-primary-hover);
+    text-decoration: underline;
+  }
+
+  /* ── Label ──────────────────────────────────────── */
+  .anx-label {
+    @apply mb-1 block text-sm;
+    color: var(--anx-text-muted);
+  }
+
   /* ── Animations ────────────────────────────────── */
   .anx-pulse-correct {
     animation: anxPulseCorrect 220ms ease-out;

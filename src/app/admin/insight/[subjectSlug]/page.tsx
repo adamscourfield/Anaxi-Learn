@@ -199,38 +199,38 @@ export default async function InsightDashboardPage({ params, searchParams }: Pro
   const strandEntries = Array.from(strandMap.entries()).sort(([a], [b]) => a.localeCompare(b));
 
   return (
-    <main className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-6xl mx-auto px-4 space-y-10">
+    <main className="anx-shell">
+      <div className="mx-auto max-w-6xl space-y-10">
         <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-gray-900">Insight Dashboard — {subject.title}</h1>
+          <h1 className="text-2xl font-bold" style={{ color: 'var(--anx-text)' }}>Insight Dashboard — {subject.title}</h1>
           <div className="flex items-center gap-4 text-sm">
-            <a href={`/admin/content/${subject.slug}`} className="text-blue-600 hover:underline">
+            <a href={`/admin/content/${subject.slug}`} className="anx-link">
               → Content Verification
             </a>
-            <a href="/admin/interventions" className="text-blue-600 hover:underline">
+            <a href="/admin/interventions" className="anx-link">
               → Interventions
             </a>
           </div>
         </div>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-800 mb-3">Snapshot — Engagement & Route Quality</h2>
+          <h2 className="text-lg font-semibold mb-3" style={{ color: 'var(--anx-text)' }}>Snapshot — Engagement & Route Quality</h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            <div className="rounded-xl border border-gray-200 bg-white p-4">
-              <p className="text-xs text-gray-500">Unique learners</p>
-              <p className="mt-1 text-2xl font-semibold text-gray-900">{uniqueLearners}</p>
+            <div className="anx-stat">
+              <p className="anx-stat-label">Unique learners</p>
+              <p className="anx-stat-value">{uniqueLearners}</p>
             </div>
-            <div className="rounded-xl border border-gray-200 bg-white p-4">
-              <p className="text-xs text-gray-500">Question events</p>
-              <p className="mt-1 text-2xl font-semibold text-gray-900">{engagementEvents.length}</p>
+            <div className="anx-stat">
+              <p className="anx-stat-label">Question events</p>
+              <p className="anx-stat-value">{engagementEvents.length}</p>
             </div>
-            <div className="rounded-xl border border-gray-200 bg-white p-4">
-              <p className="text-xs text-gray-500">Avg questions / learner</p>
-              <p className="mt-1 text-2xl font-semibold text-gray-900">{avgQuestionsPerLearner}</p>
+            <div className="anx-stat">
+              <p className="anx-stat-label">Avg questions / learner</p>
+              <p className="anx-stat-value">{avgQuestionsPerLearner}</p>
             </div>
-            <div className="rounded-xl border border-gray-200 bg-white p-4">
-              <p className="text-xs text-gray-500">Strong routes (≥80%)</p>
-              <p className="mt-1 text-2xl font-semibold text-gray-900">
+            <div className="anx-stat">
+              <p className="anx-stat-label">Strong routes (≥80%)</p>
+              <p className="anx-stat-value">
                 {routeStats.count > 0 ? `${Math.round((routeStats.strongRoutes / routeStats.count) * 100)}%` : '—'}
               </p>
             </div>
@@ -243,7 +243,7 @@ export default async function InsightDashboardPage({ params, searchParams }: Pro
 
         <section>
           <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-            <h2 className="text-lg font-semibold text-gray-800">Phase 9 — Student-First Reteach ({phase9Days}d)</h2>
+            <h2 className="text-lg font-semibold" style={{ color: 'var(--anx-text)' }}>Phase 9 — Student-First Reteach ({phase9Days}d)</h2>
             <div className="flex items-center gap-2 text-xs">
               {[7, 30, 90].map((d) => (
                 <a
@@ -257,25 +257,25 @@ export default async function InsightDashboardPage({ params, searchParams }: Pro
             </div>
           </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            <div className="rounded-xl border border-gray-200 bg-white p-4">
-              <p className="text-xs text-gray-500">Loops started</p>
-              <p className="mt-1 text-2xl font-semibold text-gray-900">{phase9.loopsStarted}</p>
+            <div className="anx-stat">
+              <p className="anx-stat-label">Loops started</p>
+              <p className="anx-stat-value">{phase9.loopsStarted}</p>
             </div>
-            <div className="rounded-xl border border-gray-200 bg-white p-4">
-              <p className="text-xs text-gray-500">Recovery rate</p>
-              <p className="mt-1 text-2xl font-semibold text-emerald-700">
+            <div className="anx-stat">
+              <p className="anx-stat-label">Recovery rate</p>
+              <p className="anx-stat-value" style={{ color: 'var(--anx-success)' }}>
                 {typeof phase9.recoveryRate === 'number' ? `${Math.round(phase9.recoveryRate * 100)}%` : '—'}
               </p>
             </div>
-            <div className="rounded-xl border border-gray-200 bg-white p-4">
-              <p className="text-xs text-gray-500">Escalation rate</p>
-              <p className="mt-1 text-2xl font-semibold text-rose-700">
+            <div className="anx-stat">
+              <p className="anx-stat-label">Escalation rate</p>
+              <p className="anx-stat-value" style={{ color: 'var(--anx-danger)' }}>
                 {typeof phase9.escalationRate === 'number' ? `${Math.round(phase9.escalationRate * 100)}%` : '—'}
               </p>
             </div>
-            <div className="rounded-xl border border-gray-200 bg-white p-4">
-              <p className="text-xs text-gray-500">Avg time to recovery</p>
-              <p className="mt-1 text-2xl font-semibold text-gray-900">
+            <div className="anx-stat">
+              <p className="anx-stat-label">Avg time to recovery</p>
+              <p className="anx-stat-value">
                 {typeof phase9.avgHoursToRecovery === 'number' ? `${phase9.avgHoursToRecovery.toFixed(1)}h` : '—'}
               </p>
             </div>
@@ -329,38 +329,38 @@ export default async function InsightDashboardPage({ params, searchParams }: Pro
           </div>
 
           <div className="mt-3 grid grid-cols-1 gap-4 lg:grid-cols-2">
-            <div className="rounded-xl border border-gray-200 bg-white p-4">
-              <p className="mb-2 text-sm font-medium text-gray-700">Escalation reason codes ({phase9Days}d)</p>
+            <div className="anx-stat">
+              <p className="mb-2 text-sm font-medium" style={{ color: 'var(--anx-text-secondary)' }}>Escalation reason codes ({phase9Days}d)</p>
               <div className="space-y-2 text-xs">
                 {(phase9.escalationReasonDistribution ?? []).slice(0, 6).map((row: { reasonCode: string; count: number; share: number }) => (
-                  <div key={`esc-reason-${row.reasonCode}`} className="flex items-center justify-between rounded border border-gray-100 px-2 py-1">
-                    <span className="font-mono text-[11px] text-gray-700">{row.reasonCode}</span>
-                    <span className="text-gray-500">{row.count} ({Math.round((row.share ?? 0) * 100)}%)</span>
+                  <div key={`esc-reason-${row.reasonCode}`} className="flex items-center justify-between rounded px-2 py-1" style={{ borderWidth: 1, borderStyle: 'solid', borderColor: 'var(--anx-border-subtle)' }}>
+                    <span className="font-mono text-[11px]" style={{ color: 'var(--anx-text-secondary)' }}>{row.reasonCode}</span>
+                    <span style={{ color: 'var(--anx-text-muted)' }}>{row.count} ({Math.round((row.share ?? 0) * 100)}%)</span>
                   </div>
                 ))}
                 {(phase9.escalationReasonDistribution ?? []).length === 0 && (
-                  <p className="text-gray-400">No escalation reason data yet.</p>
+                  <p style={{ color: 'var(--anx-text-faint)' }}>No escalation reason data yet.</p>
                 )}
               </div>
             </div>
 
-            <div className="rounded-xl border border-gray-200 bg-white p-4">
-              <p className="mb-2 text-sm font-medium text-gray-700">Suggestion effectiveness ({phase9Days}d)</p>
+            <div className="anx-stat">
+              <p className="mb-2 text-sm font-medium" style={{ color: 'var(--anx-text-secondary)' }}>Suggestion effectiveness ({phase9Days}d)</p>
               <div className="space-y-2 text-xs">
                 {(phase9.suggestionEffectiveness ?? []).slice(0, 6).map((row: { suggestionCode: string; assignedCount: number; recoveredCount: number; recoveryRate: number | null }) => (
-                  <div key={`suggestion-${row.suggestionCode}`} className="rounded border border-gray-100 px-2 py-1">
+                  <div key={`suggestion-${row.suggestionCode}`} className="rounded px-2 py-1" style={{ borderWidth: 1, borderStyle: 'solid', borderColor: 'var(--anx-border-subtle)' }}>
                     <div className="flex items-center justify-between">
-                      <span className="font-mono text-[11px] text-gray-700">{row.suggestionCode}</span>
-                      <span className="text-gray-500">{row.assignedCount} assigned</span>
+                      <span className="font-mono text-[11px]" style={{ color: 'var(--anx-text-secondary)' }}>{row.suggestionCode}</span>
+                      <span style={{ color: 'var(--anx-text-muted)' }}>{row.assignedCount} assigned</span>
                     </div>
-                    <p className="mt-0.5 text-gray-600">
+                    <p className="mt-0.5" style={{ color: 'var(--anx-text-secondary)' }}>
                       Recovered later: {row.recoveredCount}
                       {typeof row.recoveryRate === 'number' ? ` (${Math.round(row.recoveryRate * 100)}%)` : ''}
                     </p>
                   </div>
                 ))}
                 {(phase9.suggestionEffectiveness ?? []).length === 0 && (
-                  <p className="text-gray-400">No suggestion effectiveness data yet.</p>
+                  <p style={{ color: 'var(--anx-text-faint)' }}>No suggestion effectiveness data yet.</p>
                 )}
               </div>
             </div>
@@ -368,40 +368,40 @@ export default async function InsightDashboardPage({ params, searchParams }: Pro
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-800 mb-3">Route Effectiveness (A/B/C) + Shadow Validation</h2>
+          <h2 className="text-lg font-semibold mb-3" style={{ color: 'var(--anx-text)' }}>Route Effectiveness (A/B/C) + Shadow Validation</h2>
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
-            <div className="rounded-xl border border-gray-200 bg-white p-4">
-              <p className="mb-3 text-sm font-medium text-gray-700">Average Accuracy by Route</p>
+            <div className="anx-stat">
+              <p className="mb-3 text-sm font-medium" style={{ color: 'var(--anx-text-secondary)' }}>Average Accuracy by Route</p>
               <div className="space-y-2 text-sm">
                 {(['A', 'B', 'C'] as const).map((route) => {
                   const row = routeStats.byRoute[route];
                   const avg = row.count > 0 ? Math.round((row.sumAccuracy / row.count) * 100) : null;
                   return (
-                    <div key={route} className="flex items-center justify-between rounded-md border border-gray-100 px-3 py-2">
+                    <div key={route} className="flex items-center justify-between rounded-md px-3 py-2" style={{ borderWidth: 1, borderStyle: 'solid', borderColor: 'var(--anx-border-subtle)' }}>
                       <span className="font-mono text-xs">Route {route}</span>
-                      <span className="text-gray-700">{row.count > 0 ? `${avg}% (${row.count})` : '—'}</span>
+                      <span style={{ color: 'var(--anx-text-secondary)' }}>{row.count > 0 ? `${avg}% (${row.count})` : '—'}</span>
                     </div>
                   );
                 })}
               </div>
             </div>
-            <div className="rounded-xl border border-gray-200 bg-white p-4">
-              <p className="mb-3 text-sm font-medium text-gray-700">Shadow Pair Pass Rate</p>
-              <p className="text-2xl font-semibold text-gray-900">
+            <div className="anx-stat">
+              <p className="mb-3 text-sm font-medium" style={{ color: 'var(--anx-text-secondary)' }}>Shadow Pair Pass Rate</p>
+              <p className="anx-stat-value">
                 {shadowTotal > 0 ? `${Math.round((shadowPassed / shadowTotal) * 100)}%` : '—'}
               </p>
-              <p className="mt-1 text-xs text-gray-500">
+              <p className="mt-1 text-xs" style={{ color: 'var(--anx-text-muted)' }}>
                 Passed: {shadowPassed} · Failed: {shadowFailed}
               </p>
             </div>
-            <div className="rounded-xl border border-gray-200 bg-white p-4">
-              <p className="mb-3 text-sm font-medium text-gray-700">Route Assignment Sources</p>
-              <div className="space-y-2 text-xs text-gray-600">
+            <div className="anx-stat">
+              <p className="mb-3 text-sm font-medium" style={{ color: 'var(--anx-text-secondary)' }}>Route Assignment Sources</p>
+              <div className="space-y-2 text-xs" style={{ color: 'var(--anx-text-secondary)' }}>
                 <div>Diagnostic signals: {assignmentStats.bySource.diagnostic_signals}</div>
                 <div>Fallback chain: {assignmentStats.bySource.fallback_chain}</div>
                 <div>History default: {assignmentStats.bySource.history_default}</div>
               </div>
-              <p className="mt-3 text-xs text-gray-500">
+              <p className="mt-3 text-xs" style={{ color: 'var(--anx-text-muted)' }}>
                 Assigned route count — A:{assignmentStats.byRoute.A} · B:{assignmentStats.byRoute.B} · C:{assignmentStats.byRoute.C}
               </p>
             </div>
@@ -409,7 +409,7 @@ export default async function InsightDashboardPage({ params, searchParams }: Pro
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-800 mb-3">Teacher Drilldown — Recent Routing & Rewards</h2>
+          <h2 className="text-lg font-semibold mb-3" style={{ color: 'var(--anx-text)' }}>Teacher Drilldown — Recent Routing & Rewards</h2>
           <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
             <table className="w-full text-sm">
               <thead className="bg-gray-50 border-b border-gray-200">
@@ -448,7 +448,7 @@ export default async function InsightDashboardPage({ params, searchParams }: Pro
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-800 mb-3">Reteach Step Hotspots</h2>
+          <h2 className="text-lg font-semibold mb-3" style={{ color: 'var(--anx-text)' }}>Reteach Step Hotspots</h2>
           <p className="mb-2 text-xs text-gray-500">Low-confidence checkpoint signals: {lowConfidenceSignals}</p>
           <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
             <table className="w-full text-sm">
@@ -483,7 +483,7 @@ export default async function InsightDashboardPage({ params, searchParams }: Pro
 
         {/* A) Coverage by strand */}
         <section>
-          <h2 className="text-lg font-semibold text-gray-800 mb-3">A) Coverage &amp; Progress by Strand</h2>
+          <h2 className="text-lg font-semibold mb-3" style={{ color: 'var(--anx-text)' }}>A) Coverage &amp; Progress by Strand</h2>
           <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
             <table className="w-full text-sm">
               <thead className="bg-gray-50 border-b border-gray-200">
@@ -523,7 +523,7 @@ export default async function InsightDashboardPage({ params, searchParams }: Pro
 
         {/* B) Review success by bucket */}
         <section>
-          <h2 className="text-lg font-semibold text-gray-800 mb-3">B) Retention Proxy — Review Success Rate</h2>
+          <h2 className="text-lg font-semibold mb-3" style={{ color: 'var(--anx-text)' }}>B) Retention Proxy — Review Success Rate</h2>
           <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
             <table className="w-full text-sm">
               <thead className="bg-gray-50 border-b border-gray-200">
@@ -554,15 +554,15 @@ export default async function InsightDashboardPage({ params, searchParams }: Pro
 
         {/* C) Time to stable mastery */}
         <section>
-          <h2 className="text-lg font-semibold text-gray-800 mb-3">C) Time to Stable Mastery</h2>
-          <div className="bg-white rounded-xl border border-gray-200 p-4">
-            <p className="text-gray-700">
+          <h2 className="text-lg font-semibold mb-3" style={{ color: 'var(--anx-text)' }}>C) Time to Stable Mastery</h2>
+          <div className="anx-stat">
+            <p style={{ color: 'var(--anx-text-secondary)' }}>
               Median days from first attempt to stable mastery (confirmedCount ≥ 2):{' '}
               <span className="font-bold">
                 {stableSkillMasteries.length > 0 ? `${medianDays.toFixed(1)} days` : 'No data yet'}
               </span>
             </p>
-            <p className="text-xs text-gray-400 mt-1">
+            <p className="text-xs mt-1" style={{ color: 'var(--anx-text-faint)' }}>
               Based on {stableSkillMasteries.length} stable skill mastery entr{stableSkillMasteries.length !== 1 ? 'ies' : 'y'}.
             </p>
           </div>
@@ -570,7 +570,7 @@ export default async function InsightDashboardPage({ params, searchParams }: Pro
 
         {/* D) Fragile skills */}
         <section>
-          <h2 className="text-lg font-semibold text-gray-800 mb-3">D) Top Fragile Skills (mastery &lt; 60%)</h2>
+          <h2 className="text-lg font-semibold mb-3" style={{ color: 'var(--anx-text)' }}>D) Top Fragile Skills (mastery &lt; 60%)</h2>
           <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
             <table className="w-full text-sm">
               <thead className="bg-gray-50 border-b border-gray-200">

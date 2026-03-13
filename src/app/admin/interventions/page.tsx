@@ -161,15 +161,15 @@ export default async function AdminInterventionsPage() {
   );
 
   return (
-    <main className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-6xl mx-auto px-4 space-y-6">
+    <main className="anx-shell">
+      <div className="mx-auto max-w-6xl space-y-6">
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold text-gray-900">Intervention Flags</h1>
+          <h1 className="text-2xl font-bold" style={{ color: 'var(--anx-text)' }}>Intervention Flags</h1>
           <div className="flex items-center gap-4">
-            <a href="/admin/knowledge-state" className="text-sm text-blue-600 hover:underline">
+            <a href="/admin/knowledge-state" className="anx-link">
               → Knowledge State Debug
             </a>
-            <a href={`/admin/insight/${LEARNING_CONFIG.defaultSubjectSlug}`} className="text-sm text-blue-600 hover:underline">
+            <a href={`/admin/insight/${LEARNING_CONFIG.defaultSubjectSlug}`} className="anx-link">
               → Insight Dashboard
             </a>
           </div>
@@ -179,22 +179,22 @@ export default async function AdminInterventionsPage() {
           <AdminReteachPolicyPanel />
         </div>
 
-        <div className="mb-6 rounded-xl border border-gray-200 bg-white overflow-hidden">
-          <div className="border-b border-gray-100 px-4 py-3">
-            <h2 className="text-sm font-semibold text-gray-900">Recent policy changes</h2>
-            <p className="mt-1 text-xs text-gray-600">Last 10 updates to Phase 9 thresholds (audit trail).</p>
+        <div className="anx-card-flat mb-6 overflow-hidden">
+          <div className="border-b px-4 py-3" style={{ borderColor: 'var(--anx-border-subtle)' }}>
+            <h2 className="text-sm font-semibold" style={{ color: 'var(--anx-text)' }}>Recent policy changes</h2>
+            <p className="mt-1 text-xs" style={{ color: 'var(--anx-text-secondary)' }}>Last 10 updates to Phase 9 thresholds (audit trail).</p>
           </div>
           {policyUpdates.length === 0 ? (
-            <div className="px-4 py-4 text-xs text-gray-500">No policy updates yet.</div>
+            <div className="px-4 py-4 text-xs" style={{ color: 'var(--anx-text-muted)' }}>No policy updates yet.</div>
           ) : (
-            <div className="divide-y divide-gray-100">
+            <div>
               {policyUpdates.map((event, index) => (
-                <div key={event.id ?? `policy-update-${index}`} className="px-4 py-3 text-xs text-gray-700">
+                <div key={event.id ?? `policy-update-${index}`} className="border-t px-4 py-3 text-xs" style={{ borderColor: 'var(--anx-border-subtle)', color: 'var(--anx-text-secondary)' }}>
                   <div className="flex flex-wrap items-center justify-between gap-2">
-                    <span className="font-medium text-gray-900">{event.actor?.name ?? event.actor?.email ?? 'Admin'}</span>
-                    <span className="text-gray-500">{event.createdAt ? event.createdAt.toISOString().replace('T', ' ').slice(0, 16) : 'Unknown time'}</span>
+                    <span className="font-medium" style={{ color: 'var(--anx-text)' }}>{event.actor?.name ?? event.actor?.email ?? 'Admin'}</span>
+                    <span style={{ color: 'var(--anx-text-muted)' }}>{event.createdAt ? event.createdAt.toISOString().replace('T', ' ').slice(0, 16) : 'Unknown time'}</span>
                   </div>
-                  <pre className="mt-2 overflow-x-auto rounded bg-gray-50 p-2 text-[11px] text-gray-600">{JSON.stringify(event.payload, null, 2)}</pre>
+                  <pre className="mt-2 overflow-x-auto rounded p-2 text-[11px]" style={{ background: 'var(--anx-surface-soft)', color: 'var(--anx-text-secondary)' }}>{JSON.stringify(event.payload, null, 2)}</pre>
                 </div>
               ))}
             </div>
@@ -202,57 +202,57 @@ export default async function AdminInterventionsPage() {
         </div>
 
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 mb-6">
-          <div className="rounded-xl border border-gray-200 bg-white p-4">
-            <div className="text-xs text-gray-500">Route recommendations (7d)</div>
-            <div className="mt-2 text-sm text-gray-700">A: {routeSummary.routeA} · B: {routeSummary.routeB} · C: {routeSummary.routeC}</div>
+          <div className="anx-stat">
+            <div className="anx-stat-label">Route recommendations (7d)</div>
+            <div className="mt-2 text-sm" style={{ color: 'var(--anx-text-secondary)' }}>A: {routeSummary.routeA} · B: {routeSummary.routeB} · C: {routeSummary.routeC}</div>
           </div>
-          <div className="rounded-xl border border-gray-200 bg-white p-4">
-            <div className="text-xs text-gray-500">Secure fast-pass (7d)</div>
-            <div className="mt-2 text-2xl font-semibold text-emerald-600">{routeSummary.secureFastPass}</div>
+          <div className="anx-stat">
+            <div className="anx-stat-label">Secure fast-pass (7d)</div>
+            <div className="mt-2 text-2xl font-semibold" style={{ color: 'var(--anx-success)' }}>{routeSummary.secureFastPass}</div>
           </div>
-          <div className="rounded-xl border border-gray-200 bg-white p-4">
-            <div className="text-xs text-gray-500">Shadow pairs (7d)</div>
-            <div className="mt-2 text-sm text-gray-700">Passed: {routeSummary.shadowPairPassed} · Failed: {routeSummary.shadowPairFailed}</div>
+          <div className="anx-stat">
+            <div className="anx-stat-label">Shadow pairs (7d)</div>
+            <div className="mt-2 text-sm" style={{ color: 'var(--anx-text-secondary)' }}>Passed: {routeSummary.shadowPairPassed} · Failed: {routeSummary.shadowPairFailed}</div>
           </div>
-          <div className="rounded-xl border border-gray-200 bg-white p-4">
-            <div className="text-xs text-gray-500">Interventions flagged (7d)</div>
-            <div className="mt-2 text-2xl font-semibold text-rose-600">{routeSummary.interventionFlagged}</div>
+          <div className="anx-stat">
+            <div className="anx-stat-label">Interventions flagged (7d)</div>
+            <div className="mt-2 text-2xl font-semibold" style={{ color: 'var(--anx-danger)' }}>{routeSummary.interventionFlagged}</div>
           </div>
         </div>
 
-        <div className="mb-6 rounded-xl border border-indigo-200 bg-white overflow-hidden">
-          <div className="border-b border-indigo-100 bg-indigo-50 px-4 py-3">
-            <h2 className="text-sm font-semibold text-indigo-900">Teacher Exceptions · Reteach Escalations (7d)</h2>
-            <p className="mt-1 text-xs text-indigo-700">Only students who did not recover through automated reteach loops appear here.</p>
+        <div className="anx-card-flat mb-6 overflow-hidden" style={{ borderColor: 'var(--anx-primary)' }}>
+          <div className="border-b px-4 py-3" style={{ borderColor: 'var(--anx-primary)', background: 'var(--anx-primary-soft)' }}>
+            <h2 className="text-sm font-semibold" style={{ color: 'var(--anx-text)' }}>Teacher Exceptions · Reteach Escalations (7d)</h2>
+            <p className="mt-1 text-xs" style={{ color: 'var(--anx-primary)' }}>Only students who did not recover through automated reteach loops appear here.</p>
           </div>
           {reteachExceptions.length === 0 ? (
-            <div className="px-4 py-6 text-sm text-gray-500">No reteach escalations in the last 7 days.</div>
+            <div className="px-4 py-6 text-sm" style={{ color: 'var(--anx-text-muted)' }}>No reteach escalations in the last 7 days.</div>
           ) : (
-            <div className="divide-y divide-gray-100">
+            <div>
               {reteachExceptions.map((ex) => (
-                <div key={ex.id} className="px-4 py-3">
+                <div key={ex.id} className="border-t px-4 py-3" style={{ borderColor: 'var(--anx-border-subtle)' }}>
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <div>
-                      <p className="text-sm font-semibold text-gray-900">
-                        {ex.studentName} <span className="text-gray-500">({ex.studentEmail})</span>
+                      <p className="text-sm font-semibold" style={{ color: 'var(--anx-text)' }}>
+                        {ex.studentName} <span style={{ color: 'var(--anx-text-muted)' }}>({ex.studentEmail})</span>
                       </p>
-                      <p className="text-xs text-gray-600">
+                      <p className="text-xs" style={{ color: 'var(--anx-text-secondary)' }}>
                         {ex.subjectTitle} · {ex.skillCode} {ex.skillName} · {ex.strand}
                       </p>
                     </div>
-                    <span className="rounded-full border border-rose-200 bg-rose-50 px-2 py-1 text-xs font-semibold text-rose-700">
+                    <span className="anx-badge anx-badge-red">
                       Escalated
                     </span>
                   </div>
-                  <div className="mt-2 grid gap-2 text-xs text-gray-700 sm:grid-cols-2 lg:grid-cols-4">
+                  <div className="mt-2 grid gap-2 text-xs sm:grid-cols-2 lg:grid-cols-4" style={{ color: 'var(--anx-text-secondary)' }}>
                     <p>Attempts in loop: <span className="font-semibold">{ex.attemptCount}</span></p>
                     <p>Consecutive independent correct: <span className="font-semibold">{ex.checks?.consecutiveIndependentCorrect ?? 0}</span></p>
                     <p>Independent rate: <span className="font-semibold">{typeof ex.checks?.independentCorrectRate === 'number' ? `${Math.round(ex.checks.independentCorrectRate * 100)}%` : '—'}</span></p>
                     <p>Delayed retrieval: <span className="font-semibold">{ex.checks?.delayedRetrievalOk ? 'OK' : 'Not met'}</span></p>
                   </div>
-                  <p className="mt-2 text-xs text-gray-600">Reason: {ex.reason}</p>
-                  {ex.reasonCode && <p className="mt-1 text-xs text-gray-500">Decision code: {ex.reasonCode}</p>}
-                  <p className="mt-1 text-xs text-indigo-700">
+                  <p className="mt-2 text-xs" style={{ color: 'var(--anx-text-secondary)' }}>Reason: {ex.reason}</p>
+                  {ex.reasonCode && <p className="mt-1 text-xs" style={{ color: 'var(--anx-text-muted)' }}>Decision code: {ex.reasonCode}</p>}
+                  <p className="mt-1 text-xs" style={{ color: 'var(--anx-primary)' }}>
                     Suggested teacher action:{' '}
                     {ex.suggestedActions.length > 0
                       ? ex.suggestedActions.join(' · ')
@@ -265,42 +265,42 @@ export default async function AdminInterventionsPage() {
         </div>
 
         {flagsWithStats.length === 0 ? (
-          <div className="text-center py-16 text-gray-400">No active intervention flags.</div>
+          <div className="text-center py-16" style={{ color: 'var(--anx-text-faint)' }}>No active intervention flags.</div>
         ) : (
-          <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-            <table className="w-full text-sm">
-              <thead className="bg-gray-50 border-b border-gray-200">
+          <div className="anx-table-wrapper">
+            <table className="anx-table">
+              <thead>
                 <tr>
-                  <th className="text-left px-4 py-3 font-medium text-gray-600">Student</th>
-                  <th className="text-left px-4 py-3 font-medium text-gray-600">Skill</th>
-                  <th className="text-left px-4 py-3 font-medium text-gray-600">Strand</th>
-                  <th className="text-left px-4 py-3 font-medium text-gray-600">Mastery</th>
-                  <th className="text-left px-4 py-3 font-medium text-gray-600">Attempts (7d)</th>
-                  <th className="text-left px-4 py-3 font-medium text-gray-600">Recommended Action</th>
-                  <th className="text-left px-4 py-3 font-medium text-gray-600">Action</th>
+                  <th className="text-left px-4 py-3 font-medium">Student</th>
+                  <th className="text-left px-4 py-3 font-medium">Skill</th>
+                  <th className="text-left px-4 py-3 font-medium">Strand</th>
+                  <th className="text-left px-4 py-3 font-medium">Mastery</th>
+                  <th className="text-left px-4 py-3 font-medium">Attempts (7d)</th>
+                  <th className="text-left px-4 py-3 font-medium">Recommended Action</th>
+                  <th className="text-left px-4 py-3 font-medium">Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-100">
+              <tbody>
                 {flagsWithStats.map((flag) => (
-                  <tr key={flag.id} className="hover:bg-gray-50">
+                  <tr key={flag.id}>
                     <td className="px-4 py-3">
                       <div>{flag.user.name ?? '—'}</div>
-                      <div className="text-xs text-gray-400">{flag.user.email}</div>
+                      <div className="text-xs" style={{ color: 'var(--anx-text-faint)' }}>{flag.user.email}</div>
                     </td>
                     <td className="px-4 py-3">
-                      <div className="font-mono text-xs text-gray-500">{flag.skill.code}</div>
-                      <div className="text-gray-700">{flag.skill.name}</div>
+                      <div className="font-mono text-xs" style={{ color: 'var(--anx-text-muted)' }}>{flag.skill.code}</div>
+                      <div style={{ color: 'var(--anx-text-secondary)' }}>{flag.skill.name}</div>
                     </td>
                     <td className="px-4 py-3">
-                      <span className="px-2 py-0.5 bg-gray-100 rounded text-xs">{flag.skill.strand}</span>
+                      <span className="anx-badge anx-badge-blue">{flag.skill.strand}</span>
                     </td>
                     <td className="px-4 py-3">
-                      <span className="text-red-600 font-semibold">
+                      <span className="font-semibold" style={{ color: 'var(--anx-danger)' }}>
                         {Math.round(flag.masteryValue * 100)}%
                       </span>
                     </td>
                     <td className="px-4 py-3 text-center">{flag.recentAttempts}</td>
-                    <td className="px-4 py-3 text-gray-500 text-xs">
+                    <td className="px-4 py-3 text-xs" style={{ color: 'var(--anx-text-muted)' }}>
                       Consider 1:1 support or worked examples for {flag.skill.name}
                     </td>
                     <td className="px-4 py-3">
@@ -308,7 +308,8 @@ export default async function AdminInterventionsPage() {
                         <input type="hidden" name="flagId" value={flag.id} />
                         <button
                           type="submit"
-                          className="px-3 py-1.5 text-xs bg-green-50 text-green-700 border border-green-200 rounded hover:bg-green-100 transition-colors"
+                          className="anx-btn-secondary text-xs"
+                          style={{ color: 'var(--anx-success)', borderColor: 'var(--anx-success)' }}
                         >
                           Resolve
                         </button>

@@ -155,9 +155,9 @@ export function ReteachSession({ subjectId, skillId, routeType, assignedPathId, 
   if (stage === 'worked') {
     return (
       <div className="space-y-5">
-        <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 text-base text-slate-700">
-          <p className="text-lg font-bold text-slate-900">👀 Worked example</p>
-          <p className="mt-1 text-base leading-relaxed">{plan.workedExample}</p>
+        <div className="anx-surface-muted p-6 text-base">
+          <p className="text-lg font-bold" style={{ color: 'var(--anx-text)' }}>Worked example</p>
+          <p className="mt-1 text-base leading-relaxed" style={{ color: 'var(--anx-text-secondary)' }}>{plan.workedExample}</p>
           <button className="anx-btn-primary mt-4 w-full py-3 text-base" onClick={() => setStage('guided')}>
             Let me try one
           </button>
@@ -169,18 +169,18 @@ export function ReteachSession({ subjectId, skillId, routeType, assignedPathId, 
   if (stage === 'guided') {
     return (
       <div className="space-y-5">
-        <div className="rounded-xl border border-slate-200 bg-white p-5">
-          <p className="text-lg font-bold text-slate-900">Your turn</p>
-          <p className="mt-1 text-base text-slate-700">{plan.guidedPrompt}</p>
-          {needsWritingHint && <p className="mt-2 text-sm text-slate-600">Write it clearly. You can use “and” or leave it out.</p>}
+        <div className="anx-card-flat p-5">
+          <p className="text-lg font-bold" style={{ color: 'var(--anx-text)' }}>Your turn</p>
+          <p className="mt-1 text-base" style={{ color: 'var(--anx-text-secondary)' }}>{plan.guidedPrompt}</p>
+          {needsWritingHint && <p className="mt-2 text-sm" style={{ color: 'var(--anx-text-muted)' }}>Write it clearly. You can use &quot;and&quot; or leave it out.</p>}
           <input
-            className="mt-3 w-full rounded-lg border border-slate-300 px-4 py-3 text-base"
+            className="anx-input mt-3 py-3 text-base"
             value={guided}
             onChange={(e) => setGuided(e.target.value)}
             placeholder="Type your answer"
           />
-          {!guidedOk && guided.length > 0 && <p className="mt-2 text-sm text-rose-600">Nearly there — check each place value and try again.</p>}
-          {guidedOk && <p className="mt-2 text-sm text-emerald-600">Brilliant! You got it ✅</p>}
+          {!guidedOk && guided.length > 0 && <p className="mt-2 text-sm" style={{ color: 'var(--anx-danger)' }}>Nearly there — check each place value and try again.</p>}
+          {guidedOk && <p className="mt-2 text-sm" style={{ color: 'var(--anx-success)' }}>Brilliant! You got it</p>}
           <button
             className="anx-btn-primary mt-3 w-full py-3 text-base"
             onClick={async () => {
@@ -240,10 +240,10 @@ export function ReteachSession({ subjectId, skillId, routeType, assignedPathId, 
   if (stage === 'checkpoint') {
     return (
       <div className="space-y-5">
-        <div className={`rounded-2xl border border-slate-200 bg-white p-6 ${feedback === 'correct' ? 'anx-pulse-correct' : ''} ${feedback === 'incorrect' ? 'anx-shake-incorrect' : ''}`}>
-          <p className="text-sm uppercase tracking-wide text-slate-500">Step {stepIndex + 1} of {plan.steps.length}</p>
-          <p className="mt-3 text-lg font-bold text-slate-900">Checkpoint</p>
-          <p className="mt-1 text-base text-slate-700">{step.checkpointQuestion}</p>
+        <div className={`anx-card-flat p-6 ${feedback === 'correct' ? 'anx-pulse-correct' : ''} ${feedback === 'incorrect' ? 'anx-shake-incorrect' : ''}`}>
+          <p className="text-sm uppercase tracking-wide" style={{ color: 'var(--anx-text-faint)' }}>Step {stepIndex + 1} of {plan.steps.length}</p>
+          <p className="mt-3 text-lg font-bold" style={{ color: 'var(--anx-text)' }}>Checkpoint</p>
+          <p className="mt-1 text-base" style={{ color: 'var(--anx-text-secondary)' }}>{step.checkpointQuestion}</p>
           <div className="mt-3 space-y-2">
             {step.checkpointOptions.map((option) => (
               <button key={option} onClick={() => setSelected(option)} className={`anx-option ${selected === option ? 'anx-option-selected' : ''}`}>
@@ -254,14 +254,14 @@ export function ReteachSession({ subjectId, skillId, routeType, assignedPathId, 
           <button onClick={checkStep} className="anx-btn-primary mt-4 w-full py-3 text-base" disabled={!canCheck}>
             Check answer
           </button>
-          {!selected && <p className="mt-2 text-sm text-slate-600">Choose one answer to begin.</p>}
+          {!selected && <p className="mt-2 text-sm" style={{ color: 'var(--anx-text-muted)' }}>Choose one answer to begin.</p>}
           {selected && interactionRequired && !interactionStatus.completed && (
-            <p className="mt-2 text-sm text-amber-700">First complete the visual task above, then check your answer.</p>
+            <p className="mt-2 text-sm" style={{ color: '#b45309' }}>First complete the visual task above, then check your answer.</p>
           )}
-          {feedback === 'incorrect' && <p className="mt-2 text-sm text-rose-600">Good try — check the idea again and have another go.</p>}
-          {feedback === 'correct' && <p className="mt-2 text-sm text-emerald-600">Nice one — you are ready for the next step.</p>}
+          {feedback === 'incorrect' && <p className="mt-2 text-sm" style={{ color: 'var(--anx-danger)' }}>Good try — check the idea again and have another go.</p>}
+          {feedback === 'correct' && <p className="mt-2 text-sm" style={{ color: 'var(--anx-success)' }}>Nice one — you are ready for the next step.</p>}
           {altShown[stepIndex] && (
-            <div className="mt-3 rounded-lg border border-blue-200 bg-blue-50 p-3 text-sm text-blue-900">
+            <div className="anx-alert anx-alert-info mt-3">
               <p className="font-semibold">Helpful hint</p>
               <p>{step.alternativeHint ?? 'Say each place-value column name out loud, then try again.'}</p>
             </div>
@@ -273,10 +273,10 @@ export function ReteachSession({ subjectId, skillId, routeType, assignedPathId, 
 
   return (
     <div className="space-y-5">
-      <div className="rounded-2xl border border-slate-200 bg-white p-6">
-        <p className="text-sm uppercase tracking-wide text-slate-500">Step {stepIndex + 1} of {plan.steps.length}</p>
-        <h3 className="mt-1 text-xl font-bold text-slate-900">{step.title}</h3>
-        <p className="mt-2 text-base leading-relaxed text-slate-700">{step.explanation}</p>
+      <div className="anx-card-flat p-6">
+        <p className="text-sm uppercase tracking-wide" style={{ color: 'var(--anx-text-faint)' }}>Step {stepIndex + 1} of {plan.steps.length}</p>
+        <h3 className="mt-1 text-xl font-bold" style={{ color: 'var(--anx-text)' }}>{step.title}</h3>
+        <p className="mt-2 text-base leading-relaxed" style={{ color: 'var(--anx-text-secondary)' }}>{step.explanation}</p>
 
         <div className="mt-4">{renderer.render({ step, state: interaction, markInteraction })}</div>
 
@@ -288,7 +288,7 @@ export function ReteachSession({ subjectId, skillId, routeType, assignedPathId, 
           Go to checkpoint
         </button>
         {interactionRequired && !interactionStatus.completed && (
-          <p className="mt-2 text-sm text-slate-600">Complete the visual task to unlock the next challenge.</p>
+          <p className="mt-2 text-sm" style={{ color: 'var(--anx-text-muted)' }}>Complete the visual task to unlock the next challenge.</p>
         )}
       </div>
     </div>

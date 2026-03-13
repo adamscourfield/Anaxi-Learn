@@ -104,28 +104,29 @@ export function OrderedMagnetInput({ choices, value, onChange, emptyPrompt, help
           event.preventDefault();
           handleDropToTray(index);
         }}
-        className={`h-3 rounded-full transition-colors ${active ? 'bg-blue-300' : 'bg-transparent'}`}
+        className="h-3 rounded-full transition-colors"
+        style={{ background: active ? 'var(--anx-primary-glow)' : 'transparent' }}
       />
     );
   }
 
   return (
     <div className="space-y-4">
-      <div className="rounded-2xl border border-blue-200 bg-blue-50/70 p-4">
+      <div className="rounded-2xl border p-4" style={{ borderColor: 'var(--anx-primary)', background: 'var(--anx-primary-soft)' }}>
         <div className="flex items-center justify-between gap-3">
-          <p className="text-sm font-semibold text-blue-900">Arrange the fridge magnets into the correct order</p>
+          <p className="text-sm font-semibold" style={{ color: 'var(--anx-text)' }}>Arrange the fridge magnets into the correct order</p>
           {orderedChoices.length > 0 && (
             <button
               type="button"
               onClick={() => updateOrderedChoices([])}
-              className="text-xs font-medium text-blue-700 underline decoration-blue-300 underline-offset-2"
+              className="text-xs font-medium underline underline-offset-2" style={{ color: 'var(--anx-primary)' }}
             >
               Clear order
             </button>
           )}
         </div>
-        {helperText && <p className="mt-1 text-xs text-blue-700">{helperText}</p>}
-        <div className="mt-4 rounded-2xl border border-dashed border-blue-300 bg-white p-4">
+        {helperText && <p className="mt-1 text-xs" style={{ color: 'var(--anx-text-muted)' }}>{helperText}</p>}
+        <div className="mt-4 rounded-2xl border border-dashed bg-white p-4" style={{ borderColor: 'var(--anx-border)' }}>
           {orderedChoices.length === 0 ? (
             <div
               onDragOver={(event) => {
@@ -136,7 +137,8 @@ export function OrderedMagnetInput({ choices, value, onChange, emptyPrompt, help
                 event.preventDefault();
                 handleDropToTray(0);
               }}
-              className="flex min-h-24 items-center justify-center rounded-xl border border-dashed border-blue-200 bg-blue-50/40 px-4 text-center text-sm text-blue-700"
+              className="flex min-h-24 items-center justify-center rounded-xl border border-dashed px-4 text-center text-sm"
+              style={{ borderColor: 'var(--anx-border-subtle)', background: 'var(--anx-surface-soft)', color: 'var(--anx-text-muted)' }}
             >
               {emptyPrompt}
             </div>
@@ -152,18 +154,20 @@ export function OrderedMagnetInput({ choices, value, onChange, emptyPrompt, help
                       setDragState(null);
                       setDropIndex(null);
                     }}
-                    className="flex items-center justify-between gap-3 rounded-xl border border-blue-300 bg-white px-4 py-3 shadow-sm"
+                    className="flex items-center justify-between gap-3 rounded-xl border bg-white px-4 py-3 shadow-sm"
+                    style={{ borderColor: 'var(--anx-primary)' }}
                   >
                     <div className="flex items-center gap-3">
-                      <span className="rounded-full bg-blue-600 px-2 py-1 text-xs font-semibold text-white">
+                      <span className="rounded-full px-2 py-1 text-xs font-semibold text-white" style={{ background: 'var(--anx-primary)' }}>
                         {index + 1}
                       </span>
-                      <span className="text-sm font-medium text-gray-900">{choice}</span>
+                      <span className="text-sm font-medium" style={{ color: 'var(--anx-text)' }}>{choice}</span>
                     </div>
                     <button
                       type="button"
                       onClick={() => removeChoice(choice)}
-                      className="rounded-full border border-gray-200 px-2 py-1 text-xs font-medium text-gray-600 hover:bg-gray-50"
+                      className="anx-btn-ghost rounded-full border px-2 py-1 text-xs font-medium"
+                      style={{ borderColor: 'var(--anx-border)' }}
                     >
                       Remove
                     </button>
@@ -185,10 +189,10 @@ export function OrderedMagnetInput({ choices, value, onChange, emptyPrompt, help
           event.preventDefault();
           handleDropToBank();
         }}
-        className="rounded-2xl border border-gray-200 bg-white p-4"
+        className="anx-card-flat p-4"
       >
-        <p className="text-sm font-semibold text-gray-900">Available magnets</p>
-        <p className="mt-1 text-xs text-gray-500">Drag a magnet up into the answer tray or tap to add it.</p>
+        <p className="text-sm font-semibold" style={{ color: 'var(--anx-text)' }}>Available magnets</p>
+        <p className="mt-1 text-xs" style={{ color: 'var(--anx-text-muted)' }}>Drag a magnet up into the answer tray or tap to add it.</p>
         <div className="mt-4 flex flex-wrap gap-3">
           {availableChoices.map((choice) => (
             <button
@@ -201,13 +205,14 @@ export function OrderedMagnetInput({ choices, value, onChange, emptyPrompt, help
                 setDragState(null);
                 setDropIndex(null);
               }}
-              className="rounded-xl border border-gray-300 bg-yellow-50 px-4 py-3 text-sm font-medium text-gray-900 shadow-sm transition-transform hover:-translate-y-0.5"
+              className="rounded-xl border px-4 py-3 text-sm font-medium shadow-sm transition-transform hover:-translate-y-0.5"
+              style={{ borderColor: 'var(--anx-border)', background: 'var(--anx-warning-soft)', color: 'var(--anx-text)' }}
             >
               {choice}
             </button>
           ))}
           {availableChoices.length === 0 && (
-            <p className="text-sm text-gray-500">All magnets are in the answer tray. Drag one back here to remove it.</p>
+            <p className="text-sm" style={{ color: 'var(--anx-text-muted)' }}>All magnets are in the answer tray. Drag one back here to remove it.</p>
           )}
         </div>
       </div>

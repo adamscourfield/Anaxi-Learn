@@ -86,7 +86,7 @@ export function LearnSession({ subject, skill, items, userId }: Props) {
     return (
       <div className="space-y-3">
         {options.length === 0 ? (
-          <p className="rounded-xl border px-4 py-3 text-sm" style={{ borderColor: '#fbbf24', background: 'var(--anx-warning-soft)', color: '#92400e' }}>
+          <p className="anx-alert anx-alert-warning">
             This question has no options yet.
           </p>
         ) : (

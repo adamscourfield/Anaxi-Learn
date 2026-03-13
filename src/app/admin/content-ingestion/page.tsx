@@ -14,16 +14,16 @@ export default async function AdminContentIngestionPage() {
   const entriesByBatch = Object.fromEntries(batches.map((batch) => [batch.id, readStagedBatch(batch.fileName)]));
 
   return (
-    <main className="min-h-screen bg-gray-50 py-8">
-      <div className="mx-auto max-w-7xl px-4 space-y-8">
+    <main className="anx-shell">
+      <div className="mx-auto max-w-7xl space-y-8">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">Content Ingestion Review</h1>
-            <p className="mt-1 text-sm text-gray-500">
+            <h1 className="text-2xl font-bold" style={{ color: 'var(--anx-text)' }}>Content Ingestion Review</h1>
+            <p className="mt-1 text-sm" style={{ color: 'var(--anx-text-muted)' }}>
               Review staged imported items, inspect mapping issues, and publish the valid subset safely.
             </p>
           </div>
-          <a href="/admin/content/ks3-maths" className="text-sm text-blue-600 hover:underline">
+          <a href="/admin/content/ks3-maths" className="anx-link text-sm">
             ← Back to Question QA Lab
           </a>
         </div>

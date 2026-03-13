@@ -114,7 +114,7 @@ export default async function TeacherDashboardPage({ searchParams }: Props) {
         title="Teacher Dashboard"
         subtitle={`Observe-linked analytics for ${user.name ?? user.email}`}
       >
-        <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+        <div className="anx-alert anx-alert-warning">
           No teacher profile linked yet. Add a TeacherProfile row mapped to your Observe teacher id.
         </div>
       </LearningPageShell>
@@ -341,20 +341,20 @@ export default async function TeacherDashboardPage({ searchParams }: Props) {
                   <div className="rounded-xl border border-[var(--anx-border)] bg-[var(--anx-primary-soft)] p-3"><p className="anx-stat-label text-[var(--anx-primary)]">Checkpoint accuracy</p><p className="text-lg font-semibold text-[var(--anx-text)]">{pct(checkpointCorrect, stepAttemptEvents.length)}</p></div>
                   <div className="rounded-xl border border-[var(--anx-border)] bg-[var(--anx-primary-soft)] p-3"><p className="anx-stat-label text-[var(--anx-primary)]">Interaction rule pass</p><p className="text-lg font-semibold text-[var(--anx-text)]">{pct(rulePassed, interactionEvalEvents.length)}</p></div>
                   <div className="rounded-xl border border-[var(--anx-border)] bg-[var(--anx-primary-soft)] p-3"><p className="anx-stat-label text-[var(--anx-primary)]">Strong routes (≥80%)</p><p className="text-lg font-semibold text-[var(--anx-text)]">{pct(routeStrong, routeEvents.length)}</p></div>
-                  <div className="rounded-lg border border-rose-200 bg-rose-50 p-3"><p className="text-xs text-rose-700">Wrong first-difference</p><p className="text-lg font-semibold text-rose-900">{wrongFirstDiff}</p></div>
+                  <div className="rounded-lg border p-3" style={{ borderColor: 'var(--anx-danger)', background: 'var(--anx-danger-soft)' }}><p className="text-xs" style={{ color: 'var(--anx-danger)' }}>Wrong first-difference</p><p className="text-lg font-semibold" style={{ color: 'var(--anx-danger)' }}>{wrongFirstDiff}</p></div>
                 </div>
 
                 <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-                  <div className="rounded-lg border border-teal-200 bg-teal-50 p-3"><p className="text-xs text-teal-700">Avg DLE (latest)</p><p className="text-lg font-semibold text-teal-900">{classAvgDle != null ? classAvgDle.toFixed(2) : '—'}</p></div>
-                  <div className="rounded-lg border border-sky-200 bg-sky-50 p-3" title={MOMENTUM_HELP}><p className="text-xs text-sky-700">DLE momentum</p><p className="text-lg font-semibold text-sky-900">{trendBadge(classTrend)}</p><p className="mt-1 text-[11px] text-sky-700">proxy metric</p></div>
-                  <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-3"><p className="text-xs text-emerald-700">Durable states</p><p className="text-lg font-semibold text-emerald-900">{classDurableCount}</p></div>
-                  <div className="rounded-lg border border-amber-200 bg-amber-50 p-3"><p className="text-xs text-amber-700">At-risk states</p><p className="text-lg font-semibold text-amber-900">{classAtRiskCount}</p></div>
-                  <div className="rounded-lg border border-cyan-200 bg-cyan-50 p-3"><p className="text-xs text-cyan-700">Avg instructional time</p><p className="text-lg font-semibold text-cyan-900">{classAvgInstructionalTimeMs != null ? `${Math.round(classAvgInstructionalTimeMs / 1000)}s` : '—'}</p></div>
+                  <div className="rounded-lg border p-3" style={{ borderColor: 'rgba(15, 118, 110, 0.2)', background: 'rgba(15, 118, 110, 0.08)' }}><p className="text-xs" style={{ color: '#0f766e' }}>Avg DLE (latest)</p><p className="text-lg font-semibold" style={{ color: '#0f766e' }}>{classAvgDle != null ? classAvgDle.toFixed(2) : '—'}</p></div>
+                  <div className="rounded-lg border p-3" style={{ borderColor: 'rgba(3, 105, 161, 0.2)', background: 'rgba(3, 105, 161, 0.08)' }} title={MOMENTUM_HELP}><p className="text-xs" style={{ color: '#0369a1' }}>DLE momentum</p><p className="text-lg font-semibold" style={{ color: '#0369a1' }}>{trendBadge(classTrend)}</p><p className="mt-1 text-[11px]" style={{ color: '#0369a1' }}>proxy metric</p></div>
+                  <div className="rounded-lg border p-3" style={{ borderColor: 'var(--anx-success)', background: 'var(--anx-success-soft)' }}><p className="text-xs" style={{ color: 'var(--anx-success)' }}>Durable states</p><p className="text-lg font-semibold" style={{ color: 'var(--anx-success)' }}>{classDurableCount}</p></div>
+                  <div className="rounded-lg border p-3" style={{ borderColor: 'var(--anx-warning)', background: 'var(--anx-warning-soft)' }}><p className="text-xs" style={{ color: 'var(--anx-warning)' }}>At-risk states</p><p className="text-lg font-semibold" style={{ color: 'var(--anx-warning)' }}>{classAtRiskCount}</p></div>
+                  <div className="rounded-lg border p-3" style={{ borderColor: 'rgba(14, 116, 144, 0.2)', background: 'rgba(14, 116, 144, 0.08)' }}><p className="text-xs" style={{ color: '#0e7490' }}>Avg instructional time</p><p className="text-lg font-semibold" style={{ color: '#0e7490' }}>{classAvgInstructionalTimeMs != null ? `${Math.round(classAvgInstructionalTimeMs / 1000)}s` : '—'}</p></div>
                 </div>
 
-                <div className="mt-4 rounded-xl border px-4 py-3" style={{ borderColor: '#fbbf24', background: 'var(--anx-warning-soft)' }}>
-                  <p className="anx-section-label" style={{ color: '#92400e' }}>Students requiring action</p>
-                  <p className="mt-1.5 text-sm" style={{ color: '#78350f' }}>
+                <div className="mt-4 anx-alert anx-alert-warning">
+                  <p className="anx-section-label">Students requiring action</p>
+                  <p className="mt-1.5 text-sm">
                     {requiringAction.length === 0
                       ? 'No high-priority students in this filter window.'
                       : requiringAction.map((s) => `${s.name} (${s.riskLevel})`).join(', ')}
@@ -370,11 +370,11 @@ export default async function TeacherDashboardPage({ searchParams }: Props) {
                       </thead>
                       <tbody className="divide-y" style={{ borderColor: 'var(--anx-border-subtle)' }}>
                         {studentRows.map((row) => (
-                          <tr key={row.id} className={row.needsAction ? 'bg-amber-50/60' : ''}>
-                            <td className="px-3 py-2 text-slate-800">{row.name}</td><td className="px-3 py-2 font-mono text-xs text-slate-600">{row.observeStudentId}</td><td className="px-3 py-2"><span className={`rounded px-2 py-0.5 text-xs font-semibold ${row.riskLevel === 'RED' ? 'bg-rose-100 text-rose-800' : row.riskLevel === 'AMBER' ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800'}`}>{row.riskLevel} ({row.riskScore})</span></td><td className="px-3 py-2 font-mono text-xs">{row.studentAvgDle != null ? row.studentAvgDle.toFixed(2) : '—'}</td><td className="px-3 py-2"><span className={`rounded px-2 py-0.5 text-xs font-semibold ${row.studentDurability === 'AT_RISK' ? 'bg-rose-100 text-rose-800' : row.studentDurability === 'DEVELOPING' ? 'bg-amber-100 text-amber-800' : row.studentDurability === 'DURABLE' ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-100 text-slate-600'}`}>{row.studentDurability ?? '—'}</span></td><td className="px-3 py-2 text-xs text-sky-800">{trendBadge(row.studentTrend)}</td><td className="px-3 py-2">{row.masteryAvg}%</td><td className="px-3 py-2">{row.questionCount}</td><td className="px-3 py-2">{row.checkpointRate}</td><td className="px-3 py-2">{row.interactionPassRate}</td><td className="px-3 py-2 text-rose-700">{row.wrongFirstDiff}</td><td className="px-3 py-2">{row.interventions}</td>
+                          <tr key={row.id} style={row.needsAction ? { background: 'var(--anx-warning-soft)' } : undefined}>
+                            <td className="px-3 py-2" style={{ color: 'var(--anx-text)' }}>{row.name}</td><td className="px-3 py-2 font-mono text-xs" style={{ color: 'var(--anx-text-muted)' }}>{row.observeStudentId}</td><td className="px-3 py-2"><span className="rounded px-2 py-0.5 text-xs font-semibold" style={row.riskLevel === 'RED' ? { background: 'var(--anx-danger-soft)', color: 'var(--anx-danger)' } : row.riskLevel === 'AMBER' ? { background: 'var(--anx-warning-soft)', color: 'var(--anx-warning)' } : { background: 'var(--anx-success-soft)', color: 'var(--anx-success)' }}>{row.riskLevel} ({row.riskScore})</span></td><td className="px-3 py-2 font-mono text-xs">{row.studentAvgDle != null ? row.studentAvgDle.toFixed(2) : '—'}</td><td className="px-3 py-2"><span className="rounded px-2 py-0.5 text-xs font-semibold" style={row.studentDurability === 'AT_RISK' ? { background: 'var(--anx-danger-soft)', color: 'var(--anx-danger)' } : row.studentDurability === 'DEVELOPING' ? { background: 'var(--anx-warning-soft)', color: 'var(--anx-warning)' } : row.studentDurability === 'DURABLE' ? { background: 'var(--anx-success-soft)', color: 'var(--anx-success)' } : { background: 'var(--anx-surface-soft)', color: 'var(--anx-text-muted)' }}>{row.studentDurability ?? '—'}</span></td><td className="px-3 py-2 text-xs" style={{ color: '#0369a1' }}>{trendBadge(row.studentTrend)}</td><td className="px-3 py-2">{row.masteryAvg}%</td><td className="px-3 py-2">{row.questionCount}</td><td className="px-3 py-2">{row.checkpointRate}</td><td className="px-3 py-2">{row.interactionPassRate}</td><td className="px-3 py-2" style={{ color: 'var(--anx-danger)' }}>{row.wrongFirstDiff}</td><td className="px-3 py-2">{row.interventions}</td>
                           </tr>
                         ))}
-                        {studentRows.length === 0 && <tr><td colSpan={12} className="px-3 py-8 text-center text-slate-400">No students enrolled in this class yet.</td></tr>}
+                        {studentRows.length === 0 && <tr><td colSpan={12} className="px-3 py-8 text-center" style={{ color: 'var(--anx-text-faint)' }}>No students enrolled in this class yet.</td></tr>}
                       </tbody>
                     </table>
                   </div>

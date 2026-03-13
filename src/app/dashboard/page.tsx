@@ -121,8 +121,8 @@ export default async function DashboardPage() {
               ) : (
                 <>
                   {dueSkills.length > 0 && (
-                    <div className="mb-4 rounded-xl border px-4 py-3" style={{ borderColor: '#fbbf24', background: 'var(--anx-warning-soft)' }}>
-                      <p className="text-sm font-medium" style={{ color: '#92400e' }}>
+                    <div className="mb-4 anx-alert anx-alert-warning">
+                      <p className="text-sm font-medium">
                         {dueSkills.length} skill{dueSkills.length !== 1 ? 's' : ''} due for review
                       </p>
                     </div>
@@ -137,7 +137,8 @@ export default async function DashboardPage() {
                       return (
                         <div
                           key={skill.id}
-                          className={`anx-card p-4 ${isDue ? '!border-amber-300' : ''}`}
+                          className="anx-card p-4"
+                          style={isDue ? { borderColor: 'var(--anx-warning)' } : undefined}
                         >
                           <div className="flex items-center justify-between mb-2.5">
                             <span className="text-sm font-semibold" style={{ color: 'var(--anx-text)' }}>{skill.name}</span>
@@ -161,7 +162,7 @@ export default async function DashboardPage() {
                                 : 'Not started'}
                             </span>
                             {mastery?.nextReviewAt && (
-                              <span className={`text-xs font-medium ${isDue ? 'text-amber-600' : ''}`} style={isDue ? {} : { color: 'var(--anx-text-faint)' }}>
+                              <span className="text-xs font-medium" style={{ color: isDue ? '#b45309' : 'var(--anx-text-faint)' }}>
                                 {isDue ? 'Due now' : `Next: ${new Date(mastery.nextReviewAt).toLocaleDateString()}`}
                               </span>
                             )}

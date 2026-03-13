@@ -182,7 +182,7 @@ export function BaselineRunClient({ subjectSlug }: { subjectSlug: string }) {
         <div className="space-y-3">
           {answerType === 'MCQ' ? (
             parsedOptions.choices.length === 0 ? (
-              <div className="rounded-xl border px-4 py-3 text-sm" style={{ borderColor: '#fbbf24', background: 'var(--anx-warning-soft)', color: '#92400e' }}>
+              <div className="anx-alert anx-alert-warning">
                 This question has no options yet.
               </div>
             ) : (

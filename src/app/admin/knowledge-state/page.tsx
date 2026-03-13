@@ -70,10 +70,10 @@ export default async function AdminKnowledgeStatePage({
 
   if (!selected) {
     return (
-      <main className="min-h-screen bg-gray-50 py-8">
-        <div className="mx-auto max-w-5xl px-4">
-          <h1 className="mb-3 text-2xl font-bold text-gray-900">Knowledge State Debug</h1>
-          <p className="text-gray-500">No knowledge-state attempts yet.</p>
+      <main className="anx-shell">
+        <div className="mx-auto max-w-5xl">
+          <h1 className="mb-3 text-2xl font-bold" style={{ color: 'var(--anx-text)' }}>Knowledge State Debug</h1>
+          <p style={{ color: 'var(--anx-text-muted)' }}>No knowledge-state attempts yet.</p>
         </div>
       </main>
     );
@@ -140,11 +140,11 @@ export default async function AdminKnowledgeStatePage({
   });
 
   return (
-    <main className="min-h-screen bg-gray-50 py-8">
-      <div className="mx-auto max-w-6xl space-y-6 px-4">
+    <main className="anx-shell">
+      <div className="mx-auto max-w-6xl space-y-6">
         <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-gray-900">Knowledge State Debug</h1>
-          <a href="/admin/interventions" className="text-sm text-blue-600 hover:underline">
+          <h1 className="text-2xl font-bold" style={{ color: 'var(--anx-text)' }}>Knowledge State Debug</h1>
+          <a href="/admin/interventions" className="anx-link text-sm">
             ← Interventions
           </a>
         </div>
