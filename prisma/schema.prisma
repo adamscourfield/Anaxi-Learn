@@ -69,6 +69,13 @@ enum DurabilityBand {
   DURABLE
 }
 
+enum LiveSessionStatus {
+  LOBBY
+  ACTIVE
+  PAUSED
+  COMPLETED
+}
+
 enum ItemReviewStatus {
   OPEN
   RESOLVED
@@ -108,6 +115,9 @@ model User {
   knowledgeQuestionAttempts QuestionAttempt[]
   knowledgeSkillReviews  SkillReview[]
   itemReviewNotes        ItemReviewNote[]       @relation("ItemReviewAuthor")
+  teacherLiveSessions    LiveSession[]          @relation("TeacherLiveSessions")
+  liveParticipants       LiveParticipant[]
+  liveAttempts           LiveAttempt[]
 }
 
 model Subject {
@@ -123,6 +133,7 @@ model Subject {
   baselineSessions   BaselineSession[]
   interventionFlags  InterventionFlag[]
   rewardTransactions RewardTransaction[]
+  liveSessions       LiveSession[]
 }
 
 model Skill {
@@ -150,6 +161,8 @@ model Skill {
   knowledgeQuestionAttempts QuestionAttempt[]
   knowledgeSkillReviews    SkillReview[]
   explanationPerformance   ExplanationPerformance[]
+  liveSessions             LiveSession[]
+  liveAttempts             LiveAttempt[]
 
   @@unique([subjectId, slug])
   @@unique([subjectId, code])
@@ -181,6 +194,7 @@ model Item {
   events                    Event[]
   knowledgeQuestionAttempts QuestionAttempt[]
   reviewNotes               ItemReviewNote[]
+  liveAttempts              LiveAttempt[]
 }
 
 model ItemReviewNote {
@@ -571,6 +585,7 @@ model Classroom {
   updatedAt        DateTime              @updatedAt
   teachers         TeacherClassroom[]
   enrollments      ClassroomEnrollment[]
+  liveSessions     LiveSession[]
 
   @@unique([externalSource, externalClassId])
 }
@@ -598,4 +613,58 @@ model ClassroomEnrollment {
   studentProfile   StudentProfile? @relation(fields: [studentProfileId], references: [id], onDelete: SetNull)
 
   @@unique([classroomId, studentUserId])
+}
+
+model LiveSession {
+  id            String            @id @default(cuid())
+  classroomId   String
+  teacherUserId String
+  subjectId     String
+  skillId       String?
+  status        LiveSessionStatus @default(LOBBY)
+  joinCode      String            @unique
+  startedAt     DateTime?
+  endedAt       DateTime?
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+
+  classroom     Classroom         @relation(fields: [classroomId], references: [id])
+  teacher       User              @relation("TeacherLiveSessions", fields: [teacherUserId], references: [id])
+  subject       Subject           @relation(fields: [subjectId], references: [id])
+  skill         Skill?            @relation(fields: [skillId], references: [id])
+  participants  LiveParticipant[]
+  liveAttempts  LiveAttempt[]
+}
+
+model LiveParticipant {
+  id            String      @id @default(cuid())
+  liveSessionId String
+  studentUserId String
+  joinedAt      DateTime    @default(now())
+  isActive      Boolean     @default(true)
+
+  session       LiveSession @relation(fields: [liveSessionId], references: [id], onDelete: Cascade)
+  student       User        @relation(fields: [studentUserId], references: [id], onDelete: Cascade)
+
+  @@unique([liveSessionId, studentUserId])
+}
+
+model LiveAttempt {
+  id            String      @id @default(cuid())
+  liveSessionId String
+  studentUserId String
+  itemId        String
+  skillId       String
+  answer        String
+  correct       Boolean
+  responseTimeMs Int
+  createdAt     DateTime    @default(now())
+
+  session       LiveSession @relation(fields: [liveSessionId], references: [id], onDelete: Cascade)
+  student       User        @relation(fields: [studentUserId], references: [id], onDelete: Cascade)
+  item          Item        @relation(fields: [itemId], references: [id])
+  skill         Skill       @relation(fields: [skillId], references: [id])
+
+  @@index([liveSessionId, skillId])
+  @@index([liveSessionId, studentUserId])
 }
