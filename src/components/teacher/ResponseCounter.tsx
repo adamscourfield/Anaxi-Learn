@@ -55,15 +55,15 @@ export function ResponseCounter({ responseSummary, skills }: Props) {
               />
             </div>
             {answered > 0 && (
-              <div className="mt-1 flex items-center gap-1">
+              <div className="mt-1 flex h-2 w-full overflow-hidden rounded">
                 <div
-                  className="h-2 rounded-l bg-green-400"
-                  style={{ width: `${pctCorrect}%`, flex: '1 1 0' }}
+                  className="bg-green-400"
+                  style={{ width: `${pctCorrect}%` }}
                   title={`${correct} correct`}
                 />
                 <div
-                  className="h-2 rounded-r bg-red-400"
-                  style={{ width: `${100 - pctCorrect}%`, flex: '1 1 0' }}
+                  className="bg-red-400"
+                  style={{ width: `${100 - pctCorrect}%` }}
                   title={`${incorrect} incorrect`}
                 />
               </div>

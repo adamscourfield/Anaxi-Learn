@@ -110,15 +110,6 @@ export async function GET(_req: NextRequest, { params }: Props) {
     }
   }
 
-  // Students with open intervention flags
-  const studentsWithFlags = liveSession.participants
-    .filter((p) => p.student.interventionFlags.length > 0)
-    .map((p) => ({
-      studentId: p.studentUserId,
-      name: p.student.name,
-      flags: p.student.interventionFlags,
-    }));
-
   // Build participants with their skill states
   const participants = liveSession.participants.map((p) => {
     const relevantStates = liveSession.skillId
@@ -152,6 +143,5 @@ export async function GET(_req: NextRequest, { params }: Props) {
     participants,
     responseSummary,
     recommendedExplanation,
-    studentsWithFlags,
   });
 }

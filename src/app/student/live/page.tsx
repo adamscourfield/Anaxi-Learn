@@ -85,17 +85,10 @@ export default function StudentLivePage() {
     }
   }
 
-  async function fetchFirstQuestion(session: JoinedSession) {
-    if (!session.skill) {
-      setAppState({ phase: 'waiting', session });
-      return;
-    }
-
-    const res = await fetch(`/api/live-sessions/${session.sessionId}/state`).catch(() => null);
-    // For simplicity when session is active, prompt the student to wait for first question push
-    // The item serving happens through the attempts response. Show a waiting screen.
+  function fetchFirstQuestion(session: JoinedSession) {
+    // The item serving happens through the attempts response.
+    // Show a waiting screen until the teacher starts the session.
     setAppState({ phase: 'waiting', session });
-    void res;
   }
 
   async function handleAnswer(e: React.FormEvent) {
@@ -271,7 +264,7 @@ export default function StudentLivePage() {
     return (
       <main className="flex min-h-screen items-center justify-center bg-gray-50 px-4">
         <div className="w-full max-w-sm rounded-lg border border-gray-200 bg-white p-8 text-center shadow-sm">
-          <div className={`mb-4 text-5xl ${appState.correct ? '' : ''}`}>
+          <div className="mb-4 text-5xl">
             {appState.correct ? '✅' : '❌'}
           </div>
           <h2 className={`mb-4 text-xl font-bold ${appState.correct ? 'text-green-700' : 'text-red-700'}`}>
